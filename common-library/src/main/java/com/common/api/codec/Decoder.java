@@ -20,8 +20,8 @@ package com.common.api.codec;
 
 /**
  * <p>Provides the highest level of abstraction for Decoders.
- * This is the sister interface of {@link Encoder}.  All
- * Decoders implement this common generic interface.</p>
+ * This is the sister interfaces of {@link Encoder}.  All
+ * Decoders implement this common generic interfaces.</p>
  * 
  * <p>Allows a user to pass a generic Object to any Decoder 
  * implementation in the codec package.</p>
@@ -36,7 +36,7 @@ public interface Decoder {
     /**
      * Decodes an "encoded" Object and returns a "decoded"
      * Object.  Note that the implementation of this
-     * interface will try to cast the Object parameter
+     * interfaces will try to cast the Object parameter
      * to the specific type expected by a particular Decoder
      * implementation.  If a {@link ClassCastException} occurs
      * this decode method will throw a DecoderException.

@@ -21,7 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Wheel items adapter interface
+ * Wheel items adapter interfaces
  */
 public interface WheelViewAdapter {
 	/**

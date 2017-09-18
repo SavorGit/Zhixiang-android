@@ -693,7 +693,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 
     /**
      * Decodes an Object using the base64 algorithm. This method is provided in order to satisfy the requirements of the
-     * Decoder interface, and will throw a DecoderException if the supplied object is not of type byte[] or String.
+     * Decoder interfaces, and will throw a DecoderException if the supplied object is not of type byte[] or String.
      * 
      * @param pObject
      *            Object to decode
@@ -891,7 +891,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 
     /**
      * Encodes an Object using the base64 algorithm. This method is provided in order to satisfy the requirements of the
-     * Encoder interface, and will throw an EncoderException if the supplied object is not of type byte[].
+     * Encoder interfaces, and will throw an EncoderException if the supplied object is not of type byte[].
      * 
      * @param pObject
      *            Object to encode

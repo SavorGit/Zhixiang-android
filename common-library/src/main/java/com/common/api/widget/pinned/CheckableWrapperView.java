@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Checkable;
 
 /**
- * A WrapperView that implements the checkable interface
+ * A WrapperView that implements the checkable interfaces
  * 
  * @author Emil Sjölander
  */

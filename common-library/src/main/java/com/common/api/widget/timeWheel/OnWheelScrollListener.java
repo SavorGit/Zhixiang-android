@@ -19,7 +19,7 @@ package com.common.api.widget.timeWheel;
 ;
 
 /**
- * Wheel scrolled listener interface.
+ * Wheel scrolled listener interfaces.
  */
 public interface OnWheelScrollListener {
 	/**

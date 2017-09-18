@@ -17,7 +17,7 @@
 package com.common.api.widget.timeWheel;
 
 /**
- * Wheel clicked listener interface.
+ * Wheel clicked listener interfaces.
  * <p>
  * The onItemClicked() method is called whenever a wheel item is clicked
  * <li>New Wheel position is set

@@ -17,7 +17,7 @@
 package com.common.api.widget.timeWheel;
 
 /**
- * Wheel changed listener interface.
+ * Wheel changed listener interfaces.
  * <p>
  * The onChanged() method is called whenever current wheel positions is changed:
  * <li>New Wheel position is set

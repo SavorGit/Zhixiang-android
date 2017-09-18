@@ -18,10 +18,10 @@ import java.util.Queue;
  * both ends.  The name <i>deque</i> is short for "double ended queue"
  * and is usually pronounced "deck".  Most <tt>Deque</tt>
  * implementations place no fixed limits on the number of elements
- * they may contain, but this interface supports capacity-restricted
+ * they may contain, but this interfaces supports capacity-restricted
  * deques as well as those with no fixed size limit.
  * <p/>
- * <p>This interface defines methods to access the elements at both
+ * <p>This interfaces defines methods to access the elements at both
  * ends of the deque.  Methods are provided to insert, remove, and
  * examine the element.  Each of these methods exists in two forms:
  * one throws an exception if the operation fails, the other returns a
@@ -71,10 +71,10 @@ import java.util.Queue;
  * </tr>
  * </table>
  * <p/>
- * <p>This interface extends the {@link java.util.Queue} interface.  When a deque is
+ * <p>This interfaces extends the {@link java.util.Queue} interfaces.  When a deque is
  * used as a queue, FIFO (First-In-First-Out) behavior results.  Elements are
  * added at the end of the deque and removed from the beginning.  The methods
- * inherited from the <tt>Queue</tt> interface are precisely equivalent to
+ * inherited from the <tt>Queue</tt> interfaces are precisely equivalent to
  * <tt>Deque</tt> methods as indicated in the following table:
  * <p/>
  * <p/>
@@ -110,7 +110,7 @@ import java.util.Queue;
  * </table>
  * <p/>
  * <p>Deques can also be used as LIFO (Last-In-First-Out) stacks.  This
- * interface should be used in preference to the legacy {@link java.util.Stack} class.
+ * interfaces should be used in preference to the legacy {@link java.util.Stack} class.
  * When a deque is used as a stack, elements are pushed and popped from the
  * beginning of the deque.  Stack methods are precisely equivalent to
  * <tt>Deque</tt> methods as indicated in the table below:
@@ -139,11 +139,11 @@ import java.util.Queue;
  * a deque is used as a queue or a stack; in either case, elements are
  * drawn from the beginning of the deque.
  * <p/>
- * <p>This interface provides two methods to remove interior
+ * <p>This interfaces provides two methods to remove interior
  * elements, {@link #removeFirstOccurrence removeFirstOccurrence} and
  * {@link #removeLastOccurrence removeLastOccurrence}.
  * <p/>
- * <p>Unlike the {@link java.util.List} interface, this interface does not
+ * <p>Unlike the {@link java.util.List} interfaces, this interfaces does not
  * provide support for indexed access to elements.
  * <p/>
  * <p>While <tt>Deque</tt> implementations are not strictly required

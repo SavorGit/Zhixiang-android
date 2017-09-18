@@ -44,7 +44,7 @@ package com.common.api.codec;
  * accepted on input, big-endian used on output.)</li>
  * </ul>
  * 
- * This perhaps would best belong in the [lang] project. Even if a similar interface is defined in [lang], it is not
+ * This perhaps would best belong in the [lang] project. Even if a similar interfaces is defined in [lang], it is not
  * forseen that [codec] would be made to depend on [lang].
  * 
  * @see <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/nio/charset/Charset.html">Standard charsets</a>

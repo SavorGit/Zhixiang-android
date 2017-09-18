@@ -17,7 +17,7 @@
 package com.common.api.widget.timeWheel;
 
 /**
- * Wheel adapter interface
+ * Wheel adapter interfaces
  * 
  * @deprecated Use WheelViewAdapter
  */

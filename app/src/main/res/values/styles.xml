@@ -22,4 +22,9 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <style name="StartTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@mipmap/ico_splash</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
 </resources>

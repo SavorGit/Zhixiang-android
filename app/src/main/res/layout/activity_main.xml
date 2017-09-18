@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:id="@+id/nav_view"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="#922c3e"
+        >
+        <RelativeLayout
+            android:id="@+id/logo_la"
+            android:layout_marginTop="20dp"
+            android:background="@color/color_main"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_below="@id/iv_menu"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#ffffff"
+                android:text="小热点" />
+
+        </RelativeLayout>
+
+        <!--我的收藏-->
+        <RelativeLayout
+            android:layout_below="@id/logo_la"
+            android:id="@+id/rl_my_collection"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:gravity="center"
+                style="@style/NavigationTextSytle"
+                android:layout_width="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_main_bg"
+                android:text="我的收藏" />
+
+            <!--<ImageView-->
+            <!--style="@style/NavigationIconSytle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:src="@drawable/xiangce_more" />-->
+        </RelativeLayout>
+        <View
+            android:id="@+id/line1"
+            android:layout_below="@id/rl_my_collection"
+            android:layout_width="wrap_content"
+            android:background="#b45a6a"
+            android:layout_height="1px"/>
+
+        <!--意见反馈-->
+        <RelativeLayout
+            android:layout_below="@+id/line1"
+            android:id="@+id/rl_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <!--<ImageView-->
+            <!--android:id="@+id/feedback_icon"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_margin = "10dp"-->
+            <!--android:layout_marginLeft = "10dp"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:src="@drawable/cdh_yijianfankui" />-->
+
+            <TextView
+                android:layout_centerInParent="true"
+                style="@style/NavigationTextSytle"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_main_bg"
+                android:text="意见反馈" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

@@ -8,12 +8,12 @@
         "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable-xhdpi\\btn_plus_a.png"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
-    },
-    {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",

@@ -32,12 +32,12 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\layout\\share_edit_activity.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\layout\\share_edit_activity.xml"
-    },
-    {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\layout\\notification_media_action.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\layout\\share_edit_activity.xml",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\layout\\share_edit_activity.xml"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\layout\\lashou_dialog.xml",

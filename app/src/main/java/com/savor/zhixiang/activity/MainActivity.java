@@ -1,6 +1,7 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,11 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.widget.KeywordDialog;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initDrawerLayout();
+
+//        showKeywordsDialog();
+    }
+
+    private void showKeywordsDialog() {
+        Intent intent = new Intent(this,KeyWordActivity.class);
+        startActivity(intent);
+    }
+
+    private void initDrawerLayout() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

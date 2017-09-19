@@ -6,4 +6,5 @@
 
     <color name="color_main">#222222</color>
     <color name="color_main_bg">#ece6de</color>
+    <color name="color_gray">#eeeeee</color>
 </resources>

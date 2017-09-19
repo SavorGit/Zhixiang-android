@@ -244,12 +244,12 @@
         "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\bg_collect.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\progress_bar_drawable.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\progress_bar_drawable.xml"
-    },
-    {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\round_white_bg.xml",
         "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\round_white_bg.xml"
+    },
+    {
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\progress_bar_drawable.xml",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\progress_bar_drawable.xml"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\top_view_item.xml",

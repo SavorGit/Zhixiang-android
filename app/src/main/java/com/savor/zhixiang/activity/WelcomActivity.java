@@ -25,7 +25,7 @@ public class WelcomActivity extends BaseActivity {
 
     @Override
     public void getViews() {
-        mSplashIv = findViewById(R.id.iv_splash);
+        mSplashIv = (ImageView) findViewById(R.id.iv_splash);
     }
 
     @Override

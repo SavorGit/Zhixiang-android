@@ -12,12 +12,12 @@
         "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\loading_drawable.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\selector_dialog_bg.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\selector_dialog_bg.xml"
-    },
-    {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_light.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\selector_dialog_bg.xml",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\selector_dialog_bg.xml"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\release\\drawable\\adv_gallery_red_mark_selector.xml",

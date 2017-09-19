@@ -16,12 +16,12 @@
         "source": "E:\\work\\as\\Zhixiang-android\\common-library\\src\\main\\res\\drawable-xhdpi\\custom_tab_indicator_divider.9.png"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_longpressed_holo.9.png",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable-xhdpi\\list_longpressed_holo.9.png"
-    },
-    {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
         "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_longpressed_holo.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable-xhdpi\\list_longpressed_holo.9.png"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_holo.9.png",
@@ -40,12 +40,12 @@
         "source": "E:\\work\\as\\Zhixiang-android\\common-library\\src\\main\\res\\drawable-xhdpi\\movie_bigbanner_def.png"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
-    },
-    {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",

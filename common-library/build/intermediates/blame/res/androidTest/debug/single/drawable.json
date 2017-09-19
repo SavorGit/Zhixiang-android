@@ -12,16 +12,16 @@
         "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable\\search_view_selector.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rotate_drawable.xml",
+        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable\\rotate_drawable.xml"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\bg_collect.xml",
         "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable\\bg_collect.xml"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rotate_drawable.xml",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable\\rotate_drawable.xml"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\bg_category.xml",

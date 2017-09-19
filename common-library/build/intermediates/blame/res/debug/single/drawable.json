@@ -12,16 +12,16 @@
         "source": "E:\\work\\as\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\loading_drawable.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable\\item_background_holo_dark.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\item_background_holo_dark.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable\\dialog_btn_text_selector.xml",
+        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\dialog_btn_text_selector.xml"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable\\dialog_btn_text_selector.xml",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\dialog_btn_text_selector.xml"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable\\item_background_holo_dark.xml",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\src\\main\\res\\drawable\\item_background_holo_dark.xml"
     },
     {
         "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\debug\\drawable\\adr_wheel_bg.xml",

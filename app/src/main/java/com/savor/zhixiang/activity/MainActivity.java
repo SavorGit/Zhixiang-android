@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private CoordinatorLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

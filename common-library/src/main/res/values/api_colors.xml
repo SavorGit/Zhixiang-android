@@ -77,6 +77,8 @@
 
     <color name="common_background">#f5f3f0</color>
     <color name="gray">#EFEFF5</color>
+    <color name="color_4e4e4e">#4e4e4e</color>
+    <color name="border_gray">#666666</color>
     <color name="network_hint">#BCBCBC</color>
     <color name="color_app_bg">#f5f5f5</color>
     <color name="color_refresh_text">#888888</color>

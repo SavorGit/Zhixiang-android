@@ -1,10 +1,9 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +13,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.savor.zhixiang.R;
@@ -23,7 +23,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    private CoordinatorLayout right;
+    private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
     private String[] mVals = new String[]
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         initDrawerLayout();
 
-        showKeywordDialog();
+//        showKeywordDialog();
     }
 
     private void showKeywordDialog() {
@@ -45,25 +45,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initDrawerLayout() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+        // 不显示toobar上面的label
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        ImageView menuBtn = (ImageView) findViewById(R.id.iv_menu);
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        right = (CoordinatorLayout) findViewById(R.id.right);
+        right = (RelativeLayout) findViewById(R.id.right);
         left = (RelativeLayout) findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
 
         right.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -97,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!drawer.isDrawerOpen(GravityCompat.START)) {
@@ -105,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        drawer.setScrimColor(Color.TRANSPARENT);
     }
 
     @Override

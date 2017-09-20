@@ -1,7 +1,7 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,10 +9,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,15 +19,17 @@ import android.widget.RelativeLayout;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.widget.KeywordDialog;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private CoordinatorLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
+    private String[] mVals = new String[]
+        {"iPhone X", "孙宏斌", "美联储", "蒂芙尼珠宝", "北海道肉蟹", "贵族学校",
+                "百年普洱茶", "小米科技", "特朗普", "蒂芙尼"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         initDrawerLayout();
 
-//        showKeywordsDialog();
+        showKeywordDialog();
     }
 
-    private void showKeywordsDialog() {
-        Intent intent = new Intent(this,KeyWordActivity.class);
-        startActivity(intent);
+    private void showKeywordDialog() {
+        new KeywordDialog(this, Arrays.asList(mVals)).show();
     }
 
     private void initDrawerLayout() {

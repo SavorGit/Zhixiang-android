@@ -102,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         drawer.setScrimColor(Color.TRANSPARENT);
+        drawer.setDrawerElevation(0);
+
+        drawer.setDrawerShadow(R.color.transparent, GravityCompat.START);
     }
 
     @Override

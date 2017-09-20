@@ -1,6 +1,7 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -53,6 +54,7 @@ public class WelcomActivity extends BaseActivity {
             }
         });
         mSplashIv.startAnimation(alphaAnimation);
+        //tv_1.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ACaslonPro-Italic.otf"));
     }
 
     @Override

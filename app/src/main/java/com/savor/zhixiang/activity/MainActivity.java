@@ -29,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private CoordinatorLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
+<<<<<<< HEAD
     private String[] mVals = new String[]
         {"iPhone X", "孙宏斌", "美联储", "蒂芙尼珠宝", "北海道肉蟹", "贵族学校",
                 "百年普洱茶", "小米科技", "特朗普", "蒂芙尼"};
 
+=======
+>>>>>>> e8bd06501fb6bc3b0838b8d875161ebb798fc501
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

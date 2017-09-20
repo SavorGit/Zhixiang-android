@@ -1,506 +1,506 @@
 [
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\cross.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\cross.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\api_refresh_normal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\api_refresh_normal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\movie_game_banner_test.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\movie_game_banner_test.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_contacts_index_backgroud_sprd.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_contacts_index_backgroud_sprd.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_04.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_04.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\arrow_right.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\arrow_right.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_6.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_6.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\dialog_btn.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\dialog_btn.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\appointment_touch_area.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\appointment_touch_area.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_05.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_05.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\category_selected.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\category_selected.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_4.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_4.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_5.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_5.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_strip_middle_unpressed.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_strip_middle_unpressed.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_banner_gallery.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_banner_gallery.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_01.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_01.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\home_normal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\home_normal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_empty.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_empty.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\collect_selected.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\collect_selected.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_06.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_06.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\api_refresh_normal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\api_refresh_normal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\delete_banner.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\delete_banner.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\dialog_btn.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\dialog_btn.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\arrow_right.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\arrow_right.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_empty.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_empty.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_2.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_2.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\home_selected.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\home_selected.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_5.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_5.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_selected.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_selected.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\edittext_selected.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\edittext_selected.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_03.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_03.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\category_normal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\category_normal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_02.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_02.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\line_horizontal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\line_horizontal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\btn_grey.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\btn_grey.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ico_sina.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ico_sina.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\cross.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\cross.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\waiting1.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\waiting1.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_list_scrollbar_handle.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_list_scrollbar_handle.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_focused_holo.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_3.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_3.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_08.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_08.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\biz_plugin_weather_selectcity_empty.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\biz_plugin_weather_selectcity_empty.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_02.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_02.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_ptr_flip.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\waiting1.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\waiting1.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\adv_gallery_mark.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\adv_gallery_mark.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\movie_bottom_bar.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\movie_bottom_bar.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\indicator_arrow.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\z_arrow_down.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\z_arrow_down.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_13.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_13.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\adv_gallery_mark.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\adv_gallery_mark.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\movie_bottom_bar.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\movie_bottom_bar.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ico_sina.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ico_sina.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_8.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_8.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_3.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_3.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_normal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_normal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ico_qq.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ico_qq.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_list_selector_disabled.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_list_selector_disabled.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_list_selector_pressed.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_list_selector_pressed.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_2.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_2.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_detail_divider.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_detail_divider.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_12.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_12.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\collect_selected.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\collect_selected.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_06.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_06.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_6.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_6.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_normal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_normal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\btn_grey.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\btn_grey.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_03.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_03.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\api_refresh_pressed.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\api_refresh_pressed.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ab_solid_custom_blue_inverse_holo.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ab_solid_custom_blue_inverse_holo.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_09.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_09.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\home_normal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\home_normal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\magnifying_glass.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\magnifying_glass.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\index_bottom_bar.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\index_bottom_bar.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\delete_banner.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\delete_banner.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\adv_gallery_unmark.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\adv_gallery_unmark.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_list_selector_disabled.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_list_selector_disabled.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_normal.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_strip_middle_pressed.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_strip_middle_pressed.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ab_solid_custom_blue_inverse_holo.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ab_solid_custom_blue_inverse_holo.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\edittext_selected.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\edittext_selected.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\bg_good_list_unselect.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\bg_good_list_unselect.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_banner_gallery.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_banner_gallery.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_12.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_12.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\index_bottom_bar.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\index_bottom_bar.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\api_arrow.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\api_arrow.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_list_selector_pressed.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_list_selector_pressed.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\appointment_touch_area.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\appointment_touch_area.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_13.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_13.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_07.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_07.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\api_arrow.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\api_arrow.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\search_box_cancel_normal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\search_box_cancel_normal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\z_arrow_down.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\z_arrow_down.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_loading_large_icon.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_loading_large_icon.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\collect_normal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\collect_normal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\category_normal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\category_normal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\collect_normal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\collect_normal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_14.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_14.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_09.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_09.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\biz_plugin_weather_selectcity_empty.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\biz_plugin_weather_selectcity_empty.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\line_horizontal.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\line_horizontal.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_strip_middle_unpressed.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_strip_middle_unpressed.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_05.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_05.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\bg_good_list_unselect.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\bg_good_list_unselect.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_08.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_08.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\api_refresh_pressed.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\api_refresh_pressed.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_rotate.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_ptr_rotate.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\magnifying_glass.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\magnifying_glass.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ico_qq.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ico_qq.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\update_hint.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\update_hint.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_rotate.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_ptr_rotate.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_list_scrollbar_handle.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_list_scrollbar_handle.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\movie_game_banner_test.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\movie_game_banner_test.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_10.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_10.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_8.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_8.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\base_loading_large_icon.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\base_loading_large_icon.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_star_black_36dp.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\btn_grey_pressed.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\btn_grey_pressed.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_ptr_flip.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_detail_divider.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_detail_divider.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_11.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_11.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\banner_bg640_110.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\banner_bg640_110.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\dialog_btn_pressed.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\dialog_btn_pressed.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\update_hint.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\update_hint.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_10.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_10.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_contacts_index_backgroud_sprd.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_contacts_index_backgroud_sprd.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_07.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_07.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_04.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_04.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_1.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_1.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\indicator_arrow.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_strip_middle_pressed.9.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_strip_middle_pressed.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\adv_gallery_unmark.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\adv_gallery_unmark.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_01.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_01.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_14.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_14.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_7.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_7.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ad_loading_11.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ad_loading_11.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\dialog_btn_pressed.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\dialog_btn_pressed.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\search_box_cancel_normal.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\search_box_cancel_normal.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\search_box_cancel_click.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\search_box_cancel_click.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\search_box_cancel_click.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\search_box_cancel_click.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\more_share.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\more_share.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_1.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_1.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\banner_bg640_110.9.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\banner_bg640_110.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\home_selected.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\home_selected.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\setting_selected.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\setting_selected.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_7.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_7.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\btn_grey_pressed.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\btn_grey_pressed.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\progress_4.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\progress_4.png"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\category_selected.png",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\category_selected.png"
+        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\more_share.png",
+        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\more_share.png"
     }
 ]

@@ -3,12 +3,11 @@ package com.savor.zhixiang.activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,8 +17,12 @@ import android.widget.RelativeLayout;
 
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.widget.KeywordDialog;
+import com.savor.zhixiang.widget.cardrecyclerview.CardAdapter;
+import com.savor.zhixiang.widget.cardrecyclerview.CardScaleHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,15 +32,42 @@ public class MainActivity extends AppCompatActivity {
     private String[] mVals = new String[]
         {"iPhone X", "孙宏斌", "美联储", "蒂芙尼珠宝", "北海道肉蟹", "贵族学校",
                 "百年普洱茶", "小米科技", "特朗普", "蒂芙尼"};
+    private RecyclerView mRecyclerView;
+    private List<Integer> mList = new ArrayList<>();
+    private CardScaleHelper mCardScaleHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getViews();
+        setViews();
+        setListeners();
+        showKeywordDialog();
+    }
+
+
+    private void getViews() {
         initDrawerLayout();
 
-//        showKeywordDialog();
+        mRecyclerView = (RecyclerView) findViewById(R.id.rlv_list);
+    }
+
+    private void setViews() {
+        for(int i =0 ;i<10;i++) {
+            mList.add(R.mipmap.ico_test);
+        }
+
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setAdapter(new CardAdapter(this,mList));
+        mCardScaleHelper = new CardScaleHelper();
+        mCardScaleHelper.attachToRecyclerView(mRecyclerView);
+    }
+
+    private void setListeners() {
+
     }
 
     private void showKeywordDialog() {
@@ -45,20 +75,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initDrawerLayout() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-        // 不显示toobar上面的label
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         ImageView menuBtn = (ImageView) findViewById(R.id.iv_menu);
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         right = (RelativeLayout) findViewById(R.id.right);
         left = (RelativeLayout) findViewById(R.id.nav_view);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
 
         right.setOnTouchListener(new View.OnTouchListener() {
             @Override

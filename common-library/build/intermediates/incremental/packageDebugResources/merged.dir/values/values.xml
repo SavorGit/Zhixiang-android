@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="boolean" name="centered"/>
+    <attr format="reference" name="numberPickerStyle"/>
+    <attr format="dimension" name="strokeWidth"/>
+    <attr format="color" name="unselectedColor"/>
+    <bool name="default_circle_indicator_centered">true</bool>
+    <bool name="default_circle_indicator_snap">false</bool>
+    <bool name="default_underline_indicator_fades">true</bool>
+    <color name="api_blue">#BFEFFF</color>
+    <color name="background_color">#F0F0F0</color>
+    <color name="base_main_bg_color">#e7e6e6</color>
+    <color name="bg_common">#E2E2E2</color>
+    <color name="biz_plugin_weather_text1">#ff2f2f2f</color>
+    <color name="black">#000000</color>
+    <color name="black_1">#7E8B98</color>
+    <color name="black_alpha">#F2000000</color>
+    <color name="border_gray">#666666</color>
+    <color name="city_divider_color">#CECECE</color>
+    <color name="city_hot_color">#CECECE</color>
+    <color name="city_title">#F3F3F3</color>
+    <color name="color_4e4e4e">#4e4e4e</color>
+    <color name="color_a">#E8E8E8</color>
+    <color name="color_app_bg">#f5f5f5</color>
+    <color name="color_b">#646464</color>
+    <color name="color_c">#969696</color>
+    <color name="color_d">#C8C8C8</color>
+    <color name="color_e">#FFFFFF</color>
+    <color name="color_f">#F08C00</color>
+    <color name="color_g">#FF6C00</color>
+    <color name="color_refresh_text">#888888</color>
+    <color name="common_background">#f5f3f0</color>
+    <color name="date_color">#F0AA80</color>
+    <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
+    <color name="default_circle_indicator_page_color">#00000000</color>
+    <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>
+    <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
+    <color name="gray">#EFEFF5</color>
+    <color name="gray_2">#DCDCDC</color>
+    <color name="green_2">#9fcb06</color>
+    <color name="hot3">#FF9600</color>
+    <color name="item_bg">#E7E6E6</color>
+    <color name="list_view_bg_color">#00000000</color>
+    <color name="location_city_hint">#FF3C00</color>
+    <color name="network_hint">#BCBCBC</color>
+    <color name="orange">#FFB400</color>
+    <color name="orange_1">#F05400</color>
+    <color name="orange_light">#FF611D</color>
+    <color name="pop_text_color">#757575</color>
+    <color name="progress_fg_bottom">#F0A000</color>
+    <color name="progress_fg_top">#FFC800</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="red">#FF0000</color>
+    <color name="short_description_color">#333333</color>
+    <color name="splash_notification_bg">#7FFF</color>
+    <color name="tab_text_color">#A24B2F</color>
+    <color name="tab_text_default">#bbbbbb</color>
+    <color name="text_content_black">#3C3C3C</color>
+    <color name="title_bg">#D7D7D7</color>
+    <color name="toast_color">#D48A2C</color>
+    <color name="transparent">#00000000</color>
+    <color name="vpi__background_holo_dark">#ff000000</color>
+    <color name="vpi__background_holo_light">#fff3f3f3</color>
+    <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+    <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
+    <color name="vpi__bright_foreground_holo_light">@color/vpi__background_holo_dark</color>
+    <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
+    <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_1">#F4F4F4</color>
+    <color name="yello">#FFF68F</color>
+    <declare-styleable name="AdsBanner"><attr format="float|reference" name="bannerHeightFactor"/><attr format="integer" name="bannerGallerSlidingSpace"/><attr format="reference" name="bannerDefaultPic"/></declare-styleable>
+    <declare-styleable name="CirclePageIndicator"><attr name="centered"/><attr format="color" name="fillColor"/><attr format="color" name="pageColor"/><attr name="android:orientation"/><attr format="dimension" name="radius"/><attr format="boolean" name="snap"/><attr format="color" name="strokeColor"/><attr name="strokeWidth"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="FancyCoverFlow"><attr format="float" name="unselectedAlpha"/><attr format="float" name="unselectedSaturation"/><attr format="float" name="unselectedScale"/><attr format="integer" name="maxRotation"/><attr format="float" name="scaleDownGravity"/><attr format="integer" name="actionDistance">
+            <enum name="auto" value="2147483647"/>
+        </attr></declare-styleable>
+    <declare-styleable name="ImageIndicator"><attr format="reference" name="pointDrawableSelector"/></declare-styleable>
+    <declare-styleable name="NumberPicker"><attr format="color|reference" name="solidColor"/><attr format="reference" name="selectionDivider"/><attr format="dimension" name="selectionDividerHeight"/><attr format="dimension" name="selectionDividersDistance"/><attr format="dimension" name="internalMinHeight"/><attr format="dimension" name="internalMaxHeight"/><attr format="dimension" name="internalMinWidth"/><attr format="dimension" name="internalMaxWidth"/><attr format="reference" name="internalLayout"/><attr format="reference" name="virtualButtonPressedDrawable"/></declare-styleable>
+    <declare-styleable name="ProgressWheel"><attr format="string" name="text"/><attr format="color" name="textColor"/><attr format="dimension" name="barTextSize"/><attr format="color" name="barColor"/><attr format="dimension" name="barWidth"/><attr format="color" name="rimColor"/><attr format="dimension" name="rimWidth"/><attr format="dimension" name="spinSpeed"/><attr format="integer" name="delayMillis"/><attr format="color" name="circleColor"/><attr format="dimension" name="barLen"/><attr format="color" name="contourColor"/><attr format="dimension" name="contourSize"/></declare-styleable>
+    <declare-styleable name="PullToRefresh"><attr format="reference|color" name="ptrRefreshableViewBackground"/><attr format="reference|color" name="ptrHeaderBackground"/><attr format="reference|color" name="ptrHeaderTextColor"/><attr format="reference|color" name="ptrHeaderSubTextColor"/><attr name="ptrMode">
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
+
+            
+            <flag name="pullDownFromTop" value="0x1"/>
+            <flag name="pullUpFromBottom" value="0x2"/>
+        </attr><attr format="reference|boolean" name="ptrShowIndicator"/><attr format="reference|boolean" name="ptrRefreshText"/><attr format="reference" name="ptrDrawable"/><attr format="reference" name="ptrDrawableStart"/><attr format="reference" name="ptrDrawableEnd"/><attr format="reference|boolean" name="ptrOverScroll"/><attr format="reference" name="ptrHeaderTextAppearance"/><attr format="reference" name="ptrSubHeaderTextAppearance"/><attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0"/>
+            <flag name="flip" value="0x1"/>
+            <flag name="scale" value="0x2"/>
+        </attr><attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/><attr format="reference|boolean" name="ptrListViewExtrasEnabled"/><attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/><attr format="reference|color" name="ptrAdapterViewBackground"/><attr format="reference" name="ptrDrawableTop"/><attr format="reference" name="ptrDrawableBottom"/><attr name="ptrOrientationMode">
+            <flag name="vertical" value="0x0"/>
+            <flag name="horizontal" value="0x1"/>
+            <flag name="movie" value="0x2"/>
+        </attr></declare-styleable>
+    <declare-styleable name="StickyListHeadersListView"><attr name="android:clipToPadding"/><attr name="android:scrollbars"/><attr name="android:overScrollMode"/><attr name="android:padding"/><attr name="android:paddingLeft"/><attr name="android:paddingTop"/><attr name="android:paddingRight"/><attr name="android:paddingBottom"/><attr name="android:fadingEdgeLength"/><attr name="android:requiresFadingEdge"/><attr name="android:cacheColorHint"/><attr name="android:choiceMode"/><attr name="android:drawSelectorOnTop"/><attr name="android:fastScrollEnabled"/><attr name="android:fastScrollAlwaysVisible"/><attr name="android:listSelector"/><attr name="android:scrollingCache"/><attr name="android:scrollbarStyle"/><attr name="android:divider"/><attr name="android:dividerHeight"/><attr name="android:transcriptMode"/><attr format="boolean" name="hasStickyHeaders"/><attr format="boolean" name="isDrawingListUnderStickyHeader"/></declare-styleable>
+    <declare-styleable name="TabWidget"><attr format="reference" name="bottom_labels"/><attr format="reference" name="bottom_icon"/><attr format="reference" name="bottom_items_attr"/><attr format="reference" name="bottom_text_color"/></declare-styleable>
+    <declare-styleable name="UnderlinePageIndicator"><attr format="boolean" name="fades"/><attr format="integer" name="fadeDelay"/><attr format="integer" name="fadeLength"/><attr format="reference|color" name="selectedColor"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/></declare-styleable>
+    <dimen name="api_font_size_dialog">16sp</dimen>
+    <dimen name="api_font_size_dialog_title">18sp</dimen>
+    <dimen name="api_font_size_l">18sp</dimen>
+    <dimen name="api_font_size_m">15sp</dimen>
+    <dimen name="api_font_size_s">12sp</dimen>
+    <dimen name="api_font_size_s14">14sp</dimen>
+    <dimen name="api_height_large">40dp</dimen>
+    <dimen name="api_height_medium">20dp</dimen>
+    <dimen name="api_height_small">12dp</dimen>
+    <dimen name="api_indicator_size">10dp</dimen>
+    <dimen name="api_indicator_step_width">16dp</dimen>
+    <dimen name="api_space_large">20dp</dimen>
+    <dimen name="api_space_large_h">28dp</dimen>
+    <dimen name="api_space_medium">10dp</dimen>
+    <dimen name="api_space_medium_h">14dp</dimen>
+    <dimen name="api_space_small">6dp</dimen>
+    <dimen name="api_space_small_h">8dp</dimen>
+    <dimen name="api_width_large">180dp</dimen>
+    <dimen name="api_width_medium">90dp</dimen>
+    <dimen name="api_width_small">54dp</dimen>
+    <dimen name="biz_plugin_weather_selectcity_group_item_padding">14.0dip</dimen>
+    <dimen name="biz_plugin_weather_selectcity_item_textsize">13.0sp</dimen>
+    <dimen name="blade_view_text_size">11dip</dimen>
+    <dimen name="default_circle_indicator_radius">3dp</dimen>
+    <dimen name="default_circle_indicator_stroke_width">1dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">14dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <drawable name="black">#6C7783</drawable>
+    <drawable name="black_1">#7E8B98</drawable>
+    <drawable name="black_90">#171a1f</drawable>
+    <drawable name="orange_1">#F05400</drawable>
+    <drawable name="orange_light">#FF611D</drawable>
+    <drawable name="white">#FFFFFF</drawable>
+    <item name="gridview" type="id"/>
+    <item name="np__decrement" type="id"/>
+    <item name="np__increment" type="id"/>
+    <item name="scrollview" type="id"/>
+    <item name="webview" type="id"/>
+    <integer name="default_circle_indicator_orientation">0</integer>
+    <integer name="default_underline_indicator_fade_delay">300</integer>
+    <integer name="default_underline_indicator_fade_length">400</integer>
+    <string name="api_app_name">Market Licensing Example</string>
+    <string name="app_name_en">App 1.0</string>
+    <string name="button_cancel">取消</string>
+    <string name="button_ok">确定</string>
+    <string name="drop_down">向下拉刷新</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_unknown">发送返回</string>
+    <string name="more">正在载入</string>
+    <string name="pull_to_refresh_all">已显示全部</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_loadmore">加载中…</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新…</string>
+    <string name="pull_to_refresh_refreshing_label">加载中…</string>
+    <string name="pull_to_refresh_release_label">松开立即刷新…</string>
+    <string name="refreshing">刷新中…</string>
+    <string name="release_refresh">松开后刷新</string>
+    <string name="savor_loading_hint">热点聚焦，投你所好</string>
+    <string name="share_settings">分享设置</string>
+    <string name="share_settings_dounbind">解除绑定</string>
+    <string name="share_settings_sina">微博</string>
+    <string name="share_settings_tenxun">腾讯微博</string>
+    <string name="share_settings_unbind">未绑定</string>
+    <string name="update_time">最新刷新</string>
+    <string name="viewpager_indicator">%1$d/%2$d</string>
+    <string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
+    <string name="weibosdk_demo_toast_auth_failed">授权失败</string>
+    <string name="weibosdk_demo_toast_auth_success">授权成功</string>
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+		<item name="android:windowFrame">@null</item>
+    	<item name="android:windowIsFloating">true</item>
+    	<item name="android:windowContentOverlay">@null</item>
+    	<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    	<item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+	</style>
+    <style name="CustomProgressDialog" parent="@style/CustomDialog">
+		<item name="android:windowBackground">@android:color/transparent</item>
+    	<item name="android:windowNoTitle">true</item>
+	</style>
+    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:background">@drawable/custom_tab_indicator</item>
+        <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
+        <item name="android:textColor">#FF555555</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:divider">@drawable/custom_tab_indicator_divider</item>
+        <item name="android:dividerPadding">10dp</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:fadingEdgeLength">8dp</item>
+    </style>
+    <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="CustomUnderlinePageIndicator">
+        <item name="selectedColor">#FFCC0000</item>
+        <item name="android:background">#FFCCCCCC</item>
+        <item name="fadeLength">1000</item>
+        <item name="fadeDelay">1000</item>
+    </style>
+    <style name="NPWidget">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+    </style>
+    <style name="NPWidget.Holo.Light.NumberPicker" parent="NPWidget.Holo.NumberPicker">
+        <item name="virtualButtonPressedDrawable">@drawable/item_background_holo_light</item>
+    </style>
+    <style name="NPWidget.Holo.NumberPicker" parent="NPWidget.NumberPicker">
+        <item name="solidColor">@android:color/transparent</item>
+        <item name="selectionDivider">@drawable/np_numberpicker_selection_divider</item>
+        <item name="selectionDividerHeight">2dip</item>
+        <item name="internalLayout">@layout/number_picker_with_selector_wheel</item>
+        <item name="internalMinWidth">64dip</item>
+        <item name="internalMaxHeight">180dip</item>
+        <item name="virtualButtonPressedDrawable">@drawable/item_background_holo_dark</item>
+    </style>
+    <style name="NPWidget.NumberPicker">
+        <item name="android:orientation">vertical</item>
+        <item name="android:fadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">50dip</item>
+    </style>
+    <style name="StyledIndicators" parent="@android:style/Theme.Light">
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+        <item name="vpiUnderlinePageIndicatorStyle">@style/CustomUnderlinePageIndicator</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="TextAppearance.TabPageIndicator" parent="Widget">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/vpi__dark_theme</item>
+    </style>
+    <style name="Theme.PageIndicatorDefaults" parent="android:Theme">
+        <item name="vpiTabPageIndicatorStyle">@style/Widget.TabPageIndicator</item>
+    </style>
+    <style name="TimerDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- <item name="android:windowBackground">@drawable/center</item> -->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Widget">
+    </style>
+    <style name="Widget.TabPageIndicator" parent="Widget">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/vpi__tab_indicator</item>
+        <item name="android:paddingLeft">22dip</item>
+        <item name="android:paddingRight">22dip</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.TabPageIndicator</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="base_large_progressbar_style">
+        <item name="android:maxWidth">38.0dip</item>
+        <item name="android:maxHeight">38.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/base_loading_large_anim</item>
+        <item name="android:minWidth">38.0dip</item>
+        <item name="android:minHeight">38.0dip</item>
+    </style>
+    <style name="base_listview_style" parent="@android:style/Widget.ListView">
+        <item name="android:scrollbarThumbVertical">@drawable/base_list_scrollbar_handle</item>
+        <item name="android:fadingEdgeLength">0.0dip</item>
+        <item name="android:alwaysDrawnWithCache">true</item>
+        <item name="android:listSelector">@drawable/base_list_selector</item>
+        <item name="android:drawSelectorOnTop">false</item>
+        <item name="android:cacheColorHint">@null</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0.0dip</item>
+    </style>
+    <style name="progress_dialog_loading_juhuaStyle" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/progress_bar_drawable</item>
+        <item name="android:minWidth">40dip</item>
+        <item name="android:maxWidth">40dip</item>
+        <item name="android:minHeight">40dip</item>
+        <item name="android:maxHeight">40dip</item>
+    </style>
+</resources>

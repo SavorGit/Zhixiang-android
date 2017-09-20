@@ -7,4 +7,7 @@
     <color name="color_main">#222222</color>
     <color name="color_main_bg">#ece6de</color>
     <color name="color_gray">#eeeeee</color>
+    <color name="color_text_list_item">#f6f2ed</color>
+    <color name="color_text_black">#434343</color>
+    <color name="color_text_info_date">#b2afab</color>
 </resources>

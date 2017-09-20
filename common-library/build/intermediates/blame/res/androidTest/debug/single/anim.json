@@ -1,63 +1,11 @@
 [
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\activity_close.xml",
+        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\activity_close.xml"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
         "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\progress_orange_round.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\progress_orange_round.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\activity_close.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\activity_close.xml"
-    },
-    {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
-    },
-    {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_in_top.xml"
-    },
-    {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_out_top.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\activity_open.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\activity_open.xml"
-    },
-    {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_popup_exit.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_popup_enter.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\activity_close.xml",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\activity_close.xml"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
@@ -72,12 +20,12 @@
         "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_slide_in_bottom.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
@@ -92,20 +40,16 @@
         "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_popup_enter.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_slide_out_top.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_in_top.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_popup_exit.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
@@ -116,20 +60,8 @@
         "source": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\activity_open.xml"
     },
     {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_fade_in.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "E:\\Android\\source\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\c661b668745c1512937d966badd6dbb3f21683ae\\output\\res\\anim\\abc_slide_in_top.xml"
+        "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\admin\\.android\\build-cache\\584139bb7060b4667d18b43219ed86018ad67b3b\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
         "merged": "E:\\work\\as\\Zhixiang-android\\common-library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\progress_orange_round.xml",

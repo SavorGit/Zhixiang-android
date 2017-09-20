@@ -14,7 +14,6 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_splash);
-
         // 因为启动页设置主题背景图片以后，渐隐的动画被遮罩看不到，所有放到欢迎页做
         Intent intent = new Intent(SplashActivity.this,WelcomActivity.class);
         startActivity(intent);

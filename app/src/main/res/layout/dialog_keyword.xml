@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="42dp"
         android:textSize="17sp"
-        android:layout_marginTop="8dp"
         android:textColor="@color/gray"
         android:layout_gravity="center_horizontal"
         android:text="今日关键词"
@@ -16,11 +15,15 @@
     <com.zhy.view.flowlayout.TagFlowLayout
         android:id="@+id/fl_keyword"
         app:max_select="-1"
-        android:padding="20dp"
+        app:gravity="center"
+        app:animMode="fadeUp"
+        android:layout_margin="18dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_close"
         android:textSize="16sp"
         android:padding="10dp"
         android:background="@drawable/round_white_bg"

@@ -213,7 +213,7 @@ public class FlowLayout extends ViewGroup {
     }
 
 
-    public void startAnimation(final int line) {
+    public void startAnimation(final int line, final OnAnimEndListener listener) {
         if(line<mAllViews.size()) {
             post(new Runnable() {
                 @Override
@@ -247,14 +247,20 @@ public class FlowLayout extends ViewGroup {
                             postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    startAnimation(temp);
+                                    startAnimation(temp,listener);
                                 }
                             },1000);
+                        }else {
+                            listener.onAnimEnd();
                         }
 
                     }
                 }
             });
         }
+    }
+
+    public interface OnAnimEndListener {
+        void onAnimEnd();
     }
 }

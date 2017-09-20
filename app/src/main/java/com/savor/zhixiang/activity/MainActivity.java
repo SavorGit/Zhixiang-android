@@ -1,7 +1,6 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private CoordinatorLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
+    private String[] mVals = new String[]
+        {"iPhone X", "孙宏斌", "美联储", "蒂芙尼珠宝", "北海道肉蟹", "贵族学校",
+                "百年普洱茶", "小米科技", "特朗普", "蒂芙尼"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
         initDrawerLayout();
 
-//        showKeywordsDialog();
+        showKeywordDialog();
     }
 
-    private void showKeywordsDialog() {
-        Intent intent = new Intent(this,KeyWordActivity.class);
-        startActivity(intent);
+    private void showKeywordDialog() {
+        new KeywordDialog(this, Arrays.asList(mVals)).show();
     }
 
     private void initDrawerLayout() {

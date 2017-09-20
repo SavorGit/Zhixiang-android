@@ -1,10 +1,15 @@
 package com.savor.zhixiang.widget;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.savor.zhixiang.R;
@@ -19,7 +24,7 @@ import java.util.List;
  * Created by hezd on 2017/9/19.
  */
 
-public class KeywordDialog extends Dialog  {
+public class KeywordDialog extends Dialog implements View.OnClickListener {
 
 
     private final Activity mContext;
@@ -27,9 +32,10 @@ public class KeywordDialog extends Dialog  {
     private TextView mPercentTv;
     private TagFlowLayout mFlowLayout;
     private LayoutInflater mInflater;
+    private TextView mCloseBtn;
 
     public KeywordDialog(Activity context, List<String> keywords) {
-        super(context, R.style.loading_progress_bar);
+        super(context, R.style.Dialog_Fullscreen);
         this.mContext = context;
         this.mKeywords = keywords;
     }
@@ -41,11 +47,23 @@ public class KeywordDialog extends Dialog  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_keyword);
         setCancelable(false);
+
+        initViews();
+        setListeners();
+
+        initKeywords();
+    }
+
+    private void setListeners() {
+        mCloseBtn.setOnClickListener(this);
+    }
+
+    private void initViews() {
         mInflater = LayoutInflater.from(getContext());
 
         mFlowLayout = (TagFlowLayout) findViewById(R.id.fl_keyword);
 
-        initKeywords();
+        mCloseBtn = (TextView) findViewById(R.id.tv_close);
     }
 
     private void initKeywords() {
@@ -62,12 +80,27 @@ public class KeywordDialog extends Dialog  {
             }
         });
 
-        mFlowLayout.startAnimation(0);
-    }
+        mFlowLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFlowLayout.startAnimation(0, new FlowLayout.OnAnimEndListener() {
+                    @Override
+                    public void onAnimEnd() {
+                        mCloseBtn.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mCloseBtn.setVisibility(View.VISIBLE);
+                                PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0f,1f);
+                                ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCloseBtn, alphaHolder).
+                                        setDuration(500);
+                                objectAnimator.start();
+                            }
+                        },1000);
 
-    public void updatePercent(double percent) {
-        int per = (int) (percent*100);
-        mPercentTv.setText(per+"%");
+                    }
+                });
+            }
+        },500);
     }
 
     @Override
@@ -75,5 +108,14 @@ public class KeywordDialog extends Dialog  {
         super.onBackPressed();
         dismiss();
         mContext.finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_close:
+                dismiss();
+                break;
+        }
     }
 }

@@ -22,6 +22,7 @@ import com.common.api.utils.DesUtils;
 import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -221,7 +222,9 @@ public class ApiResponseFactory {
             case TEST_GET_JSON:
                 System.out.println(info);
                 break;
-
+            case POST_GET_KEYWORDS_JSON:
+                result = gson.fromJson(info,new TypeToken<List<String>>(){}.getType());
+                break;
             default:
                 break;
         }

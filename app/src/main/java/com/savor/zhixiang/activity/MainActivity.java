@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
 import com.common.api.utils.ShowMessage;
+import com.savor.zhixiang.core.ApiRequestListener;
+import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener, ApiRequestListener {
 
     private RelativeLayout right;
     private RelativeLayout left;
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         getViews();
         setViews();
         setListeners();
-        showKeywordDialog();
+        AppApi.getKeywords(this,this);
     }
 
 
@@ -86,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 //        mAdapter.setoni.setonI
     }
 
-    private void showKeywordDialog() {
-        new KeywordDialog(this, Arrays.asList(mVals)).show();
+    private void showKeywordDialog(List<String> keywords) {
+        new KeywordDialog(this, keywords).show();
     }
 
     private void initDrawerLayout() {
@@ -173,6 +175,28 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onSuccess(AppApi.Action method, Object obj) {
+        switch (method) {
+            case POST_GET_KEYWORDS_JSON:
+                if(obj instanceof List) {
+                    List<String> keywords = (List<String>) obj;
+                    showKeywordDialog(keywords);
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onError(AppApi.Action method, Object obj) {
+
+    }
+
+    @Override
+    public void onNetworkFailed(AppApi.Action method) {
 
     }
 }

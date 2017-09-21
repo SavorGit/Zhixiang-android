@@ -2,6 +2,7 @@ package com.savor.zhixiang.activity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
@@ -30,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener {
+public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener {
 
     private RelativeLayout right;
     private RelativeLayout left;
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private ViewPager mViewPager;
     private List<Fragment> mList = new ArrayList<>();
     private CardScaleHelper mCardScaleHelper;
+    private TextView mBottomPageNumTv;
+    private TextView mTotalPageNumTv;
+    private CardListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         initDrawerLayout();
 
         mViewPager = (ViewPager) findViewById(R.id.rlv_list);
+        mBottomPageNumTv = (TextView) findViewById(R.id.bottomPageNumber);
+        mTotalPageNumTv = (TextView) findViewById(R.id.pageNumberTotal);
     }
 
     private void setViews() {
@@ -65,16 +72,19 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             mList.add(CardFragment.newInstance());
         }
 
-        CardListAdapter mAdapter = new CardListAdapter(getSupportFragmentManager(),mList);
+        mBottomPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Italic.otf"));
+        mTotalPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Regular.otf"));
+
+        mAdapter = new CardListAdapter(getSupportFragmentManager(),mList);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
+
     }
 
     private void setListeners() {
-//        PagingScrollHelper helper = new PagingScrollHelper();
-//        helper.setUpRecycleView(mViewPager);
-//        helper.setOnPageChangeListener(this);
+        mViewPager.addOnPageChangeListener(this);
+//        mAdapter.setoni.setonI
     }
 
     private void showKeywordDialog() {
@@ -150,5 +160,20 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     public void onPageChange(int index) {
         Toast.makeText(this, "index="+index, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

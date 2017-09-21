@@ -4,6 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.common.api.utils.ShowMessage;
 
 import java.util.List;
 
@@ -50,5 +54,16 @@ public class CardListAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragments == null?0:fragments.size();
+    }
+
+    @Override
+    public Object instantiateItem(final ViewGroup container, final int position) {
+        container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowMessage.showToast(container.getContext(),"position="+position);
+            }
+        });
+        return super.instantiateItem(container, position);
     }
 }

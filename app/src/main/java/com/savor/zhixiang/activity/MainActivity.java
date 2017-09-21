@@ -9,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,12 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
-import com.savor.zhixiang.CardFragment;
+import com.common.api.utils.ShowMessage;
+import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
-import com.savor.zhixiang.widget.cardrecyclerview.CardAdapter;
 import com.savor.zhixiang.widget.cardrecyclerview.CardScaleHelper;
 
 import java.util.ArrayList;
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private void setViews() {
         for(int i =0 ;i<10;i++) {
-            mList.add(CardFragment.newInstance());
+            mList.add(CardFragment.newInstance(i));
         }
 
         mBottomPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Italic.otf"));
@@ -169,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageSelected(int position) {
-
+        ShowMessage.showToast(this,"select position="+position);
     }
 
     @Override

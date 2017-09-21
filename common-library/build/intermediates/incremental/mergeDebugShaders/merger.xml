@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\Android\source\Zhixiang-android\common-library\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\Android\source\Zhixiang-android\common-library\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\work\as\Zhixiang-android\common-library\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\work\as\Zhixiang-android\common-library\src\debug\shaders"/></dataSet></merger>

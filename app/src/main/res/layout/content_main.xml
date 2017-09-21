@@ -6,11 +6,16 @@
     android:background="@color/color_main"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipChildren="false"
     tools:context=".activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <com.savor.zhixiang.widget.cardrecyclerview.SpeedRecyclerView
+    <android.support.v4.view.ViewPager
+        android:layout_gravity="center_horizontal"
         android:id="@+id/rlv_list"
+        android:clipChildren="false"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"

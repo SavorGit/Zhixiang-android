@@ -3,20 +3,26 @@ package com.savor.zhixiang.activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.common.api.utils.DensityUtil;
+import com.savor.zhixiang.CardFragment;
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.widget.KeywordDialog;
+import com.savor.zhixiang.widget.PagingScrollHelper;
 import com.savor.zhixiang.widget.cardrecyclerview.CardAdapter;
 import com.savor.zhixiang.widget.cardrecyclerview.CardScaleHelper;
 
@@ -24,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener {
 
     private RelativeLayout right;
     private RelativeLayout left;
@@ -32,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] mVals = new String[]
         {"iPhone X", "孙宏斌", "美联储", "蒂芙尼珠宝", "北海道肉蟹", "贵族学校",
                 "百年普洱茶", "小米科技", "特朗普", "蒂芙尼"};
-    private RecyclerView mRecyclerView;
-    private List<Integer> mList = new ArrayList<>();
+    private ViewPager mViewPager;
+    private List<Fragment> mList = new ArrayList<>();
     private CardScaleHelper mCardScaleHelper;
 
     @Override
@@ -51,23 +57,24 @@ public class MainActivity extends AppCompatActivity {
     private void getViews() {
         initDrawerLayout();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rlv_list);
+        mViewPager = (ViewPager) findViewById(R.id.rlv_list);
     }
 
     private void setViews() {
         for(int i =0 ;i<10;i++) {
-            mList.add(R.mipmap.ico_test);
+            mList.add(CardFragment.newInstance());
         }
 
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(new CardAdapter(this,mList));
-        mCardScaleHelper = new CardScaleHelper();
-        mCardScaleHelper.attachToRecyclerView(mRecyclerView);
+        CardListAdapter mAdapter = new CardListAdapter(getSupportFragmentManager(),mList);
+        mViewPager.setAdapter(mAdapter);
+        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
     }
 
     private void setListeners() {
-
+//        PagingScrollHelper helper = new PagingScrollHelper();
+//        helper.setUpRecycleView(mViewPager);
+//        helper.setOnPageChangeListener(this);
     }
 
     private void showKeywordDialog() {
@@ -140,4 +147,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onPageChange(int index) {
+        Toast.makeText(this, "index="+index, Toast.LENGTH_SHORT).show();
+    }
 }

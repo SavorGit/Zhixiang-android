@@ -6,9 +6,6 @@
     android:background="@color/color_f8f6f1"
     android:transitionName="sharedView"
     app:cardCornerRadius="8dp"
-    app:cardElevation="3dp"
-    app:cardMaxElevation="6dp"
-    app:cardUseCompatPadding="true"
     >
 
     <RelativeLayout

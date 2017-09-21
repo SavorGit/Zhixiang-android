@@ -47,7 +47,8 @@ public class AppApi {
         POST_GET_MY_COLLECTION_JSON,
         /**收藏、取消收藏*/
         POST_ADD_MY_COLLECTION_JSON,
-
+        /**升级*/
+        POST_VERSION_JSON,
     }
 
     /**
@@ -64,6 +65,8 @@ public class AppApi {
             put(Action.POST_GET_ALL_LIST_JSON, formatPhpUrl("Dailyknowledge/Content/getAllList"));
             put(Action.POST_GET_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/getMyCollection"));
             put(Action.POST_ADD_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/addMyCollection"));
+            put(Action.POST_VERSION_JSON, formatPhpUrl("Dailyknowledge/Version/index"));
+
         }
     };
 
@@ -88,11 +91,9 @@ public class AppApi {
     }
 
     /**升级*/
-    public static void Upgrade(Context context,ApiRequestListener handler,int versionCode) {
+    public static void Upgrade(Context context,ApiRequestListener handler) {
         final HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("versionCode", versionCode);
-        params.put("deviceType", 3);
-        new AppServiceOk(context, Action.POST_UPGRADE_JSON,handler,params).post();
+        new AppServiceOk(context, Action.POST_VERSION_JSON,handler,params).post();
     }
     public static void testGet(Context context, ApiRequestListener handler) {
 //        SmallPlatInfoBySSDP smallPlatInfoBySSDP = Session.get(context).getSmallPlatInfoBySSDP();

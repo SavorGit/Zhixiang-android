@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import com.savor.zhixiang.bean.AllListResult;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.ListItem;
+import com.savor.zhixiang.bean.UpgradeInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -242,6 +243,11 @@ public class ApiResponseFactory {
                 result = gson.fromJson(info,new TypeToken<List<ListItem>>(){
                 }.getType());
                 break;
+            case POST_VERSION_JSON:
+                result = gson.fromJson(info, new TypeToken<UpgradeInfo>() {
+                }.getType());
+                break;
+
             default:
                 break;
         }

@@ -23,8 +23,7 @@ import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.savor.zhixiang.bean.AllListResult;
-import com.savor.zhixiang.bean.ListItem;
+import com.savor.zhixiang.bean.CardBean;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -227,13 +226,8 @@ public class ApiResponseFactory {
             case POST_GET_KEYWORDS_JSON:
                 result = gson.fromJson(info,new TypeToken<List<String>>(){}.getType());
                 break;
-            case POST_GET_ALL_LIST_JSON:
-                result = gson.fromJson(info, new TypeToken<AllListResult>() {
-                }.getType());
-                break;
-            case POST_GET_MY_COLLECTION_JSON:
-                result = gson.fromJson(info, new TypeToken<List<ListItem>>() {
-                }.getType());
+            case POST_GET_CARDLIST_JSON:
+                result = gson.fromJson(info,CardBean.class);
                 break;
             case POST_ADD_MY_COLLECTION_JSON:
                 result = "success";

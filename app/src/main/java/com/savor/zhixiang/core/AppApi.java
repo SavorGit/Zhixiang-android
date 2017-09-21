@@ -39,12 +39,8 @@ public class AppApi {
         POST_UPGRADE_JSON,
         /**获取关键词列表*/
         POST_GET_KEYWORDS_JSON,
-        /**全部知享文章列表*/
-        POST_GET_ALL_LIST_JSON,
-        /**我的收藏列表*/
-        POST_GET_MY_COLLECTION_JSON,
-        /**收藏、取消收藏*/
-        POST_ADD_MY_COLLECTION_JSON,
+        /**获取首页列表*/
+        POST_GET_CARDLIST_JSON,
     }
 
     /**
@@ -57,9 +53,7 @@ public class AppApi {
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.POST_GET_KEYWORDS_JSON, formatPhpUrl("Dailyknowledge/Keywords/getAllKeywords"));
-            put(Action.POST_GET_ALL_LIST_JSON, formatPhpUrl("Dailyknowledge/Content/getAllList"));
-            put(Action.POST_GET_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/getMyCollection"));
-            put(Action.POST_ADD_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/addMyCollection"));
+            put(Action.POST_GET_CARDLIST_JSON, formatPhpUrl("Dailyknowledge/Index/getList"));
         }
     };
 
@@ -121,36 +115,15 @@ public class AppApi {
     }
 
     /**
-     * 全部知享文章列表
+     * 获取关键词列表
      * @param context
      * @param handler
      */
-    public static void getAllList(Context context,String bespeak_time ,ApiRequestListener handler) {
+    public static void getCardList(Context context, ApiRequestListener handler) {
         final HashMap<String, Object> params = new HashMap<>();
-        params.put("bespeak_time", bespeak_time);
-        new AppServiceOk(context, Action.POST_GET_ALL_LIST_JSON, handler, params).post();
+        new AppServiceOk(context, Action.POST_GET_CARDLIST_JSON, handler, params).post();
     }
 
-    /**
-     * 我的收藏列表
-     * @param context
-     * @param handler
-     */
-    public static void getMyCollection(Context context,String collecTime ,ApiRequestListener handler) {
-        final HashMap<String, Object> params = new HashMap<>();
-        params.put("collecTime", collecTime);
-        new AppServiceOk(context, Action.POST_GET_MY_COLLECTION_JSON, handler, params).post();
-    }
-    /**
-     * 收藏、取消收藏
-     * @param context
-     * @param handler
-     */
-    public static void addMyCollection(Context context,String dailyid ,ApiRequestListener handler) {
-        final HashMap<String, Object> params = new HashMap<>();
-        params.put("dailyid", dailyid);
-        new AppServiceOk(context, Action.POST_ADD_MY_COLLECTION_JSON, handler, params).post();
-    }
     // 超时（网络）异常
     public static final String ERROR_TIMEOUT = "3001";
     // 业务异常

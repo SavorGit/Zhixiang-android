@@ -52,7 +52,7 @@
 
         <TextView
             android:id="@+id/pageNumberTotal"
-            tools:text="16"
+            android:text="10"
             android:textSize="15sp"
             android:textScaleX="1.2"
             android:textColor="@color/color_9a9a9a"

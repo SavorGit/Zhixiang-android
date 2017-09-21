@@ -43,6 +43,8 @@ public class AppApi {
         POST_GET_ALL_LIST_JSON,
         /**我的收藏列表*/
         POST_GET_MY_COLLECTION_JSON,
+        /**收藏、取消收藏*/
+        POST_ADD_MY_COLLECTION_JSON,
     }
 
     /**
@@ -57,6 +59,7 @@ public class AppApi {
             put(Action.POST_GET_KEYWORDS_JSON, formatPhpUrl("Dailyknowledge/Keywords/getAllKeywords"));
             put(Action.POST_GET_ALL_LIST_JSON, formatPhpUrl("Dailyknowledge/Content/getAllList"));
             put(Action.POST_GET_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/getMyCollection"));
+            put(Action.POST_ADD_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/addMyCollection"));
         }
     };
 
@@ -137,6 +140,16 @@ public class AppApi {
         final HashMap<String, Object> params = new HashMap<>();
         params.put("collecTime", collecTime);
         new AppServiceOk(context, Action.POST_GET_MY_COLLECTION_JSON, handler, params).post();
+    }
+    /**
+     * 收藏、取消收藏
+     * @param context
+     * @param handler
+     */
+    public static void addMyCollection(Context context,String dailyid ,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("dailyid", dailyid);
+        new AppServiceOk(context, Action.POST_ADD_MY_COLLECTION_JSON, handler, params).post();
     }
     // 超时（网络）异常
     public static final String ERROR_TIMEOUT = "3001";

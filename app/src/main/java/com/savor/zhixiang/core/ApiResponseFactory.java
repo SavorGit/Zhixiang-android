@@ -235,6 +235,9 @@ public class ApiResponseFactory {
                 result = gson.fromJson(info, new TypeToken<List<ListItem>>() {
                 }.getType());
                 break;
+            case POST_ADD_MY_COLLECTION_JSON:
+                result = "success";
+                break;
             default:
                 break;
         }

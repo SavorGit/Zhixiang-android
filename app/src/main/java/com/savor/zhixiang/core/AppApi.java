@@ -39,6 +39,8 @@ public class AppApi {
         POST_UPGRADE_JSON,
         /**获取关键词列表*/
         POST_GET_KEYWORDS_JSON,
+        /**全部知享文章列表*/
+        POST_GET_ALL_LIST_JSON,
     }
 
     /**
@@ -51,6 +53,8 @@ public class AppApi {
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.POST_GET_KEYWORDS_JSON, formatPhpUrl("Dailyknowledge/Keywords/getAllKeywords"));
+            put(Action.POST_GET_ALL_LIST_JSON, formatPhpUrl("Dailyknowledge/Content/getAllList"));
+
         }
     };
 
@@ -111,6 +115,16 @@ public class AppApi {
         new AppServiceOk(context, Action.POST_GET_KEYWORDS_JSON, handler, params).post();
     }
 
+    /**
+     * 全部知享文章列表
+     * @param context
+     * @param handler
+     */
+    public static void getAllList(Context context,String bespeak_time ,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("bespeak_time", bespeak_time);
+        new AppServiceOk(context, Action.POST_GET_ALL_LIST_JSON, handler, params).post();
+    }
     // 超时（网络）异常
     public static final String ERROR_TIMEOUT = "3001";
     // 业务异常

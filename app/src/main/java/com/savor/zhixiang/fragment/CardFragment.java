@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.common.api.utils.DensityUtil;
 import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.bean.CardBean;
+import com.savor.zhixiang.bean.CardDetail;
 
 /**
  * 首页列表选项卡
@@ -22,19 +25,24 @@ import com.savor.zhixiang.R;
 public class CardFragment extends Fragment implements View.OnClickListener {
     public static final float IMAGE_SCALE = 400/630f;
     private CardView mParentView;
-    private int index;
     private ImageView mBannerIv;
     private TextView mTitleTv;
     private TextView mDescTv;
+    private CardDetail detail;
+    private TextView mSourcetv;
 
-    public static CardFragment newInstance(int index) {
+    public static CardFragment newInstance(CardDetail detail) {
         CardFragment cardFragment = new CardFragment();
-        cardFragment.setIndex(index);
+        cardFragment.setCardDetail(detail);
         return cardFragment;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setCardDetail(CardDetail detail) {
+        this.detail = detail;
+    }
+
+    public CardDetail getCardDetail() {
+        return detail;
     }
 
     @Override
@@ -57,6 +65,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         mBannerIv = (ImageView) parent.findViewById(R.id.iv_banner);
         mTitleTv = (TextView) parent.findViewById(R.id.tv_title);
         mDescTv = (TextView) parent.findViewById(R.id.tv_desc);
+        mSourcetv = (TextView) parent.findViewById(R.id.tv_source);
 
     }
 
@@ -67,6 +76,19 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         int height = (int) (width*IMAGE_SCALE);
         layoutParams.width = width;
         layoutParams.height = height;
+
+        Glide.with(getContext()).
+                load(detail.getImgUrl()).
+                placeholder(R.mipmap.ico_default).
+                crossFade().
+                into(mBannerIv);
+
+        String title = detail.getTitle();
+        String desc = detail.getDesc();
+        String sourceName = detail.getSourceName();
+        mTitleTv.setText(title);
+        mDescTv.setText(desc);
+        mSourcetv.setText(sourceName);
     }
 
     private void setLiteners() {
@@ -88,7 +110,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.parent:
-                ShowMessage.showToast(getActivity(),"click index="+index);
+//                ShowMessage.showToast(getActivity(),"click index="+index);
                 break;
         }
     }

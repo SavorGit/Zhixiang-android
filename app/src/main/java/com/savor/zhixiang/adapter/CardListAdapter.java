@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.common.api.utils.ShowMessage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,9 @@ public class CardListAdapter extends FragmentStatePagerAdapter {
 
     public void addData(List<Fragment> fragments) {
         if(fragments!=null&&fragments.size()>0) {
+            if(this.fragments==null) {
+                fragments = new ArrayList<>();
+            }
             this.fragments.addAll(fragments);
             notifyDataSetChanged();
         }

@@ -23,6 +23,7 @@ import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.savor.zhixiang.bean.CardBean;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -224,6 +225,9 @@ public class ApiResponseFactory {
                 break;
             case POST_GET_KEYWORDS_JSON:
                 result = gson.fromJson(info,new TypeToken<List<String>>(){}.getType());
+                break;
+            case POST_GET_CARDLIST_JSON:
+                result = gson.fromJson(info,CardBean.class);
                 break;
             default:
                 break;

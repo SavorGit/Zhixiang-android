@@ -39,6 +39,8 @@ public class AppApi {
         POST_UPGRADE_JSON,
         /**获取关键词列表*/
         POST_GET_KEYWORDS_JSON,
+        /**获取首页列表*/
+        POST_GET_CARDLIST_JSON,
     }
 
     /**
@@ -51,6 +53,7 @@ public class AppApi {
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.POST_GET_KEYWORDS_JSON, formatPhpUrl("Dailyknowledge/Keywords/getAllKeywords"));
+            put(Action.POST_GET_CARDLIST_JSON, formatPhpUrl("Dailyknowledge/Index/getList"));
         }
     };
 
@@ -109,6 +112,16 @@ public class AppApi {
     public static void getKeywords(Context context, ApiRequestListener handler) {
         final HashMap<String, Object> params = new HashMap<>();
         new AppServiceOk(context, Action.POST_GET_KEYWORDS_JSON, handler, params).post();
+    }
+
+    /**
+     * 获取关键词列表
+     * @param context
+     * @param handler
+     */
+    public static void getCardList(Context context, ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        new AppServiceOk(context, Action.POST_GET_CARDLIST_JSON, handler, params).post();
     }
 
     // 超时（网络）异常

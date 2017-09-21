@@ -14,12 +14,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
 import com.common.api.utils.ShowMessage;
+import com.savor.zhixiang.bean.CardBean;
+import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.fragment.CardFragment;
@@ -47,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private TextView mBottomPageNumTv;
     private TextView mTotalPageNumTv;
     private CardListAdapter mAdapter;
+    private List<Fragment> fragmentList = new ArrayList<>();
+    private LinearLayout mDateLayout;
+    private TextView mDateTv;
+    private TextView mMonthTv;
+    private TextView mWeekTv;
+    private RelativeLayout mPageNumLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +65,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         getViews();
         setViews();
         setListeners();
+        getData();
+
+
+    }
+
+    private void getData() {
         AppApi.getKeywords(this,this);
+        AppApi.getCardList(this,this);
     }
 
 
@@ -66,12 +82,19 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager = (ViewPager) findViewById(R.id.rlv_list);
         mBottomPageNumTv = (TextView) findViewById(R.id.bottomPageNumber);
         mTotalPageNumTv = (TextView) findViewById(R.id.pageNumberTotal);
+
+        mDateLayout = (LinearLayout) findViewById(R.id.ll_date);
+        mDateTv = (TextView) findViewById(R.id.tv_date);
+        mMonthTv = (TextView) findViewById(R.id.tv_month);
+        mWeekTv = (TextView) findViewById(R.id.tv_week);
+
+        mPageNumLayout = (RelativeLayout) findViewById(R.id.page_num_layout);
     }
 
     private void setViews() {
-        for(int i =0 ;i<10;i++) {
-            mList.add(CardFragment.newInstance(i));
-        }
+//        for(int i =0 ;i<10;i++) {
+//            mList.add(CardFragment.newInstance(i));
+//        }
 
         mBottomPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Italic.otf"));
         mTotalPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Regular.otf"));
@@ -170,7 +193,20 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageSelected(int position) {
-        ShowMessage.showToast(this,"select position="+position);
+        CardFragment fragment = (CardFragment) fragmentList.get(position);
+        CardDetail cardDetail = fragment.getCardDetail();
+        initDate(cardDetail);
+        mBottomPageNumTv.setText(String.valueOf(position%10+1));
+    }
+
+    private void initDate(CardDetail cardDetail) {
+        String day = cardDetail.getDay();
+        String month = cardDetail.getMonth();
+        String week = cardDetail.getWeek();
+        mBottomPageNumTv.setText("1");
+        mDateTv.setText(day);
+        mMonthTv.setText(month);
+        mWeekTv.setText(week);
     }
 
     @Override
@@ -185,6 +221,31 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 if(obj instanceof List) {
                     List<String> keywords = (List<String>) obj;
                     showKeywordDialog(keywords);
+                }
+                break;
+            case POST_GET_CARDLIST_JSON:
+
+                if(obj instanceof CardBean) {
+                    CardBean cardBean = (CardBean) obj;
+                    String day = cardBean.getDay();
+                    String month = cardBean.getMonth();
+                    String week = cardBean.getWeek();
+                    mDateLayout.setVisibility(View.VISIBLE);
+                    mPageNumLayout.setVisibility(View.VISIBLE);
+
+                    List<CardDetail> list = cardBean.getList();
+                    if(list!=null&&list.size()>0) {
+                        for(CardDetail detail : list) {
+                            detail.setDay(day);
+                            detail.setWeek(week);
+                            detail.setMonth(month);
+                            fragmentList.add(CardFragment.newInstance(detail));
+                        }
+                    }
+                    mAdapter.addData(fragmentList);
+                    if(fragmentList.size()<=10) {
+                        initDate(list.get(0));
+                    }
                 }
                 break;
         }

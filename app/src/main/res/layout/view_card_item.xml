@@ -19,22 +19,21 @@
             android:id="@+id/iv_banner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ico_test" />
+            android:src="@mipmap/ico_default" />
 
         <TextView
             android:layout_below="@id/iv_banner"
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="30dp"
             android:layout_marginTop="20dp"
-            android:lineSpacingExtra="10dp"
+            android:lineSpacingExtra="12dp"
             android:paddingLeft="11dp"
             android:paddingRight="11dp"
             tools:text="孙宏斌谈新乐视：商业模式稍微一改就赚钱"
             android:textColor="@color/color_main"
-            android:textSize="18sp"
+            android:textSize="19sp"
             android:textStyle="bold" />
         <TextView
             android:maxLines="5"
@@ -44,14 +43,15 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:textColor="@color/color_999999"
-            android:text="选自：MEEU有你"
+            tools:text="选自：MEEU有你"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_above="@id/tv_source"
             android:layout_below="@id/tv_title"
-            android:lineSpacingExtra="9dp"
-            android:textSize="15sp"
+            android:lineSpacingExtra="10dp"
+            android:textSize="16sp"
+            android:maxLength="200"
             android:textColor="@color/color_444444"
             android:paddingLeft="11dp"
             android:paddingRight="11dp"

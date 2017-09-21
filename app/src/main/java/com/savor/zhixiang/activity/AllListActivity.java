@@ -14,7 +14,7 @@ import com.savor.zhixiang.core.ResponseErrorMessage;
  * Created by bushlee on 2017/9/21.
  */
 
-public class MyCollectActivity extends BaseActivity implements View.OnClickListener,ApiRequestListener {
+public class AllListActivity extends BaseActivity implements View.OnClickListener,ApiRequestListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -41,6 +41,8 @@ public class AppApi {
         POST_GET_KEYWORDS_JSON,
         /**全部知享文章列表*/
         POST_GET_ALL_LIST_JSON,
+        /**我的收藏列表*/
+        POST_GET_MY_COLLECTION_JSON,
     }
 
     /**
@@ -54,7 +56,7 @@ public class AppApi {
             put(Action.TEST_GET_JSON, "https://www.baidu.com/");
             put(Action.POST_GET_KEYWORDS_JSON, formatPhpUrl("Dailyknowledge/Keywords/getAllKeywords"));
             put(Action.POST_GET_ALL_LIST_JSON, formatPhpUrl("Dailyknowledge/Content/getAllList"));
-
+            put(Action.POST_GET_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/getMyCollection"));
         }
     };
 
@@ -124,6 +126,17 @@ public class AppApi {
         final HashMap<String, Object> params = new HashMap<>();
         params.put("bespeak_time", bespeak_time);
         new AppServiceOk(context, Action.POST_GET_ALL_LIST_JSON, handler, params).post();
+    }
+
+    /**
+     * 我的收藏列表
+     * @param context
+     * @param handler
+     */
+    public static void getMyCollection(Context context,String collecTime ,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("collecTime", collecTime);
+        new AppServiceOk(context, Action.POST_GET_MY_COLLECTION_JSON, handler, params).post();
     }
     // 超时（网络）异常
     public static final String ERROR_TIMEOUT = "3001";

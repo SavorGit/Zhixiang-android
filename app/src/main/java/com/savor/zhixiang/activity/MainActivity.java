@@ -43,12 +43,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
-    private String[] mVals = new String[]
-        {"iPhone X", "孙宏斌", "美联储", "蒂芙尼珠宝", "北海道肉蟹", "贵族学校",
-                "百年普洱茶", "小米科技", "特朗普", "蒂芙尼"};
     private ViewPager mViewPager;
     private List<Fragment> mList = new ArrayList<>();
-    private CardScaleHelper mCardScaleHelper;
     private TextView mBottomPageNumTv;
     private TextView mTotalPageNumTv;
     private CardListAdapter mAdapter;
@@ -162,12 +158,16 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 Display display = manager.getDefaultDisplay();
                 //设置右面的布局位置  根据左面菜单的right作为右面布局的left   左面的right+屏幕的宽度（或者right的宽度这里是相等的）为右面布局的right
                 right.layout(left.getRight(), 0, left.getRight() + display.getWidth(), display.getHeight());
+                //控制是否隐藏两边相邻内容
+                mViewPager.setClipChildren(slideOffset>0.4);
             }
             @Override
-            public void onDrawerOpened(View drawerView) {}
+            public void onDrawerOpened(View drawerView) {
+            }
             @Override
             public void onDrawerClosed(View drawerView) {
                 isDrawer=false;
+                mViewPager.setClipChildren(false);
             }
             @Override
             public void onDrawerStateChanged(int newState) {}

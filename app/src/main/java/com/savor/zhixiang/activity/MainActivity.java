@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private void initDrawerLayout() {
 
-        ImageView menuBtn = (ImageView) findViewById(R.id.iv_menu);
+        LinearLayout menuBtn = (LinearLayout) findViewById(R.id.ll_back);
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         right = (RelativeLayout) findViewById(R.id.right);

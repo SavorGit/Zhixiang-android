@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +17,7 @@ import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
+import com.wang.avi.AVLoadingIndicatorView;
 
 /**
  * 首页列表选项卡
@@ -30,6 +32,8 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     private TextView mDescTv;
     private CardDetail detail;
     private TextView mSourcetv;
+    private RelativeLayout mLoadingLayout;
+    private AVLoadingIndicatorView mLoadingView;
 
     public static CardFragment newInstance(CardDetail detail) {
         CardFragment cardFragment = new CardFragment();
@@ -67,6 +71,8 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         mDescTv = (TextView) parent.findViewById(R.id.tv_desc);
         mSourcetv = (TextView) parent.findViewById(R.id.tv_source);
 
+        mLoadingLayout = (RelativeLayout) parent.findViewById(R.id.rl_loading_layout);
+        mLoadingView = (AVLoadingIndicatorView) parent.findViewById(R.id.av_loading_view);
     }
 
     private void setViews() {
@@ -81,6 +87,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
                 load(detail.getImgUrl()).
                 placeholder(R.mipmap.ico_default).
                 crossFade().
+                centerCrop().
                 into(mBannerIv);
 
         String title = detail.getTitle();
@@ -89,7 +96,20 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         mTitleTv.setText(title);
         mDescTv.setText(desc);
         mSourcetv.setText(sourceName);
+
+        mBannerIv.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideLodingLayout();
+            }
+        },500);
     }
+
+    private void hideLodingLayout() {
+        mLoadingLayout.setVisibility(View.GONE);
+        mLoadingView.hide();
+    }
+
 
     private void setLiteners() {
         mParentView.setOnClickListener(this);

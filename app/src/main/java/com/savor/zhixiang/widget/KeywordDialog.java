@@ -26,7 +26,7 @@ import java.util.List;
 
 public class KeywordDialog extends Dialog implements View.OnClickListener {
 
-
+    private OnCloseBtnClickListener onCloseBtnClickListener;
     private final Activity mContext;
     private final List<String> mKeywords;
     private TextView mPercentTv;
@@ -34,10 +34,11 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
     private LayoutInflater mInflater;
     private TextView mCloseBtn;
 
-    public KeywordDialog(Activity context, List<String> keywords) {
+    public KeywordDialog(Activity context, List<String> keywords,OnCloseBtnClickListener listener) {
         super(context, R.style.Dialog_Fullscreen);
         this.mContext = context;
         this.mKeywords = keywords;
+        this.onCloseBtnClickListener = listener;
     }
 
 
@@ -114,8 +115,15 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_close:
+                if(onCloseBtnClickListener!=null) {
+                    onCloseBtnClickListener.onCloseBtnClick();
+                }
                 dismiss();
                 break;
         }
+    }
+
+    public interface OnCloseBtnClickListener {
+        void onCloseBtnClick();
     }
 }

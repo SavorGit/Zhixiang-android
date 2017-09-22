@@ -60,14 +60,4 @@ public class CardListAdapter extends FragmentStatePagerAdapter {
         return fragments == null?0:fragments.size();
     }
 
-    @Override
-    public Object instantiateItem(final ViewGroup container, final int position) {
-        container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowMessage.showToast(container.getContext(),"position="+position);
-            }
-        });
-        return super.instantiateItem(container, position);
-    }
 }

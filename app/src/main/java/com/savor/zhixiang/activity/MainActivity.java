@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,15 +27,18 @@ import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
+import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.fragment.CardFragment;
+import com.savor.zhixiang.fragment.FooterPagerFragment;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
 import com.savor.zhixiang.widget.cardrecyclerview.CardScaleHelper;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener, ApiRequestListener {
+public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener, ApiRequestListener, FooterPagerFragment.OnclickReloadListener {
 
     private RelativeLayout right;
     private RelativeLayout left;
@@ -54,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private TextView mMonthTv;
     private TextView mWeekTv;
     private RelativeLayout mPageNumLayout;
+    private FooterPagerFragment mFooterPagerFragment;
+    private CardView mLoadingLayout;
+    private AVLoadingIndicatorView mLoadingView;
+    private TextView mHintTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +71,22 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         getViews();
         setViews();
         setListeners();
-        getData();
 
+        checkKeywords();
+    }
 
+    private void checkKeywords() {
+        List<String> keywords = Session.get(this).getKeywords();
+        if(keywords!=null&&keywords.size()>0) {
+            showKeywordDialog(keywords);
+        }else {
+            getData();
+        }
     }
 
     private void getData() {
-        AppApi.getKeywords(this,this);
         AppApi.getCardList(this,"",this);
+
     }
 
 
@@ -87,12 +103,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mWeekTv = (TextView) findViewById(R.id.tv_week);
 
         mPageNumLayout = (RelativeLayout) findViewById(R.id.page_num_layout);
+
+        mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
+        mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
+        mHintTv = (TextView) findViewById(R.id.tv_hint);
     }
 
     private void setViews() {
-//        for(int i =0 ;i<10;i++) {
-//            mList.add(CardFragment.newInstance(i));
-//        }
+        mFooterPagerFragment = FooterPagerFragment.newInstance(this);
 
         mBottomPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Italic.otf"));
         mTotalPageNumTv.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ACaslonPro-Regular.otf"));
@@ -110,7 +128,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     }
 
     private void showKeywordDialog(List<String> keywords) {
-        new KeywordDialog(this, keywords).show();
+        new KeywordDialog(this, keywords, new KeywordDialog.OnCloseBtnClickListener() {
+            @Override
+            public void onCloseBtnClick() {
+                getData();
+            }
+        }).show();
     }
 
     private void initDrawerLayout() {
@@ -191,14 +214,24 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageSelected(int position) {
-        CardFragment fragment = (CardFragment) fragmentList.get(position);
+        Fragment frag = fragmentList.get(position);
+        int index = position;
+        if(!(frag instanceof CardFragment)) {
+            index = position-1;
+            mPageNumLayout.setVisibility(View.INVISIBLE);
+        }else {
+            mPageNumLayout.setVisibility(View.VISIBLE);
+        }
+
+        CardFragment fragment = (CardFragment) fragmentList.get(index);
         CardDetail cardDetail = fragment.getCardDetail();
         initDate(cardDetail);
-        mBottomPageNumTv.setText(String.valueOf(position%10+1));
+        mBottomPageNumTv.setText(String.valueOf(index%10+1));
 
         if(mAdapter.getCount()>=10&&position==mAdapter.getCount()-1) {
             String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
             AppApi.getCardList(this,bespeak_time,this);
+            mFooterPagerFragment.startLoading();
         }
     }
 
@@ -210,6 +243,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mDateTv.setText(day);
         mMonthTv.setText(month);
         mWeekTv.setText(week);
+
+//        mLoadingLayout.setVisibility(View.GONE);
+//        mLoadingView.hide();
     }
 
     @Override
@@ -220,37 +256,54 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
-            case POST_GET_KEYWORDS_JSON:
-                if(obj instanceof List) {
-                    List<String> keywords = (List<String>) obj;
-                    showKeywordDialog(keywords);
-                }
-                break;
-            case POST_GET_CARDLIST_JSON:
 
+            case POST_GET_CARDLIST_JSON:
                 if(obj instanceof CardBean) {
                     CardBean cardBean = (CardBean) obj;
                     String day = cardBean.getDay();
                     String month = cardBean.getMonth();
                     String week = cardBean.getWeek();
-                    mDateLayout.setVisibility(View.VISIBLE);
-                    mPageNumLayout.setVisibility(View.VISIBLE);
 
                     List<CardDetail> list = cardBean.getList();
                     List<Fragment> fragments = new ArrayList<>();
                     if(list!=null&&list.size()>0) {
+                        mLoadingLayout.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mLoadingLayout.setVisibility(View.GONE);
+                                mDateLayout.setVisibility(View.VISIBLE);
+                                mPageNumLayout.setVisibility(View.VISIBLE);
+                            }
+                        },2000);
+
                         for(CardDetail detail : list) {
                             detail.setDay(day);
                             detail.setWeek(week);
                             detail.setMonth(month);
                             fragments.add(CardFragment.newInstance(detail));
                         }
+                        // 如果返回数据不为空，当前是第一页添加底部页，否则在底部页之前添加
                         if(fragments.size()>0) {
-                            fragmentList.addAll(fragments);
-                            mAdapter.addData(fragments);
+                            if(fragmentList.size()==0) {
+                                fragments.add(mFooterPagerFragment);
+                                fragmentList.addAll(fragments);
+                                mAdapter.setData(fragments);
+                            }else {
+                                fragmentList.addAll(fragmentList.size()-1,fragments);
+                                mAdapter.addData(fragments);
+                            }
                         }
-                        if(fragmentList.size()<=10) {
+                        if(fragmentList.size()<=11) {
                             initDate(list.get(0));
+                        }
+                    }else {
+                        if(fragmentList.size()==0) {
+                            mLoadingLayout.setVisibility(View.VISIBLE);
+                            mLoadingView.hide();
+                            mHintTv.setVisibility(View.VISIBLE);
+                            mHintTv.setText("没有数据");
+                        }else {
+                            mFooterPagerFragment.loadNoData();
                         }
                     }
                 }
@@ -260,11 +313,32 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onError(AppApi.Action method, Object obj) {
-
+        switch (method) {
+            case POST_GET_CARDLIST_JSON:
+                mFooterPagerFragment.loadFailed();
+                break;
+        }
     }
 
     @Override
     public void onNetworkFailed(AppApi.Action method) {
 
+    }
+
+    @Override
+    public void onClickReload() {
+        String btime = "";
+        if(fragmentList.size()>0) {
+            CardFragment fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 1);
+            CardDetail cardDetail = fragment.getCardDetail();
+            if(cardDetail!=null) {
+                CardDetail.ContentDetailBean contentDetail = cardDetail.getContentDetail();
+                if(contentDetail!=null) {
+                    btime =contentDetail.getBespeak_time();
+                }
+            }
+        }
+        AppApi.getCardList(this,btime,this);
+        mFooterPagerFragment.startLoading();
     }
 }

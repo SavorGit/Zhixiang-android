@@ -119,8 +119,9 @@ public class AppApi {
      * @param context
      * @param handler
      */
-    public static void getCardList(Context context, ApiRequestListener handler) {
+    public static void getCardList(Context context,String bespeak_time, ApiRequestListener handler) {
         final HashMap<String, Object> params = new HashMap<>();
+        params.put("bespeak_time",bespeak_time);
         new AppServiceOk(context, Action.POST_GET_CARDLIST_JSON, handler, params).post();
     }
 

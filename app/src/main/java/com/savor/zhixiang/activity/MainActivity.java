@@ -20,20 +20,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
-import com.common.api.utils.ShowMessage;
+import com.savor.zhixiang.R;
+import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.fragment.CardFragment;
-import com.savor.zhixiang.R;
-import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
 import com.savor.zhixiang.widget.cardrecyclerview.CardScaleHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener, ApiRequestListener {
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private void getData() {
         AppApi.getKeywords(this,this);
-        AppApi.getCardList(this,this);
+        AppApi.getCardList(this,"",this);
     }
 
 
@@ -197,6 +195,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         CardDetail cardDetail = fragment.getCardDetail();
         initDate(cardDetail);
         mBottomPageNumTv.setText(String.valueOf(position%10+1));
+
+        if(mAdapter.getCount()>=10&&position==mAdapter.getCount()-1) {
+            String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
+            AppApi.getCardList(this,bespeak_time,this);
+        }
     }
 
     private void initDate(CardDetail cardDetail) {
@@ -234,17 +237,21 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     mPageNumLayout.setVisibility(View.VISIBLE);
 
                     List<CardDetail> list = cardBean.getList();
+                    List<Fragment> fragments = new ArrayList<>();
                     if(list!=null&&list.size()>0) {
                         for(CardDetail detail : list) {
                             detail.setDay(day);
                             detail.setWeek(week);
                             detail.setMonth(month);
-                            fragmentList.add(CardFragment.newInstance(detail));
+                            fragments.add(CardFragment.newInstance(detail));
                         }
-                    }
-                    mAdapter.addData(fragmentList);
-                    if(fragmentList.size()<=10) {
-                        initDate(list.get(0));
+                        if(fragments.size()>0) {
+                            fragmentList.addAll(fragments);
+                            mAdapter.addData(fragments);
+                        }
+                        if(fragmentList.size()<=10) {
+                            initDate(list.get(0));
+                        }
                     }
                 }
                 break;

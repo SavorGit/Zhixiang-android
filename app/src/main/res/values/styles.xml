@@ -113,4 +113,11 @@
 
 
     </style>
+
+    <!--<style name="CardDetailTheme" >-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--&lt;!&ndash;<item name="android:windowIsTranslucent">false</item>&ndash;&gt;-->
+    <!--</style>-->
 </resources>

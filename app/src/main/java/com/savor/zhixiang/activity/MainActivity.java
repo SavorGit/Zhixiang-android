@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private void setListeners() {
         mViewPager.addOnPageChangeListener(this);
-//        mAdapter.setoni.setonI
     }
 
     private void showKeywordDialog(List<String> keywords) {
@@ -274,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                                 mDateLayout.setVisibility(View.VISIBLE);
                                 mPageNumLayout.setVisibility(View.VISIBLE);
                             }
-                        },2000);
+                        },1000);
 
                         for(CardDetail detail : list) {
                             detail.setDay(day);

@@ -13,6 +13,7 @@ public class ListItem implements Serializable {
     private String title;
     private String sourceName;
     private String bespeak_time;
+    private String collecTime;
 
     public String getDailyid() {
         return dailyid;
@@ -54,6 +55,15 @@ public class ListItem implements Serializable {
         this.bespeak_time = bespeak_time;
     }
 
+
+    public String getCollecTime() {
+        return collecTime;
+    }
+
+    public void setCollecTime(String collecTime) {
+        this.collecTime = collecTime;
+    }
+
     @Override
     public String toString() {
         return "ListItem{" +
@@ -62,6 +72,7 @@ public class ListItem implements Serializable {
                 ", title='" + title + '\'' +
                 ", sourceName='" + sourceName + '\'' +
                 ", bespeak_time='" + bespeak_time + '\'' +
+                ", collecTime='" + collecTime + '\'' +
                 '}';
     }
 }

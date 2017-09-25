@@ -1,6 +1,7 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -39,7 +40,11 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener, ViewPager.OnPageChangeListener, ApiRequestListener, FooterPagerFragment.OnclickReloadListener {
+public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener,
+        ViewPager.OnPageChangeListener,
+        ApiRequestListener,
+        FooterPagerFragment.OnclickReloadListener,
+        View.OnClickListener{
 
     private RelativeLayout right;
     private RelativeLayout left;
@@ -54,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private TextView mDateTv;
     private TextView mMonthTv;
     private TextView mWeekTv;
+    private RelativeLayout rl_my_collection;
+    private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
     private FooterPagerFragment mFooterPagerFragment;
     private CardView mLoadingLayout;
@@ -102,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mWeekTv = (TextView) findViewById(R.id.tv_week);
 
         mPageNumLayout = (RelativeLayout) findViewById(R.id.page_num_layout);
-
+        rl_my_collection = (RelativeLayout) findViewById(R.id.rl_my_collection);
+        rl_all_list = (RelativeLayout) findViewById(R.id.rl_all_list);
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
@@ -125,6 +133,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private void setListeners() {
         mViewPager.addOnPageChangeListener(this);
+        rl_my_collection.setOnClickListener(this);
+        rl_all_list.setOnClickListener(this);
     }
 
     private void showKeywordDialog(List<String> keywords) {
@@ -373,5 +383,25 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         }
         AppApi.getCardList(this,btime,this);
         mFooterPagerFragment.startLoading();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rl_my_collection:
+//                //RecordUtils.onEvent(this,getString(R.string.menu_collection_back));
+//                finish();
+
+                break;
+            case R.id.rl_all_list:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,AllListActivity.class);
+                startActivity(intent);
+                break;
+
+
+            default:
+                break;
+        }
     }
 }

@@ -33,7 +33,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     private TextView tv_center;
     private boolean isUp = true;
     private List<ListItem> list = new ArrayList<ListItem>();
-
+    private RelativeLayout back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mPullRefreshListView = (PullToRefreshListView)findViewById(R.id.listview);
         mRefreshDataHinttv = (TextView) findViewById(R.id.tv_refresh_data_hint);
         tv_center = (TextView) findViewById(R.id.tv_center);
+        back = (RelativeLayout) findViewById(R.id.back);
     }
 
     @Override
@@ -63,12 +64,22 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void setListeners() {
-
+        mPullRefreshListView.setOnRefreshListener(onRefreshListener);
+        mPullRefreshListView.setOnLastItemVisibleListener(onLastItemVisibleListener);
+        mPullRefreshListView.onLoadComplete(true,false);
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.back:
+                //RecordUtils.onEvent(this,getString(R.string.menu_collection_back));
+                finish();
+                break;
 
+            default:
+                break;
+        }
     }
 
     private void getData(){
@@ -78,19 +89,30 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     PullToRefreshBase.OnRefreshListener onRefreshListener = new PullToRefreshBase.OnRefreshListener() {
         @Override
         public void onRefresh(PullToRefreshBase refreshView) {
-
+            collecTime = "";
+            isUp = true;
+            getData();
         }
     };
 
     PullToRefreshBase.OnLastItemVisibleListener onLastItemVisibleListener = new PullToRefreshBase.OnLastItemVisibleListener() {
         @Override
         public void onLastItemVisible() {
-
+            isUp = false;
+            getData();
         }
     };
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
-
+        switch (method) {
+            case POST_GET_MY_COLLECTION_JSON:
+               // mProgressLayout.loadSuccess();
+                if(obj instanceof List<?>) {
+                    List<ListItem> mList = (List<ListItem>) obj;
+                    handleVodList(mList);
+                }
+                break;
+        }
     }
 
     @Override

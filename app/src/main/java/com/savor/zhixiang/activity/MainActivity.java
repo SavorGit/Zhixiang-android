@@ -15,14 +15,12 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
-import com.common.api.widget.pulltorefresh.library.extras.viewpager.PullToRefreshViewPager;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
@@ -34,7 +32,6 @@ import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
-import com.savor.zhixiang.widget.cardrecyclerview.CardScaleHelper;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

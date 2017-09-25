@@ -60,6 +60,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mAdapter = new AllListAdapter(context);
         // mListView = mPullRefreshListView.getRefreshableView();
         mPullRefreshListView.setAdapter(mAdapter);
+        tv_center.setText("收藏馆");
     }
 
     @Override
@@ -107,6 +108,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         switch (method) {
             case POST_GET_MY_COLLECTION_JSON:
                // mProgressLayout.loadSuccess();
+                mPullRefreshListView.onRefreshComplete();
                 if(obj instanceof List<?>) {
                     List<ListItem> mList = (List<ListItem>) obj;
                     handleVodList(mList);

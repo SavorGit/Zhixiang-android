@@ -25,6 +25,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.savor.zhixiang.bean.AllListResult;
 import com.savor.zhixiang.bean.CardBean;
+import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.bean.UpgradeInfo;
 
@@ -247,7 +248,10 @@ public class ApiResponseFactory {
                 result = gson.fromJson(info, new TypeToken<UpgradeInfo>() {
                 }.getType());
                 break;
-
+            case POST_CARD_DETAIL_JSON:
+                result = gson.fromJson(info, new TypeToken<CardDetail.ContentDetailBean>() {
+                }.getType());
+                break;
             default:
                 break;
         }

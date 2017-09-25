@@ -9,6 +9,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.core.AppApi;
+
+import java.util.List;
 
 public class WelcomActivity extends BaseActivity {
 
@@ -22,6 +25,8 @@ public class WelcomActivity extends BaseActivity {
         getViews();
         setViews();
         setListeners();
+
+        AppApi.getKeywords(this,this);
     }
 
     @Override
@@ -60,5 +65,17 @@ public class WelcomActivity extends BaseActivity {
     @Override
     public void setListeners() {
 
+    }
+
+    @Override
+    public void onSuccess(AppApi.Action method, Object obj) {
+        switch (method) {
+            case POST_GET_KEYWORDS_JSON:
+                if(obj instanceof List) {
+                    List<String> keywords = (List<String>) obj;
+                    mSession.setKeywords(keywords);
+                }
+                break;
+        }
     }
 }

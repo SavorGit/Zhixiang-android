@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.savor.zhixiang.activity.CardDetailActivity">
+
+    <com.common.api.widget.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/pts_card_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:transitionName="sharedView"
+        android:fastScrollEnabled="false"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="scale"
+        ptr:ptrMode="disabled" />
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ico_player_title"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ico_close" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_share"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ico_share" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_collect"
+            android:layout_toLeftOf="@id/ll_share"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <ImageView
+                android:id="@+id/iv_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ico_uncolect" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

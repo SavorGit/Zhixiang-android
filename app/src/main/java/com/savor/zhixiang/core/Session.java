@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
 
 /**
  * @author Administrator
@@ -160,6 +161,7 @@ public class Session {
     private String channelName;
     private String channelId;
     private String boxMac;
+    private List<String> keywords;
 
     private Session(Context context) {
 
@@ -488,4 +490,11 @@ public class Session {
         return buffer.toString();
     }
 
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    public List<String> getKeywords() {
+        return keywords;
+    }
 }

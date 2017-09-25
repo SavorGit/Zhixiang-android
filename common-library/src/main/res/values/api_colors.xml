@@ -82,4 +82,5 @@
     <color name="network_hint">#BCBCBC</color>
     <color name="color_app_bg">#f5f5f5</color>
     <color name="color_refresh_text">#888888</color>
+    <color name="color_image_border">#e8e8e8</color>
 </resources>

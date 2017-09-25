@@ -165,7 +165,8 @@ public class CardDetail implements Serializable {
         private String desc;
         private String bespeak_time;
         private String sourceName;
-        private List<DetailsBean> details;
+        private String title;
+        private List<CardDetailListItem> details;
 
         @Override
         public String toString() {
@@ -175,6 +176,7 @@ public class CardDetail implements Serializable {
                     ", desc='" + desc + '\'' +
                     ", bespeak_time='" + bespeak_time + '\'' +
                     ", sourceName='" + sourceName + '\'' +
+                    ", title='" + title + '\'' +
                     ", details=" + details +
                     '}';
         }
@@ -194,6 +196,7 @@ public class CardDetail implements Serializable {
                 return false;
             if (sourceName != null ? !sourceName.equals(that.sourceName) : that.sourceName != null)
                 return false;
+            if (title != null ? !title.equals(that.title) : that.title != null) return false;
             return details != null ? details.equals(that.details) : that.details == null;
 
         }
@@ -205,6 +208,7 @@ public class CardDetail implements Serializable {
             result = 31 * result + (desc != null ? desc.hashCode() : 0);
             result = 31 * result + (bespeak_time != null ? bespeak_time.hashCode() : 0);
             result = 31 * result + (sourceName != null ? sourceName.hashCode() : 0);
+            result = 31 * result + (title != null ? title.hashCode() : 0);
             result = 31 * result + (details != null ? details.hashCode() : 0);
             return result;
         }
@@ -249,79 +253,20 @@ public class CardDetail implements Serializable {
             this.sourceName = sourceName;
         }
 
-        public List<DetailsBean> getDetails() {
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public List<CardDetailListItem> getDetails() {
             return details;
         }
 
-        public void setDetails(List<DetailsBean> details) {
+        public void setDetails(List<CardDetailListItem> details) {
             this.details = details;
-        }
-
-        public  class DetailsBean implements Serializable{
-            /**
-             * dailytype : 1
-             * stext : 奥斯卡电话却无法南京市覅偶却无法卢卡斯的大口径舞动奇迹分离器拉萨开讲啦看谁的
-             * spicture : http://devp.oss.littlehotspot.com/media/resource/QnDcQGdW3C.jpg
-             */
-
-            private String dailytype;
-            private String stext;
-            private String spicture;
-
-            @Override
-            public String toString() {
-                return "DetailsBean{" +
-                        "dailytype='" + dailytype + '\'' +
-                        ", stext='" + stext + '\'' +
-                        ", spicture='" + spicture + '\'' +
-                        '}';
-            }
-
-            @Override
-            public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
-
-                DetailsBean that = (DetailsBean) o;
-
-                if (dailytype != null ? !dailytype.equals(that.dailytype) : that.dailytype != null)
-                    return false;
-                if (stext != null ? !stext.equals(that.stext) : that.stext != null) return false;
-                return spicture != null ? spicture.equals(that.spicture) : that.spicture == null;
-
-            }
-
-            @Override
-            public int hashCode() {
-                int result = dailytype != null ? dailytype.hashCode() : 0;
-                result = 31 * result + (stext != null ? stext.hashCode() : 0);
-                result = 31 * result + (spicture != null ? spicture.hashCode() : 0);
-                return result;
-            }
-
-            public String getDailytype() {
-                return dailytype;
-            }
-
-            public void setDailytype(String dailytype) {
-                this.dailytype = dailytype;
-            }
-
-            public String getStext() {
-                return stext;
-            }
-
-            public void setStext(String stext) {
-                this.stext = stext;
-            }
-
-            public String getSpicture() {
-                return spicture;
-            }
-
-            public void setSpicture(String spicture) {
-                this.spicture = spicture;
-            }
         }
     }
 }

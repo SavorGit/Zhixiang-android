@@ -1,95 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/right"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/right"
-    tools:context=".activity.MainActivity"
-    >
+    tools:context=".activity.MainActivity">
+
     <RelativeLayout
-        android:padding="15dp"
-        android:background="@color/color_main"
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/iv_menu"
-            android:src="@mipmap/ic_home_menu"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/color_main"
+        >
         <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_home_menu" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_margin="15dp"
             android:id="@+id/ll_date"
-            android:visibility="visible"
-            android:gravity="center"
-            android:background="@drawable/round_date"
-            android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:background="@drawable/round_date"
+            android:gravity="center"
+            android:visibility="visible">
 
             <TextView
-                android:paddingLeft="5dp"
                 android:id="@+id/tv_date"
-                tools:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="04"
                 android:textColor="@color/border_gray"
                 android:textSize="25sp"
-                android:text="04" />
+                tools:layout_margin="5dp" />
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tv_month"
-                    android:paddingTop="5dp"
-                    android:textColor="@color/color_4e4e4e"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingBottom="2dp"
                     android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/color_4e4e4e"
                     android:textSize="11sp"
-                    tools:text="9月"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    tools:text="9月" />
+
                 <TextView
                     android:id="@+id/tv_week"
-                    android:textColor="@color/color_4e4e4e"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="2dp"
-                    android:paddingLeft="5dp"
-                    android:textSize="11sp"
-                    tools:text="星期一"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:textColor="@color/color_4e4e4e"
+                    android:textSize="11sp"
+                    tools:text="星期一" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:theme="@style/AppTheme.AppBarOverlay">-->
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="?attr/colorPrimary"-->
-             <!--&gt;-->
-            <!---->
-            <!--</android.support.v7.widget.Toolbar>-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
-
     <include
+        layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rl_title"
-        layout="@layout/content_main" />
+        android:layout_below="@id/rl_title" />
 
 
 </RelativeLayout>

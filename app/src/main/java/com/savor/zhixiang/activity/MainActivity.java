@@ -328,7 +328,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onClickReload() {
         String btime = "";
         if(fragmentList.size()>0) {
-            CardFragment fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 1);
+            CardFragment fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 2);
             CardDetail cardDetail = fragment.getCardDetail();
             if(cardDetail!=null) {
                 CardDetail.ContentDetailBean contentDetail = cardDetail.getContentDetail();

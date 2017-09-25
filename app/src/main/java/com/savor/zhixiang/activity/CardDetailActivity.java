@@ -1,5 +1,6 @@
 package com.savor.zhixiang.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.common.api.utils.DensityUtil;
 import com.common.api.widget.pulltorefresh.library.PullToRefreshListView;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardDetailListAdapter;
+import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.bean.CardDetailListItem;
+import com.savor.zhixiang.core.AppApi;
+
+import java.util.List;
 
 public class CardDetailActivity extends BaseActivity implements View.OnClickListener {
-
+    public static final float IMAGE_SCALE = 488/750f;
     private PullToRefreshListView mRefreshListView;
     private LinearLayout mBackBtn;
     private LinearLayout mCollectBtn;
@@ -27,6 +35,8 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     private TextView mDateTv;
     private CardDetailListAdapter mAdapter;
     private RelativeLayout mTitleLayout;
+    private CardDetail detail;
+    private String dailyid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +44,17 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_card_detail);
+        handleIntent();
         getViews();
         setViews();
         setListeners();
+
+    }
+
+    private void handleIntent() {
+        Intent intent = getIntent();
+        detail = (CardDetail) intent.getSerializableExtra("detail");
+        dailyid = intent.getStringExtra("dailyid");
     }
 
     @Override
@@ -62,6 +80,12 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void setViews() {
+        int screenWidth = DensityUtil.getScreenWidth(this);
+        int height = (int) (screenWidth*IMAGE_SCALE);
+        ViewGroup.LayoutParams layoutParams = mCardBannerImg.getLayoutParams();
+        layoutParams.width = screenWidth;
+        layoutParams.height = height;
+
         mRefreshListView.getRefreshableView().addHeaderView(mHeaderView);
 
         mAdapter = new CardDetailListAdapter(this);
@@ -70,8 +94,13 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         int statusBarHeight = getStatusBarHeight();
         if(statusBarHeight!=-1) {
             mTitleLayout.setPadding(0,statusBarHeight*2,0,0);
-//            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mTitleLayout.getLayoutParams();
-//            layoutParams.set(0,statusBarHeight,0,0);
+        }
+
+        if(detail!=null) {
+            CardDetail.ContentDetailBean contentDetail = detail.getContentDetail();
+            initCardDetail(contentDetail);
+        }else {
+            AppApi.getCardDetail(this,dailyid,this);
         }
     }
 
@@ -86,7 +115,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_back:
-                finish();
+                onBackPressed();
                 break;
         }
     }
@@ -104,5 +133,32 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         }
 
         return statusBarHeight1;
+    }
+
+    @Override
+    public void onSuccess(AppApi.Action method, Object obj) {
+        switch (method) {
+            case POST_CARD_DETAIL_JSON:
+                if(obj instanceof CardDetail.ContentDetailBean) {
+                    CardDetail.ContentDetailBean cardDetailBean = (CardDetail.ContentDetailBean) obj;
+                    initCardDetail(cardDetailBean);
+                }
+                break;
+        }
+    }
+
+    private void initCardDetail(CardDetail.ContentDetailBean cardDetailBean) {
+        if(cardDetailBean!=null) {
+            String imgUrl = cardDetailBean.getImgUrl();
+            Glide.with(this).load(imgUrl).placeholder(R.mipmap.ico_default).centerCrop().into(mCardBannerImg);
+
+            String title = cardDetailBean.getTitle();
+            mTitleTv.setText(title);
+
+            List<CardDetailListItem> details = cardDetailBean.getDetails();
+            if(details!=null&&details.size()>0) {
+                mAdapter.setData(details);
+            }
+        }
     }
 }

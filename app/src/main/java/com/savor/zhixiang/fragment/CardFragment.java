@@ -1,6 +1,8 @@
 package com.savor.zhixiang.fragment;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -133,7 +135,14 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.parent:
                 Intent intent = new Intent(getContext(), CardDetailActivity.class);
-                startActivity(intent);
+                intent.putExtra("detail",detail);
+
+                if(Build.VERSION.SDK_INT>=21) {
+                    startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), mParentView, "sharedView").toBundle());
+                }else {
+                    startActivity(intent);
+                }
+
                 break;
         }
     }

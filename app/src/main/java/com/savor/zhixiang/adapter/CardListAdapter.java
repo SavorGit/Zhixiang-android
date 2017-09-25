@@ -37,7 +37,7 @@ public class CardListAdapter extends FragmentStatePagerAdapter {
             if(this.fragments==null) {
                 fragments = new ArrayList<>();
             }
-            this.fragments.addAll(fragments);
+            this.fragments.addAll(this.fragments.size()-1,fragments);
             notifyDataSetChanged();
         }
     }

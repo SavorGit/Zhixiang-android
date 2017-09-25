@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.common.api.utils.DensityUtil;
+import com.common.api.widget.pulltorefresh.library.extras.viewpager.PullToRefreshViewPager;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private CardView mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
     private TextView mHintTv;
+    private List<Fragment> mNextPageFragments = new ArrayList<>();
+    private List<CardDetail> mNextPageBeanList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +118,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setAdapter(mAdapter);
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
-
+//        fragmentList.add(mFooterPagerFragment);
+//        mAdapter.setData(fragmentList);
+//        mFooterPagerFragment.startLoading();
     }
 
     private void setListeners() {
@@ -213,38 +218,62 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageSelected(int position) {
-        Fragment frag = fragmentList.get(position);
-        int index = position;
-        if(!(frag instanceof CardFragment)) {
-            index = position-1;
-            mPageNumLayout.setVisibility(View.INVISIBLE);
-        }else {
-            mPageNumLayout.setVisibility(View.VISIBLE);
+        final Fragment frag = fragmentList.get(position);
+        if(mAdapter.getCount()>=11) {
+            int index = position;
+            if(!(frag instanceof CardFragment)) {
+                index = position-1;
+                mPageNumLayout.setVisibility(View.INVISIBLE);
+            }else {
+                mPageNumLayout.setVisibility(View.VISIBLE);
+            }
+
+            CardFragment fragment = (CardFragment) fragmentList.get(index);
+            final CardDetail cardDetail = fragment.getCardDetail();
+            initDate(cardDetail);
+            mBottomPageNumTv.setText(String.valueOf(index%10+1));
+
+            if(position==mAdapter.getCount()-4) {
+                String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
+                AppApi.getCardList(this,bespeak_time,this);
+            }
+
+            if(position==mAdapter.getCount()-1) {
+                if(mNextPageFragments!=null&&mNextPageFragments.size()>0&&mNextPageBeanList!=null&&mNextPageBeanList.size()>0) {
+                    mViewPager.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(mNextPageFragments!=null&&mNextPageFragments.size()==10) {
+                                fragmentList.remove(mFooterPagerFragment);
+                                fragmentList.addAll(mNextPageFragments);
+                                mAdapter.setData(fragmentList);
+                                fragmentList.add(mFooterPagerFragment);
+                                mAdapter.setData(fragmentList);
+                                CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
+                                CardDetail detail = cFrag.getCardDetail();
+                                initDate(detail);
+                                mNextPageBeanList.clear();
+                                mNextPageFragments.clear();
+                            }
+                        }
+                    },500);
+
+                }
+            }
         }
 
-        CardFragment fragment = (CardFragment) fragmentList.get(index);
-        CardDetail cardDetail = fragment.getCardDetail();
-        initDate(cardDetail);
-        mBottomPageNumTv.setText(String.valueOf(index%10+1));
-
-        if(mAdapter.getCount()>=10&&position==mAdapter.getCount()-1) {
-            String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
-            AppApi.getCardList(this,bespeak_time,this);
-            mFooterPagerFragment.startLoading();
-        }
     }
 
     private void initDate(CardDetail cardDetail) {
         String day = cardDetail.getDay();
         String month = cardDetail.getMonth();
         String week = cardDetail.getWeek();
+        mPageNumLayout.setVisibility(View.VISIBLE);
         mBottomPageNumTv.setText("1");
         mDateTv.setText(day);
         mMonthTv.setText(month);
         mWeekTv.setText(week);
 
-//        mLoadingLayout.setVisibility(View.GONE);
-//        mLoadingView.hide();
     }
 
     @Override
@@ -255,7 +284,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
-
             case POST_GET_CARDLIST_JSON:
                 if(obj instanceof CardBean) {
                     CardBean cardBean = (CardBean) obj;
@@ -265,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                     List<CardDetail> list = cardBean.getList();
                     List<Fragment> fragments = new ArrayList<>();
-                    if(list!=null&&list.size()>0) {
+                    if(list !=null&& list.size()>0) {
                         mLoadingLayout.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -273,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                                 mDateLayout.setVisibility(View.VISIBLE);
                                 mPageNumLayout.setVisibility(View.VISIBLE);
                             }
-                        },1000);
+                        },200);
 
                         for(CardDetail detail : list) {
                             detail.setDay(day);
@@ -281,20 +309,24 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                             detail.setMonth(month);
                             fragments.add(CardFragment.newInstance(detail));
                         }
-                        // 如果返回数据不为空，当前是第一页添加底部页，否则在底部页之前添加
-                        if(fragments.size()>0) {
-                            if(fragmentList.size()==0) {
-                                fragments.add(mFooterPagerFragment);
-                                fragmentList.addAll(fragments);
-                                mAdapter.setData(fragments);
-                            }else {
-                                fragmentList.addAll(fragmentList.size()-1,fragments);
-                                mAdapter.addData(fragments);
-                            }
-                        }
-                        if(fragmentList.size()<=11) {
+
+                        mNextPageFragments.clear();
+                        mNextPageBeanList.clear();
+                        mNextPageBeanList.addAll(list);
+                        mNextPageFragments.addAll(fragments);
+                        if(fragmentList.size()==0) {
                             initDate(list.get(0));
                         }
+
+                        if(fragmentList.size()==0) {
+                            fragmentList.addAll(fragments);
+                            fragmentList.add(mFooterPagerFragment);
+                            mAdapter.setData(fragmentList);
+                            mNextPageFragments.clear();
+                            mNextPageBeanList.clear();
+                        }
+
+
                     }else {
                         if(fragmentList.size()==0) {
                             mLoadingLayout.setVisibility(View.VISIBLE);
@@ -315,6 +347,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (method) {
             case POST_GET_CARDLIST_JSON:
                 mFooterPagerFragment.loadFailed();
+                mNextPageBeanList = null;
+                mNextPageFragments = null;
                 break;
         }
     }

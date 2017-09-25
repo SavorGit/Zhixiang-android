@@ -51,6 +51,8 @@ public class AppApi {
         POST_VERSION_JSON,
         /**详情页*/
         POST_CARD_DETAIL_JSON,
+        /**是否收藏*/
+        POST_IS_COLLECTED_JSON,
     }
 
     /**
@@ -69,7 +71,7 @@ public class AppApi {
             put(Action.POST_ADD_MY_COLLECTION_JSON, formatPhpUrl("Dailyknowledge/Collection/addMyCollection"));
             put(Action.POST_VERSION_JSON, formatPhpUrl("Dailyknowledge/Version/index"));
             put(Action.POST_CARD_DETAIL_JSON, formatPhpUrl("Dailyknowledge/Content/getDetail"));
-
+            put(Action.POST_IS_COLLECTED_JSON, formatPhpUrl("Dailyknowledge/Collection/isCollected"));
         }
     };
 
@@ -180,6 +182,17 @@ public class AppApi {
         final HashMap<String, Object> params = new HashMap<>();
         params.put("dailyid", dailyid);
         new AppServiceOk(context, Action.POST_CARD_DETAIL_JSON, handler, params).post();
+    }
+
+    /**
+     * 文章详情页
+     * @param context
+     * @param handler
+     */
+    public static void isCollected(Context context,String dailyid ,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("dailyid", dailyid);
+        new AppServiceOk(context, Action.POST_IS_COLLECTED_JSON, handler, params).post();
     }
 
     // 超时（网络）异常

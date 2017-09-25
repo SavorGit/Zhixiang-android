@@ -7,6 +7,8 @@ import android.content.Intent;
 import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.savor.zhixiang.core.Session;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.Map;
 
@@ -33,7 +35,7 @@ public class SavorApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
         Session.get(this);
         mInstance = this;
-
+        UMShareAPI.get(this);
         initUmengPush();
 
 //        Debug.stopMethodTracing();
@@ -43,4 +45,11 @@ public class SavorApplication extends Application {
 
     }
 
+    //各个平台的配置，建议放在全局Application或者程序入口
+    {
+        PlatformConfig.setWeixin("wx59643f058e9b544c", "ad5cf8b259673427421a1181614c33c7");
+//        PlatformConfig.setQQZone("1105235421", "wZ1iLVjm6vRUyxbv");
+//        PlatformConfig.setSinaWeibo("258257010", "7b2701caad98239314089869bec08982","http://sns.whalecloud.com/sina2/callback");
+//        PlatformConfig.setSinaWeibo("258257010", "7b2701caad98239314089869bec08982","https://api.weibo.com/oauth2/default.html");
+    }
 }

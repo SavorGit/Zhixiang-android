@@ -65,7 +65,7 @@
         <!--意见反馈-->
         <RelativeLayout
             android:layout_below="@id/rl_my_collection"
-            android:id="@+id/rl_feedback"
+            android:id="@+id/rl_all_list"
             android:layout_width="match_parent"
             android:layout_height="48dp">
             <!--<ImageView-->
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textColor="@color/color_main_bg"
-                android:text="意见反馈" />
+                android:text="全部知享" />
 
 
         </RelativeLayout>

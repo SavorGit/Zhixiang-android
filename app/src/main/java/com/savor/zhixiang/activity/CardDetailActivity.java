@@ -11,12 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.common.api.utils.AppUtils;
 import com.common.api.utils.DensityUtil;
 import com.common.api.widget.pulltorefresh.library.PullToRefreshListView;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardDetailListAdapter;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.CardDetailListItem;
+import com.savor.zhixiang.bean.CollectResponse;
 import com.savor.zhixiang.core.AppApi;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     private RelativeLayout mTitleLayout;
     private CardDetail detail;
     private String dailyid;
+    private boolean isCollected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +51,20 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         getViews();
         setViews();
         setListeners();
+        checkisColleted();
+    }
 
+    private void checkisColleted() {
+        if(detail!=null) {
+            dailyid = detail.getDailyid();
+        }
     }
 
     private void handleIntent() {
         Intent intent = getIntent();
         detail = (CardDetail) intent.getSerializableExtra("detail");
         dailyid = intent.getStringExtra("dailyid");
+        AppApi.isCollected(this,dailyid,this);
     }
 
     @Override
@@ -117,6 +127,11 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
             case R.id.ll_back:
                 onBackPressed();
                 break;
+            case R.id.ll_collect:
+                if(!AppUtils.isFastDoubleClick(1)) {
+                    AppApi.addMyCollection(this,dailyid,this);
+                }
+                break;
         }
     }
 
@@ -138,6 +153,27 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
+            case POST_ADD_MY_COLLECTION_JSON:
+                if(isCollected) {
+                    mCollectIv.setImageResource(R.mipmap.ico_uncolect);
+                }else {
+                    mCollectIv.setImageResource(R.mipmap.ico_collected);
+                }
+                isCollected=!isCollected;
+                break;
+            case POST_IS_COLLECTED_JSON:
+                if(obj instanceof CollectResponse) {
+                    CollectResponse collectResponse = (CollectResponse) obj;
+                    String state = collectResponse.getState();
+                    if("0".equals(state)) {
+                        isCollected = false;
+                        mCollectIv.setBackgroundResource(R.mipmap.ico_uncolect);
+                    }else if("1".equals(state)) {
+                        isCollected = true;
+                        mCollectIv.setBackgroundResource(R.mipmap.ico_collected);
+                    }
+                }
+                break;
             case POST_CARD_DETAIL_JSON:
                 if(obj instanceof CardDetail.ContentDetailBean) {
                     CardDetail.ContentDetailBean cardDetailBean = (CardDetail.ContentDetailBean) obj;

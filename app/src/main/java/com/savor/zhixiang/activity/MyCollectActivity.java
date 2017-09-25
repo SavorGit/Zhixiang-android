@@ -1,8 +1,11 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,7 +27,9 @@ import java.util.List;
  * Created by bushlee on 2017/9/21.
  */
 
-public class MyCollectActivity extends BaseActivity implements View.OnClickListener,ApiRequestListener {
+public class MyCollectActivity extends BaseActivity implements View.OnClickListener,
+        ApiRequestListener,
+        AdapterView.OnItemClickListener{
     private Context context;
     private String collecTime = "";
     private PullToRefreshListView mPullRefreshListView;
@@ -68,6 +73,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mPullRefreshListView.setOnRefreshListener(onRefreshListener);
         mPullRefreshListView.setOnLastItemVisibleListener(onLastItemVisibleListener);
         mPullRefreshListView.onLoadComplete(true,false);
+        mPullRefreshListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -169,4 +175,21 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ListItem item = (ListItem)parent.getItemAtPosition(position);
+        String dailyid = item.getDailyid();
+        if (!TextUtils.isEmpty(dailyid)) {
+            Intent intent = new Intent();
+            intent.putExtra("dailyid",dailyid);
+            intent.setClass(MyCollectActivity.this,CardDetailActivity.class);
+            startActivityForResult(intent,10);
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        collecTime = "";
+        isUp = true;
+        getData();
+    }
 }

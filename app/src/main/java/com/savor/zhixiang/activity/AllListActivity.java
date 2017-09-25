@@ -1,8 +1,11 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,7 +27,9 @@ import java.util.List;
  * Created by bushlee on 2017/9/21.
  */
 
-public class AllListActivity extends BaseActivity implements View.OnClickListener,ApiRequestListener {
+public class AllListActivity extends BaseActivity implements View.OnClickListener,
+        ApiRequestListener,
+        AdapterView.OnItemClickListener{
     private Context context;
     private String bespeak_time = "";
     private PullToRefreshListView mPullRefreshListView;
@@ -67,6 +72,7 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
         mPullRefreshListView.setOnRefreshListener(onRefreshListener);
         mPullRefreshListView.setOnLastItemVisibleListener(onLastItemVisibleListener);
         mPullRefreshListView.onLoadComplete(true,false);
+        mPullRefreshListView.setOnItemClickListener(this);
         back.setOnClickListener(this);
     }
 
@@ -173,4 +179,15 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ListItem item = (ListItem)parent.getItemAtPosition(position);
+        String dailyid = item.getDailyid();
+        if (!TextUtils.isEmpty(dailyid)) {
+            Intent intent = new Intent();
+            intent.putExtra("dailyid",dailyid);
+            intent.setClass(AllListActivity.this,CardDetailActivity.class);
+            startActivity(intent);
+        }
+    }
 }

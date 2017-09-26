@@ -97,9 +97,9 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
         UMWeb umWeb = new UMWeb(shareBean.getUrl());
         umWeb.setThumb(new UMImage(context,R.mipmap.ico_drawer));
         umWeb.setTitle(shareBean.getTitle());
-        umWeb.setDescription("投屏神器，进入饭局的才是热点");
+        umWeb.setDescription("每日知享");
         new ShareAction(Activity)
-                .withText("投屏神器，进入饭局的才是热点"+shareBean.getTitle())
+                .withText("每日知享"+shareBean.getTitle())
                 .withMedia(umWeb)
                 .setPlatform(platform)
                 .setCallback(mShareListener)

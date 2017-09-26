@@ -1,5 +1,6 @@
 package com.savor.zhixiang.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,9 @@ import com.savor.zhixiang.adapter.CardDetailListAdapter;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.CardDetailListItem;
 import com.savor.zhixiang.bean.CollectResponse;
+import com.savor.zhixiang.bean.ShareBean;
 import com.savor.zhixiang.core.AppApi;
+import com.savor.zhixiang.widget.ShareDialog;
 
 import java.util.List;
 
@@ -40,6 +43,9 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     private CardDetail detail;
     private String dailyid;
     private boolean isCollected;
+    private ShareDialog shareDialog;
+    private CardDetail.ContentDetailBean cardDetailBean;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_card_detail);
+        context = this;
         handleIntent();
         getViews();
         setViews();
@@ -107,8 +114,8 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         }
 
         if(detail!=null) {
-            CardDetail.ContentDetailBean contentDetail = detail.getContentDetail();
-            initCardDetail(contentDetail);
+            cardDetailBean = detail.getContentDetail();
+            initCardDetail(cardDetailBean);
         }else {
             AppApi.getCardDetail(this,dailyid,this);
         }
@@ -132,6 +139,10 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
                     AppApi.addMyCollection(this,dailyid,this);
                 }
                 break;
+            case R.id.ll_share:
+                toShare();
+                break;
+
         }
     }
 
@@ -150,6 +161,13 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         return statusBarHeight1;
     }
 
+    private void toShare(){
+        ShareBean shareBean = new ShareBean();
+        shareBean.setTitle(cardDetailBean.getTitle());
+        shareBean.setUrl(cardDetailBean.getImgUrl());
+        shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
+        shareDialog.show();
+    }
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
@@ -176,7 +194,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
                 break;
             case POST_CARD_DETAIL_JSON:
                 if(obj instanceof CardDetail.ContentDetailBean) {
-                    CardDetail.ContentDetailBean cardDetailBean = (CardDetail.ContentDetailBean) obj;
+                    cardDetailBean = (CardDetail.ContentDetailBean) obj;
                     initCardDetail(cardDetailBean);
                 }
                 break;

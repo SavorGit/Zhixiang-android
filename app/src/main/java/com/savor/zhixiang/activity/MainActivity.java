@@ -386,8 +386,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.rl_my_collection:
-//                //RecordUtils.onEvent(this,getString(R.string.menu_collection_back));
-//                finish();
+                Intent intent1 = new Intent();
+                intent1.setClass(MainActivity.this,MyCollectActivity.class);
+                startActivity(intent1);
 
                 break;
             case R.id.rl_all_list:

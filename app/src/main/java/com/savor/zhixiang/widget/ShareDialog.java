@@ -31,13 +31,12 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private Context context;
     private CardDetailActivity Activity;
 
-    public ShareDialog(Context context,CardDetailActivity Activity) {
+    public ShareDialog(Context context) {
         super(context, R.style.Dialog_Fullscreen);
         this.context = context;
-        this.Activity = Activity;
     }
 
-    public ShareDialog(Context context, ShareBean shareBean) {
+    public ShareDialog(Context context, ShareBean shareBean,CardDetailActivity Activity) {
         super(context, R.style.Dialog_Fullscreen);
         this.shareBean = shareBean;
         this.context = context;

@@ -29,8 +29,8 @@
 
             <ImageView
                 android:id="@+id/iv_menu"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:src="@mipmap/ico_drawer" />
 
@@ -46,20 +46,17 @@
             android:layout_height="48dp">
 
             <TextView
-                android:gravity="center"
-                style="@style/NavigationTextSytle"
+                android:paddingLeft="30dp"
                 android:layout_width="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_main_bg"
+                android:textSize="16sp"
+                android:drawableLeft="@mipmap/wdshc"
+                android:drawablePadding="10dp"
+                android:textColor="#f0f0f0"
                 android:text="我的收藏" />
 
-            <!--<ImageView-->
-            <!--style="@style/NavigationIconSytle"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:src="@drawable/xiangce_more" />-->
+
         </RelativeLayout>
 
         <!--意见反馈-->
@@ -68,28 +65,30 @@
             android:id="@+id/rl_all_list"
             android:layout_width="match_parent"
             android:layout_height="48dp">
-            <!--<ImageView-->
-            <!--android:id="@+id/feedback_icon"-->
-            <!--android:layout_alignParentLeft="true"-->
-            <!--android:layout_margin = "10dp"-->
-            <!--android:layout_marginLeft = "10dp"-->
-            <!--android:layout_width="20dp"-->
-            <!--android:layout_height="20dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:src="@drawable/cdh_yijianfankui" />-->
-
             <TextView
-                android:layout_centerInParent="true"
-                style="@style/NavigationTextSytle"
-                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:textSize="16sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/color_main_bg"
+                android:textColor="#f0f0f0"
+                android:drawableLeft="@mipmap/qbzhx"
+                android:drawablePadding="10dp"
                 android:text="全部知享" />
 
 
         </RelativeLayout>
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#f0f0f0"
+            android:text="每天十条内容，知世界，享生活"/>
+
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

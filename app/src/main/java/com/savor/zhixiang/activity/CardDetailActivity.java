@@ -164,7 +164,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     private void toShare(){
         ShareBean shareBean = new ShareBean();
         shareBean.setTitle(cardDetailBean.getTitle());
-        shareBean.setUrl(cardDetailBean.getImgUrl());
+        shareBean.setUrl(cardDetailBean.getShare_url());
         shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
         shareDialog.show();
     }

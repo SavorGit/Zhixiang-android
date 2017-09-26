@@ -88,7 +88,6 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
             case R.id.pyq_la:
                 share(SHARE_MEDIA.WEIXIN_CIRCLE);
                 break;
-
         }
     }
 

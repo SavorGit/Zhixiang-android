@@ -74,6 +74,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mPullRefreshListView.setOnLastItemVisibleListener(onLastItemVisibleListener);
         mPullRefreshListView.onLoadComplete(true,false);
         mPullRefreshListView.setOnItemClickListener(this);
+        back.setOnClickListener(this);
     }
 
     @Override

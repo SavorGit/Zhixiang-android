@@ -166,7 +166,9 @@ public class CardDetail implements Serializable {
         private String bespeak_time;
         private String sourceName;
         private String title;
+        private String share_url;
         private List<CardDetailListItem> details;
+
 
         @Override
         public String toString() {
@@ -177,6 +179,7 @@ public class CardDetail implements Serializable {
                     ", bespeak_time='" + bespeak_time + '\'' +
                     ", sourceName='" + sourceName + '\'' +
                     ", title='" + title + '\'' +
+                    ", share_url='" + share_url + '\'' +
                     ", details=" + details +
                     '}';
         }
@@ -184,7 +187,7 @@ public class CardDetail implements Serializable {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (!(o instanceof ContentDetailBean)) return false;
 
             ContentDetailBean that = (ContentDetailBean) o;
 
@@ -197,6 +200,8 @@ public class CardDetail implements Serializable {
             if (sourceName != null ? !sourceName.equals(that.sourceName) : that.sourceName != null)
                 return false;
             if (title != null ? !title.equals(that.title) : that.title != null) return false;
+            if (share_url != null ? !share_url.equals(that.share_url) : that.share_url != null)
+                return false;
             return details != null ? details.equals(that.details) : that.details == null;
 
         }
@@ -209,6 +214,7 @@ public class CardDetail implements Serializable {
             result = 31 * result + (bespeak_time != null ? bespeak_time.hashCode() : 0);
             result = 31 * result + (sourceName != null ? sourceName.hashCode() : 0);
             result = 31 * result + (title != null ? title.hashCode() : 0);
+            result = 31 * result + (share_url != null ? share_url.hashCode() : 0);
             result = 31 * result + (details != null ? details.hashCode() : 0);
             return result;
         }
@@ -267,6 +273,14 @@ public class CardDetail implements Serializable {
 
         public void setDetails(List<CardDetailListItem> details) {
             this.details = details;
+        }
+
+        public String getShare_url() {
+            return share_url;
+        }
+
+        public void setShare_url(String share_url) {
+            this.share_url = share_url;
         }
     }
 }

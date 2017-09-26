@@ -1,9 +1,13 @@
 package com.savor.zhixiang.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -11,30 +15,42 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.common.api.http.callback.FileDownProgress;
+import com.common.api.utils.AppUtils;
 import com.common.api.utils.DensityUtil;
+import com.common.api.utils.FileUtils;
+import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.bean.UpgradeInfo;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
+import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
+import com.savor.zhixiang.widget.UpgradeDialog;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener,
@@ -65,16 +81,23 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private TextView mHintTv;
     private List<Fragment> mNextPageFragments = new ArrayList<>();
     private List<CardDetail> mNextPageBeanList = new ArrayList<>();
-
+    private Context context;
+    private UpgradeInfo upGradeInfo;
+    private Session mSession;
+    private UpgradeDialog mUpgradeDialog;
+    private NotificationManager manager;
+    private Notification notif;
+    private final int NOTIFY_DOWNLOAD_FILE=10001;
+    private  int msg = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        context = this;
+        mSession = Session.get(this);
         getViews();
         setViews();
         setListeners();
-
         checkKeywords();
     }
 
@@ -346,6 +369,60 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     }
                 }
                 break;
+            case POST_UPGRADE_JSON:
+                if (obj instanceof UpgradeInfo) {
+                    upGradeInfo = (UpgradeInfo) obj;
+                    if (upGradeInfo != null) {
+                        setUpGrade();
+                    }
+                }
+                break;
+            case TEST_DOWNLOAD_JSON:
+                if (obj instanceof FileDownProgress){
+                    FileDownProgress fs = (FileDownProgress) obj;
+                    long now = fs.getNow();
+                    long total = fs.getTotal();
+                    if ((int)(((float)now / (float)total)* 100)-msg>=5) {
+                        msg = (int) (((float)now / (float)total)* 100);
+                        notif.contentView.setTextViewText(R.id.content_view_text1,
+                                (Integer) msg + "%");
+                        notif.contentView.setProgressBar(R.id.content_view_progress,
+                                100, (Integer) msg, false);
+                        manager.notify(NOTIFY_DOWNLOAD_FILE, notif);
+                    }
+
+                }else if (obj instanceof File) {
+                    mSession.setApkDownloading(false);
+                    File f = (File) obj;
+                    byte[] fRead;
+                    String md5Value=null;
+                    try {
+                        fRead = FileUtils.readFileToByteArray(f);
+                        md5Value= AppUtils.getMD5(fRead);
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    //比较本地文件版本是否与服务器文件一致，如果一致则启动安装
+                    if (md5Value!=null&&md5Value.equals(upGradeInfo.getMd5())){
+                        if (manager!=null){
+                            manager.cancel(NOTIFY_DOWNLOAD_FILE);
+                        }
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.setDataAndType(Uri.parse("file://" + f.getAbsolutePath()),
+                                "application/vnd.android.package-archive");
+                        startActivity(i);
+                    }else {
+                        if (manager!=null){
+                            manager.cancel(NOTIFY_DOWNLOAD_FILE);
+                        }
+                        ShowMessage.showToast(context,"下载失败");
+                        setUpGrade();
+                    }
+
+                }
+                break;
         }
     }
 
@@ -401,5 +478,95 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             default:
                 break;
         }
+    }
+
+    private void upgrade(){
+        AppApi.Upgrade(context,this);
+    }
+
+    private void setUpGrade(){
+        String upgradeUrl = upGradeInfo.getOss_addr();
+        //String upgradeUrl = "http://a5.pc6.com/pc6_soure/2016-2/com.huiche360.huiche_8.apk";
+
+        if (!TextUtils.isEmpty(upgradeUrl)) {
+            if (STIDUtil.needUpdate(mSession, upGradeInfo)) {
+//                HashMap<String,String> hashMap = new HashMap<>();
+//                hashMap.put(getString(R.string.home_update),"ensure");
+//                RecordUtils.onEvent(this,getString(R.string.home_update),hashMap);
+                String[] content = upGradeInfo.getRemark();
+                if (upGradeInfo.getUpdate_type() == 1) {
+                    mUpgradeDialog = new UpgradeDialog(
+                            context,
+                            TextUtils.isEmpty(upGradeInfo.getVersion_code()+"")?"":"新版本：V"+upGradeInfo.getVersion_code(),
+                            content,
+                            "确定",
+                            forUpdateListener
+                    );
+                    mUpgradeDialog.show();
+                }else {
+                    mUpgradeDialog = new UpgradeDialog(
+                            context,
+                            TextUtils.isEmpty(upGradeInfo.getVersion_code()+"")?"":"新版本：V"+upGradeInfo.getVersion_code(),
+                            content,
+                            "取消",
+                            "确定",
+                            cancelListener,
+                            forUpdateListener
+                    );
+                    mUpgradeDialog.show();
+                }
+
+
+            }else{
+
+
+            }
+        }else {
+
+        }
+
+
+    }
+
+    private View.OnClickListener forUpdateListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mUpgradeDialog.dismiss();
+            downLoadApk(upGradeInfo.getOss_addr());
+            // downLoadApk("http://download.savorx.cn/app-xiaomi-debug.apk");
+        }
+    };
+
+    private View.OnClickListener cancelListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mUpgradeDialog.dismiss();
+        }
+    };
+    protected void downLoadApk(String apkUrl) {
+        if (!mSession.isApkDownloading()){
+            mSession.setApkDownloading(true);
+            // 下载apk包
+            initNotification();
+            AppApi.downApp(context,apkUrl,MainActivity.this);
+        }else{
+            ShowMessage.showToast(context,"下载中,请稍候");
+        }
+    }
+    /**
+     * 初始化Notification
+     */
+    private void initNotification() {
+        manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notif = new Notification();
+        notif.icon = R.mipmap.ic_launcher;
+        notif.tickerText = "下载通知";
+        // 通知栏显示所用到的布局文件
+        notif.contentView = new RemoteViews(context.getPackageName(),
+                R.layout.download_content_view);
+        notif.contentIntent = PendingIntent.getBroadcast(context, 0, new Intent(
+                context.getPackageName()+".debug"), PendingIntent.FLAG_CANCEL_CURRENT);
+        // notif.defaults = Notification.DEFAULT_ALL;
+        manager.notify(NOTIFY_DOWNLOAD_FILE, notif);
     }
 }

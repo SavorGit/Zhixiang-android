@@ -22,6 +22,7 @@ import com.savor.zhixiang.bean.CardDetailListItem;
 import com.savor.zhixiang.bean.CollectResponse;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
+import com.savor.zhixiang.utils.ActivitiesManager;
 
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_card_detail);
+        ActivitiesManager.getInstance().pushActivity(this);
         handleIntent();
         getViews();
         setViews();
@@ -67,6 +69,9 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         detail = (CardDetail) intent.getSerializableExtra("detail");
         dailyid = intent.getStringExtra("dailyid");
+        if(detail!=null) {
+            dailyid = detail.getDailyid();
+        }
         AppApi.isCollected(this, dailyid, this);
     }
 
@@ -182,10 +187,10 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                     String state = collectResponse.getState();
                     if ("0".equals(state)) {
                         isCollected = false;
-                        mCollectIv.setBackgroundResource(R.mipmap.ico_uncolect);
+                        mCollectIv.setImageResource(R.mipmap.ico_uncolect);
                     } else if ("1".equals(state)) {
                         isCollected = true;
-                        mCollectIv.setBackgroundResource(R.mipmap.ico_collected);
+                        mCollectIv.setImageResource(R.mipmap.ico_collected);
                     }
                 }
                 break;
@@ -223,5 +228,11 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                 mAdapter.setData(details);
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivitiesManager.getInstance().popActivity(this);
     }
 }

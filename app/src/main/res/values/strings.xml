@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">每日知享</string>
+    <string name="confirm_exit_app">在按一次退出每日知享</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

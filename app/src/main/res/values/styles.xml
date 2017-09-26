@@ -114,6 +114,7 @@
 
     </style>
 
+
     <!--圆角弹窗style-->
     <style name="loading_dialog" parent="android:style/Theme.Dialog">
         <item name="android:windowBackground">@drawable/dialog_bg</item>

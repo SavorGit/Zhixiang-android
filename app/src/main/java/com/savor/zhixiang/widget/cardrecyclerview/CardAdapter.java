@@ -36,17 +36,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         mCardAdapterHelper.onBindViewHolder(holder.itemView, position, getItemCount());
         holder.mImageView.setImageResource(mList.get(position));
-        holder.mImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(view.getContext(),DetailActivity.class);
-//                if(Build.VERSION.SDK_INT>=21) {
-//                    view.getContext().startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(mActivity, holder.mImageView, "sharedView").toBundle());
-//                }else {
-//                    mActivity.startActivity(intent);
-//                }
-            }
-        });
     }
 
     @Override

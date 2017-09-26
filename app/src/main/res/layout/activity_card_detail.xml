@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rl_parent"
+    android:transitionName="sharedContent"
     android:fitsSystemWindows="true"
     tools:context="com.savor.zhixiang.activity.CardDetailActivity">
 
-    <com.common.api.widget.pulltorefresh.library.PullToRefreshListView
+    <ListView
         android:id="@+id/pts_card_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:transitionName="sharedView"
+        android:listSelector="@null"
+        android:cacheColorHint="@android:color/transparent"
         android:fastScrollEnabled="false"
         android:scrollbars="none"
-        ptr:ptrAnimationStyle="scale"
-        ptr:ptrMode="disabled" />
+         />
 
     <RelativeLayout
         android:id="@+id/rl_title"

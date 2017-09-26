@@ -78,6 +78,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         checkKeywords();
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+//        savedInstanceState.putSerializable("detail",d);
+    }
+
     private void checkKeywords() {
         List<String> keywords = Session.get(this).getKeywords();
         if(keywords!=null&&keywords.size()>0) {
@@ -353,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onError(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
+
                 mFooterPagerFragment.loadFailed();
                 mNextPageBeanList = null;
                 mNextPageFragments = null;

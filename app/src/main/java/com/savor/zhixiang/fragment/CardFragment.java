@@ -1,11 +1,16 @@
 package com.savor.zhixiang.fragment;
 
-import android.app.ActivityOptions;
+import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.transition.Fade;
+import android.support.transition.Transition;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +21,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.common.api.utils.DensityUtil;
-import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.activity.CardDetailActivity;
-import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -63,8 +66,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View parent = inflater.inflate(R.layout.view_card_item,container,false);
         initViews(parent);
-        setViews();
-        setLiteners();
+
         return parent;
     }
 
@@ -77,6 +79,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
 
         mLoadingLayout = (RelativeLayout) parent.findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) parent.findViewById(R.id.av_loading_view);
+
     }
 
     private void setViews() {
@@ -87,10 +90,9 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         layoutParams.width = width;
         layoutParams.height = height;
 
-        Glide.with(getContext()).
-                load(detail.getImgUrl()).
+        Glide.with(getActivity().getApplicationContext()).
+                load(detail.getImgUrl()).asBitmap().dontAnimate().
                 placeholder(R.mipmap.ico_default).
-                crossFade().
                 centerCrop().
                 into(mBannerIv);
 
@@ -127,6 +129,8 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setViews();
+        setLiteners();
     }
 
 
@@ -136,13 +140,8 @@ public class CardFragment extends Fragment implements View.OnClickListener {
             case R.id.parent:
                 Intent intent = new Intent(getContext(), CardDetailActivity.class);
                 intent.putExtra("detail",detail);
-
-                if(Build.VERSION.SDK_INT>=21) {
-                    startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), mParentView, "sharedView").toBundle());
-                }else {
-                    startActivity(intent);
-                }
-
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(mParentView,mParentView.getWidth()/2,mParentView.getHeight()/2,0,0);
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                 break;
         }
     }

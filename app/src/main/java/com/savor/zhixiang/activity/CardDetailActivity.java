@@ -1,34 +1,34 @@
 package com.savor.zhixiang.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.common.api.utils.AppUtils;
 import com.common.api.utils.DensityUtil;
-import com.common.api.widget.pulltorefresh.library.PullToRefreshListView;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardDetailListAdapter;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.CardDetailListItem;
 import com.savor.zhixiang.bean.CollectResponse;
-import com.savor.zhixiang.bean.ShareBean;
+import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
-import com.savor.zhixiang.widget.ShareDialog;
+import com.savor.zhixiang.utils.ActivitiesManager;
 
 import java.util.List;
 
-public class CardDetailActivity extends BaseActivity implements View.OnClickListener {
-    public static final float IMAGE_SCALE = 488/750f;
-    private PullToRefreshListView mRefreshListView;
+public class CardDetailActivity extends AppCompatActivity implements View.OnClickListener, ApiRequestListener {
+    public static final float IMAGE_SCALE = 488 / 750f;
+    private ListView mRefreshListView;
     private LinearLayout mBackBtn;
     private LinearLayout mCollectBtn;
     private LinearLayout mShareLayout;
@@ -43,9 +43,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     private CardDetail detail;
     private String dailyid;
     private boolean isCollected;
-    private ShareDialog shareDialog;
-    private CardDetail.ContentDetailBean cardDetailBean;
-    private Context context;
+    private RelativeLayout mParentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +51,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_card_detail);
-        context = this;
+        ActivitiesManager.getInstance().pushActivity(this);
         handleIntent();
         getViews();
         setViews();
@@ -62,7 +60,7 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
     }
 
     private void checkisColleted() {
-        if(detail!=null) {
+        if (detail != null) {
             dailyid = detail.getDailyid();
         }
     }
@@ -71,12 +69,14 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         Intent intent = getIntent();
         detail = (CardDetail) intent.getSerializableExtra("detail");
         dailyid = intent.getStringExtra("dailyid");
-        AppApi.isCollected(this,dailyid,this);
+        if(detail!=null) {
+            dailyid = detail.getDailyid();
+        }
+        AppApi.isCollected(this, dailyid, this);
     }
 
-    @Override
     public void getViews() {
-        mRefreshListView = (PullToRefreshListView) findViewById(R.id.pts_card_detail);
+        mRefreshListView = (ListView) findViewById(R.id.pts_card_detail);
         mBackBtn = (LinearLayout) findViewById(R.id.ll_back);
         mCollectBtn = (LinearLayout) findViewById(R.id.ll_collect);
         mShareLayout = (LinearLayout) findViewById(R.id.ll_share);
@@ -84,44 +84,45 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
 
         mTitleLayout = (RelativeLayout) findViewById(R.id.rl_title);
 
+        mParentLayout = (RelativeLayout) findViewById(R.id.rl_parent);
+
         initHeaderView();
     }
 
     private void initHeaderView() {
-        mHeaderView = View.inflate(this, R.layout.header_view_card_detail,null);
+        mHeaderView = View.inflate(this, R.layout.header_view_card_detail, null);
         mCardBannerImg = (ImageView) mHeaderView.findViewById(R.id.iv_card_image);
         mTitleTv = (TextView) mHeaderView.findViewById(R.id.tv_title);
         mSourceTv = (TextView) mHeaderView.findViewById(R.id.tv_source);
         mDateTv = (TextView) mHeaderView.findViewById(R.id.tv_date);
     }
 
-    @Override
     public void setViews() {
+        mRefreshListView.addHeaderView(mHeaderView);
         int screenWidth = DensityUtil.getScreenWidth(this);
-        int height = (int) (screenWidth*IMAGE_SCALE);
+        int height = (int) (screenWidth * IMAGE_SCALE);
         ViewGroup.LayoutParams layoutParams = mCardBannerImg.getLayoutParams();
         layoutParams.width = screenWidth;
         layoutParams.height = height;
 
-        mRefreshListView.getRefreshableView().addHeaderView(mHeaderView);
-
         mAdapter = new CardDetailListAdapter(this);
         mRefreshListView.setAdapter(mAdapter);
 
+
         int statusBarHeight = getStatusBarHeight();
-        if(statusBarHeight!=-1) {
-            mTitleLayout.setPadding(0,statusBarHeight*2,0,0);
+        if (statusBarHeight != -1) {
+            mTitleLayout.setPadding(0, statusBarHeight * 2, 0, 0);
         }
 
-        if(detail!=null) {
-            cardDetailBean = detail.getContentDetail();
-            initCardDetail(cardDetailBean);
-        }else {
-            AppApi.getCardDetail(this,dailyid,this);
+        if (detail != null) {
+            CardDetail.ContentDetailBean contentDetail = detail.getContentDetail();
+            initCardDetail(contentDetail);
+        } else {
+            AppApi.getCardDetail(this, dailyid, this);
         }
+
     }
 
-    @Override
     public void setListeners() {
         mBackBtn.setOnClickListener(this);
         mShareLayout.setOnClickListener(this);
@@ -135,14 +136,10 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
                 onBackPressed();
                 break;
             case R.id.ll_collect:
-                if(!AppUtils.isFastDoubleClick(1)) {
-                    AppApi.addMyCollection(this,dailyid,this);
+                if (!AppUtils.isFastDoubleClick(1)) {
+                    AppApi.addMyCollection(this, dailyid, this);
                 }
                 break;
-            case R.id.ll_share:
-                toShare();
-                break;
-
         }
     }
 
@@ -161,58 +158,81 @@ public class CardDetailActivity extends BaseActivity implements View.OnClickList
         return statusBarHeight1;
     }
 
-    private void toShare(){
-        ShareBean shareBean = new ShareBean();
-        shareBean.setTitle(cardDetailBean.getTitle());
-        shareBean.setUrl(cardDetailBean.getShare_url());
-        shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
-        shareDialog.show();
+    @Override
+    public void onBackPressed() {
+        finishAfterTransition();
+//        super.onBackPressed();
+        mTitleLayout.setVisibility(View.GONE);
+        overridePendingTransition(0,R.anim.anim_scale);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,mParentLayout, ViewCompat.getTransitionName(mParentLayout));
+//        ActivityCompat.startActivity(this, intent, options.toBundle());
     }
+
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_ADD_MY_COLLECTION_JSON:
-                if(isCollected) {
+                if (isCollected) {
                     mCollectIv.setImageResource(R.mipmap.ico_uncolect);
-                }else {
+                } else {
                     mCollectIv.setImageResource(R.mipmap.ico_collected);
                 }
-                isCollected=!isCollected;
+                isCollected = !isCollected;
                 break;
             case POST_IS_COLLECTED_JSON:
-                if(obj instanceof CollectResponse) {
+                if (obj instanceof CollectResponse) {
                     CollectResponse collectResponse = (CollectResponse) obj;
                     String state = collectResponse.getState();
-                    if("0".equals(state)) {
+                    if ("0".equals(state)) {
                         isCollected = false;
-                        mCollectIv.setBackgroundResource(R.mipmap.ico_uncolect);
-                    }else if("1".equals(state)) {
+                        mCollectIv.setImageResource(R.mipmap.ico_uncolect);
+                    } else if ("1".equals(state)) {
                         isCollected = true;
-                        mCollectIv.setBackgroundResource(R.mipmap.ico_collected);
+                        mCollectIv.setImageResource(R.mipmap.ico_collected);
                     }
                 }
                 break;
             case POST_CARD_DETAIL_JSON:
-                if(obj instanceof CardDetail.ContentDetailBean) {
-                    cardDetailBean = (CardDetail.ContentDetailBean) obj;
+                if (obj instanceof CardDetail.ContentDetailBean) {
+                    CardDetail.ContentDetailBean cardDetailBean = (CardDetail.ContentDetailBean) obj;
                     initCardDetail(cardDetailBean);
                 }
                 break;
         }
     }
 
+    @Override
+    public void onError(AppApi.Action method, Object obj) {
+
+    }
+
+    @Override
+    public void onNetworkFailed(AppApi.Action method) {
+
+    }
+
     private void initCardDetail(CardDetail.ContentDetailBean cardDetailBean) {
-        if(cardDetailBean!=null) {
+        if (cardDetailBean != null) {
             String imgUrl = cardDetailBean.getImgUrl();
-            Glide.with(this).load(imgUrl).placeholder(R.mipmap.ico_default).centerCrop().into(mCardBannerImg);
+            Glide.with(this).load(imgUrl).centerCrop()
+                    .into(mCardBannerImg);
+
 
             String title = cardDetailBean.getTitle();
             mTitleTv.setText(title);
 
             List<CardDetailListItem> details = cardDetailBean.getDetails();
-            if(details!=null&&details.size()>0) {
+            if (details != null && details.size() > 0) {
                 mAdapter.setData(details);
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivitiesManager.getInstance().popActivity(this);
     }
 }

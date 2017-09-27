@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -41,6 +43,7 @@ import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
+import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
@@ -89,16 +92,33 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private Notification notif;
     private final int NOTIFY_DOWNLOAD_FILE=10001;
     private  int msg = 0;
+    private CardBean cardBean;
+    private DrawerLayout drawer;
+    private long exitTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivitiesManager.getInstance().pushActivity(this);
         context = this;
         mSession = Session.get(this);
         getViews();
         setViews();
         setListeners();
         checkKeywords();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("cardBean",cardBean);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        cardBean = (CardBean) savedInstanceState.getSerializable("cardBean");
     }
 
     private void checkKeywords() {
@@ -155,6 +175,16 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.addOnPageChangeListener(this);
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
+        drawer.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void showKeywordDialog(List<String> keywords) {
@@ -170,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
         LinearLayout menuBtn = (LinearLayout) findViewById(R.id.ll_back);
 
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         right = (RelativeLayout) findViewById(R.id.right);
         left = (RelativeLayout) findViewById(R.id.nav_view);
 
@@ -316,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (method) {
             case POST_GET_CARDLIST_JSON:
                 if(obj instanceof CardBean) {
-                    CardBean cardBean = (CardBean) obj;
+                    cardBean = (CardBean) obj;
                     String day = cardBean.getDay();
                     String month = cardBean.getMonth();
                     String week = cardBean.getWeek();
@@ -430,6 +460,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onError(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
+
                 mFooterPagerFragment.loadFailed();
                 mNextPageBeanList = null;
                 mNextPageFragments = null;
@@ -568,5 +599,30 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 context.getPackageName()+".debug"), PendingIntent.FLAG_CANCEL_CURRENT);
         // notif.defaults = Notification.DEFAULT_ALL;
         manager.notify(NOTIFY_DOWNLOAD_FILE, notif);
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            }else {
+                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                    ShowMessage.showToast(this,getString(R.string.confirm_exit_app));
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    ActivitiesManager.getInstance().popAllActivities();
+                    Process.killProcess(android.os.Process.myPid());
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivitiesManager.getInstance().popActivity(this);
     }
 }

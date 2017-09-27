@@ -4,12 +4,14 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
+import com.common.api.utils.AppUtils;
 import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.savor.zhixiang.core.Session;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -38,6 +40,7 @@ public class SavorApplication extends Application {
         UMShareAPI.get(this);
         initUmengPush();
 
+//        initCachePath();
 //        Debug.stopMethodTracing();
     }
 

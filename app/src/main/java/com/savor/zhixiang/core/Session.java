@@ -67,6 +67,8 @@ public class Session {
     private static final String P_APP_LOGIN_RESPONSE = "pref.savor.login";
     /**是否显示引导图*/
     private static final String P_APP_IS_SHOW_GUIDE = "version_v1.0";
+    /***/
+    private static final String P_APP_LAST_SHOW_KEYWORDS_TIME = "p_app_last_show_keywords_time";
 
     private static final String P_APP_IS_SHOW_SCAN_GUIDE = "isScanGuide";
 
@@ -85,8 +87,6 @@ public class Session {
     private static final String P_APP_DAMAGE_CONFIG = "p_app_damage_config";
     /**首次使用*/
     private static final String P_APP_FIRST_USE = "p_app_first_use";
-    /**最近可投屏酒店*/
-    private static final String P_APP_HOTEL_MAP = "p_app_hotel_map";
 
 
 
@@ -162,6 +162,7 @@ public class Session {
     private String channelId;
     private String boxMac;
     private List<String> keywords;
+    private String lastShowKeyTime;
 
     private Session(Context context) {
 
@@ -215,6 +216,7 @@ public class Session {
 
 
     private void readSettings() {
+        lastShowKeyTime = mPreference.loadStringKey(P_APP_LAST_SHOW_KEYWORDS_TIME,"");
         deviceid = STIDUtil.getDeviceId(mContext);
         netType = mPreference.loadStringKey(P_APP_NET_TYPE, "");
         isNeedGuide = mPreference.loadBooleanKey(P_APP_IS_SHOW_GUIDE, isNeedGuide);
@@ -324,6 +326,7 @@ public class Session {
 
         if ("".equals(key) ||P_APP_PLATFORM_URL.equals(key)
                 ||P_APP_AREA_ID.equals(key)
+                || P_APP_LAST_SHOW_KEYWORDS_TIME.equals(key)
                 ) {
             mPreference.saveStringKey(key, (String) updateItem.second);
         }else if(P_APP_IS_SHOW_GUIDE.equals(key)
@@ -497,4 +500,15 @@ public class Session {
     public List<String> getKeywords() {
         return keywords;
     }
+
+    public void setLastShowKeyTime(String time) {
+        this.lastShowKeyTime = time;
+        writePreference(new Pair<String, Object>(P_APP_LAST_SHOW_KEYWORDS_TIME, time));
+    }
+
+    public String getLastShowKeywords() {
+        return lastShowKeyTime;
+    }
+
+
 }

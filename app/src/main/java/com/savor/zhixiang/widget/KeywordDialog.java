@@ -34,6 +34,8 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
     private LayoutInflater mInflater;
     private TextView mCloseBtn;
 
+    private OnAnimEndListener mOnAnimEndListener;
+
     public KeywordDialog(Activity context, List<String> keywords,OnCloseBtnClickListener listener) {
         super(context, R.style.Dialog_Fullscreen);
         this.mContext = context;
@@ -41,6 +43,13 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
         this.onCloseBtnClickListener = listener;
     }
 
+    public KeywordDialog(Activity context, List<String> keywords,OnAnimEndListener listener,OnCloseBtnClickListener onCloseListener) {
+        super(context, R.style.Dialog_Fullscreen);
+        this.mContext = context;
+        this.mKeywords = keywords;
+        this.mOnAnimEndListener = listener;
+        this.onCloseBtnClickListener = onCloseListener;
+    }
 
 
     @Override
@@ -95,6 +104,29 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
                                 ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCloseBtn, alphaHolder).
                                         setDuration(500);
                                 objectAnimator.start();
+                                objectAnimator.addListener(new Animator.AnimatorListener() {
+                                    @Override
+                                    public void onAnimationStart(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationEnd(Animator animation) {
+                                        if(mOnAnimEndListener!=null) {
+                                            mOnAnimEndListener.onAnimEnd();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onAnimationCancel(Animator animation) {
+
+                                    }
+
+                                    @Override
+                                    public void onAnimationRepeat(Animator animation) {
+
+                                    }
+                                });
                             }
                         },1000);
 
@@ -125,5 +157,9 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
 
     public interface OnCloseBtnClickListener {
         void onCloseBtnClick();
+    }
+
+    public interface OnAnimEndListener {
+        void onAnimEnd();
     }
 }

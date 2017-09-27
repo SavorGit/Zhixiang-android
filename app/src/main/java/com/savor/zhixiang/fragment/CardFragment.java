@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,7 +102,9 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         String sourceName = detail.getSourceName();
         mTitleTv.setText(title);
         mDescTv.setText(desc);
-        mSourcetv.setText(sourceName);
+        if(!TextUtils.isEmpty(sourceName)) {
+            mSourcetv.setText("选自："+sourceName);
+        }
 
         mBannerIv.postDelayed(new Runnable() {
             @Override

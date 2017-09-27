@@ -150,7 +150,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         if(obj instanceof ResponseErrorMessage) {
             ResponseErrorMessage message = (ResponseErrorMessage) obj;
             int code = message.getCode();
-            if (code == 3001 && isUp) {
+            if (isUp) {
                 mPullRefreshListView.setVisibility(View.GONE);
                 mLoadingLayout.setVisibility(View.VISIBLE);
                 mLoadingView.hide();

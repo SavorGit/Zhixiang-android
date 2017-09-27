@@ -149,7 +149,7 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
         if(obj instanceof ResponseErrorMessage) {
             ResponseErrorMessage message = (ResponseErrorMessage) obj;
             int code = message.getCode();
-            if (code == 3001 && isUp) {
+            if (isUp) {
                 mPullRefreshListView.setVisibility(View.GONE);
                 mLoadingLayout.setVisibility(View.VISIBLE);
                 mLoadingView.hide();

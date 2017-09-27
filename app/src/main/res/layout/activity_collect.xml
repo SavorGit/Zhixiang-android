@@ -65,6 +65,10 @@
             android:background="@color/color_text_refresh_list_hint"
             android:layout_width="match_parent"
             android:layout_height="37dp" />
+        <include
+            android:id="@+id/rl_loading_layout"
+            layout="@layout/layout_hint"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

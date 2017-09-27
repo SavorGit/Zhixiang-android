@@ -19,6 +19,7 @@ import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.ResponseErrorMessage;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,9 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     private boolean isUp = true;
     private List<ListItem> list = new ArrayList<ListItem>();
     private RelativeLayout back;
+    private RelativeLayout mLoadingLayout;
+    private AVLoadingIndicatorView mLoadingView;
+    private TextView mHintTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,9 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mRefreshDataHinttv = (TextView) findViewById(R.id.tv_refresh_data_hint);
         tv_center = (TextView) findViewById(R.id.tv_center);
         back = (RelativeLayout) findViewById(R.id.back);
+        mLoadingLayout = (RelativeLayout)findViewById(R.id.rl_loading_layout);
+        mLoadingView = (AVLoadingIndicatorView)findViewById(R.id.av_loading_view);
+        mHintTv = (TextView) findViewById(R.id.tv_hint);
     }
 
     @Override
@@ -66,6 +73,11 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         // mListView = mPullRefreshListView.getRefreshableView();
         mPullRefreshListView.setAdapter(mAdapter);
         tv_center.setText("收藏馆");
+    }
+
+    private void hideLodingLayout() {
+        mLoadingLayout.setVisibility(View.GONE);
+        mLoadingView.hide();
     }
 
     @Override
@@ -84,7 +96,12 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
                 //RecordUtils.onEvent(this,getString(R.string.menu_collection_back));
                 finish();
                 break;
-
+            case R.id.rl_loading_layout:
+                mLoadingView.show();
+                collecTime = "";
+                isUp = true;
+                getData();
+                break;
             default:
                 break;
         }
@@ -115,6 +132,9 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         switch (method) {
             case POST_GET_MY_COLLECTION_JSON:
                // mProgressLayout.loadSuccess();
+                mLoadingLayout.setVisibility(View.GONE);
+                mLoadingLayout.setOnClickListener(null);
+                mPullRefreshListView.setVisibility(View.VISIBLE);
                 mPullRefreshListView.onRefreshComplete();
                 if(obj instanceof List<?>) {
                     List<ListItem> mList = (List<ListItem>) obj;
@@ -129,8 +149,17 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
 
         if(obj instanceof ResponseErrorMessage) {
             ResponseErrorMessage message = (ResponseErrorMessage) obj;
-            String msg = message.getMessage();
-            ShowMessage.showToast(this,msg);
+            int code = message.getCode();
+            if (code == 3001 && isUp) {
+                mPullRefreshListView.setVisibility(View.GONE);
+                mLoadingLayout.setVisibility(View.VISIBLE);
+                mLoadingView.hide();
+                mHintTv.setVisibility(View.VISIBLE);
+                mHintTv.setText("没有数据");
+                mLoadingLayout.setOnClickListener(this);
+            }
+//            String msg = message.getMessage();
+//            ShowMessage.showToast(this,msg);
         }
     }
 

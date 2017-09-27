@@ -19,6 +19,7 @@ import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.ResponseErrorMessage;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,9 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
     private List<ListItem> list = new ArrayList<ListItem>();
     private RelativeLayout back;
     private AllListResult allListResult;
+    private RelativeLayout mLoadingLayout;
+    private AVLoadingIndicatorView mLoadingView;
+    private TextView mHintTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,9 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
         mRefreshDataHinttv = (TextView) findViewById(R.id.tv_refresh_data_hint);
         tv_center = (TextView) findViewById(R.id.tv_center);
         back = (RelativeLayout) findViewById(R.id.back);
+        mLoadingLayout = (RelativeLayout)findViewById(R.id.rl_loading_layout);
+        mLoadingView = (AVLoadingIndicatorView)findViewById(R.id.av_loading_view);
+        mHintTv = (TextView) findViewById(R.id.tv_hint);
     }
 
     @Override
@@ -82,6 +89,12 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
             case R.id.back:
                 //RecordUtils.onEvent(this,getString(R.string.menu_collection_back));
                 finish();
+                break;
+            case R.id.rl_loading_layout:
+                mLoadingView.show();
+                bespeak_time = "";
+                isUp = true;
+                getData();
                 break;
 
             default:
@@ -114,6 +127,9 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
         switch (method) {
             case POST_GET_ALL_LIST_JSON:
                 // mProgressLayout.loadSuccess();
+                mLoadingLayout.setVisibility(View.GONE);
+                mLoadingLayout.setOnClickListener(null);
+                mPullRefreshListView.setVisibility(View.VISIBLE);
                 mPullRefreshListView.onRefreshComplete();
                 if(obj instanceof AllListResult) {
                     allListResult = (AllListResult) obj;
@@ -132,8 +148,15 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
         mPullRefreshListView.onRefreshComplete();
         if(obj instanceof ResponseErrorMessage) {
             ResponseErrorMessage message = (ResponseErrorMessage) obj;
-            String msg = message.getMessage();
-            ShowMessage.showToast(this,msg);
+            int code = message.getCode();
+            if (code == 3001 && isUp) {
+                mPullRefreshListView.setVisibility(View.GONE);
+                mLoadingLayout.setVisibility(View.VISIBLE);
+                mLoadingView.hide();
+                mHintTv.setVisibility(View.VISIBLE);
+                mHintTv.setText("没有数据");
+                mLoadingLayout.setOnClickListener(this);
+            }
         }
     }
 

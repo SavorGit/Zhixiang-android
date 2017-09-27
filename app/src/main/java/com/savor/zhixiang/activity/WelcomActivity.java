@@ -78,4 +78,8 @@ public class WelcomActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void onError(AppApi.Action method, Object obj) {
+    }
 }

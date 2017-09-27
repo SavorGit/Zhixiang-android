@@ -62,6 +62,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *   默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页
+ *   加载页显示loading动画延迟0.3秒更新列表
+ *   另外一种情况是加载失败，在加载页点击重新加载，这时候如果在加载页返回数据直接更新列表
+ *   请求数据返回时，如果当前页不是最后一页时，更新下一个分页十条数据放入缓存集合
+ *   如果是最后加载页，立即更新页面数据并清除下一个分页缓存
+ * @author hezd created on 2017/09/27
+ */
 public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener,
         ViewPager.OnPageChangeListener,
         ApiRequestListener,

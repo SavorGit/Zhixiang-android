@@ -155,7 +155,12 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
                 mLoadingLayout.setVisibility(View.VISIBLE);
                 mLoadingView.hide();
                 mHintTv.setVisibility(View.VISIBLE);
-                mHintTv.setText("没有数据");
+                if (code == 3001) {
+                    mHintTv.setText("您还没有收藏~");
+                }else {
+                    mHintTv.setText("没有数据");
+                }
+
                 mLoadingLayout.setOnClickListener(this);
             }
 //            String msg = message.getMessage();

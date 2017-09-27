@@ -51,7 +51,6 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private ShareBean shareBean;
     private CardDetail.ContentDetailBean cardDetailBean;
     private Context context;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

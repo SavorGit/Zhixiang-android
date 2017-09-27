@@ -1,5 +1,8 @@
 package com.savor.zhixiang.activity;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -113,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         }
     };
     private KeywordDialog mKeywordsDialog;
+    private int lastValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -308,7 +312,21 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        if (positionOffset != 0) {
+            if (lastValue >= positionOffsetPixels) {
+                //右滑
+                if(mFooterPagerFragment!=null) {
+                    FooterPagerFragment.LoadingType currentType = mFooterPagerFragment.getCurrentType();
+                    if(position == mAdapter.getCount()-2&&currentType == FooterPagerFragment.LoadingType.LOAD_NO_DATA) {
+                        ShowMessage.showToast(this,"没有更多数据了");
+                    }
+                }
+            } else if (lastValue < positionOffsetPixels) {
+                //左滑
 
+            }
+        }
+        lastValue = positionOffsetPixels;
     }
 
     @Override
@@ -325,7 +343,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
             CardFragment fragment = (CardFragment) fragmentList.get(index);
             final CardDetail cardDetail = fragment.getCardDetail();
-            initDate(cardDetail);
+            initDate(cardDetail,frag instanceof CardFragment);
             mBottomPageNumTv.setText(String.valueOf(index%10+1));
 
             if(position==mAdapter.getCount()-4) {
@@ -339,19 +357,28 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                         @Override
                         public void run() {
                             if(mNextPageFragments!=null&&mNextPageFragments.size()==10) {
-                                fragmentList.remove(mFooterPagerFragment);
-                                fragmentList.addAll(mNextPageFragments);
-                                mAdapter.setData(fragmentList);
-                                fragmentList.add(mFooterPagerFragment);
-                                mAdapter.setData(fragmentList);
-                                CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
-                                CardDetail detail = cFrag.getCardDetail();
-                                initDate(detail);
-                                mNextPageBeanList.clear();
-                                mNextPageFragments.clear();
+                                mViewPager.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        fragmentList.remove(mFooterPagerFragment);
+                                        fragmentList.addAll(mNextPageFragments);
+                                        mAdapter.setData(fragmentList);
+                                        fragmentList.add(mFooterPagerFragment);
+                                        mAdapter.setData(fragmentList);
+                                        CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
+                                        CardDetail detail = cFrag.getCardDetail();
+
+
+                                        showDateLayoutAlphaAnim(detail);
+
+                                        mNextPageBeanList.clear();
+                                        mNextPageFragments.clear();
+                                    }
+                                });
+
                             }
                         }
-                    },500);
+                    },300);
 
                 }
             }
@@ -359,11 +386,44 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     }
 
-    private void initDate(CardDetail cardDetail) {
+    private void showDateLayoutAlphaAnim(final CardDetail detail) {
+
+        PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0f,1f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mDateLayout, alphaHolder).
+                setDuration(500);
+        objectAnimator.start();
+        objectAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                initDate(detail,true);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+    }
+
+    private void initDate(CardDetail cardDetail,boolean isShowDateLayout) {
         String day = cardDetail.getDay();
         String month = cardDetail.getMonth();
         String week = cardDetail.getWeek();
-//        mPageNumLayout.setVisibility(View.VISIBLE);
+        if(isShowDateLayout) {
+            mPageNumLayout.setVisibility(View.VISIBLE);
+        }else {
+            mPageNumLayout.setVisibility(View.INVISIBLE);
+        }
         mBottomPageNumTv.setText("1");
         mDateTv.setText(day);
         mMonthTv.setText(month);
@@ -424,7 +484,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                         }
 
                         if(fragmentList.size()==0) {
-                            initDate(list.get(0));
+                            initDate(list.get(0),true);
                         }
 
                         if(fragmentList.size()==0) {

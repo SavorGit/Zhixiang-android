@@ -18,8 +18,8 @@
             android:id="@+id/content_small_img"
             android:scaleType="fitXY"
             android:src="@drawable/kong_mrjz"
-            android:layout_width="115dp"
-            android:layout_height="80dp" />
+            android:layout_width="130dp"
+            android:layout_height="84dp" />
         <TextView
             android:id="@+id/length"
             android:visibility="gone"

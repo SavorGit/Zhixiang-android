@@ -3,7 +3,9 @@ package com.savor.zhixiang.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -64,13 +66,13 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private void setViews() {
         mShareManager = ShareManager.getInstance();
         mShareListener = new ShareManager.CustomShareListener(Activity);
-//        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
-//        layoutParams.gravity= Gravity.CENTER;
-//        layoutParams.width= WindowManager.LayoutParams.MATCH_PARENT;
-//
-//        getWindow().getDecorView().setPadding(0, 0, 0, 0);
-//
-//        getWindow().setAttributes(layoutParams);
+        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+        layoutParams.gravity= Gravity.CENTER;
+        layoutParams.width= WindowManager.LayoutParams.MATCH_PARENT;
+
+        getWindow().getDecorView().setPadding(0, 0, 0, 0);
+
+        getWindow().setAttributes(layoutParams);
     }
 
     private void setListeners() {
@@ -81,14 +83,14 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.weixin_la:
-                share(SHARE_MEDIA.WEIXIN);
-                break;
-            case R.id.pyq_la:
-                share(SHARE_MEDIA.WEIXIN_CIRCLE);
-                break;
-        }
+//        switch (v.getId()) {
+//            case R.id.weixin_la:
+//               share(SHARE_MEDIA.WEIXIN);
+//                break;
+//            case R.id.pyq_la:
+//                share(SHARE_MEDIA.WEIXIN_CIRCLE);
+//                break;
+//        }
     }
 
     private void share(SHARE_MEDIA platform){

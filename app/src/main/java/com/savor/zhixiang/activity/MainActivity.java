@@ -1,5 +1,8 @@
 package com.savor.zhixiang.activity;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -59,6 +62,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *   1.默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合
+ *   2.当滑动到最后一页加载页显示loading动画延迟0.3秒更新列表
+ *   3.另外一种情况是加载失败，在加载页点击重新加载，这时候如果在加载页返回数据直接更新列表并清除下一个分页缓存
+ *   4.请求数据返回时，如果当前页不是最后一页时，将下一个分页十条数据放入缓存集合，并执行第2条逻辑
+ * @author hezd created on 2017/09/27
+ */
 public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener,
         ViewPager.OnPageChangeListener,
         ApiRequestListener,
@@ -113,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         }
     };
     private KeywordDialog mKeywordsDialog;
+    private int lastValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -308,13 +319,29 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        if (positionOffset != 0) {
+            if (lastValue >= positionOffsetPixels) {
+                //右滑
+                if(mFooterPagerFragment!=null) {
+                    FooterPagerFragment.LoadingType currentType = mFooterPagerFragment.getCurrentType();
+                    if(position == mAdapter.getCount()-2&&currentType == FooterPagerFragment.LoadingType.LOAD_NO_DATA) {
+                        ShowMessage.showToast(this,"没有更多数据了");
+                    }
+                }
+            } else if (lastValue < positionOffsetPixels) {
+                //左滑
 
+            }
+        }
+        lastValue = positionOffsetPixels;
     }
 
     @Override
     public void onPageSelected(int position) {
         final Fragment frag = fragmentList.get(position);
+        // 如果当前不是第一页数据
         if(mAdapter.getCount()>=11) {
+            // 获取当前页日期时间并更新右上角日期
             int index = position;
             if(!(frag instanceof CardFragment)) {
                 index = position-1;
@@ -325,33 +352,45 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
             CardFragment fragment = (CardFragment) fragmentList.get(index);
             final CardDetail cardDetail = fragment.getCardDetail();
-            initDate(cardDetail);
+            initDate(cardDetail,frag instanceof CardFragment);
+            // 更新底部页码
             mBottomPageNumTv.setText(String.valueOf(index%10+1));
 
+            // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
             if(position==mAdapter.getCount()-4) {
                 String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
                 AppApi.getCardList(this,bespeak_time,this);
             }
 
+            // 如果滑动到最后一页加载页，判断如果有预加载的数据则，显示loading动画延迟0.3秒更新列表
             if(position==mAdapter.getCount()-1) {
                 if(mNextPageFragments!=null&&mNextPageFragments.size()>0&&mNextPageBeanList!=null&&mNextPageBeanList.size()>0) {
                     mViewPager.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             if(mNextPageFragments!=null&&mNextPageFragments.size()==10) {
-                                fragmentList.remove(mFooterPagerFragment);
-                                fragmentList.addAll(mNextPageFragments);
-                                mAdapter.setData(fragmentList);
-                                fragmentList.add(mFooterPagerFragment);
-                                mAdapter.setData(fragmentList);
-                                CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
-                                CardDetail detail = cFrag.getCardDetail();
-                                initDate(detail);
-                                mNextPageBeanList.clear();
-                                mNextPageFragments.clear();
+                                mViewPager.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        fragmentList.remove(mFooterPagerFragment);
+                                        fragmentList.addAll(mNextPageFragments);
+                                        mAdapter.setData(fragmentList);
+                                        fragmentList.add(mFooterPagerFragment);
+                                        mAdapter.setData(fragmentList);
+                                        CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
+                                        CardDetail detail = cFrag.getCardDetail();
+
+
+                                        showDateLayoutAlphaAnim(detail);
+
+                                        mNextPageBeanList.clear();
+                                        mNextPageFragments.clear();
+                                    }
+                                });
+
                             }
                         }
-                    },500);
+                    },300);
 
                 }
             }
@@ -359,11 +398,44 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     }
 
-    private void initDate(CardDetail cardDetail) {
+    private void showDateLayoutAlphaAnim(final CardDetail detail) {
+
+        PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0f,1f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mDateLayout, alphaHolder).
+                setDuration(500);
+        objectAnimator.start();
+        objectAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                initDate(detail,true);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+    }
+
+    private void initDate(CardDetail cardDetail,boolean isShowDateLayout) {
         String day = cardDetail.getDay();
         String month = cardDetail.getMonth();
         String week = cardDetail.getWeek();
-//        mPageNumLayout.setVisibility(View.VISIBLE);
+        if(isShowDateLayout) {
+            mPageNumLayout.setVisibility(View.VISIBLE);
+        }else {
+            mPageNumLayout.setVisibility(View.INVISIBLE);
+        }
         mBottomPageNumTv.setText("1");
         mDateTv.setText(day);
         mMonthTv.setText(month);
@@ -389,6 +461,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                     List<CardDetail> list = cardBean.getList();
                     List<Fragment> fragments = new ArrayList<>();
+                    // 如果列表有数据
                     if(list !=null&& list.size()>0) {
                         mLoadingLayout.postDelayed(new Runnable() {
                             @Override
@@ -398,14 +471,17 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                                 mPageNumLayout.setVisibility(View.VISIBLE);
                             }
                         },200);
-
+                        // 重新卡片数据，将日期时间添加进去，当切换到某个页面时，更新日期时间
                         for(CardDetail detail : list) {
                             detail.setDay(day);
                             detail.setWeek(week);
                             detail.setMonth(month);
                             fragments.add(CardFragment.newInstance(detail));
                         }
-
+                        //  默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表请
+                        // 另外一种情况是加载失败，在加载页点击重新加载，这时候如果在加载页返回数据直接更新列表
+                        // 请求数据返回时，如果当前页不是最后一页时，更新下一个分页十条数据放入缓存集合
+                        // 如果是最后加载页，立即更新页面数据并清除下一个分页缓存
                         if(mViewPager.getCurrentItem()!=mAdapter.getCount()-1) {
                             mNextPageFragments.clear();
                             mNextPageBeanList.clear();
@@ -423,8 +499,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                             mBottomPageNumTv.setText("1");
                         }
 
+                        // 如果是第一次请求数据，这时更新列表数据不会执行onpageselected所以会导致页码不显示
+                        // 所以判断如果是第一次加载数据更新页面，并直接更新列表
+                        // 以后第二次更新数据，是在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表
                         if(fragmentList.size()==0) {
-                            initDate(list.get(0));
+                            initDate(list.get(0),true);
                         }
 
                         if(fragmentList.size()==0) {
@@ -437,6 +516,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
 
                     }else {
+                        // 如果是第一次并且没有数据，更新加载布局提示没有数据
                         if(fragmentList.size()==0) {
                             mLoadingLayout.setVisibility(View.VISIBLE);
                             mLoadingView.hide();

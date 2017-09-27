@@ -82,6 +82,10 @@ public class FooterPagerFragment extends Fragment implements View.OnClickListene
         mHintTv.setText("没有更多数据了");
     }
 
+    public LoadingType getCurrentType () {
+        return currentType;
+    }
+
    public void loadFailed() {
        currentType = LoadingType.LOAD_FAILED;
        mLoadingView.hide();

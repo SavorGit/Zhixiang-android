@@ -233,7 +233,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private void initCardDetail(CardDetail.ContentDetailBean cardDetailBean) {
         if (cardDetailBean != null) {
             String imgUrl = cardDetailBean.getImgUrl();
-            Glide.with(this).load(imgUrl).centerCrop()
+            Glide.with(this).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
                     .into(mCardBannerImg);
 
 

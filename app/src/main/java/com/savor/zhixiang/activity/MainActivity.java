@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private void getData() {
         AppApi.getCardList(this,"",this);
-
     }
 
 
@@ -346,6 +345,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (method) {
             case POST_GET_CARDLIST_JSON:
                 if(obj instanceof CardBean) {
+                    mLoadingLayout.setOnClickListener(null);
                     cardBean = (CardBean) obj;
                     String day = cardBean.getDay();
                     String month = cardBean.getMonth();
@@ -460,8 +460,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onError(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
-
-                mFooterPagerFragment.loadFailed();
+                mHintTv.setVisibility(View.VISIBLE);
+                mHintTv.setText("加载失败，点击重试");
+                mLoadingView.hide();
+                mLoadingLayout.setOnClickListener(this);
                 mNextPageBeanList = null;
                 mNextPageFragments = null;
                 break;
@@ -493,6 +495,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.rl_loading_layout:
+                mLoadingView.show();
+                getData();
+                break;
             case R.id.rl_my_collection:
                 Intent intent1 = new Intent();
                 intent1.setClass(MainActivity.this,MyCollectActivity.class);

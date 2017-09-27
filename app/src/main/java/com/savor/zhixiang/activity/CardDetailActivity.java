@@ -1,5 +1,6 @@
 package com.savor.zhixiang.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,9 +21,11 @@ import com.savor.zhixiang.adapter.CardDetailListAdapter;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.CardDetailListItem;
 import com.savor.zhixiang.bean.CollectResponse;
+import com.savor.zhixiang.bean.ShareBean;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.savor.zhixiang.widget.ShareDialog;
 
 import java.util.List;
 
@@ -44,6 +47,10 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private String dailyid;
     private boolean isCollected;
     private RelativeLayout mParentLayout;
+    private ShareDialog shareDialog;
+    private ShareBean shareBean;
+    private CardDetail.ContentDetailBean cardDetailBean;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_card_detail);
+        context = this;
         ActivitiesManager.getInstance().pushActivity(this);
         handleIntent();
         getViews();
@@ -115,8 +123,8 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         }
 
         if (detail != null) {
-            CardDetail.ContentDetailBean contentDetail = detail.getContentDetail();
-            initCardDetail(contentDetail);
+            cardDetailBean = detail.getContentDetail();
+            initCardDetail(cardDetailBean);
         } else {
             AppApi.getCardDetail(this, dailyid, this);
         }
@@ -140,9 +148,19 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                     AppApi.addMyCollection(this, dailyid, this);
                 }
                 break;
+            case R.id.ll_share:
+                toShare();
+                break;
         }
     }
 
+    private void toShare(){
+        shareBean = new ShareBean();
+        shareBean.setTitle(cardDetailBean.getTitle());
+        shareBean.setUrl(cardDetailBean.getShare_url());
+        shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
+        shareDialog.show();
+    }
     private int getStatusBarHeight() {
         /**
          * 获取状态栏高度——方法1
@@ -196,7 +214,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                 break;
             case POST_CARD_DETAIL_JSON:
                 if (obj instanceof CardDetail.ContentDetailBean) {
-                    CardDetail.ContentDetailBean cardDetailBean = (CardDetail.ContentDetailBean) obj;
+                    cardDetailBean = (CardDetail.ContentDetailBean) obj;
                     initCardDetail(cardDetailBean);
                 }
                 break;

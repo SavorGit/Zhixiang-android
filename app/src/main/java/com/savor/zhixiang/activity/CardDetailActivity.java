@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.common.api.utils.AppUtils;
 import com.common.api.utils.DensityUtil;
+import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardDetailListAdapter;
 import com.savor.zhixiang.bean.CardDetail;
@@ -193,8 +195,10 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
             case POST_ADD_MY_COLLECTION_JSON:
                 if (isCollected) {
                     mCollectIv.setImageResource(R.mipmap.ico_uncolect);
+                    ShowMessage.showToast(this,"取消收藏");
                 } else {
                     mCollectIv.setImageResource(R.mipmap.ico_collected);
+                    ShowMessage.showToast(this,"收藏成功");
                 }
                 isCollected = !isCollected;
                 break;
@@ -238,7 +242,13 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
 
 
             String title = cardDetailBean.getTitle();
+            String sourceName = cardDetailBean.getSourceName();
+            String bespeak_time = cardDetailBean.getBespeak_time();
             mTitleTv.setText(title);
+            if(!TextUtils.isEmpty(sourceName))
+            mSourceTv.setText("选自："+sourceName);
+            mDateTv.setText(bespeak_time);
+
 
             List<CardDetailListItem> details = cardDetailBean.getDetails();
             if (details != null && details.size() > 0) {

@@ -9,6 +9,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -30,6 +32,7 @@ import android.widget.Toast;
 
 import com.common.api.http.callback.FileDownProgress;
 import com.common.api.utils.AppUtils;
+import com.common.api.utils.DateUtil;
 import com.common.api.utils.DensityUtil;
 import com.common.api.utils.FileUtils;
 import com.common.api.utils.ShowMessage;
@@ -53,7 +56,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener,
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         FooterPagerFragment.OnclickReloadListener,
         View.OnClickListener{
 
+    private static final int DIALOG_DISMISS = 0x1;
     private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
@@ -96,6 +100,20 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private DrawerLayout drawer;
     private long exitTime;
 
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case DIALOG_DISMISS:
+                    if(mKeywordsDialog!=null&&mKeywordsDialog.isShowing()) {
+                        mKeywordsDialog.dismiss();
+                    }
+                    break;
+            }
+        }
+    };
+    private KeywordDialog mKeywordsDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         setViews();
         setListeners();
         checkKeywords();
+        getData();
     }
 
     @Override
@@ -124,9 +143,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private void checkKeywords() {
         List<String> keywords = Session.get(this).getKeywords();
         if(keywords!=null&&keywords.size()>0) {
-            showKeywordDialog(keywords);
-        }else {
-            getData();
+            long time = new Date().getTime();
+            String currentTime = DateUtil.formatDay(time);
+            String lastShowKeywords = mSession.getLastShowKeywords();
+            if(!currentTime.equals(lastShowKeywords)) {
+                mSession.setLastShowKeyTime(currentTime);
+                showKeywordDialog(keywords);
+            }
         }
     }
 
@@ -187,17 +210,25 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     }
 
     private void showKeywordDialog(List<String> keywords) {
-        new KeywordDialog(this, keywords, new KeywordDialog.OnCloseBtnClickListener() {
+        mKeywordsDialog = new KeywordDialog(this, keywords, new KeywordDialog.OnAnimEndListener() {
+            @Override
+            public void onAnimEnd() {
+                mHandler.sendEmptyMessageDelayed(DIALOG_DISMISS,2000);
+            }
+        }, new KeywordDialog.OnCloseBtnClickListener() {
             @Override
             public void onCloseBtnClick() {
-                getData();
+                mHandler.removeMessages(DIALOG_DISMISS);
+                mHandler.removeCallbacksAndMessages(null);
             }
-        }).show();
+        });
+        mKeywordsDialog.show();
+
     }
 
     private void initDrawerLayout() {
 
-        LinearLayout menuBtn = (LinearLayout) findViewById(R.id.ll_back);
+        final LinearLayout menuBtn = (LinearLayout) findViewById(R.id.ll_back);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         right = (RelativeLayout) findViewById(R.id.right);
@@ -224,6 +255,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 right.layout(left.getRight(), 0, left.getRight() + display.getWidth(), display.getHeight());
                 //控制是否隐藏两边相邻内容
                 mViewPager.setClipChildren(slideOffset>0.4);
+                if(slideOffset>0.4) {
+                    menuBtn.setVisibility(View.INVISIBLE);
+                }else {
+                    menuBtn.setVisibility(View.VISIBLE);
+                }
             }
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -327,7 +363,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         String day = cardDetail.getDay();
         String month = cardDetail.getMonth();
         String week = cardDetail.getWeek();
-        mPageNumLayout.setVisibility(View.VISIBLE);
+//        mPageNumLayout.setVisibility(View.VISIBLE);
         mBottomPageNumTv.setText("1");
         mDateTv.setText(day);
         mMonthTv.setText(month);
@@ -370,10 +406,23 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                             fragments.add(CardFragment.newInstance(detail));
                         }
 
-                        mNextPageFragments.clear();
-                        mNextPageBeanList.clear();
-                        mNextPageBeanList.addAll(list);
-                        mNextPageFragments.addAll(fragments);
+                        if(mViewPager.getCurrentItem()!=mAdapter.getCount()-1) {
+                            mNextPageFragments.clear();
+                            mNextPageBeanList.clear();
+                            mNextPageBeanList.addAll(list);
+                            mNextPageFragments.addAll(fragments);
+                        }else {
+                            fragmentList.remove(mFooterPagerFragment);
+                            fragmentList.addAll(fragments);
+                            mAdapter.setData(fragmentList);
+                            fragmentList.add(mFooterPagerFragment);
+                            mAdapter.setData(fragmentList);
+                            mNextPageFragments.clear();
+                            mNextPageBeanList.clear();
+                            mPageNumLayout.setVisibility(View.VISIBLE);
+                            mBottomPageNumTv.setText("1");
+                        }
+
                         if(fragmentList.size()==0) {
                             initDate(list.get(0));
                         }
@@ -460,12 +509,17 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onError(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
-                mHintTv.setVisibility(View.VISIBLE);
-                mHintTv.setText("加载失败，点击重试");
-                mLoadingView.hide();
-                mLoadingLayout.setOnClickListener(this);
-                mNextPageBeanList = null;
-                mNextPageFragments = null;
+                if(mAdapter.getCount()<11) {
+                    mHintTv.setVisibility(View.VISIBLE);
+                    mHintTv.setText("加载失败，点击重试");
+                    mLoadingView.hide();
+                    mLoadingLayout.setOnClickListener(this);
+                }else if(fragmentList.contains(mFooterPagerFragment)) {
+                    mFooterPagerFragment.loadFailed();
+                }
+
+                mNextPageBeanList.clear();
+                mNextPageFragments.clear();
                 break;
         }
     }
@@ -488,8 +542,15 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 }
             }
         }
-        AppApi.getCardList(this,btime,this);
         mFooterPagerFragment.startLoading();
+        final String finalBtime = btime;
+        mViewPager.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AppApi.getCardList(MainActivity.this, finalBtime,MainActivity.this);
+            }
+        },1000);
+
     }
 
     @Override
@@ -497,6 +558,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (v.getId()){
             case R.id.rl_loading_layout:
                 mLoadingView.show();
+                mHintTv.setVisibility(View.GONE);
                 getData();
                 break;
             case R.id.rl_my_collection:

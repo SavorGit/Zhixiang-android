@@ -25,6 +25,8 @@
                 android:transitionName="sharedView" />
 
             <TextView
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,13 +54,14 @@
                 tools:text="选自：MEEU有你" />
 
             <TextView
+                android:maxLines="5"
+                android:ellipsize="end"
                 android:id="@+id/tv_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/tv_source"
                 android:layout_below="@id/tv_title"
                 android:lineSpacingExtra="10dp"
-                android:maxLength="200"
                 android:paddingLeft="11dp"
                 android:paddingRight="11dp"
                 android:textColor="@color/color_444444"

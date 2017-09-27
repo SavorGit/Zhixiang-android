@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <LinearLayout
+        android:layout_marginBottom="25dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:layout_width="match_parent"
@@ -37,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-
+            android:id="@+id/tv_date"
             android:textColor="@color/color_999999"
             android:textSize="12sp"
             tools:text="2017.09.14"

@@ -23,7 +23,7 @@ public class AllListAdapter extends BaseAdapter{
     //为三种布局定义一个标识
     private final int TYPE_SMALL = 0;
     private final int TYPE_BIG = 1;
-    public static final float SCAL = 1.829f;
+    public static final float IMAGE_SCALE = 400/630f;
     public AllListAdapter(Context mcontext){
         this.context = mcontext;
     }
@@ -64,14 +64,16 @@ public class AllListAdapter extends BaseAdapter{
             holderSmall.contentSmallTitleTV = (TextView) convertView.findViewById(R.id.content_small_title);
             holderSmall.contentSmallSourceTV = (TextView) convertView.findViewById(R.id.content_small_source);
             holderSmall.contentSmallTimeTV = (TextView) convertView.findViewById(R.id.content_small_time);
-            ViewGroup.LayoutParams layoutParams = holderSmall.contentSmallImgIV.getLayoutParams();
-            float widthInPx = DensityUtil.getWidthInPx(context);
-            float height = widthInPx*SCAL;
-            layoutParams.height = (int) height;
             convertView.setTag(R.id.tag_holder, holderSmall);
         } else {
             holderSmall = (AllListAdapter.ViewHolderSmall) convertView.getTag(R.id.tag_holder);
         }
+        ViewGroup.LayoutParams layoutParams = holderSmall.contentSmallImgIV.getLayoutParams();
+        int screenWidth = DensityUtil.getScreenWidth(context);
+        int width = screenWidth-DensityUtil.dip2px(context,28)*2;
+        int height = (int) (width*IMAGE_SCALE);
+        layoutParams.width = width;
+        layoutParams.height = height;
         final ListItem itemVo = commonList.get(position);
         Glide.with(context)
                 .load(itemVo.getImgUrl())

@@ -460,7 +460,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onError(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
-
+                fragmentList.add(mFooterPagerFragment);
+                mAdapter.setData(fragmentList);
                 mFooterPagerFragment.loadFailed();
                 mNextPageBeanList = null;
                 mNextPageFragments = null;

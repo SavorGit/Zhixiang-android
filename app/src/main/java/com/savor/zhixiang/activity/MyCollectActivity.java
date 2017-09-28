@@ -43,6 +43,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     private RelativeLayout mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
     private TextView mHintTv;
+    private ImageView icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mLoadingLayout = (RelativeLayout)findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView)findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
+        icon = (ImageView) findViewById(R.id.icon);
     }
 
     @Override
@@ -160,7 +162,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
                 }else {
                     mHintTv.setText("没有数据");
                 }
-
+                icon.setBackgroundResource(R.mipmap.kong_shc);
                 mLoadingLayout.setOnClickListener(this);
             }
 //            String msg = message.getMessage();

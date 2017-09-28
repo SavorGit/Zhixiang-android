@@ -30,6 +30,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
+import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -260,10 +261,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 isDrawer=true;
                 //获取屏幕的宽高
-                WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-                Display display = manager.getDefaultDisplay();
-                //设置右面的布局位置  根据左面菜单的right作为右面布局的left   左面的right+屏幕的宽度（或者right的宽度这里是相等的）为右面布局的right
-                right.layout(left.getRight(), 0, left.getRight() + display.getWidth(), display.getHeight());
+                right.scrollTo(left.getRight()*-1 ,0);
                 //控制是否隐藏两边相邻内容
                 mViewPager.setClipChildren(slideOffset>0.4);
                 if(slideOffset>0.4) {

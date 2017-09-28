@@ -114,6 +114,12 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         layoutParams.width = screenWidth;
         layoutParams.height = height;
 
+        if(cardDetailBean!=null) {
+            String imgUrl = cardDetailBean.getImgUrl();
+            Glide.with(getApplicationContext()).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
+                    .into(mCardBannerImg);
+        }
+
         mAdapter = new CardDetailListAdapter(this);
         mRefreshListView.setAdapter(mAdapter);
 
@@ -146,7 +152,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.ll_collect:
                 if(!AppUtils.isNetworkAvailable(this)) {
-                    ShowMessage.showToast(this,"操作失败");
+                    ShowMessage.showToast(this,"暂无网络，请稍后重试");
                 }else {
                     if (!AppUtils.isFastDoubleClick(1)) {
                         AppApi.addMyCollection(this, dailyid, this);
@@ -223,7 +229,9 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
             case POST_CARD_DETAIL_JSON:
                 if (obj instanceof CardDetail.ContentDetailBean) {
                     cardDetailBean = (CardDetail.ContentDetailBean) obj;
-                    initCardDetail(cardDetailBean);
+                    if(!isFinishing()) {
+                        initCardDetail(cardDetailBean);
+                    }
                 }
                 break;
         }
@@ -242,7 +250,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private void initCardDetail(CardDetail.ContentDetailBean cardDetailBean) {
         if (cardDetailBean != null) {
             String imgUrl = cardDetailBean.getImgUrl();
-            Glide.with(this).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
+            Glide.with(getApplicationContext()).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
                     .into(mCardBannerImg);
 
 

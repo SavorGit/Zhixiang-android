@@ -576,7 +576,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 if(mAdapter.getCount()<11) {
                     ShowMessage.showToast(this,"加载失败");
                     mHintTv.setVisibility(View.VISIBLE);
-                    mHintTv.setText("加载失败，点击重试");
+                    mHintTv.setText("网络连接失败，点击重试");
                     mLoadingView.hide();
                     mLoadingLayout.setOnClickListener(this);
                 }else if(fragmentList.contains(mFooterPagerFragment)) {

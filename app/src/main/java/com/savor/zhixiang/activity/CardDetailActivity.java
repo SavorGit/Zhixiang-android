@@ -145,9 +145,14 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                 onBackPressed();
                 break;
             case R.id.ll_collect:
-                if (!AppUtils.isFastDoubleClick(1)) {
-                    AppApi.addMyCollection(this, dailyid, this);
+                if(!AppUtils.isNetworkAvailable(this)) {
+                    ShowMessage.showToast(this,"操作失败");
+                }else {
+                    if (!AppUtils.isFastDoubleClick(1)) {
+                        AppApi.addMyCollection(this, dailyid, this);
+                    }
                 }
+
                 break;
             case R.id.ll_share:
                 toShare();

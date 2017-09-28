@@ -324,8 +324,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             if(!(frag instanceof CardFragment)) {
                 index = position-1;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
+                mDateLayout.setVisibility(View.INVISIBLE);
             }else {
                 mPageNumLayout.setVisibility(View.VISIBLE);
+                mDateLayout.setVisibility(View.VISIBLE);
             }
 
             CardFragment fragment = (CardFragment) fragmentList.get(index);
@@ -411,8 +413,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         String week = cardDetail.getWeek();
         if(isShowDateLayout) {
             mPageNumLayout.setVisibility(View.VISIBLE);
+            mDateLayout.setVisibility(View.VISIBLE);
         }else {
             mPageNumLayout.setVisibility(View.INVISIBLE);
+            mDateLayout.setVisibility(View.INVISIBLE);
         }
         mBottomPageNumTv.setText("1");
         mDateTv.setText(day);
@@ -475,6 +479,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                             mNextPageBeanList.clear();
                             mPageNumLayout.setVisibility(View.VISIBLE);
                             mBottomPageNumTv.setText("1");
+                            mDateLayout.setVisibility(View.VISIBLE);
+                            initDate(list.get(0),true);
                         }
 
                         // 如果是第一次请求数据，这时更新列表数据不会执行onpageselected所以会导致页码不显示
@@ -568,6 +574,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (method) {
             case POST_GET_CARDLIST_JSON:
                 if(mAdapter.getCount()<11) {
+                    ShowMessage.showToast(this,"加载失败");
                     mHintTv.setVisibility(View.VISIBLE);
                     mHintTv.setText("加载失败，点击重试");
                     mLoadingView.hide();

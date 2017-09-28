@@ -77,8 +77,8 @@ public class AllListAdapter extends BaseAdapter{
         final ListItem itemVo = commonList.get(position);
         Glide.with(context)
                 .load(itemVo.getImgUrl())
-                .placeholder(R.drawable.kong_mrjz)
-                .error(R.drawable.kong_mrjz)
+                .placeholder(R.mipmap.ico_common_list)
+                .error(R.mipmap.ico_common_list)
                 .crossFade()
                 .into(holderSmall.contentSmallImgIV);
         holderSmall.contentSmallTitleTV.setText(itemVo.getTitle());

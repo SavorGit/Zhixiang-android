@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.common.api.utils.DensityUtil;
+import com.common.api.utils.LogUtils;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.activity.CardDetailActivity;
 import com.savor.zhixiang.bean.CardDetail;
@@ -92,11 +93,10 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         layoutParams.height = height;
 
         Glide.with(getActivity().getApplicationContext()).
-                load(detail.getImgUrl()).asBitmap().dontAnimate().
+                load(detail.getImgUrl()).centerCrop().
                 placeholder(R.mipmap.ico_default).
-                centerCrop().
                 into(mBannerIv);
-
+        LogUtils.d("savor:image cardfragment imageurl--"+detail.getImgUrl());
         String title = detail.getTitle();
         String desc = detail.getDesc();
         String sourceName = detail.getSourceName();

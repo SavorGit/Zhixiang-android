@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.common.api.utils.AppUtils;
 import com.common.api.utils.DensityUtil;
+import com.common.api.utils.LogUtils;
 import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardDetailListAdapter;
@@ -113,12 +114,6 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         ViewGroup.LayoutParams layoutParams = mCardBannerImg.getLayoutParams();
         layoutParams.width = screenWidth;
         layoutParams.height = height;
-
-        if(cardDetailBean!=null) {
-            String imgUrl = cardDetailBean.getImgUrl();
-            Glide.with(getApplicationContext()).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
-                    .into(mCardBannerImg);
-        }
 
         mAdapter = new CardDetailListAdapter(this);
         mRefreshListView.setAdapter(mAdapter);
@@ -250,10 +245,18 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private void initCardDetail(CardDetail.ContentDetailBean cardDetailBean) {
         if (cardDetailBean != null) {
             String imgUrl = cardDetailBean.getImgUrl();
-            Glide.with(getApplicationContext()).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
+
+            int screenWidth = DensityUtil.getScreenWidth(this);
+            float overriedScale = 400/630f;
+            int width = screenWidth-DensityUtil.dip2px(this,28)*2;
+            int height = (int) (width*overriedScale);
+            Glide.with(getApplicationContext()).
+                    load(imgUrl).centerCrop().
+                    placeholder(R.mipmap.ico_default).
+                    override(width,height)
                     .into(mCardBannerImg);
 
-
+            LogUtils.d("savor:image carddetail imageurl--"+imgUrl);
             String title = cardDetailBean.getTitle();
             String sourceName = cardDetailBean.getSourceName();
             String bespeak_time = cardDetailBean.getBespeak_time();

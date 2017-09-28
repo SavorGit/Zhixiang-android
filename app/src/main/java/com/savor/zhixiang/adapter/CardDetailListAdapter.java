@@ -155,7 +155,10 @@ public class CardDetailListAdapter extends BaseAdapter {
                     }
                     break;
             }
+        }else if(position==count-1) {
+            layoutParams.height = DensityUtil.dip2px(mContext,25);
         }
+
     }
 
     public class TextHolder {

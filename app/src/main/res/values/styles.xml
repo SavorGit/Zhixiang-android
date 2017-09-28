@@ -38,7 +38,7 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-    <style name="noAnimation" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+    <style name="noAnimation" parent="android:Theme.Light.NoTitleBar.Fullscreen">
 
         <item name="android:windowBackground">@mipmap/ico_splash</item>
         <item name="android:scaleType">centerCrop</item>
@@ -69,37 +69,45 @@
 
     </style>
 
-    <style name="WelTheme" parent="AppTheme.NoActionBar">
+    <style name="SplashTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
 
         <item name="android:windowBackground">@mipmap/ico_splash</item>
         <item name="android:scaleType">centerCrop</item>
 
-        <item name="android:activityOpenEnterAnimation">@null</item>
+        <!--<item name="android:activityOpenEnterAnimation">@null</item>-->
 
-        <item name="android:activityOpenExitAnimation">@null</item>
+        <!--<item name="android:activityOpenExitAnimation">@anim/anim_scale_bigger</item>-->
 
-        <item name="android:activityCloseEnterAnimation">@null</item>
+        <!--<item name="android:activityCloseEnterAnimation">@null</item>-->
 
-        <item name="android:activityCloseExitAnimation">@null</item>
-
-        <item name="android:taskOpenEnterAnimation">@null</item>
-
-        <item name="android:taskOpenExitAnimation">@null</item>
-
-        <item name="android:taskCloseEnterAnimation">@null</item>
-
-        <item name="android:taskCloseExitAnimation">@null</item>
-
-        <item name="android:taskToFrontEnterAnimation">@null</item>
-
-        <item name="android:taskToFrontExitAnimation">@null</item>
-
-        <item name="android:taskToBackEnterAnimation">@null</item>
-
-        <item name="android:taskToBackExitAnimation">@null</item>
+        <!--<item name="android:activityCloseExitAnimation">@anim/anim_scale_bigger</item>-->
 
     </style>
 
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/activityAnim</item>
+    </style>
+    <!-- 使用style方式定义activity切换动画 -->
+    <style name="activityAnim">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+
+    </style>
+
+    <style name="WelTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/WelAnim</item>
+    </style>
+    <style name="WelAnim">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_close</item>
+
+    </style>
 
     <style name="loading_progress_bar" parent="AppTheme.NoActionBar">
         <item name="android:windowFrame">@null</item>

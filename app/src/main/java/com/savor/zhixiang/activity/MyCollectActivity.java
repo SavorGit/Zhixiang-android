@@ -162,7 +162,8 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
                 }else {
                     mHintTv.setText("没有数据");
                 }
-                icon.setBackgroundResource(R.mipmap.kong_shc);
+                //icon.setBackgroundResource(R.mipmap.kong_shc);
+                icon.setImageResource(R.mipmap.kong_shc);
                 mLoadingLayout.setOnClickListener(this);
             }
 //            String msg = message.getMessage();

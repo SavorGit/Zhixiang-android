@@ -29,6 +29,7 @@ import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.widget.ShareDialog;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -278,5 +279,19 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     protected void onDestroy() {
         super.onDestroy();
         ActivitiesManager.getInstance().popActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+        MobclickAgent.onPageStart(this.getClass().getName());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+        MobclickAgent.onPageEnd(this.getClass().getName());
     }
 }

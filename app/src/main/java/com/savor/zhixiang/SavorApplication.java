@@ -8,6 +8,7 @@ import com.common.api.utils.AppUtils;
 import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.savor.zhixiang.core.Session;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
@@ -35,6 +36,7 @@ public class SavorApplication extends Application {
 
         // 设置异常捕获处理类
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+        MobclickAgent.openActivityDurationTrack(false);
         Session.get(this);
         mInstance = this;
         UMShareAPI.get(this);

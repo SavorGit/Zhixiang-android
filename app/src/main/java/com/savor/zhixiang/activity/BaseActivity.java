@@ -11,6 +11,7 @@ import com.savor.zhixiang.core.ResponseErrorMessage;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.interfaces.IBaseView;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * 基类
@@ -34,11 +35,15 @@ public abstract class BaseActivity extends FragmentActivity implements ApiReques
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(this);
+        MobclickAgent.onPageStart(this.getClass().getName());
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        MobclickAgent.onPause(this);
+        MobclickAgent.onPageEnd(this.getClass().getName());
     }
 
     @Override

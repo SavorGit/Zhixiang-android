@@ -79,7 +79,7 @@ public class FooterPagerFragment extends Fragment implements View.OnClickListene
         currentType = LoadingType.LOAD_NO_DATA;
         mLoadingView.hide();
         mHintTv.setVisibility(View.VISIBLE);
-        mHintTv.setText("没有更多数据了");
+        mHintTv.setText("您已看完全部内容");
     }
 
     public LoadingType getCurrentType () {

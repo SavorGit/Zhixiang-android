@@ -44,11 +44,11 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/WelTheme" />
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".activity.WelcomActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+            android:theme="@style/WelTheme" />
         <activity
             android:name=".activity.AllListActivity"
             android:configChanges="orientation|screenSize"

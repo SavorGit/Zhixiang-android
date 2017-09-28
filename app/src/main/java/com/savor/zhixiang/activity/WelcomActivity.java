@@ -1,11 +1,12 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
 import com.savor.zhixiang.R;
@@ -36,30 +37,15 @@ public class WelcomActivity extends BaseActivity {
 
     @Override
     public void setViews() {
-        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f,0f);
-        alphaAnimation.setDuration(1500);
-        alphaAnimation.setFillAfter(true);
-        alphaAnimation.setInterpolator(new DecelerateInterpolator());
-        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+        mSplashIv.postDelayed(new Runnable() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
+            public void run() {
                 Intent intent = new Intent(WelcomActivity.this,MainActivity.class);
                 startActivity(intent);
-                finish();
+                WelcomActivity.this.finish();
             }
+        },3000);
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        mSplashIv.startAnimation(alphaAnimation);
-        //tv_1.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/ACaslonPro-Italic.otf"));
     }
 
     @Override

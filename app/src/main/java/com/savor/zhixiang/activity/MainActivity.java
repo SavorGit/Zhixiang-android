@@ -264,11 +264,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 right.scrollTo(left.getRight()*-1 ,0);
                 //控制是否隐藏两边相邻内容
                 mViewPager.setClipChildren(slideOffset>0.4);
-                if(slideOffset>0.4) {
-                    menuBtn.setVisibility(View.INVISIBLE);
-                }else {
-                    menuBtn.setVisibility(View.VISIBLE);
-                }
             }
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -317,21 +312,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (positionOffset != 0) {
-            if (lastValue >= positionOffsetPixels) {
-                //右滑
-                if(mFooterPagerFragment!=null) {
-                    FooterPagerFragment.LoadingType currentType = mFooterPagerFragment.getCurrentType();
-                    if(position == mAdapter.getCount()-2&&currentType == FooterPagerFragment.LoadingType.LOAD_NO_DATA) {
-                        ShowMessage.showToast(this,"没有更多数据了");
-                    }
-                }
-            } else if (lastValue < positionOffsetPixels) {
-                //左滑
-
-            }
-        }
-        lastValue = positionOffsetPixels;
     }
 
     @Override

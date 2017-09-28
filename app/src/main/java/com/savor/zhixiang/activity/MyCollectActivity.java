@@ -72,7 +72,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         mAdapter = new AllListAdapter(context);
         // mListView = mPullRefreshListView.getRefreshableView();
         mPullRefreshListView.setAdapter(mAdapter);
-        tv_center.setText("收藏馆");
+        tv_center.setText("我的收藏");
     }
 
     private void hideLodingLayout() {

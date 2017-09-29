@@ -59,4 +59,9 @@ public class SplashActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void onError(AppApi.Action method, Object obj) {
+
+    }
 }

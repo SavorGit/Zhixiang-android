@@ -27,6 +27,7 @@ import com.savor.zhixiang.bean.AllListResult;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.CollectResponse;
+import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.bean.UpgradeInfo;
 
@@ -229,7 +230,7 @@ public class ApiResponseFactory {
                 System.out.println(info);
                 break;
             case POST_GET_KEYWORDS_JSON:
-                result = gson.fromJson(info,new TypeToken<List<String>>(){}.getType());
+                result = gson.fromJson(info,new TypeToken<KeywordsBean>(){}.getType());
                 break;
             case POST_GET_CARDLIST_JSON:
                 result = gson.fromJson(info,CardBean.class);

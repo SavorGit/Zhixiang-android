@@ -36,6 +36,7 @@ import com.common.api.utils.AppUtils;
 import com.common.api.utils.LogUtils;
 import com.common.api.utils.Pair;
 import com.common.api.utils.SaveFileData;
+import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.utils.STIDUtil;
 
 import java.io.ByteArrayInputStream;
@@ -44,7 +45,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
 
 /**
  * @author Administrator
@@ -69,6 +69,7 @@ public class Session {
     private static final String P_APP_IS_SHOW_GUIDE = "version_v1.0";
     /***/
     private static final String P_APP_LAST_SHOW_KEYWORDS_TIME = "p_app_last_show_keywords_time";
+    private static final String P_APP_LAST_KEYWORDS = "p_app_last_keywords";
 
     private static final String P_APP_IS_SHOW_SCAN_GUIDE = "isScanGuide";
 
@@ -161,8 +162,7 @@ public class Session {
     private String channelName;
     private String channelId;
     private String boxMac;
-    private List<String> keywords;
-    private String lastShowKeyTime;
+    private KeywordsBean keywordsBean;
 
     private Session(Context context) {
 
@@ -216,7 +216,7 @@ public class Session {
 
 
     private void readSettings() {
-        lastShowKeyTime = mPreference.loadStringKey(P_APP_LAST_SHOW_KEYWORDS_TIME,"");
+        keywordsBean = (KeywordsBean) getObj(P_APP_LAST_KEYWORDS);
         deviceid = STIDUtil.getDeviceId(mContext);
         netType = mPreference.loadStringKey(P_APP_NET_TYPE, "");
         isNeedGuide = mPreference.loadBooleanKey(P_APP_IS_SHOW_GUIDE, isNeedGuide);
@@ -493,22 +493,14 @@ public class Session {
         return buffer.toString();
     }
 
-    public void setKeywords(List<String> keywords) {
-        this.keywords = keywords;
+    public void setKeywords(KeywordsBean keywordsBean) {
+        this.keywordsBean = keywordsBean;
+        setObj(P_APP_LAST_KEYWORDS,keywordsBean);
+//        writePreference(new Pair<String, Object>(P_APP_LAST_KEYWORDS, keywordsBean));
     }
 
-    public List<String> getKeywords() {
-        return keywords;
+    public KeywordsBean getKeywords() {
+        return keywordsBean;
     }
-
-    public void setLastShowKeyTime(String time) {
-        this.lastShowKeyTime = time;
-        writePreference(new Pair<String, Object>(P_APP_LAST_SHOW_KEYWORDS_TIME, time));
-    }
-
-    public String getLastShowKeywords() {
-        return lastShowKeyTime;
-    }
-
 
 }

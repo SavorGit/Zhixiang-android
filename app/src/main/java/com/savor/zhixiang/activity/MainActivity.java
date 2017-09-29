@@ -8,6 +8,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -22,15 +23,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
-import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
-import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,17 +37,20 @@ import com.common.api.utils.AppUtils;
 import com.common.api.utils.DateUtil;
 import com.common.api.utils.DensityUtil;
 import com.common.api.utils.FileUtils;
+import com.common.api.utils.LogUtils;
 import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
+import com.savor.zhixiang.receiver.HomeKeyReceiver;
 import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         View.OnClickListener{
 
     private static final int DIALOG_DISMISS = 0x1;
+    private static final int KILL_APP = 100;
+    private static final long KILL_DELAYED_TIME = 1000 * 60 * 2;
     private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
@@ -116,6 +119,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
+                case KILL_APP:
+                    LogUtils.d("savor:home 后台超过指定时间，killApp");
+                    exitApp();
+                    break;
                 case DIALOG_DISMISS:
                     if(mKeywordsDialog!=null&&mKeywordsDialog.isShowing()) {
                         mKeywordsDialog.dismiss();
@@ -126,6 +133,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     };
     private KeywordDialog mKeywordsDialog;
     private int lastValue;
+    private HomeKeyReceiver homeKeyReceiver;
+    /**最新请求到的keywords*/
+    private KeywordsBean currentKeywords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,11 +144,27 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         ActivitiesManager.getInstance().pushActivity(this);
         context = this;
         mSession = Session.get(this);
+        handleIntent();
         getViews();
         setViews();
         setListeners();
         checkKeywords();
         getData();
+        registeHomeKeyReceiver();
+    }
+
+    private void handleIntent() {
+        Intent intent = getIntent();
+        currentKeywords = (KeywordsBean) intent.getSerializableExtra("keywords");
+    }
+
+    /**
+     * 监听按下home键
+     */
+    private void registeHomeKeyReceiver() {
+        homeKeyReceiver = new HomeKeyReceiver();
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        registerReceiver(homeKeyReceiver,intentFilter);
     }
 
     @Override
@@ -154,14 +180,27 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     }
 
     private void checkKeywords() {
-        List<String> keywords = Session.get(this).getKeywords();
-        if(keywords!=null&&keywords.size()>0) {
-            long time = new Date().getTime();
-            String currentTime = DateUtil.formatDay(time);
-            String lastShowKeywords = mSession.getLastShowKeywords();
-            if(!currentTime.equals(lastShowKeywords)) {
-                mSession.setLastShowKeyTime(currentTime);
-                showKeywordDialog(keywords);
+        // 当前请求的关键词和历史保存的关键词做比较
+        // 如果没有历史关键词，直接显示关键词并保存到本地
+        // 如果有历史关键词，判断如果时间不一致则显示关键词并保存当前请求的关键词
+        KeywordsBean lastKeywords = Session.get(this).getKeywords();
+        if(currentKeywords!=null) {
+            if(lastKeywords == null) {
+                List<String> list = currentKeywords.getList();
+                if(list!=null&&list.size()>0) {
+                    showKeywordDialog(list);
+                    mSession.setKeywords(currentKeywords);
+                }
+            }else {
+                String put_time = lastKeywords.getPut_time();
+                String currentTime = currentKeywords.getPut_time();
+                if(!put_time.equals(currentTime)) {
+                    List<String> list = currentKeywords.getList();
+                    if(list!=null&&list.size()>0) {
+                        showKeywordDialog(list);
+                        mSession.setKeywords(currentKeywords);
+                    }
+                }
             }
         }
     }
@@ -746,18 +785,25 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     ShowMessage.showToast(this,getString(R.string.confirm_exit_app));
                     exitTime = System.currentTimeMillis();
                 } else {
-                    ActivitiesManager.getInstance().popAllActivities();
-                    Process.killProcess(android.os.Process.myPid());
+                    exitApp();
                 }
             }
         }
         return true;
     }
 
+    private void exitApp() {
+        ActivitiesManager.getInstance().popAllActivities();
+        Process.killProcess(Process.myPid());
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ActivitiesManager.getInstance().popActivity(this);
+        if(homeKeyReceiver!=null) {
+            unregisterReceiver(homeKeyReceiver);
+        }
     }
 
     @Override
@@ -772,5 +818,18 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         super.onPause();
         MobclickAgent.onPause(this);
         MobclickAgent.onPageEnd(this.getClass().getName());
+    }
+
+    public void killAppDelyed() {
+        LogUtils.d("savor:home 延迟指定时间killApp");
+        mHandler.sendEmptyMessageDelayed(KILL_APP,KILL_DELAYED_TIME);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        LogUtils.d("savor:home 回到前台取消杀死app任务");
+        mHandler.removeMessages(KILL_APP);
+        mHandler.removeCallbacksAndMessages(null);
     }
 }

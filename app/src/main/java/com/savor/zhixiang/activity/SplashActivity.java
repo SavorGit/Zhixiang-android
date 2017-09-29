@@ -8,11 +8,15 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.core.AppApi;
+import com.savor.zhixiang.widget.KeywordDialog;
 
 import java.util.List;
 
 public class SplashActivity extends BaseActivity {
+
+    private KeywordsBean keywords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 // 因为启动页设置主题背景图片以后，渐隐的动画被遮罩看不到，所有放到欢迎页做
                 Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                intent.putExtra("keywords",keywords);
                 startActivity(intent);
                 finish();
             }
@@ -52,9 +57,8 @@ public class SplashActivity extends BaseActivity {
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_KEYWORDS_JSON:
-                if(obj instanceof List) {
-                    List<String> keywords = (List<String>) obj;
-                    mSession.setKeywords(keywords);
+                if(obj instanceof KeywordsBean) {
+                    keywords = (KeywordsBean) obj;
                 }
                 break;
         }

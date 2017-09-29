@@ -47,10 +47,6 @@
             android:theme="@style/AppTheme.NoActionBar"
              />
         <activity
-            android:name=".activity.WelcomActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/WelTheme" />
-        <activity
             android:name=".activity.AllListActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />

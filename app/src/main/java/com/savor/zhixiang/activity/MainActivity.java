@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     private static final int DIALOG_DISMISS = 0x1;
     private static final int KILL_APP = 100;
-    private static final long KILL_DELAYED_TIME = 1000 * 60 * 2;
+    private static final long KILL_DELAYED_TIME = 1000 * 60 * 10;
     private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;

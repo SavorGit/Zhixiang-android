@@ -28,6 +28,7 @@ import com.savor.zhixiang.bean.ShareBean;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.widget.ShareDialog;
 import com.umeng.analytics.MobclickAgent;
 
@@ -157,6 +158,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
 
                 break;
             case R.id.ll_share:
+                RecordUtils.onEvent(this,R.string.news_share_detail_share);
                 toShare();
                 break;
         }
@@ -284,14 +286,17 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
-        MobclickAgent.onPageStart(this.getClass().getName());
+        RecordUtils.onEvent(this,R.string.news_share_detail_open);
+        RecordUtils.onEvent(this,R.string.news_share_detail_start);
+        RecordUtils.onPageStart(this,getString(R.string.news_share_home_card_show));
+        RecordUtils.onPageStartAndResume(this,this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
-        MobclickAgent.onPageEnd(this.getClass().getName());
+        RecordUtils.onEvent(this,R.string.news_share_detail_end);
+        RecordUtils.onPageEnd(this,getString(R.string.news_share_home_card_show));
+        RecordUtils.onPageEndAndPause(this,this);
     }
 }

@@ -142,7 +142,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.parent:
-//                RecordUtils.onEvent(this,getString(R.string.menu_collection));
+                RecordUtils.onEvent(getActivity(),getString(R.string.news_share_home_card_click));
                 Intent intent = new Intent(getContext(), CardDetailActivity.class);
                 intent.putExtra("detail",detail);
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(mParentView,mParentView.getWidth()/2,mParentView.getHeight()/2,0,0);

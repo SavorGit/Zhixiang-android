@@ -52,6 +52,7 @@ import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
 import com.savor.zhixiang.receiver.HomeKeyReceiver;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     exitApp();
                     break;
                 case DIALOG_DISMISS:
+                    RecordUtils.onEvent(MainActivity.this,R.string.news_share_key_words_hide);
                     if(mKeywordsDialog!=null&&mKeywordsDialog.isShowing()) {
                         mKeywordsDialog.dismiss();
                     }
@@ -262,6 +264,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     }
 
     private void showKeywordDialog(List<String> keywords) {
+        RecordUtils.onEvent(this,R.string.news_share_key_words_show);
         mKeywordsDialog = new KeywordDialog(this, keywords, new KeywordDialog.OnAnimEndListener() {
             @Override
             public void onAnimEnd() {
@@ -307,9 +310,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             }
             @Override
             public void onDrawerOpened(View drawerView) {
+                RecordUtils.onEvent(MainActivity.this,R.string.news_share_menu);
             }
             @Override
             public void onDrawerClosed(View drawerView) {
+                RecordUtils.onEvent(MainActivity.this,R.string.news_share_menu_finish);
                 isDrawer=false;
                 mViewPager.setClipChildren(false);
             }
@@ -322,6 +327,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RecordUtils.onEvent(MainActivity.this,getString(R.string.news_share_home_menu));
                 if(!drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.openDrawer(GravityCompat.START);
                 }
@@ -347,11 +353,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageChange(int index) {
-        Toast.makeText(this, "index="+index, Toast.LENGTH_SHORT).show();
+        RecordUtils.onEvent(this,R.string.news_share_home_card_slide);
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
     }
 
     @Override
@@ -667,12 +674,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 getData();
                 break;
             case R.id.rl_my_collection:
+                RecordUtils.onEvent(this,R.string.news_share_menu_collect);
                 Intent intent1 = new Intent();
                 intent1.setClass(MainActivity.this,MyCollectActivity.class);
                 startActivity(intent1);
 
                 break;
             case R.id.rl_all_list:
+                RecordUtils.onEvent(this,R.string.news_share_menu_all);
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,AllListActivity.class);
                 startActivity(intent);
@@ -809,15 +818,15 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
-        MobclickAgent.onPageStart(this.getClass().getName());
+        RecordUtils.onPageStartAndResume(this,this);
+        RecordUtils.onPageStart(this,getString(R.string.news_share_home_start));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
-        MobclickAgent.onPageEnd(this.getClass().getName());
+        RecordUtils.onPageEndAndPause(this,this);
+        RecordUtils.onPageEnd(this,getString(R.string.news_share_home_start));
     }
 
     public void killAppDelyed() {

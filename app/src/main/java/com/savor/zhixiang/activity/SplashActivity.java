@@ -12,6 +12,7 @@ import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.widget.KeywordDialog;
+import com.umeng.socialize.PlatformConfig;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class SplashActivity extends BaseActivity {
             return;
         }
 
-
+        PlatformConfig.setWeixin("wxa5ea2522d1a6785e", "b45b77981f464f0a0b88b6c09ff74673");
         launchMainActivityDelayed();
         AppApi.getKeywords(this,this);
     }

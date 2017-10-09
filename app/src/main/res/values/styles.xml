@@ -128,6 +128,16 @@
 
     </style>
 
+    <style name="Dialog_Fullscreen_Share" parent="AppTheme.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+        <!--<item name="android:windowIsTranslucent">false</item>-->
+
+
+    </style>
+
 
     <!--圆角弹窗style-->
     <style name="loading_dialog" parent="android:style/Theme.Dialog">

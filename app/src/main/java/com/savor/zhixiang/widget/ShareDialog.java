@@ -35,12 +35,12 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private Activity activity;
 
     public ShareDialog(Context context) {
-        super(context, R.style.Dialog_Fullscreen);
+        super(context, R.style.Dialog_Fullscreen_Share);
         this.context = context;
     }
 
     public ShareDialog(Context context, ShareBean shareBean,Activity Activity) {
-        super(context, R.style.Dialog_Fullscreen);
+        super(context, R.style.Dialog_Fullscreen_Share);
         this.shareBean = shareBean;
         this.context = context;
         this.activity = Activity;

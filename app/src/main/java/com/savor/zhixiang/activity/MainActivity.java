@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         checkKeywords();
         getData();
         registeHomeKeyReceiver();
+        upgrade();
     }
 
     private void handleIntent() {
@@ -488,7 +489,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     initCardList();
                 }
                 break;
-            case POST_UPGRADE_JSON:
+            case POST_VERSION_JSON:
                 if (obj instanceof UpgradeInfo) {
                     upGradeInfo = (UpgradeInfo) obj;
                     if (upGradeInfo != null) {

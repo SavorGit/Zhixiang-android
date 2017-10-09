@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
     private RelativeLayout mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
     private TextView mHintTv;
+    private ImageView icon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
         mLoadingLayout = (RelativeLayout)findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView)findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
+        icon = (ImageView) findViewById(R.id.icon);
     }
 
     @Override
@@ -154,7 +157,18 @@ public class AllListActivity extends BaseActivity implements View.OnClickListene
                 mLoadingLayout.setVisibility(View.VISIBLE);
                 mLoadingView.hide();
                 mHintTv.setVisibility(View.VISIBLE);
-                mHintTv.setText("没有数据");
+                if (code == 3001) {
+                    mHintTv.setText("您还没有收藏~");
+                    icon.setImageResource(R.mipmap.kong_shc);
+                }else if(code == 3001){
+                    mHintTv.setText("网络异常，点击重试");
+                    icon.setImageResource(R.mipmap.kong_wlyc);
+                }else {
+                    mHintTv.setText("没有数据");
+                    icon.setImageResource(R.mipmap.kong_shc);
+                }
+                //icon.setBackgroundResource(R.mipmap.kong_shc);
+
                 mLoadingLayout.setOnClickListener(this);
             }
         }

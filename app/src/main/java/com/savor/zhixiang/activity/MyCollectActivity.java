@@ -159,11 +159,16 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
                 mHintTv.setVisibility(View.VISIBLE);
                 if (code == 3001) {
                     mHintTv.setText("您还没有收藏~");
+                    icon.setImageResource(R.mipmap.kong_shc);
+                }else if(code == 3001){
+                    mHintTv.setText("网络异常，点击重试");
+                    icon.setImageResource(R.mipmap.kong_wlyc);
                 }else {
                     mHintTv.setText("没有数据");
+                    icon.setImageResource(R.mipmap.kong_shc);
                 }
                 //icon.setBackgroundResource(R.mipmap.kong_shc);
-                icon.setImageResource(R.mipmap.kong_shc);
+
                 mLoadingLayout.setOnClickListener(this);
             }
 //            String msg = message.getMessage();

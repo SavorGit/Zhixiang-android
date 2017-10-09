@@ -45,7 +45,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "true"
 
             minifyEnabled false
-            zipAlignEnabled true
+            zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -54,7 +54,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
 
             minifyEnabled false
-            zipAlignEnabled true
+            zipAlignEnabled false
             // 移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release

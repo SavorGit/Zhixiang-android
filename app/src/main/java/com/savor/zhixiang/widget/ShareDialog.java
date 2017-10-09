@@ -29,6 +29,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private ShareBean shareBean;
     private RelativeLayout weixin_la;
     private RelativeLayout pyq_la;
+    private RelativeLayout la;
     private ShareManager mShareManager;
     private ShareManager.CustomShareListener mShareListener;
     private Context context;
@@ -60,6 +61,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private void getViews() {
         weixin_la = (RelativeLayout) findViewById(R.id.weixin_la);
         pyq_la = (RelativeLayout) findViewById(R.id.pyq_la);
+        la = (RelativeLayout) findViewById(R.id.la);
     }
 
 
@@ -79,6 +81,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private void setListeners() {
         weixin_la.setOnClickListener(this);
         pyq_la.setOnClickListener(this);
+        la.setOnClickListener(this);
 //        mConfirmBtn.setOnClickListener(this);
     }
 
@@ -91,6 +94,10 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
             case R.id.pyq_la:
                 share(SHARE_MEDIA.WEIXIN_CIRCLE);
                 break;
+            case R.id.la:
+                dismiss();
+                break;
+
         }
     }
 
@@ -98,8 +105,8 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
         mShareManager.setShortcutShare();
         UMWeb umWeb = new UMWeb(shareBean.getUrl());
         umWeb.setThumb(new UMImage(context,R.mipmap.ico_share_img));
-        umWeb.setTitle(shareBean.getTitle());
-        umWeb.setDescription("每日知享");
+        umWeb.setTitle("每日知享—"+shareBean.getTitle());
+        umWeb.setDescription(shareBean.getDesc());
         new ShareAction(activity)
                 .withText("每日知享"+shareBean.getTitle())
                 .withMedia(umWeb)

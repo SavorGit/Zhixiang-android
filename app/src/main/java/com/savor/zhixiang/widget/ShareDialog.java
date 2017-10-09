@@ -106,7 +106,6 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
                 .setPlatform(platform)
                 .setCallback(mShareListener)
                 .share();
-
     }
 
 }

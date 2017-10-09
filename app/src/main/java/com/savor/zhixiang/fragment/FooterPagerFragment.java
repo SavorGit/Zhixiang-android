@@ -107,7 +107,7 @@ public class FooterPagerFragment extends Fragment implements View.OnClickListene
             case R.id.rl_parent:
                 if(currentType == LoadingType.LOAD_FAILED) {
                     if(!AppUtils.isNetworkAvailable(getContext())) {
-                        ShowMessage.showToast(getContext(),"加载失败");
+                        ShowMessage.showToast(getActivity(),"加载失败");
                     }else {
                         if(mListener!=null) {
                             mListener.onClickReload();

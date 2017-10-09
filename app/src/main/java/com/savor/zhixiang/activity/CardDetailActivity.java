@@ -158,6 +158,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
 
                 break;
             case R.id.ll_share:
+                RecordUtils.onEvent(this,R.string.news_share_detail_share);
                 toShare();
                 break;
         }
@@ -285,6 +286,8 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
+        RecordUtils.onEvent(this,R.string.news_share_detail_open);
+        RecordUtils.onEvent(this,R.string.news_share_detail_start);
         RecordUtils.onPageStart(this,getString(R.string.news_share_home_card_show));
         RecordUtils.onPageStartAndResume(this,this);
     }
@@ -292,6 +295,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onPause() {
         super.onPause();
+        RecordUtils.onEvent(this,R.string.news_share_detail_end);
         RecordUtils.onPageEnd(this,getString(R.string.news_share_home_card_show));
         RecordUtils.onPageEndAndPause(this,this);
     }

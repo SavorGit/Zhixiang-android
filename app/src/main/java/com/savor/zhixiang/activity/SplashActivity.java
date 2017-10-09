@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.core.AppApi;
+import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.widget.KeywordDialog;
 
 import java.util.List;
@@ -25,6 +26,13 @@ public class SplashActivity extends BaseActivity {
             finish();
             return;
         }
+
+
+        launchMainActivityDelayed();
+        AppApi.getKeywords(this,this);
+    }
+
+    private void launchMainActivityDelayed() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -35,7 +43,18 @@ public class SplashActivity extends BaseActivity {
                 finish();
             }
         },3000);
-        AppApi.getKeywords(this,this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        RecordUtils.onPageStart(this,getString(R.string.news_share_start));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        RecordUtils.onPageEnd(this,getString(R.string.news_share_start));
     }
 
     @Override

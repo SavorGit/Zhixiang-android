@@ -4,8 +4,11 @@ import android.content.Context;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide.load.engine.cache.DiskCache;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
+import com.bumptech.glide.load.engine.cache.LruResourceCache;
+import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.GlideModule;
 import com.common.api.utils.AppUtils;
@@ -29,15 +32,15 @@ public class CustomCachingGlideModule implements GlideModule {
                 return DiskLruCacheWrapper.get(cacheLocation, DISK_CACHE_SIZE);
             }
         });
-//        MemorySizeCalculator calculator = new MemorySizeCalculator(context);
-//        int defaultMemoryCacheSize = calculator.getMemoryCacheSize();
-//        int defaultBitmapPoolSize = calculator.getBitmapPoolSize();
-//
-//        int customMemoryCacheSize = (int) (0.25 * defaultMemoryCacheSize);
-//        int customBitmapPoolSize = (int) (0.25* defaultBitmapPoolSize);
-//
-//        builder.setMemoryCache( new LruResourceCache( customMemoryCacheSize ));
-//        builder.setBitmapPool( new LruBitmapPool( customBitmapPoolSize ));
+        MemorySizeCalculator calculator = new MemorySizeCalculator(context);
+        int defaultMemoryCacheSize = calculator.getMemoryCacheSize();
+        int defaultBitmapPoolSize = calculator.getBitmapPoolSize();
+
+        int customMemoryCacheSize = (int) (0.25 * defaultMemoryCacheSize);
+        int customBitmapPoolSize = (int) (0.25* defaultBitmapPoolSize);
+
+        builder.setMemoryCache( new LruResourceCache( customMemoryCacheSize ));
+        builder.setBitmapPool( new LruBitmapPool( customBitmapPoolSize ));
     }
 
     @Override public void registerComponents(Context context, Glide glide) {

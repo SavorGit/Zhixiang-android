@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.common.api.utils.AppUtils;
+import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -90,7 +92,7 @@ public class FooterPagerFragment extends Fragment implements View.OnClickListene
        currentType = LoadingType.LOAD_FAILED;
        mLoadingView.hide();
        mHintTv.setVisibility(View.VISIBLE);
-       mHintTv.setText("加载失败点击重试");
+       mHintTv.setText("网络连接失败，点击重试");
    }
 
    public void startLoading() {
@@ -104,9 +106,14 @@ public class FooterPagerFragment extends Fragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.rl_parent:
                 if(currentType == LoadingType.LOAD_FAILED) {
-                    if(mListener!=null) {
-                        mListener.onClickReload();
+                    if(!AppUtils.isNetworkAvailable(getContext())) {
+                        ShowMessage.showToast(getContext(),"加载失败");
+                    }else {
+                        if(mListener!=null) {
+                            mListener.onClickReload();
+                        }
                     }
+
                 }
                 break;
         }

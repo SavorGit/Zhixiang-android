@@ -10,4 +10,32 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="news_share_start">news_share_start</string>
+    <string name="news_share_guide">news_share_guide</string>
+    <string name="news_share_key_words_show">news_share_key_words_show</string>
+    <string name="news_share_key_words_hide">news_share_key_words_hide</string>
+    <string name="news_share_home_start">news_share_home_start</string>
+    <string name="news_share_home_menu">news_share_home_menu</string>
+    <string name="news_share_home_card_click">news_share_home_card_click</string>
+    <string name="news_share_home_card_slide">news_share_home_card_slide</string>
+    <string name="news_share_home_card_show">news_share_home_card_show</string>
+    <string name="news_share_menu">news_share_menu</string>
+    <string name="news_share_menu_all">news_share_menu_all</string>
+    <string name="news_share_menu_collect">news_share_menu_collect</string>
+    <string name="news_share_menu_finish">news_share_menu_finish</string>
+    <string name="news_share_menu_all_open">news_share_menu_all_open</string>
+    <string name="news_share_menu_all_finish">news_share_menu_all_finish</string>
+    <string name="news_share_menu_all_click_item">news_share_menu_all_click_item</string>
+    <string name="news_share_menu_collect_open">news_share_menu_collect_open</string>
+    <string name="news_share_menu_collect_finish">news_share_menu_collect_finish</string>
+    <string name="news_share_menu_collect_click_item">news_share_menu_collect_click_item</string>
+    <string name="news_share_detail_open">news_share_detail_open</string>
+    <string name="news_share_detail_start">news_share_detail_start</string>
+    <string name="news_share_detail_end">news_share_detail_end</string>
+    <string name="news_share_detail_share">news_share_detail_share</string>
+    <string name="news_share_detail_toshare">news_share_detail_toshare</string>
+    <string name="news_share_detail_toshare_weixin">news_share_detail_toshare_weixin</string>
+    <string name="news_share_detail_toshare_friends">news_share_detail_toshare_friends</string>
+    <string name="news_share_detail_toshare_finish">news_share_detail_toshare_finish</string>
 </resources>

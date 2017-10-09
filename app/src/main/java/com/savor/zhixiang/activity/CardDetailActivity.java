@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.common.api.utils.AppUtils;
 import com.common.api.utils.DensityUtil;
+import com.common.api.utils.LogUtils;
 import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardDetailListAdapter;
@@ -28,6 +29,7 @@ import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.widget.ShareDialog;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -145,9 +147,14 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
                 onBackPressed();
                 break;
             case R.id.ll_collect:
-                if (!AppUtils.isFastDoubleClick(1)) {
-                    AppApi.addMyCollection(this, dailyid, this);
+                if(!AppUtils.isNetworkAvailable(this)) {
+                    ShowMessage.showToast(this,"暂无网络，请稍后重试");
+                }else {
+                    if (!AppUtils.isFastDoubleClick(1)) {
+                        AppApi.addMyCollection(this, dailyid, this);
+                    }
                 }
+
                 break;
             case R.id.ll_share:
                 toShare();
@@ -218,7 +225,9 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
             case POST_CARD_DETAIL_JSON:
                 if (obj instanceof CardDetail.ContentDetailBean) {
                     cardDetailBean = (CardDetail.ContentDetailBean) obj;
-                    initCardDetail(cardDetailBean);
+                    if(!isFinishing()) {
+                        initCardDetail(cardDetailBean);
+                    }
                 }
                 break;
         }
@@ -237,10 +246,19 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private void initCardDetail(CardDetail.ContentDetailBean cardDetailBean) {
         if (cardDetailBean != null) {
             String imgUrl = cardDetailBean.getImgUrl();
-            Glide.with(this).load(imgUrl).centerCrop().placeholder(R.mipmap.ico_default)
+
+            int screenWidth = DensityUtil.getScreenWidth(this);
+            float overriedScale = 400/630f;
+            int width = screenWidth-DensityUtil.dip2px(this,28)*2;
+            int height = (int) (width*overriedScale);
+            // 解决首页卡片点击进入详情时显示默认图，因为如果图片尺寸不同会生成两份不同的缓存图片
+            Glide.with(getApplicationContext()).
+                    load(imgUrl).centerCrop().
+                    placeholder(R.mipmap.ico_default).
+                    override(width,height)
                     .into(mCardBannerImg);
 
-
+            LogUtils.d("savor:image carddetail imageurl--"+imgUrl);
             String title = cardDetailBean.getTitle();
             String sourceName = cardDetailBean.getSourceName();
             String bespeak_time = cardDetailBean.getBespeak_time();
@@ -261,5 +279,19 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     protected void onDestroy() {
         super.onDestroy();
         ActivitiesManager.getInstance().popActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+        MobclickAgent.onPageStart(this.getClass().getName());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+        MobclickAgent.onPageEnd(this.getClass().getName());
     }
 }

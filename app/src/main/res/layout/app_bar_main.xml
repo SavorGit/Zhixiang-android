@@ -15,7 +15,6 @@
         >
         <LinearLayout
             android:id="@+id/ll_back"
-            android:layout_centerVertical="true"
             android:padding="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -29,15 +28,15 @@
 
 
         <LinearLayout
+            android:layout_alignParentTop="true"
             android:layout_margin="15dp"
             android:id="@+id/ll_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_gravity="right"
             android:background="@drawable/round_date"
             android:gravity="center"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/tv_date"

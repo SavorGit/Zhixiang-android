@@ -22,9 +22,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.common.api.utils.DensityUtil;
+import com.common.api.utils.LogUtils;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.activity.CardDetailActivity;
 import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.utils.RecordUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
 /**
@@ -92,11 +94,10 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         layoutParams.height = height;
 
         Glide.with(getActivity().getApplicationContext()).
-                load(detail.getImgUrl()).asBitmap().dontAnimate().
+                load(detail.getImgUrl()).centerCrop().
                 placeholder(R.mipmap.ico_default).
-                centerCrop().
                 into(mBannerIv);
-
+        LogUtils.d("savor:image cardfragment imageurl--"+detail.getImgUrl());
         String title = detail.getTitle();
         String desc = detail.getDesc();
         String sourceName = detail.getSourceName();
@@ -141,6 +142,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.parent:
+//                RecordUtils.onEvent(this,getString(R.string.menu_collection));
                 Intent intent = new Intent(getContext(), CardDetailActivity.class);
                 intent.putExtra("detail",detail);
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(mParentView,mParentView.getWidth()/2,mParentView.getHeight()/2,0,0);

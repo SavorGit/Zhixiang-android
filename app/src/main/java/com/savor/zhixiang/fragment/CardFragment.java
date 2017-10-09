@@ -47,12 +47,10 @@ public class CardFragment extends Fragment implements View.OnClickListener {
 
     public static CardFragment newInstance(CardDetail detail) {
         CardFragment cardFragment = new CardFragment();
-        cardFragment.setCardDetail(detail);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("detail",detail);
+        cardFragment.setArguments(bundle);
         return cardFragment;
-    }
-
-    public void setCardDetail(CardDetail detail) {
-        this.detail = detail;
     }
 
     public CardDetail getCardDetail() {
@@ -93,18 +91,24 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         layoutParams.width = width;
         layoutParams.height = height;
 
-        Glide.with(getActivity().getApplicationContext()).
-                load(detail.getImgUrl()).centerCrop().
-                placeholder(R.mipmap.ico_default).
-                into(mBannerIv);
-        LogUtils.d("savor:image cardfragment imageurl--"+detail.getImgUrl());
-        String title = detail.getTitle();
-        String desc = detail.getDesc();
-        String sourceName = detail.getSourceName();
-        mTitleTv.setText(title);
-        mDescTv.setText(desc);
-        if(!TextUtils.isEmpty(sourceName)) {
-            mSourcetv.setText("选自："+sourceName);
+        Bundle arguments = getArguments();
+        if(arguments!=null) {
+            detail = (CardDetail) arguments.getSerializable("detail");
+        }
+        if(detail!=null) {
+            Glide.with(getActivity().getApplicationContext()).
+                    load(detail.getImgUrl()).centerCrop().
+                    placeholder(R.mipmap.ico_default).
+                    into(mBannerIv);
+            LogUtils.d("savor:image cardfragment imageurl--"+detail.getImgUrl());
+            String title = detail.getTitle();
+            String desc = detail.getDesc();
+            String sourceName = detail.getSourceName();
+            mTitleTv.setText(title);
+            mDescTv.setText(desc);
+            if(!TextUtils.isEmpty(sourceName)) {
+                mSourcetv.setText("选自："+sourceName);
+            }
         }
 
         mBannerIv.postDelayed(new Runnable() {

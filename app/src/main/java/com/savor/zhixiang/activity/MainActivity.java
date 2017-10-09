@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         cardBean = (CardBean) savedInstanceState.getSerializable("cardBean");
-        initCardList();
+//        initCardList();
     }
 
     private void checkKeywords() {

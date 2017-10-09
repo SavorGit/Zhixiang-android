@@ -9,6 +9,7 @@ import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.savor.zhixiang.core.Session;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
@@ -41,7 +42,7 @@ public class SavorApplication extends Application {
         mInstance = this;
         UMShareAPI.get(this);
         initUmengPush();
-
+        Config.DEBUG = true;
 //        initCachePath();
 //        Debug.stopMethodTracing();
     }

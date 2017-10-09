@@ -121,7 +121,6 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         mAdapter = new CardDetailListAdapter(this);
         mRefreshListView.setAdapter(mAdapter);
 
-
         int statusBarHeight = getStatusBarHeight();
         if (statusBarHeight != -1) {
             mTitleLayout.setPadding(0, statusBarHeight * 2, 0, 0);

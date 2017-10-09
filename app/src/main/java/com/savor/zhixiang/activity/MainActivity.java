@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         cardBean = (CardBean) savedInstanceState.getSerializable("cardBean");
+        initCardList();
     }
 
     private void checkKeywords() {
@@ -484,79 +485,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 if(obj instanceof CardBean) {
                     mLoadingLayout.setOnClickListener(null);
                     cardBean = (CardBean) obj;
-                    String day = cardBean.getDay();
-                    String month = cardBean.getMonth();
-                    String week = cardBean.getWeek();
-
-                    List<CardDetail> list = cardBean.getList();
-                    List<Fragment> fragments = new ArrayList<>();
-                    // 如果列表有数据
-                    if(list !=null&& list.size()>0) {
-                        mLoadingLayout.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                mLoadingLayout.setVisibility(View.GONE);
-                                mDateLayout.setVisibility(View.VISIBLE);
-                                mPageNumLayout.setVisibility(View.VISIBLE);
-                            }
-                        },200);
-                        // 重新卡片数据，将日期时间添加进去，当切换到某个页面时，更新日期时间
-                        for(CardDetail detail : list) {
-                            detail.setDay(day);
-                            detail.setWeek(week);
-                            detail.setMonth(month);
-                            fragments.add(CardFragment.newInstance(detail));
-                        }
-                        //  默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表请
-                        // 另外一种情况是加载失败，在加载页点击重新加载，这时候如果在加载页返回数据直接更新列表
-                        // 请求数据返回时，如果当前页不是最后一页时，更新下一个分页十条数据放入缓存集合
-                        // 如果是最后加载页，立即更新页面数据并清除下一个分页缓存
-                        if(mViewPager.getCurrentItem()!=mAdapter.getCount()-1) {
-                            mNextPageFragments.clear();
-                            mNextPageBeanList.clear();
-                            mNextPageBeanList.addAll(list);
-                            mNextPageFragments.addAll(fragments);
-                        }else {
-                            fragmentList.remove(mFooterPagerFragment);
-                            fragmentList.addAll(fragments);
-                            mAdapter.setData(fragmentList);
-                            fragmentList.add(mFooterPagerFragment);
-                            mAdapter.setData(fragmentList);
-                            mNextPageFragments.clear();
-                            mNextPageBeanList.clear();
-                            mPageNumLayout.setVisibility(View.VISIBLE);
-                            mBottomPageNumTv.setText("1");
-                            mDateLayout.setVisibility(View.VISIBLE);
-                            initDate(list.get(0),true);
-                        }
-
-                        // 如果是第一次请求数据，这时更新列表数据不会执行onpageselected所以会导致页码不显示
-                        // 所以判断如果是第一次加载数据更新页面，并直接更新列表
-                        // 以后第二次更新数据，是在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表
-                        if(fragmentList.size()==0) {
-                            initDate(list.get(0),true);
-                        }
-
-                        if(fragmentList.size()==0) {
-                            fragmentList.addAll(fragments);
-                            fragmentList.add(mFooterPagerFragment);
-                            mAdapter.setData(fragmentList);
-                            mNextPageFragments.clear();
-                            mNextPageBeanList.clear();
-                        }
-
-
-                    }else {
-                        // 如果是第一次并且没有数据，更新加载布局提示没有数据
-                        if(fragmentList.size()==0) {
-                            mLoadingLayout.setVisibility(View.VISIBLE);
-                            mLoadingView.hide();
-                            mHintTv.setVisibility(View.VISIBLE);
-                            mHintTv.setText("没有数据");
-                        }else {
-                            mFooterPagerFragment.loadNoData();
-                        }
-                    }
+                    initCardList();
                 }
                 break;
             case POST_UPGRADE_JSON:
@@ -613,6 +542,84 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                 }
                 break;
+        }
+    }
+
+    private void initCardList() {
+        if(cardBean==null)
+            return;
+        String day = cardBean.getDay();
+        String month = cardBean.getMonth();
+        String week = cardBean.getWeek();
+
+        List<CardDetail> list = cardBean.getList();
+        List<Fragment> fragments = new ArrayList<>();
+        // 如果列表有数据
+        if(list !=null&& list.size()>0) {
+            mLoadingLayout.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mLoadingLayout.setVisibility(View.GONE);
+                    mDateLayout.setVisibility(View.VISIBLE);
+                    mPageNumLayout.setVisibility(View.VISIBLE);
+                }
+            },200);
+            // 重新卡片数据，将日期时间添加进去，当切换到某个页面时，更新日期时间
+            for(CardDetail detail : list) {
+                detail.setDay(day);
+                detail.setWeek(week);
+                detail.setMonth(month);
+                fragments.add(CardFragment.newInstance(detail));
+            }
+            //  默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表请
+            // 另外一种情况是加载失败，在加载页点击重新加载，这时候如果在加载页返回数据直接更新列表
+            // 请求数据返回时，如果当前页不是最后一页时，更新下一个分页十条数据放入缓存集合
+            // 如果是最后加载页，立即更新页面数据并清除下一个分页缓存
+            if(mViewPager.getCurrentItem()!=mAdapter.getCount()-1) {
+                mNextPageFragments.clear();
+                mNextPageBeanList.clear();
+                mNextPageBeanList.addAll(list);
+                mNextPageFragments.addAll(fragments);
+            }else {
+                fragmentList.remove(mFooterPagerFragment);
+                fragmentList.addAll(fragments);
+                mAdapter.setData(fragmentList);
+                fragmentList.add(mFooterPagerFragment);
+                mAdapter.setData(fragmentList);
+                mNextPageFragments.clear();
+                mNextPageBeanList.clear();
+                mPageNumLayout.setVisibility(View.VISIBLE);
+                mBottomPageNumTv.setText("1");
+                mDateLayout.setVisibility(View.VISIBLE);
+                initDate(list.get(0),true);
+            }
+
+            // 如果是第一次请求数据，这时更新列表数据不会执行onpageselected所以会导致页码不显示
+            // 所以判断如果是第一次加载数据更新页面，并直接更新列表
+            // 以后第二次更新数据，是在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表
+            if(fragmentList.size()==0) {
+                initDate(list.get(0),true);
+            }
+
+            if(fragmentList.size()==0) {
+                fragmentList.addAll(fragments);
+                fragmentList.add(mFooterPagerFragment);
+                mAdapter.setData(fragmentList);
+                mNextPageFragments.clear();
+                mNextPageBeanList.clear();
+            }
+
+
+        }else {
+            // 如果是第一次并且没有数据，更新加载布局提示没有数据
+            if(fragmentList.size()==0) {
+                mLoadingLayout.setVisibility(View.VISIBLE);
+                mLoadingView.hide();
+                mHintTv.setVisibility(View.VISIBLE);
+                mHintTv.setText("没有数据");
+            }else {
+                mFooterPagerFragment.loadNoData();
+            }
         }
     }
 

@@ -171,6 +171,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         shareBean.setUrl(detail.getShare_url());
         shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
         shareDialog.show();
+
     }
     private int getStatusBarHeight() {
         /**

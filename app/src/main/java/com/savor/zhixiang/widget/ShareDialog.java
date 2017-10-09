@@ -1,5 +1,6 @@
 package com.savor.zhixiang.widget;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -31,18 +32,18 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private ShareManager mShareManager;
     private ShareManager.CustomShareListener mShareListener;
     private Context context;
-    private CardDetailActivity Activity;
+    private Activity activity;
 
     public ShareDialog(Context context) {
         super(context, R.style.Dialog_Fullscreen);
         this.context = context;
     }
 
-    public ShareDialog(Context context, ShareBean shareBean,CardDetailActivity Activity) {
+    public ShareDialog(Context context, ShareBean shareBean,Activity Activity) {
         super(context, R.style.Dialog_Fullscreen);
         this.shareBean = shareBean;
         this.context = context;
-        this.Activity = Activity;
+        this.activity = Activity;
 
     }
 
@@ -65,7 +66,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
 
     private void setViews() {
         mShareManager = ShareManager.getInstance();
-        mShareListener = new ShareManager.CustomShareListener(Activity);
+        mShareListener = new ShareManager.CustomShareListener(activity);
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.gravity= Gravity.CENTER;
         layoutParams.width= WindowManager.LayoutParams.MATCH_PARENT;
@@ -83,14 +84,14 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.weixin_la:
-//               share(SHARE_MEDIA.WEIXIN);
-//                break;
-//            case R.id.pyq_la:
-//                share(SHARE_MEDIA.WEIXIN_CIRCLE);
-//                break;
-//        }
+        switch (v.getId()) {
+            case R.id.weixin_la:
+               share(SHARE_MEDIA.WEIXIN);
+                break;
+            case R.id.pyq_la:
+                share(SHARE_MEDIA.WEIXIN_CIRCLE);
+                break;
+        }
     }
 
     private void share(SHARE_MEDIA platform){
@@ -99,7 +100,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
         umWeb.setThumb(new UMImage(context,R.mipmap.ico_drawer));
         umWeb.setTitle(shareBean.getTitle());
         umWeb.setDescription("每日知享");
-        new ShareAction(Activity)
+        new ShareAction(activity)
                 .withText("每日知享"+shareBean.getTitle())
                 .withMedia(umWeb)
                 .setPlatform(platform)

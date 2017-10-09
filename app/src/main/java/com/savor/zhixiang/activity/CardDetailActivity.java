@@ -190,13 +190,8 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onBackPressed() {
         finishAfterTransition();
-//        super.onBackPressed();
         mTitleLayout.setVisibility(View.GONE);
         overridePendingTransition(0,R.anim.anim_scale);
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,mParentLayout, ViewCompat.getTransitionName(mParentLayout));
-//        ActivityCompat.startActivity(this, intent, options.toBundle());
     }
 
     @Override
@@ -287,6 +282,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        UMShareAPI.get(this).release();
         ActivitiesManager.getInstance().popActivity(this);
         if(shareDialog!=null) {
             shareDialog.dismiss();

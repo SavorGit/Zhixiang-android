@@ -31,6 +31,7 @@ import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.widget.ShareDialog;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.List;
 
@@ -167,7 +168,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private void toShare(){
         shareBean = new ShareBean();
         shareBean.setTitle(cardDetailBean.getTitle());
-        shareBean.setUrl(cardDetailBean.getShare_url());
+        shareBean.setUrl(detail.getShare_url());
         shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
         shareDialog.show();
     }
@@ -196,6 +197,12 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
 //        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 //        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,mParentLayout, ViewCompat.getTransitionName(mParentLayout));
 //        ActivityCompat.startActivity(this, intent, options.toBundle());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -281,6 +288,10 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     protected void onDestroy() {
         super.onDestroy();
         ActivitiesManager.getInstance().popActivity(this);
+        if(shareDialog!=null) {
+            shareDialog.dismiss();
+            shareDialog = null;
+        }
     }
 
     @Override

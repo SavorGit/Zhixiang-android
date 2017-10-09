@@ -27,6 +27,7 @@ public class CardDetail implements Serializable {
     private String week;
     private String month;
     private String day;
+    private String share_url;
 
     @Override
     public String toString() {
@@ -40,6 +41,7 @@ public class CardDetail implements Serializable {
                 ", week='" + week + '\'' +
                 ", month='" + month + '\'' +
                 ", day='" + day + '\'' +
+                ", share_url='" + share_url + '\'' +
                 '}';
     }
 
@@ -48,19 +50,21 @@ public class CardDetail implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CardDetail that = (CardDetail) o;
+        CardDetail detail = (CardDetail) o;
 
-        if (dailyid != null ? !dailyid.equals(that.dailyid) : that.dailyid != null) return false;
-        if (imgUrl != null ? !imgUrl.equals(that.imgUrl) : that.imgUrl != null) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (desc != null ? !desc.equals(that.desc) : that.desc != null) return false;
-        if (sourceName != null ? !sourceName.equals(that.sourceName) : that.sourceName != null)
+        if (dailyid != null ? !dailyid.equals(detail.dailyid) : detail.dailyid != null)
             return false;
-        if (contentDetail != null ? !contentDetail.equals(that.contentDetail) : that.contentDetail != null)
+        if (imgUrl != null ? !imgUrl.equals(detail.imgUrl) : detail.imgUrl != null) return false;
+        if (title != null ? !title.equals(detail.title) : detail.title != null) return false;
+        if (desc != null ? !desc.equals(detail.desc) : detail.desc != null) return false;
+        if (sourceName != null ? !sourceName.equals(detail.sourceName) : detail.sourceName != null)
             return false;
-        if (week != null ? !week.equals(that.week) : that.week != null) return false;
-        if (month != null ? !month.equals(that.month) : that.month != null) return false;
-        return day != null ? day.equals(that.day) : that.day == null;
+        if (contentDetail != null ? !contentDetail.equals(detail.contentDetail) : detail.contentDetail != null)
+            return false;
+        if (week != null ? !week.equals(detail.week) : detail.week != null) return false;
+        if (month != null ? !month.equals(detail.month) : detail.month != null) return false;
+        if (day != null ? !day.equals(detail.day) : detail.day != null) return false;
+        return share_url != null ? share_url.equals(detail.share_url) : detail.share_url == null;
 
     }
 
@@ -75,6 +79,7 @@ public class CardDetail implements Serializable {
         result = 31 * result + (week != null ? week.hashCode() : 0);
         result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (day != null ? day.hashCode() : 0);
+        result = 31 * result + (share_url != null ? share_url.hashCode() : 0);
         return result;
     }
 
@@ -148,6 +153,14 @@ public class CardDetail implements Serializable {
 
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public String getShare_url() {
+        return share_url;
+    }
+
+    public void setShare_url(String share_url) {
+        this.share_url = share_url;
     }
 
     public class ContentDetailBean implements Serializable{

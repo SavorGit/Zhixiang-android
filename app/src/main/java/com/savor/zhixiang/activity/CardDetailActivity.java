@@ -168,7 +168,12 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
     private void toShare(){
         shareBean = new ShareBean();
         shareBean.setTitle(cardDetailBean.getTitle());
-        shareBean.setUrl(detail.getShare_url());
+        if(detail!= null && !TextUtils.isEmpty(detail.getShare_url())){
+            shareBean.setUrl(detail.getShare_url());
+        }else {
+            shareBean.setUrl(cardDetailBean.getShare_url());
+        }
+
         shareDialog = new ShareDialog(context,shareBean,CardDetailActivity.this);
         shareDialog.show();
 

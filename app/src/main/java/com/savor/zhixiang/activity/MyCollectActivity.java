@@ -19,6 +19,7 @@ import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.ResponseErrorMessage;
+import com.savor.zhixiang.utils.RecordUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collect);
+        RecordUtils.onEvent(this,R.string.news_share_menu_collect_open);
         context = this;
         getViews();
         setViews();
@@ -95,7 +97,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.back:
-                //RecordUtils.onEvent(this,getString(R.string.menu_collection_back));
+                RecordUtils.onEvent(this,getString(R.string.news_share_menu_collect_finish));
                 finish();
                 break;
             case R.id.rl_loading_layout:
@@ -223,6 +225,7 @@ public class MyCollectActivity extends BaseActivity implements View.OnClickListe
         ListItem item = (ListItem)parent.getItemAtPosition(position);
         String dailyid = item.getDailyid();
         if (!TextUtils.isEmpty(dailyid)) {
+            RecordUtils.onEvent(this,getString(R.string.news_share_menu_collect_click_item));
             Intent intent = new Intent();
             intent.putExtra("dailyid",dailyid);
             intent.setClass(MyCollectActivity.this,CardDetailActivity.class);

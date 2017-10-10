@@ -12,7 +12,7 @@ android {
         applicationId "com.savor.zhixiang"
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
-        versionCode 2017090501
+        versionCode 2017101001
         versionName "1.0"
 
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaoredian"]
@@ -54,7 +54,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
 
             minifyEnabled false
-            zipAlignEnabled false
+            zipAlignEnabled true
             // 移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release

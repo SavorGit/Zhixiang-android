@@ -481,7 +481,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             mPageNumLayout.setVisibility(View.INVISIBLE);
             mDateLayout.setVisibility(View.INVISIBLE);
         }
-        mBottomPageNumTv.setText("1");
+        mBottomPageNumTv.setText("1 ");
         mDateTv.setText(day);
         mMonthTv.setText(month);
         mWeekTv.setText(week);

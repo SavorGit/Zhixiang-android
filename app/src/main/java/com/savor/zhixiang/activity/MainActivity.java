@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private HomeKeyReceiver homeKeyReceiver;
     /**最新请求到的keywords*/
     private KeywordsBean currentKeywords;
+    /**是否正在请求*/
+    private boolean isRequesting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         setViews();
         setListeners();
         checkKeywords();
-        getData();
+        getData("");
         registeHomeKeyReceiver();
         upgrade();
     }
@@ -209,8 +211,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         }
     }
 
-    private void getData() {
-        AppApi.getCardList(this,"",this);
+    private void getData(String bespeak_time) {
+        isRequesting = true;
+        AppApi.getCardList(this,bespeak_time,this);
     }
 
 
@@ -483,6 +486,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
+                isRequesting = false;
                 if(obj instanceof CardBean) {
                     mLoadingLayout.setOnClickListener(null);
                     cardBean = (CardBean) obj;
@@ -628,6 +632,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onError(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_CARDLIST_JSON:
+                isRequesting = false;
                 if(mAdapter.getCount()<11) {
                     ShowMessage.showToast(this,"加载失败");
                     mHintTv.setVisibility(View.VISIBLE);
@@ -651,6 +656,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onClickReload() {
+        if(isRequesting)
+            return;
         String btime = "";
         if(fragmentList.size()>0) {
             CardFragment fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 2);
@@ -667,7 +674,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.postDelayed(new Runnable() {
             @Override
             public void run() {
-                AppApi.getCardList(MainActivity.this, finalBtime,MainActivity.this);
+                getData(finalBtime);
+//                AppApi.getCardList(MainActivity.this, finalBtime,MainActivity.this);
             }
         },1000);
 
@@ -679,7 +687,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             case R.id.rl_loading_layout:
                 mLoadingView.show();
                 mHintTv.setVisibility(View.GONE);
-                getData();
+                getData("");
                 break;
             case R.id.rl_my_collection:
                 RecordUtils.onEvent(this,R.string.news_share_menu_collect);

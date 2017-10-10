@@ -279,13 +279,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mKeywordsDialog = new KeywordDialog(this, keywords, new KeywordDialog.OnAnimEndListener() {
             @Override
             public void onAnimEnd() {
-                mHandler.sendEmptyMessageDelayed(DIALOG_DISMISS,2000);
+//                mHandler.sendEmptyMessageDelayed(DIALOG_DISMISS,2000);
             }
         }, new KeywordDialog.OnCloseBtnClickListener() {
             @Override
             public void onCloseBtnClick() {
-                mHandler.removeMessages(DIALOG_DISMISS);
-                mHandler.removeCallbacksAndMessages(null);
+//                mHandler.removeMessages(DIALOG_DISMISS);
+//                mHandler.removeCallbacksAndMessages(null);
             }
         });
         mKeywordsDialog.show();

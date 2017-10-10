@@ -43,6 +43,7 @@
                 tools:text="孙宏斌谈新乐视：商业模式稍微一改就赚钱" />
 
             <TextView
+                android:textSize="12sp"
                 android:id="@+id/tv_source"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

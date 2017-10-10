@@ -392,7 +392,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             final CardDetail cardDetail = fragment.getCardDetail();
             initDate(cardDetail,frag instanceof CardFragment);
             // 更新底部页码
-            mBottomPageNumTv.setText(String.valueOf(index%10+1));
+            mBottomPageNumTv.setText(String.valueOf(index%10+1)+" ");
 
             // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
             if(position==mAdapter.getCount()-4) {

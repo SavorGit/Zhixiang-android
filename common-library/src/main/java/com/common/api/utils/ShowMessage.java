@@ -19,7 +19,8 @@ public class ShowMessage {
 
 
     public static void showToast(Activity activity, String str) {
-        Toast.makeText(activity, str, Toast.LENGTH_SHORT).show();
+        showToast(activity,str,MSG_LOCATION_CODE_CENTER);
+//        Toast.makeText(activity, str, Toast.LENGTH_SHORT).show();
     }
     public static void showToast(Context context, String str) {
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show();

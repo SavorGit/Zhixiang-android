@@ -2,6 +2,7 @@ package com.savor.zhixiang.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.core.ApiRequestListener;
@@ -10,12 +11,13 @@ import com.savor.zhixiang.core.ResponseErrorMessage;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.interfaces.IBaseView;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * 基类
  * Created by hezd on 2016/12/13.
  */
-public abstract class BaseActivity extends Activity implements ApiRequestListener,IBaseView {
+public abstract class BaseActivity extends FragmentActivity implements ApiRequestListener,IBaseView {
 
     protected Session mSession;
     protected Activity mContext;
@@ -33,11 +35,15 @@ public abstract class BaseActivity extends Activity implements ApiRequestListene
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(this);
+        MobclickAgent.onPageStart(this.getClass().getName());
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        MobclickAgent.onPause(this);
+        MobclickAgent.onPageEnd(this.getClass().getName());
     }
 
     @Override

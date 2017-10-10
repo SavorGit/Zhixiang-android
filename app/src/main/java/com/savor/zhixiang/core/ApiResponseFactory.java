@@ -22,6 +22,14 @@ import com.common.api.utils.DesUtils;
 import com.common.api.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.savor.zhixiang.bean.AllListResult;
+import com.savor.zhixiang.bean.CardBean;
+import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.bean.CollectResponse;
+import com.savor.zhixiang.bean.KeywordsBean;
+import com.savor.zhixiang.bean.ListItem;
+import com.savor.zhixiang.bean.UpgradeInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -221,7 +229,35 @@ public class ApiResponseFactory {
             case TEST_GET_JSON:
                 System.out.println(info);
                 break;
-
+            case POST_GET_KEYWORDS_JSON:
+                result = gson.fromJson(info,new TypeToken<KeywordsBean>(){}.getType());
+                break;
+            case POST_GET_CARDLIST_JSON:
+                result = gson.fromJson(info,CardBean.class);
+                break;
+            case POST_ADD_MY_COLLECTION_JSON:
+                result = "success";
+                break;
+            case POST_GET_ALL_LIST_JSON:
+                result = gson.fromJson(info, new TypeToken<AllListResult>() {
+                }.getType());
+                break;
+            case POST_GET_MY_COLLECTION_JSON:
+                result = gson.fromJson(info,new TypeToken<List<ListItem>>(){
+                }.getType());
+                break;
+            case POST_VERSION_JSON:
+                result = gson.fromJson(info, new TypeToken<UpgradeInfo>() {
+                }.getType());
+                break;
+            case POST_CARD_DETAIL_JSON:
+                result = gson.fromJson(info, new TypeToken<CardDetail.ContentDetailBean>() {
+                }.getType());
+                break;
+            case POST_IS_COLLECTED_JSON:
+                result = gson.fromJson(info, new TypeToken<CollectResponse>() {
+                }.getType());
+                break;
             default:
                 break;
         }

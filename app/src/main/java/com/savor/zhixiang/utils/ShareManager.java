@@ -230,25 +230,26 @@ public class ShareManager {
 //            }
             if (platform == SHARE_MEDIA.WEIXIN) {
             //    writeAppLogPv(mActivity.get(),"weixin");
-//                HashMap<String,String> hashMap = new HashMap<>();
-//                if (isShortcutShare) {
-//                    hashMap.put(mActivity.get().getString(R.string.shortcut_share_weixin),"success");
-//                }else {
-//
-//                    hashMap.put(mActivity.get().getString(R.string.details_page_share_weixin),"success");
-//                }
+                HashMap<String,String> hashMap = new HashMap<>();
+                if (isShortcutShare) {
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_weixin),"success");
+                }else {
 
-             //   RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_weixin),"success");
+                }
+             mapkey = "news_share_detail_toshare_weixin";
+            RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
             }else if(platform == SHARE_MEDIA.WEIXIN_CIRCLE) {
              //   writeAppLogPv(mActivity.get(),"weixin_circle");
-//                HashMap<String,String> hashMap = new HashMap<>();
-//                if (isShortcutShare) {
-//                    hashMap.put(mActivity.get().getString(R.string.shortcut_share_weixin_friends),"success");
-//                }else {
-//
-//                    hashMap.put(mActivity.get().getString(R.string.details_page_share_weixin_friends),"success");
-//                }
-//                RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
+                HashMap<String,String> hashMap = new HashMap<>();
+                if (isShortcutShare) {
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_friends),"success");
+                }else {
+
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_friends),"success");
+                }
+                mapkey = "news_share_detail_toshare_friends";
+                RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
             }else if(platform == SHARE_MEDIA.WEIXIN_FAVORITE) {
 //                writeAppLogPv(mActivity.get(),"weixin_collection");
 //                HashMap<String,String> hashMap = new HashMap<>();
@@ -362,24 +363,25 @@ public class ShareManager {
             }
 
             if(platform == SHARE_MEDIA.WEIXIN) {
-//                HashMap<String,String> hashMap = new HashMap<>();
-//                if (isShortcutShare) {
-//                    hashMap.put(mActivity.get().getString(R.string.shortcut_share_weixin),"fail");
-//                }else {
-//
-//                    hashMap.put(mActivity.get().getString(R.string.details_page_share_weixin),"fail");
-//                }
-//
-//                RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
+                HashMap<String,String> hashMap = new HashMap<>();
+                if (isShortcutShare) {
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_weixin),"success");
+                }else {
+
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_weixin),"success");
+                }
+                mapkey = "news_share_detail_toshare_weixin";
+                RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
             }else if(platform == SHARE_MEDIA.WEIXIN_CIRCLE) {
                 HashMap<String,String> hashMap = new HashMap<>();
-//                if (isShortcutShare) {
-//                    hashMap.put(mActivity.get().getString(R.string.shortcut_share_weixin_friends),"fail");
-//                }else {
-//
-//                    hashMap.put(mActivity.get().getString(R.string.details_page_share_weixin_friends),"fail");
-//                }
-//                RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
+                if (isShortcutShare) {
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_friends),"success");
+                }else {
+
+                    hashMap.put(mActivity.get().getString(R.string.news_share_detail_toshare_friends),"success");
+                }
+                mapkey = "news_share_detail_toshare_friends";
+                RecordUtils.onEvent(mActivity.get(),mapkey,hashMap);
             }else if(platform == SHARE_MEDIA.WEIXIN_FAVORITE) {
 //                HashMap<String,String> hashMap = new HashMap<>();
 //                hashMap.put(mActivity.get().getString(R.string.details_page_share_weixin_collection),"fail");

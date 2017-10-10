@@ -97,6 +97,8 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 //				break;
 			/**竖向动画布局*/
 			case VERTICAL:
+				LayoutInflater.from(context).inflate(R.layout.pull_to_refresh_header_vertical, this);
+				break;
 			default:
 				if(Orientation.MOVIE == orientation)
 					LayoutInflater.from(context).inflate(R.layout.pull_to_refresh_header_movie, this);
@@ -240,7 +242,7 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 //		if (View.VISIBLE == mHeaderTipIv.getVisibility()) {
 //			mHeaderTipIv.setVisibility(View.INVISIBLE);
 //		}
-		if(View.VISIBLE == mTextHintIv.getVisibility()) {
+		if(mTextHintIv!=null&&View.VISIBLE == mTextHintIv.getVisibility()) {
 			mTextHintIv.setVisibility(INVISIBLE);
 		}
 		if(mRefreshText) {
@@ -355,7 +357,8 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 //		if (View.INVISIBLE == mHeaderTipIv.getVisibility()) {
 //			mHeaderTipIv.setVisibility(View.VISIBLE);
 //		}
-		if(View.INVISIBLE == mTextHintIv.getVisibility()) {
+
+		if(mTextHintIv!=null&&View.INVISIBLE == mTextHintIv.getVisibility()) {
 			mTextHintIv.setVisibility(VISIBLE);
 		}
 		if(mRefreshText) {

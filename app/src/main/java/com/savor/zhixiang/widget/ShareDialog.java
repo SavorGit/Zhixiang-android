@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.activity.CardDetailActivity;
 import com.savor.zhixiang.bean.ShareBean;
+import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.utils.ShareManager;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -95,6 +96,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
                 share(SHARE_MEDIA.WEIXIN_CIRCLE);
                 break;
             case R.id.la:
+                RecordUtils.onEvent(context,R.string.news_share_detail_toshare_finish);
                 dismiss();
                 break;
 

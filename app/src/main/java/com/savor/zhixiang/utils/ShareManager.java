@@ -218,7 +218,7 @@ public class ShareManager {
                         && platform != SHARE_MEDIA.GOOGLEPLUS
                         && platform != SHARE_MEDIA.YNOTE
                         && platform != SHARE_MEDIA.EVERNOTE) {
-                    Toast.makeText(mActivity.get(), platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity.get(), "分享成功啦", Toast.LENGTH_SHORT).show();
                 }
 
             }

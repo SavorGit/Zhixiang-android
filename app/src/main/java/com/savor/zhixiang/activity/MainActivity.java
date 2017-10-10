@@ -39,6 +39,7 @@ import com.common.api.utils.DensityUtil;
 import com.common.api.utils.FileUtils;
 import com.common.api.utils.LogUtils;
 import com.common.api.utils.ShowMessage;
+import com.common.api.vo.Log;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
@@ -138,6 +139,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private HomeKeyReceiver homeKeyReceiver;
     /**最新请求到的keywords*/
     private KeywordsBean currentKeywords;
+    /**是否正在请求*/
+    private boolean isRequesting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         setViews();
         setListeners();
         checkKeywords();
-        getData();
+        getData("");
         registeHomeKeyReceiver();
         upgrade();
     }
@@ -209,8 +212,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         }
     }
 
-    private void getData() {
-        AppApi.getCardList(this,"",this);
+    private void getData(String bespeak_time) {
+        isRequesting = true;
+        LogUtils.d("savor:main bespeak_time="+bespeak_time);
+        if(TextUtils.isEmpty(bespeak_time)) {
+            mNextPageFragments.clear();
+            mNextPageBeanList.clear();
+        }
+        AppApi.getCardList(this,bespeak_time,this);
     }
 
 
@@ -388,7 +397,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
             if(position==mAdapter.getCount()-4) {
                 String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
-                AppApi.getCardList(this,bespeak_time,this);
+                if(!isRequesting) {
+                    LogUtils.d("savor:main onPageSelected 非请求状态，发起请求。");
+                    getData(bespeak_time);
+                }else {
+                    LogUtils.d("savor:main onPageSelected 当前正在请求数据。");
+                }
             }
 
             // 如果滑动到最后一页加载页，判断如果有预加载的数据则，显示loading动画延迟0.3秒更新列表
@@ -488,6 +502,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     cardBean = (CardBean) obj;
                     initCardList();
                 }
+                isRequesting = false;
                 break;
             case POST_VERSION_JSON:
                 if (obj instanceof UpgradeInfo) {
@@ -640,6 +655,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                 mNextPageBeanList.clear();
                 mNextPageFragments.clear();
+                isRequesting = false;
                 break;
         }
     }
@@ -651,6 +667,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onClickReload() {
+        if(AppUtils.isFastDoubleClick(1)) {
+            LogUtils.d("savor:main 点击太快");
+            return;
+        }
+
         String btime = "";
         if(fragmentList.size()>0) {
             CardFragment fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 2);
@@ -667,7 +688,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.postDelayed(new Runnable() {
             @Override
             public void run() {
-                AppApi.getCardList(MainActivity.this, finalBtime,MainActivity.this);
+                if(!isRequesting) {
+                    LogUtils.d("savor:main 非请求状态，发起请求。");
+                    getData(finalBtime);
+                }else {
+                    LogUtils.d("savor:main 正在请求数据不做任何处理");
+                }
+//                AppApi.getCardList(MainActivity.this, finalBtime,MainActivity.this);
             }
         },1000);
 
@@ -679,7 +706,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             case R.id.rl_loading_layout:
                 mLoadingView.show();
                 mHintTv.setVisibility(View.GONE);
-                getData();
+                if(!isRequesting) {
+                    getData("");
+                }
                 break;
             case R.id.rl_my_collection:
                 RecordUtils.onEvent(this,R.string.news_share_menu_collect);

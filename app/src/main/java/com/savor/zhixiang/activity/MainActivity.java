@@ -6,6 +6,7 @@ import android.animation.PropertyValuesHolder;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -26,20 +27,20 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.common.api.http.callback.FileDownProgress;
 import com.common.api.utils.AppUtils;
-import com.common.api.utils.DateUtil;
 import com.common.api.utils.DensityUtil;
 import com.common.api.utils.FileUtils;
 import com.common.api.utils.LogUtils;
 import com.common.api.utils.ShowMessage;
-import com.common.api.vo.Log;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
@@ -58,14 +59,19 @@ import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
 import com.savor.zhixiang.widget.UpgradeDialog;
-import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareConfig;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.utils.SocializeUtils;
+import com.umeng.weixin.handler.UmengWXHandler;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  *   1.默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合
@@ -141,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private KeywordsBean currentKeywords;
     /**是否正在请求*/
     private boolean isRequesting;
+    private ImageView mHeaderImg;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +165,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         getData("");
         registeHomeKeyReceiver();
         upgrade();
+        initWxAuthor();
+    }
+
+    private void initWxAuthor() {
+        boolean authorize = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
+        if(authorize) {
+
+        }
     }
 
     private void handleIntent() {
@@ -224,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
 
     private void getViews() {
+        dialog = new ProgressDialog(context);
         initDrawerLayout();
 
         mViewPager = (ViewPager) findViewById(R.id.rlv_list);
@@ -241,6 +258,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
+
+        mHeaderImg = (ImageView) findViewById(R.id.iv_header);
     }
 
     private void setViews() {
@@ -253,12 +272,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setAdapter(mAdapter);
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
-//        fragmentList.add(mFooterPagerFragment);
-//        mAdapter.setData(fragmentList);
-//        mFooterPagerFragment.startLoading();
     }
 
     private void setListeners() {
+        mHeaderImg.setOnClickListener(this);
         mViewPager.addOnPageChangeListener(this);
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
@@ -390,7 +407,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
             CardFragment fragment = (CardFragment) fragmentList.get(index);
             final CardDetail cardDetail = fragment.getCardDetail();
-            initDate(cardDetail,frag instanceof CardFragment);
+            if(cardDetail!=null) {
+                 initDate(cardDetail,frag instanceof CardFragment);
+            }
             // 更新底部页码
             mBottomPageNumTv.setText(String.valueOf(index%10+1)+" ");
 
@@ -703,6 +722,32 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.iv_header:
+                getPlatformInfo();
+//                mController = U.getUMSocialService("com.umeng.login");
+//                UMShareAPI.get(MainActivity.this).doOauthVerify(MainActivity.this, SHARE_MEDIA.WEIXIN, new UMAuthListener() {
+//                    @Override
+//                    public void onStart(SHARE_MEDIA share_media) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+//                        getPlatformInfo();
+//                    }
+//
+//                    @Override
+//                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancel(SHARE_MEDIA share_media, int i) {
+//
+//                    }
+//                });
+
+                break;
             case R.id.rl_loading_layout:
                 mLoadingView.show();
                 mHintTv.setVisibility(View.GONE);
@@ -728,6 +773,16 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void getPlatformInfo() {
+        UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.WEIXIN,authListener);
     }
 
     private void upgrade(){
@@ -850,6 +905,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         if(homeKeyReceiver!=null) {
             unregisterReceiver(homeKeyReceiver);
         }
+        UMShareAPI.get(this).release();
     }
 
     @Override
@@ -878,4 +934,55 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeMessages(KILL_APP);
         mHandler.removeCallbacksAndMessages(null);
     }
+
+    UMAuthListener authListener = new UMAuthListener() {
+        /**
+         * @desc 授权开始的回调
+         * @param platform 平台名称
+         */
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            SocializeUtils.safeShowDialog(dialog);
+        }
+
+        /**
+         * @desc 授权成功的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         * @param data 用户资料返回
+         */
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            SocializeUtils.safeCloseDialog(dialog);
+            LogUtils.d("savor:wx openid="+data.get("openid"));
+            LogUtils.d("savor:wx iconurl="+data.get("iconurl"));
+            String iconurl = data.get("iconurl");
+            if(!TextUtils.isEmpty(iconurl)) {
+                Glide.with(MainActivity.this).load(iconurl).centerCrop().into(mHeaderImg);
+            }
+        }
+
+        /**
+         * @desc 授权失败的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         * @param t 错误原因
+         */
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            SocializeUtils.safeCloseDialog(dialog);
+//            Toast.makeText(mContext, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @desc 授权取消的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         */
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            SocializeUtils.safeCloseDialog(dialog);
+//            Toast.makeText(mContext, "取消了", Toast.LENGTH_LONG).show();
+        }
+    };
 }

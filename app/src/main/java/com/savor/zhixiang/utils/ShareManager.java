@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.savor.zhixiang.R;
@@ -218,7 +219,10 @@ public class ShareManager {
                         && platform != SHARE_MEDIA.GOOGLEPLUS
                         && platform != SHARE_MEDIA.YNOTE
                         && platform != SHARE_MEDIA.EVERNOTE) {
-                    Toast.makeText(mActivity.get(), "分享成功啦", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(mActivity.get(), "分享成功啦", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mActivity.get(), "分享成功啦", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
 
             }

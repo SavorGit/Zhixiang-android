@@ -58,6 +58,7 @@ import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
+import com.savor.zhixiang.widget.PropertySelectDialog;
 import com.savor.zhixiang.widget.UpgradeDialog;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -149,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private boolean isRequesting;
     private ImageView mHeaderImg;
     private ProgressDialog dialog;
+    private PropertySelectDialog mProSelectDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,17 +163,28 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         getViews();
         setViews();
         setListeners();
-        checkKeywords();
+        checkPropertyStatus();
+//        checkKeywords();
         getData("");
         registeHomeKeyReceiver();
         upgrade();
-        initWxAuthor();
     }
 
-    private void initWxAuthor() {
-        boolean authorize = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
-        if(authorize) {
+    /**
+     * 检查是否需要显示资产
+     */
+    private void checkPropertyStatus() {
+        boolean selectPro = mSession.isSelectPro();
+        if(!selectPro) {
+            if(mProSelectDialog == null) {
+                mProSelectDialog = new PropertySelectDialog(this, new PropertySelectDialog.OnEnterBtnClickListener() {
+                    @Override
+                    public void onEnterBtnClick() {
 
+                    }
+                });
+            }
+            mProSelectDialog.show();
         }
     }
 

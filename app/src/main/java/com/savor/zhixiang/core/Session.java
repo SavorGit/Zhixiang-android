@@ -70,6 +70,8 @@ public class Session {
     /***/
     private static final String P_APP_LAST_SHOW_KEYWORDS_TIME = "p_app_last_show_keywords_time";
     private static final String P_APP_LAST_KEYWORDS = "p_app_last_keywords";
+    /**是否选择资产*/
+    private static final String P_APP_IS_SELECT_PROPERTY = "p_app_is_select_property";
 
     private static final String P_APP_IS_SHOW_SCAN_GUIDE = "isScanGuide";
 
@@ -163,6 +165,7 @@ public class Session {
     private String channelId;
     private String boxMac;
     private KeywordsBean keywordsBean;
+    private boolean isSelectPro;
 
     private Session(Context context) {
 
@@ -220,6 +223,7 @@ public class Session {
         deviceid = STIDUtil.getDeviceId(mContext);
         netType = mPreference.loadStringKey(P_APP_NET_TYPE, "");
         isNeedGuide = mPreference.loadBooleanKey(P_APP_IS_SHOW_GUIDE, isNeedGuide);
+        isSelectPro = mPreference.loadBooleanKey(P_APP_IS_SELECT_PROPERTY, isSelectPro);
         isScanGuide = mPreference.loadBooleanKey(P_APP_IS_SHOW_SCAN_GUIDE, isScanGuide);
         lastTime = mPreference.loadLongKey(P_APP_LASTSTARTUP,0);
 
@@ -332,7 +336,8 @@ public class Session {
         }else if(P_APP_IS_SHOW_GUIDE.equals(key)
                 ||P_APP_FIRST_PLAY.equals(key)
                 ||P_APP_IS_SHOW_SCAN_GUIDE.equals(key)
-                ||P_APP_FIRST_USE.equals(key)){
+                ||P_APP_FIRST_USE.equals(key)
+                ||P_APP_IS_SELECT_PROPERTY.equals(key)){
             mPreference.saveBooleanKey(key,(boolean)updateItem.second);
         }else if(P_APP_HOTELID.equals(key)){
             mPreference.saveIntKey(key,(Integer) updateItem.second);
@@ -503,4 +508,16 @@ public class Session {
         return keywordsBean;
     }
 
+    /**
+     * 是否选择了资产
+     * @param isSelectPro
+     */
+    public void setSelectProperty(boolean isSelectPro) {
+        this.isSelectPro = isSelectPro;
+        writePreference(new Pair<String, Object>(P_APP_IS_SELECT_PROPERTY,isSelectPro));
+    }
+
+    public boolean isSelectPro() {
+        return isSelectPro;
+    }
 }

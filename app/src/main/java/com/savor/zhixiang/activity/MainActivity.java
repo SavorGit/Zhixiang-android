@@ -49,6 +49,7 @@ import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
+import com.savor.zhixiang.core.ResponseErrorMessage;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private RelativeLayout rl_my_collection;
     private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
+    private RelativeLayout mCheckUpLayout;
     private FooterPagerFragment mFooterPagerFragment;
     private CardView mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
@@ -122,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private CardBean cardBean;
     private DrawerLayout drawer;
     private long exitTime;
+    private boolean ismuteUp = false;
 
     private Handler mHandler = new Handler(){
         @Override
@@ -255,6 +258,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mPageNumLayout = (RelativeLayout) findViewById(R.id.page_num_layout);
         rl_my_collection = (RelativeLayout) findViewById(R.id.rl_my_collection);
         rl_all_list = (RelativeLayout) findViewById(R.id.rl_all_list);
+        mCheckUpLayout = (RelativeLayout) findViewById(R.id.rl_checkup);
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
@@ -279,6 +283,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.addOnPageChangeListener(this);
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
+        mCheckUpLayout.setOnClickListener(this);
         drawer.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -676,6 +681,23 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 mNextPageFragments.clear();
                 isRequesting = false;
                 break;
+            case POST_VERSION_JSON:
+                if(obj instanceof ResponseErrorMessage) {
+                    ResponseErrorMessage message = (ResponseErrorMessage) obj;
+                    int code = message.getCode();
+                    String msg = message.getMessage();
+                    if (ismuteUp){
+                        if (!TextUtils.isEmpty(msg)){
+                            if (!TextUtils.isEmpty(msg)){
+                                ShowMessage.showToast(MainActivity.this,msg);
+                            }
+
+                        }
+                    }
+                }
+                break;
+
+
         }
     }
 
@@ -761,6 +783,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 intent1.setClass(MainActivity.this,MyCollectActivity.class);
                 startActivity(intent1);
 
+                break;
+            case R.id.rl_checkup:
+                ismuteUp = true;
+                upgrade();
                 break;
             case R.id.rl_all_list:
                 RecordUtils.onEvent(this,R.string.news_share_menu_all);
@@ -913,6 +939,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         super.onResume();
         RecordUtils.onPageStartAndResume(this,this);
         RecordUtils.onPageStart(this,getString(R.string.news_share_home_start));
+        ismuteUp = false;
     }
 
     @Override
@@ -920,6 +947,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         super.onPause();
         RecordUtils.onPageEndAndPause(this,this);
         RecordUtils.onPageEnd(this,getString(R.string.news_share_home_start));
+        ismuteUp = false;
     }
 
     public void killAppDelyed() {
@@ -933,6 +961,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         LogUtils.d("savor:home 回到前台取消杀死app任务");
         mHandler.removeMessages(KILL_APP);
         mHandler.removeCallbacksAndMessages(null);
+        ismuteUp = false;
     }
 
     UMAuthListener authListener = new UMAuthListener() {

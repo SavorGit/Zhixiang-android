@@ -30,7 +30,6 @@ import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.widget.ShareDialog;
-import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.UMShareAPI;
 
 import java.util.List;

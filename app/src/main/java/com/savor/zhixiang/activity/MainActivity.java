@@ -713,7 +713,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 }else {
                     LogUtils.d("savor:main 正在请求数据不做任何处理");
                 }
-//                AppApi.getCardList(MainActivity.this, finalBtime,MainActivity.this);
             }
         },1000);
 
@@ -724,29 +723,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (v.getId()){
             case R.id.iv_header:
                 getPlatformInfo();
-//                mController = U.getUMSocialService("com.umeng.login");
-//                UMShareAPI.get(MainActivity.this).doOauthVerify(MainActivity.this, SHARE_MEDIA.WEIXIN, new UMAuthListener() {
-//                    @Override
-//                    public void onStart(SHARE_MEDIA share_media) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-//                        getPlatformInfo();
-//                    }
-//
-//                    @Override
-//                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancel(SHARE_MEDIA share_media, int i) {
-//
-//                    }
-//                });
-
                 break;
             case R.id.rl_loading_layout:
                 mLoadingView.show();

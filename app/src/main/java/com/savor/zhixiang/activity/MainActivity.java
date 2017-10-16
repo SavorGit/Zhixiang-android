@@ -825,11 +825,17 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
 
             }else{
+                if (ismuteUp){
+                     ShowMessage.showToast(MainActivity.this,"当前为最新版本");
 
+                }
 
             }
         }else {
+            if (ismuteUp){
+                ShowMessage.showToast(MainActivity.this,"当前为最新版本");
 
+            }
         }
 
 

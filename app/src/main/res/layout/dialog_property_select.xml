@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:gravity="center"
+        android:layout_marginBottom="42dp"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:text="我们为不同的人群提供最合适的内容\n请选择您所在的群体"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tv_ten"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/round_white_bg"
+        android:textColor="@color/black"
+        android:text="资产10亿以上"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tv_one"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/round_white_bg"
+        android:textColor="@color/black"
+        android:text="资产1亿以上"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tv_one_mill"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/round_white_bg"
+        android:textColor="@color/black"
+        android:text="资产一千万以上"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tv_no"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/round_white_bg"
+        android:textColor="@color/black"
+        android:text="暂不透露"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginBottom="50dp"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="我们将对此次选择进行严格保密"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_close"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:background="@drawable/round_white_bg"
+        android:textColor="@color/black"
+        android:text="我知道了"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

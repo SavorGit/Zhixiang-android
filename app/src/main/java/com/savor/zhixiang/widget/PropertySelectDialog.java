@@ -6,11 +6,14 @@ import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Process;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.utils.ActivitiesManager;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -32,6 +35,8 @@ public class PropertySelectDialog extends Dialog implements View.OnClickListener
     private TextView mTenProTv;
     private TextView mOneProTv;
     private TextView mOneMillProTv;
+    private long exitTime;
+    private TextView mEnterBtn;
 
     public PropertySelectDialog(Activity context, OnEnterBtnClickListener listener) {
         super(context, R.style.Dialog_Fullscreen);
@@ -62,6 +67,7 @@ public class PropertySelectDialog extends Dialog implements View.OnClickListener
         mTenProTv.setOnClickListener(this);
         mOneProTv.setOnClickListener(this);
         mOneMillProTv.setOnClickListener(this);
+        mEnterBtn.setOnClickListener(this);
     }
 
     private void initViews() {
@@ -69,13 +75,23 @@ public class PropertySelectDialog extends Dialog implements View.OnClickListener
         mTenProTv = (TextView) findViewById(R.id.tv_ten);
         mOneProTv = (TextView) findViewById(R.id.tv_one);
         mOneMillProTv = (TextView) findViewById(R.id.tv_one_mill);
+        mEnterBtn = (TextView) findViewById(R.id.tv_close);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        dismiss();
-        mContext.finish();
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            ShowMessage.showToast(mContext,mContext.getString(R.string.confirm_exit_app));
+            exitTime = System.currentTimeMillis();
+        } else {
+            exitApp();
+        }
+    }
+
+    private void exitApp() {
+        ActivitiesManager.getInstance().popAllActivities();
+        Process.killProcess(Process.myPid());
     }
 
     @Override

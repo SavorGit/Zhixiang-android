@@ -79,6 +79,39 @@
 
         </RelativeLayout>
 
+        <!--检查更新-->
+        <RelativeLayout
+            android:layout_below="@id/rl_all_list"
+            android:id="@+id/rl_checkup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:paddingLeft="30dp"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#f0f0f0"
+                android:drawableLeft="@mipmap/qbzhx"
+                android:drawablePadding="10dp"
+                android:text="版本更新" />
+
+            <TextView
+                android:id="@+id/version_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_main_bg"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                style="@style/NavigationTextSytle"
+                android:layout_marginRight="32dp"
+                android:text=""
+                />
+        </RelativeLayout>
+
+
         <TextView
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="60dp"

@@ -46,6 +46,7 @@ import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.KeywordsBean;
+import com.savor.zhixiang.bean.PropertyBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
@@ -177,8 +178,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
      * 检查是否需要显示资产
      */
     private void checkPropertyStatus() {
-        boolean selectPro = mSession.isSelectPro();
-        if(!selectPro) {
+        PropertyBean property = mSession.getProperty();
+        if(property == null || !property.isUploadPro()) {
             if(mProSelectDialog == null) {
                 mProSelectDialog = new PropertySelectDialog(this, new PropertySelectDialog.OnEnterBtnClickListener() {
                     @Override

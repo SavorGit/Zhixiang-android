@@ -135,9 +135,37 @@
         <item name="android:backgroundDimEnabled">true</item><!--模糊-->
         <!--<item name="android:windowIsTranslucent">false</item>-->
 
-
     </style>
+    <style name="Dialog_Fullscreen_Pro" parent="AppTheme.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+        <!--<item name="android:windowIsTranslucent">false</item>-->
+        <item name="android:activityOpenEnterAnimation">@null</item>
 
+        <item name="android:activityOpenExitAnimation">@null</item>
+
+        <item name="android:activityCloseEnterAnimation">@null</item>
+
+        <item name="android:activityCloseExitAnimation">@null</item>
+
+        <item name="android:taskOpenEnterAnimation">@null</item>
+
+        <item name="android:taskOpenExitAnimation">@null</item>
+
+        <item name="android:taskCloseEnterAnimation">@null</item>
+
+        <item name="android:taskCloseExitAnimation">@null</item>
+
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+
+        <item name="android:taskToFrontExitAnimation">@null</item>
+
+        <item name="android:taskToBackEnterAnimation">@null</item>
+
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
 
     <!--圆角弹窗style-->
     <style name="loading_dialog" parent="android:style/Theme.Dialog">

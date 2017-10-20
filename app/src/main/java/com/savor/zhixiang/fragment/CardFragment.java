@@ -1,16 +1,11 @@
 package com.savor.zhixiang.fragment;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.transition.Fade;
-import android.support.transition.Transition;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -44,6 +39,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     private TextView mSourcetv;
     private RelativeLayout mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
+    private TextView mLabelTv;
 
     public static CardFragment newInstance(CardDetail detail) {
         CardFragment cardFragment = new CardFragment();
@@ -65,7 +61,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View parent = inflater.inflate(R.layout.view_card_item,container,false);
+        View parent = inflater.inflate(R.layout.fragment_card_item,container,false);
         initViews(parent);
 
         return parent;
@@ -81,6 +77,7 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         mLoadingLayout = (RelativeLayout) parent.findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) parent.findViewById(R.id.av_loading_view);
 
+        mLabelTv = (TextView) parent.findViewById(R.id.tv_label);
     }
 
     private void setViews() {
@@ -104,10 +101,14 @@ public class CardFragment extends Fragment implements View.OnClickListener {
             String title = detail.getTitle();
             String desc = detail.getDesc();
             String sourceName = detail.getSourceName();
+            String artpro = detail.getArtpro();
             mTitleTv.setText(title);
             mDescTv.setText(desc);
             if(!TextUtils.isEmpty(sourceName)) {
                 mSourcetv.setText("选自："+sourceName);
+            }
+            if(!TextUtils.isEmpty(artpro)) {
+                mLabelTv.setText("["+artpro+"]");
             }
         }
 

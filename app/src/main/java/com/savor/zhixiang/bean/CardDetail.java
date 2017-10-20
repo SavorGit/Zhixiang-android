@@ -28,6 +28,7 @@ public class CardDetail implements Serializable {
     private String month;
     private String day;
     private String share_url;
+    private String artpro;
 
     @Override
     public String toString() {
@@ -42,6 +43,7 @@ public class CardDetail implements Serializable {
                 ", month='" + month + '\'' +
                 ", day='" + day + '\'' +
                 ", share_url='" + share_url + '\'' +
+                ", artpro='" + artpro + '\'' +
                 '}';
     }
 
@@ -64,7 +66,9 @@ public class CardDetail implements Serializable {
         if (week != null ? !week.equals(detail.week) : detail.week != null) return false;
         if (month != null ? !month.equals(detail.month) : detail.month != null) return false;
         if (day != null ? !day.equals(detail.day) : detail.day != null) return false;
-        return share_url != null ? share_url.equals(detail.share_url) : detail.share_url == null;
+        if (share_url != null ? !share_url.equals(detail.share_url) : detail.share_url != null)
+            return false;
+        return artpro != null ? artpro.equals(detail.artpro) : detail.artpro == null;
 
     }
 
@@ -80,6 +84,7 @@ public class CardDetail implements Serializable {
         result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (day != null ? day.hashCode() : 0);
         result = 31 * result + (share_url != null ? share_url.hashCode() : 0);
+        result = 31 * result + (artpro != null ? artpro.hashCode() : 0);
         return result;
     }
 
@@ -161,6 +166,14 @@ public class CardDetail implements Serializable {
 
     public void setShare_url(String share_url) {
         this.share_url = share_url;
+    }
+
+    public String getArtpro() {
+        return artpro;
+    }
+
+    public void setArtpro(String artpro) {
+        this.artpro = artpro;
     }
 
     public class ContentDetailBean implements Serializable{

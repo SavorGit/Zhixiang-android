@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public class CardBean implements Serializable {
+    private NextPageBean nextpage;
     private String week;
     private String month;
     private String day;
@@ -17,7 +18,8 @@ public class CardBean implements Serializable {
     @Override
     public String toString() {
         return "CardBean{" +
-                "week='" + week + '\'' +
+                "nextpage=" + nextpage +
+                ", week='" + week + '\'' +
                 ", month='" + month + '\'' +
                 ", day='" + day + '\'' +
                 ", list=" + list +
@@ -31,6 +33,8 @@ public class CardBean implements Serializable {
 
         CardBean cardBean = (CardBean) o;
 
+        if (nextpage != null ? !nextpage.equals(cardBean.nextpage) : cardBean.nextpage != null)
+            return false;
         if (week != null ? !week.equals(cardBean.week) : cardBean.week != null) return false;
         if (month != null ? !month.equals(cardBean.month) : cardBean.month != null) return false;
         if (day != null ? !day.equals(cardBean.day) : cardBean.day != null) return false;
@@ -40,11 +44,20 @@ public class CardBean implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = week != null ? week.hashCode() : 0;
+        int result = nextpage != null ? nextpage.hashCode() : 0;
+        result = 31 * result + (week != null ? week.hashCode() : 0);
         result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (day != null ? day.hashCode() : 0);
         result = 31 * result + (list != null ? list.hashCode() : 0);
         return result;
+    }
+
+    public NextPageBean getNextpage() {
+        return nextpage;
+    }
+
+    public void setNextpage(NextPageBean nextpage) {
+        this.nextpage = nextpage;
     }
 
     public String getWeek() {

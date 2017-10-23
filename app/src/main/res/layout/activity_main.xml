@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:textSize="13sp"
             android:textColor="#808080"
-            android:text="每天十条内容，知世界，享生活"/>
+            android:text="每天十条内容  高效 • 价值 • 品味"/>
 
     </RelativeLayout>
 

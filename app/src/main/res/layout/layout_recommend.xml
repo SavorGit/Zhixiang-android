@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ico_default"
+                android:src="@mipmap/ico_recommend"
                 android:transitionName="sharedView" />
 
             <TextView

@@ -15,12 +15,15 @@ public class TransitionBean implements Serializable {
     /**名言名句*/
     private String dailyart;
 
+    private NextPageBean nextPageBean;
+
     @Override
     public String toString() {
         return "TransitionBean{" +
                 "type=" + type +
                 ", dailyauthor='" + dailyauthor + '\'' +
                 ", dailyart='" + dailyart + '\'' +
+                ", nextPageBean=" + nextPageBean +
                 '}';
     }
 
@@ -34,7 +37,9 @@ public class TransitionBean implements Serializable {
         if (type != that.type) return false;
         if (dailyauthor != null ? !dailyauthor.equals(that.dailyauthor) : that.dailyauthor != null)
             return false;
-        return dailyart != null ? dailyart.equals(that.dailyart) : that.dailyart == null;
+        if (dailyart != null ? !dailyart.equals(that.dailyart) : that.dailyart != null)
+            return false;
+        return nextPageBean != null ? nextPageBean.equals(that.nextPageBean) : that.nextPageBean == null;
 
     }
 
@@ -43,6 +48,7 @@ public class TransitionBean implements Serializable {
         int result = type;
         result = 31 * result + (dailyauthor != null ? dailyauthor.hashCode() : 0);
         result = 31 * result + (dailyart != null ? dailyart.hashCode() : 0);
+        result = 31 * result + (nextPageBean != null ? nextPageBean.hashCode() : 0);
         return result;
     }
 
@@ -68,5 +74,13 @@ public class TransitionBean implements Serializable {
 
     public void setDailyart(String dailyart) {
         this.dailyart = dailyart;
+    }
+
+    public NextPageBean getNextPageBean() {
+        return nextPageBean;
+    }
+
+    public void setNextPageBean(NextPageBean nextPageBean) {
+        this.nextPageBean = nextPageBean;
     }
 }

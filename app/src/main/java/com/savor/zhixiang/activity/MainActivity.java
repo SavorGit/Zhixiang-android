@@ -667,6 +667,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             }
             transitionBean.setDailyart(cardBean.getDailyart());
             transitionBean.setDailyauthor(cardBean.getDailyauthor());
+            transitionBean.setNextPageBean(nextpage);
             fragments.add(TransitionFrament.newInstance(transitionBean));
 
             //  默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表请

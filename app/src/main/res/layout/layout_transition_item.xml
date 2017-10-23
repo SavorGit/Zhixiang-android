@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -18,7 +19,7 @@
         tools:text="您已读完今日10条知享" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
@@ -29,6 +30,7 @@
         tools:text="土地是以它的肥沃和收获而被估价；才能也是土地，不过它生产的不是粮食，而是真理。如果只能滋生冥想和幻想的话。" />
 
     <LinearLayout
+        android:id="@+id/ll_author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right|center_vertical"
@@ -42,6 +44,7 @@
             android:background="@color/color_d3d3d3" />
 
         <TextView
+            android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_d3d3d3"
@@ -58,11 +61,13 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_page_hint"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tv_page_hint"
                 android:textColor="@color/color_999999"
                 android:layout_marginRight="5dp"
                 android:textSize="15sp"

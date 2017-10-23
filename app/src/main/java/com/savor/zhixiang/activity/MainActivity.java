@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private TextView mDateTv;
     private TextView mMonthTv;
     private TextView mWeekTv;
+    private TextView size;
     private RelativeLayout rl_my_collection;
     private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
@@ -281,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
-
+        size = (TextView) findViewById(R.id.size);
         mHeaderImg = (ImageView) findViewById(R.id.iv_header);
     }
 
@@ -295,6 +296,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setAdapter(mAdapter);
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
+        size.setText(ImageCacheUtils.getCacheSize());
     }
 
     private void setListeners() {
@@ -837,6 +839,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 break;
             case R.id.rl_clear_cache:
                 ImageCacheUtils.clearImageAllCache();
+                size.setText("0.0MB");
+                ShowMessage.showToast(context,"清除缓存成功");
                 break;
 
 

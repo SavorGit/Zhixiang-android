@@ -427,11 +427,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             }else if(frag instanceof TransitionFrament){
                 index = position-2;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
-                mDateLayout.setVisibility(View.INVISIBLE);
+                mDateLayout.setVisibility(View.VISIBLE);
             }else if(frag instanceof RecommendFragment){
                 index = position-1;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
-                mDateLayout.setVisibility(View.INVISIBLE);
+                mDateLayout.setVisibility(View.VISIBLE);
             }else {
                 mPageNumLayout.setVisibility(View.VISIBLE);
                 mDateLayout.setVisibility(View.VISIBLE);
@@ -440,7 +440,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             CardFragment fragment = (CardFragment) fragmentList.get(index);
             final CardDetail cardDetail = fragment.getCardDetail();
             if(cardDetail!=null) {
-                 initDate(cardDetail,frag instanceof CardFragment);
+                 initDate(cardDetail,frag instanceof CardFragment,frag instanceof CardFragment||frag instanceof TransitionFrament||frag instanceof RecommendFragment);
             }
             // 更新底部页码
             int result = 1;
@@ -514,7 +514,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                initDate(detail,true);
+                initDate(detail,true,true);
             }
 
             @Override
@@ -529,15 +529,18 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         });
     }
 
-    private void initDate(CardDetail cardDetail,boolean isShowDateLayout) {
+    private void initDate(CardDetail cardDetail,boolean isShowNumLayout,boolean isShowDateLayout) {
         String day = cardDetail.getDay();
         String month = cardDetail.getMonth();
         String week = cardDetail.getWeek();
-        if(isShowDateLayout) {
+        if(isShowNumLayout) {
             mPageNumLayout.setVisibility(View.VISIBLE);
-            mDateLayout.setVisibility(View.VISIBLE);
         }else {
             mPageNumLayout.setVisibility(View.INVISIBLE);
+        }
+        if(isShowDateLayout) {
+            mDateLayout.setVisibility(View.VISIBLE);
+        }else {
             mDateLayout.setVisibility(View.INVISIBLE);
         }
         mBottomPageNumTv.setText("1 ");
@@ -687,14 +690,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 mPageNumLayout.setVisibility(View.VISIBLE);
                 mBottomPageNumTv.setText("1");
                 mDateLayout.setVisibility(View.VISIBLE);
-                initDate(list.get(0),true);
+                initDate(list.get(0),true,true);
             }
 
             // 如果是第一次请求数据，这时更新列表数据不会执行onpageselected所以会导致页码不显示
             // 所以判断如果是第一次加载数据更新页面，并直接更新列表
             // 以后第二次更新数据，是在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表
             if(fragmentList.size()==0) {
-                initDate(list.get(0),true);
+                initDate(list.get(0),true,true);
             }
 
             if(fragmentList.size()==0) {

@@ -19,7 +19,7 @@ import com.savor.zhixiang.bean.TransitionBean;
  * 过渡页
  * @author hezd
  */
-public class TransitionFrament extends Fragment {
+public class TransitionFrament extends BaseFragment {
     public static final int TYPE_FINISH_TODAY = 1;
     public static final int TYPE_FINISH_HISTORY = 2;
     public static final int TYPE_FINISH_ALL = 3;
@@ -58,11 +58,11 @@ public class TransitionFrament extends Fragment {
         setListeners();
     }
 
-    private void setListeners() {
+    public void setListeners() {
 
     }
 
-    private void setViews() {
+    public void setViews() {
         Bundle arguments = getArguments();
         mTransitionBean = (TransitionBean) arguments.getSerializable("bean");
 

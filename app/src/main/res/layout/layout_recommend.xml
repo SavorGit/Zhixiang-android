@@ -67,6 +67,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_share_wx"
                     android:layout_marginRight="45dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,6 +79,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="11sp" />
                 <TextView
+                    android:id="@+id/tv_circle"
                     android:layout_marginLeft="45dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +87,7 @@
                     android:drawableTop="@mipmap/ico_pyq_rec"
                     android:gravity="center"
                     android:padding="3dp"
-                    android:text="微信"
+                    android:text="朋友圈"
                     android:textColor="@color/colorPrimary"
                     android:textSize="11sp" />
             </LinearLayout>

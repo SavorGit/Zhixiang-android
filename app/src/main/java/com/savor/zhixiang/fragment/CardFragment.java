@@ -29,7 +29,7 @@ import com.wang.avi.AVLoadingIndicatorView;
  * Created by hezd on 2017/9/21.
  */
 
-public class CardFragment extends Fragment implements View.OnClickListener {
+public class CardFragment extends BaseFragment implements View.OnClickListener {
     public static final float IMAGE_SCALE = 400/630f;
     private CardView mParentView;
     private ImageView mBannerIv;
@@ -80,7 +80,8 @@ public class CardFragment extends Fragment implements View.OnClickListener {
         mLabelTv = (TextView) parent.findViewById(R.id.tv_label);
     }
 
-    private void setViews() {
+    @Override
+    public void setViews() {
         ViewGroup.LayoutParams layoutParams = mBannerIv.getLayoutParams();
         int screenWidth = DensityUtil.getScreenWidth(getContext());
         int width = screenWidth-DensityUtil.dip2px(getContext(),28)*2;

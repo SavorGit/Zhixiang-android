@@ -1,5 +1,7 @@
 package com.savor.zhixiang.utils;
 
+import com.savor.zhixiang.core.AppApi;
+
 /**
  * Created by hezd on 2016/12/9.
  */
@@ -37,6 +39,8 @@ public class ConstantValues {
     /**正式环境域名**/
     public static final String HOST_URL = "http://www.littlehotspot.com/";
     public static final String H5_FILE_PRO_HELP = "http://h5.littlehotspot.com/Public/html/help3/wenjian_Android.html";
+
+    public static final String H5_SHARE_URL = AppApi.CLOUND_PLATFORM_PHP_URL+"admin/dailycontentshow/showday?id=187";
 
     public static String addH5Params(String url){
         if(url.contains("?")) {

@@ -13,6 +13,8 @@ public class CardBean implements Serializable {
     private String week;
     private String month;
     private String day;
+    private String dailyauthor;
+    private String dailyart;
     private List<CardDetail> list;
 
     @Override
@@ -22,6 +24,8 @@ public class CardBean implements Serializable {
                 ", week='" + week + '\'' +
                 ", month='" + month + '\'' +
                 ", day='" + day + '\'' +
+                ", dailyauthor='" + dailyauthor + '\'' +
+                ", dailyart='" + dailyart + '\'' +
                 ", list=" + list +
                 '}';
     }
@@ -38,6 +42,10 @@ public class CardBean implements Serializable {
         if (week != null ? !week.equals(cardBean.week) : cardBean.week != null) return false;
         if (month != null ? !month.equals(cardBean.month) : cardBean.month != null) return false;
         if (day != null ? !day.equals(cardBean.day) : cardBean.day != null) return false;
+        if (dailyauthor != null ? !dailyauthor.equals(cardBean.dailyauthor) : cardBean.dailyauthor != null)
+            return false;
+        if (dailyart != null ? !dailyart.equals(cardBean.dailyart) : cardBean.dailyart != null)
+            return false;
         return list != null ? list.equals(cardBean.list) : cardBean.list == null;
 
     }
@@ -48,6 +56,8 @@ public class CardBean implements Serializable {
         result = 31 * result + (week != null ? week.hashCode() : 0);
         result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (day != null ? day.hashCode() : 0);
+        result = 31 * result + (dailyauthor != null ? dailyauthor.hashCode() : 0);
+        result = 31 * result + (dailyart != null ? dailyart.hashCode() : 0);
         result = 31 * result + (list != null ? list.hashCode() : 0);
         return result;
     }
@@ -82,6 +92,22 @@ public class CardBean implements Serializable {
 
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public String getDailyauthor() {
+        return dailyauthor;
+    }
+
+    public void setDailyauthor(String dailyauthor) {
+        this.dailyauthor = dailyauthor;
+    }
+
+    public String getDailyart() {
+        return dailyart;
+    }
+
+    public void setDailyart(String dailyart) {
+        this.dailyart = dailyart;
     }
 
     public List<CardDetail> getList() {

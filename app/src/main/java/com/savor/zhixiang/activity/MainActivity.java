@@ -46,7 +46,9 @@ import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.KeywordsBean;
+import com.savor.zhixiang.bean.NextPageBean;
 import com.savor.zhixiang.bean.PropertyBean;
+import com.savor.zhixiang.bean.TransitionBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
@@ -54,6 +56,8 @@ import com.savor.zhixiang.core.ResponseErrorMessage;
 import com.savor.zhixiang.core.Session;
 import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
+import com.savor.zhixiang.fragment.RecommendFragment;
+import com.savor.zhixiang.fragment.TransitionFrament;
 import com.savor.zhixiang.receiver.HomeKeyReceiver;
 import com.savor.zhixiang.utils.ActivitiesManager;
 import com.savor.zhixiang.utils.RecordUtils;
@@ -412,10 +416,18 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onPageSelected(int position) {
         final Fragment frag = fragmentList.get(position);
         // 如果当前不是第一页数据
-        if(mAdapter.getCount()>=11) {
+        if(mAdapter.getCount()>=12) {
             // 获取当前页日期时间并更新右上角日期
             int index = position;
-            if(!(frag instanceof CardFragment)) {
+            if(frag instanceof FooterPagerFragment) {
+                index = position-3;
+                mPageNumLayout.setVisibility(View.INVISIBLE);
+                mDateLayout.setVisibility(View.INVISIBLE);
+            }else if(frag instanceof TransitionFrament){
+                index = position-2;
+                mPageNumLayout.setVisibility(View.INVISIBLE);
+                mDateLayout.setVisibility(View.INVISIBLE);
+            }else if(frag instanceof RecommendFragment){
                 index = position-1;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
                 mDateLayout.setVisibility(View.INVISIBLE);
@@ -430,7 +442,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                  initDate(cardDetail,frag instanceof CardFragment);
             }
             // 更新底部页码
-            mBottomPageNumTv.setText(String.valueOf(index%10+1)+" ");
+            int result = 1;
+            if(position>11) {
+                result = ((position-12)%11)+1;
+            }else {
+                result = position%12+1;
+            }
+            mBottomPageNumTv.setText(String.valueOf(result)+" ");
 
             // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
             if(position==mAdapter.getCount()-4) {
@@ -449,15 +467,17 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     mViewPager.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if(mNextPageFragments!=null&&mNextPageFragments.size()==10) {
+                            if(mNextPageFragments!=null&&mNextPageFragments.size()==11) {
                                 mViewPager.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         fragmentList.remove(mFooterPagerFragment);
                                         fragmentList.addAll(mNextPageFragments);
                                         mAdapter.setData(fragmentList);
-                                        fragmentList.add(mFooterPagerFragment);
-                                        mAdapter.setData(fragmentList);
+                                        if(cardBean!=null&&cardBean.getNextpage()!=null&&cardBean.getNextpage().getNext()==1) {
+                                            fragmentList.add(mFooterPagerFragment);
+                                            mAdapter.setData(fragmentList);
+                                        }
                                         CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
                                         CardDetail detail = cFrag.getCardDetail();
 
@@ -523,7 +543,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mDateTv.setText(day);
         mMonthTv.setText(month);
         mWeekTv.setText(week);
-
     }
 
     @Override
@@ -605,11 +624,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         String day = cardBean.getDay();
         String month = cardBean.getMonth();
         String week = cardBean.getWeek();
+        NextPageBean nextpage = cardBean.getNextpage();
 
         List<CardDetail> list = cardBean.getList();
         List<Fragment> fragments = new ArrayList<>();
         // 如果列表有数据
         if(list !=null&& list.size()>0) {
+            // 隐藏全局加载布局
             mLoadingLayout.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -618,13 +639,30 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     mPageNumLayout.setVisibility(View.VISIBLE);
                 }
             },200);
-            // 重新卡片数据，将日期时间添加进去，当切换到某个页面时，更新日期时间
+            // 重新组织卡片数据，将日期时间添加进去，当切换到某个页面时，更新日期时间
             for(CardDetail detail : list) {
                 detail.setDay(day);
                 detail.setWeek(week);
                 detail.setMonth(month);
                 fragments.add(CardFragment.newInstance(detail));
             }
+
+            // 添加过渡页
+            TransitionBean transitionBean = new TransitionBean();
+            if(fragmentList.size() == 0) {
+                transitionBean.setType(TransitionFrament.TYPE_FINISH_TODAY);
+                fragments.add(RecommendFragment.newInstance());
+            }else if(nextpage!=null) {
+                if(nextpage.getNext() == 1) {
+                    transitionBean.setType(TransitionFrament.TYPE_FINISH_HISTORY);
+                }else if(nextpage.getNext() == 0) {
+                    transitionBean.setType(TransitionFrament.TYPE_FINISH_ALL);
+                }
+            }
+            transitionBean.setDailyart(cardBean.getDailyart());
+            transitionBean.setDailyauthor(cardBean.getDailyauthor());
+            fragments.add(TransitionFrament.newInstance(transitionBean));
+
             //  默认第一次请求直接更新列表，在滑动到还剩3页的时候请求数据，并放入缓存集合，当滑动到最后一页在更新列表请
             // 另外一种情况是加载失败，在加载页点击重新加载，这时候如果在加载页返回数据直接更新列表
             // 请求数据返回时，如果当前页不是最后一页时，更新下一个分页十条数据放入缓存集合
@@ -638,8 +676,11 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 fragmentList.remove(mFooterPagerFragment);
                 fragmentList.addAll(fragments);
                 mAdapter.setData(fragmentList);
-                fragmentList.add(mFooterPagerFragment);
-                mAdapter.setData(fragmentList);
+                // 有下一页数据的时候才添加加载页
+                if(nextpage!=null && nextpage.getNext() ==1) {
+                    fragmentList.add(mFooterPagerFragment);
+                    mAdapter.setData(fragmentList);
+                }
                 mNextPageFragments.clear();
                 mNextPageBeanList.clear();
                 mPageNumLayout.setVisibility(View.VISIBLE);
@@ -729,7 +770,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
         String btime = "";
         if(fragmentList.size()>0) {
-            CardFragment fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 2);
+            CardFragment fragment;
+            if(mAdapter.getCount()>13) {
+                fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 3);
+            }else {
+                fragment = (CardFragment) fragmentList.get(fragmentList.size()-2);
+            }
             CardDetail cardDetail = fragment.getCardDetail();
             if(cardDetail!=null) {
                 CardDetail.ContentDetailBean contentDetail = cardDetail.getContentDetail();

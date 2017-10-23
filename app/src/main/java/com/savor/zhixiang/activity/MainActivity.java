@@ -775,10 +775,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 startActivity(intent1);
 
                 break;
-            case R.id.rl_checkup:
-                ismuteUp = true;
-                upgrade();
-                break;
+//            case R.id.rl_checkup:
+//                ismuteUp = true;
+//                upgrade();
+//                break;
             case R.id.rl_all_list:
                 RecordUtils.onEvent(this,R.string.news_share_menu_all);
                 Intent intent = new Intent();

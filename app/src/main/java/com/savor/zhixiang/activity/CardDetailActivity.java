@@ -99,6 +99,12 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
         mParentLayout = (RelativeLayout) findViewById(R.id.rl_parent);
 
         initHeaderView();
+        initFooterView();
+    }
+
+    private void initFooterView() {
+        View footerView = View.inflate(this,R.layout.footer_view_card_detail,null);
+        mRefreshListView.addFooterView(footerView);
     }
 
     private void initHeaderView() {

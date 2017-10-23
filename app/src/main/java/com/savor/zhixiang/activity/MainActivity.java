@@ -55,6 +55,7 @@ import com.savor.zhixiang.fragment.CardFragment;
 import com.savor.zhixiang.fragment.FooterPagerFragment;
 import com.savor.zhixiang.receiver.HomeKeyReceiver;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.savor.zhixiang.utils.ImageCacheUtils;
 import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private RelativeLayout rl_my_collection;
     private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
-    private RelativeLayout mCheckUpLayout;
+    private RelativeLayout rl_clear_cache;
     private FooterPagerFragment mFooterPagerFragment;
     private CardView mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
@@ -258,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mPageNumLayout = (RelativeLayout) findViewById(R.id.page_num_layout);
         rl_my_collection = (RelativeLayout) findViewById(R.id.rl_my_collection);
         rl_all_list = (RelativeLayout) findViewById(R.id.rl_all_list);
-        mCheckUpLayout = (RelativeLayout) findViewById(R.id.rl_checkup);
+        rl_clear_cache = (RelativeLayout) findViewById(R.id.rl_clear_cache);
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
@@ -283,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.addOnPageChangeListener(this);
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
-        mCheckUpLayout.setOnClickListener(this);
+        rl_clear_cache.setOnClickListener(this);
         drawer.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -769,6 +770,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,AllListActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.rl_clear_cache:
+                ImageCacheUtils.clearImageAllCache();
                 break;
 
 

@@ -41,19 +41,35 @@
                 android:textSize="19sp"
                 android:textStyle="bold"
                 tools:text="孙宏斌谈新乐视：商业模式稍微一改就赚钱" />
-
-            <TextView
-                android:textSize="12sp"
-                android:id="@+id/tv_source"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/rl_label"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_margin="11dp"
-                android:ellipsize="end"
-                android:maxLines="5"
-                android:textColor="@color/color_999999"
-                tools:text="选自：MEEU有你" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:visibility="invisible"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="11dp"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:textColor="@color/color_999999"
+                    tools:text="选自：MEEU有你" />
+                <TextView
+                    android:textSize="16sp"
+                    android:id="@+id/tv_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="11dp"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:textColor="@color/color_cd313e"
+                    tools:text="[谈资]" />
+            </RelativeLayout>
+
 
             <TextView
                 android:maxLines="5"
@@ -61,7 +77,7 @@
                 android:id="@+id/tv_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/tv_source"
+                android:layout_above="@id/rl_label"
                 android:layout_below="@id/tv_title"
                 android:lineSpacingExtra="8dp"
                 android:paddingLeft="12dp"

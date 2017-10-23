@@ -37,6 +37,7 @@ import com.common.api.utils.LogUtils;
 import com.common.api.utils.Pair;
 import com.common.api.utils.SaveFileData;
 import com.savor.zhixiang.bean.KeywordsBean;
+import com.savor.zhixiang.bean.PropertyBean;
 import com.savor.zhixiang.utils.STIDUtil;
 
 import java.io.ByteArrayInputStream;
@@ -70,6 +71,8 @@ public class Session {
     /***/
     private static final String P_APP_LAST_SHOW_KEYWORDS_TIME = "p_app_last_show_keywords_time";
     private static final String P_APP_LAST_KEYWORDS = "p_app_last_keywords";
+    /**资产信息*/
+    private static final String P_APP_USER_PROPERTY = "p_app_user_property";
 
     private static final String P_APP_IS_SHOW_SCAN_GUIDE = "isScanGuide";
 
@@ -163,6 +166,7 @@ public class Session {
     private String channelId;
     private String boxMac;
     private KeywordsBean keywordsBean;
+    private PropertyBean property;
 
     private Session(Context context) {
 
@@ -216,6 +220,7 @@ public class Session {
 
 
     private void readSettings() {
+        property = (PropertyBean) getObj(P_APP_USER_PROPERTY);
         keywordsBean = (KeywordsBean) getObj(P_APP_LAST_KEYWORDS);
         deviceid = STIDUtil.getDeviceId(mContext);
         netType = mPreference.loadStringKey(P_APP_NET_TYPE, "");
@@ -332,7 +337,8 @@ public class Session {
         }else if(P_APP_IS_SHOW_GUIDE.equals(key)
                 ||P_APP_FIRST_PLAY.equals(key)
                 ||P_APP_IS_SHOW_SCAN_GUIDE.equals(key)
-                ||P_APP_FIRST_USE.equals(key)){
+                ||P_APP_FIRST_USE.equals(key)
+                || P_APP_USER_PROPERTY.equals(key)){
             mPreference.saveBooleanKey(key,(boolean)updateItem.second);
         }else if(P_APP_HOTELID.equals(key)){
             mPreference.saveIntKey(key,(Integer) updateItem.second);
@@ -363,7 +369,7 @@ public class Session {
 
     private void setObj(String key, Object obj) {
         try {
-            writePreference(new Pair<String, Object>(key, obj));
+            writePreference(new Pair<>(key, obj));
         } catch (Exception ex) {
             Log.e("wang", ex.toString());
         }
@@ -503,4 +509,15 @@ public class Session {
         return keywordsBean;
     }
 
+    /**
+     * 是否选择了资产
+     */
+    public void setProperty(PropertyBean property) {
+        this.property = property;
+        setObj(P_APP_USER_PROPERTY,property);
+    }
+
+    public PropertyBean getProperty() {
+        return property;
+    }
 }

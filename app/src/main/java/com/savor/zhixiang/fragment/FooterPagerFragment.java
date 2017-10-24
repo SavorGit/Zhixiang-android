@@ -18,7 +18,7 @@ import com.wang.avi.AVLoadingIndicatorView;
  * 首页卡片列表最后一页加载状态
  *@author hezd create on 2017/09/22
  */
-public class FooterPagerFragment extends Fragment implements View.OnClickListener {
+public class FooterPagerFragment extends BaseFragment implements View.OnClickListener {
     private OnclickReloadListener mListener;
     private AVLoadingIndicatorView mLoadingView;
     private TextView mHintTv;
@@ -65,7 +65,7 @@ public class FooterPagerFragment extends Fragment implements View.OnClickListene
         mHintTv = (TextView) parent.findViewById(R.id.tv_hint);
     }
 
-    private void setViews() {
+    public void setViews() {
 
     }
 

@@ -25,16 +25,26 @@
             android:id="@+id/logo_la"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="wrap_content">
 
             <ImageView
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/color_808080"
                 android:id="@+id/iv_header"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:src="@mipmap/ico_head" />
+
+            <TextView
+                android:id="@+id/tv_header"
+                android:layout_marginTop="20dp"
+                android:textSize="14sp"
+                android:text="未登录"
+                android:textColor="@color/color_808080"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/iv_header"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/ico_drawer" />
-
-
+                android:layout_height="wrap_content" />
         </RelativeLayout>
 
         <!--我的收藏-->

@@ -73,7 +73,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
                 getverifyCode();
                 break;
             case R.id.login_btn:
-
+                login();
                 break;
             default:
                 break;
@@ -90,15 +90,16 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     private void login(){
         String tel = ev_num.getText().toString();
         String code = ev_code.getText().toString();
+        String ptype = mSession.getProperty().getProperty()+"";
         if (!TextUtils.isEmpty(tel)&&!TextUtils.isEmpty(code) ) {
-            AppApi.mobileLogin(this,"",tel,code,"",this);
+            AppApi.mobileLogin(this,"",tel,code,"1",this);
         }
     }
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_TVERIFY_CODE_JSON:
-
+                String tel = ev_num.getText().toString();
                 break;
             case POST_MOBILE_LOGIN_JSON:
                 finish();

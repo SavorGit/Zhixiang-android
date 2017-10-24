@@ -8,12 +8,12 @@ import com.savor.zhixiang.R;
 /**
  * 登录页面
  */
-public class LoginActivity extends BaseActivity {
+public class LoginForCodeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_layout);
+        setContentView(R.layout.activity_login);
     }
 
     @Override

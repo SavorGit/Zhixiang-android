@@ -221,11 +221,12 @@ public class AppApi {
      * @param context
      * @param handler
      */
-    public static void mobileLogin(Context context,String openid,String tel,String ptype ,ApiRequestListener handler) {
+    public static void mobileLogin(Context context,String openid,String tel,String verifycode,String ptype ,ApiRequestListener handler) {
         final HashMap<String, Object> params = new HashMap<>();
         params.put("tel", tel);
         params.put("openid", openid);
         params.put("ptype", ptype);
+        params.put("verifycode", verifycode);
         new AppServiceOk(context, Action.POST_MOBILE_LOGIN_JSON, handler, params).post();
     }
 

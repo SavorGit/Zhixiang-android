@@ -813,7 +813,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_header:
-                getPlatformInfo();
+                //getPlatformInfo();
+                Intent intenty = new Intent();
+                intenty.setClass(MainActivity.this,LoginActivity.class);
+                startActivity(intenty);
                 break;
             case R.id.rl_loading_layout:
                 mLoadingView.show();

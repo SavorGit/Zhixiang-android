@@ -84,8 +84,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/CardDetailTheme" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login"></activity>
+        <activity
+            android:name=".activity.LoginForCodeActivity"
+            android:label="@string/title_activity_login"></activity>
+
+
     </application>
 
 </manifest>

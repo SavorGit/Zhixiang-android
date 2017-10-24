@@ -53,6 +53,13 @@ public class AppApi {
         POST_CARD_DETAIL_JSON,
         /**是否收藏*/
         POST_IS_COLLECTED_JSON,
+        /**获取验证码*/
+        POST_GET_TVERIFY_CODE_JSON,
+        /**手机登录*/
+        POST_MOBILE_LOGIN_JSON,
+        /**缓存配置*/
+        POST_GET_DAILY_CONFIG_JSON,
+
     }
 
     /**
@@ -72,6 +79,9 @@ public class AppApi {
             put(Action.POST_VERSION_JSON, formatPhpUrl("Dailyknowledge/Version/index"));
             put(Action.POST_CARD_DETAIL_JSON, formatPhpUrl("Dailyknowledge/Content/getDetail"));
             put(Action.POST_IS_COLLECTED_JSON, formatPhpUrl("Dailyknowledge/Collection/isCollected"));
+            put(Action.POST_GET_TVERIFY_CODE_JSON, formatPhpUrl("Dailyknowledge/Login/getverifyCode"));
+            put(Action.POST_MOBILE_LOGIN_JSON, formatPhpUrl("Dailyknowledge/Login/mobileLogin"));
+            put(Action.POST_GET_DAILY_CONFIG_JSON, formatPhpUrl("Dailyknowledge/Config/getdailyconfig"));
         }
     };
 
@@ -194,6 +204,41 @@ public class AppApi {
         params.put("dailyid", dailyid);
         new AppServiceOk(context, Action.POST_IS_COLLECTED_JSON, handler, params).post();
     }
+
+    /**
+     * 获取验证码
+     * @param context
+     * @param handler
+     */
+    public static void getverifyCode(Context context,String tel ,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("tel", tel);
+        new AppServiceOk(context, Action.POST_GET_TVERIFY_CODE_JSON, handler, params).post();
+    }
+
+    /**
+     * 获取验证码
+     * @param context
+     * @param handler
+     */
+    public static void mobileLogin(Context context,String openid,String tel,String ptype ,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("tel", tel);
+        params.put("openid", openid);
+        params.put("ptype", ptype);
+        new AppServiceOk(context, Action.POST_MOBILE_LOGIN_JSON, handler, params).post();
+    }
+
+    /**
+     * 缓存配置
+     * @param context
+     * @param handler
+     */
+    public static void getdailyconfig(Context context, ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        new AppServiceOk(context, Action.POST_GET_DAILY_CONFIG_JSON, handler, params).post();
+    }
+
 
     // 超时（网络）异常
     public static final String ERROR_TIMEOUT = "3001";

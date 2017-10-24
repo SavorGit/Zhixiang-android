@@ -27,6 +27,7 @@ import com.savor.zhixiang.bean.AllListResult;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.CollectResponse;
+import com.savor.zhixiang.bean.ConfigBean;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.bean.UpgradeInfo;
@@ -256,6 +257,10 @@ public class ApiResponseFactory {
                 break;
             case POST_IS_COLLECTED_JSON:
                 result = gson.fromJson(info, new TypeToken<CollectResponse>() {
+                }.getType());
+                break;
+            case POST_GET_DAILY_CONFIG_JSON:
+                result = gson.fromJson(info, new TypeToken<ConfigBean>() {
                 }.getType());
                 break;
             default:

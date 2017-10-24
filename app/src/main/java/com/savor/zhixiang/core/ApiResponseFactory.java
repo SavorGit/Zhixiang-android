@@ -263,6 +263,12 @@ public class ApiResponseFactory {
                 result = gson.fromJson(info, new TypeToken<ConfigBean>() {
                 }.getType());
                 break;
+            case POST_GET_TVERIFY_CODE_JSON:
+                result = "success";
+                break;
+            case POST_MOBILE_LOGIN_JSON:
+                result = "success";
+                break;
             default:
                 break;
         }

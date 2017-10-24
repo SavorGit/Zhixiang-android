@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private ImageView mHeaderImg;
     private ProgressDialog dialog;
     private PropertySelectDialog mProSelectDialog;
+    private TextView mHeaderTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -284,6 +285,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHintTv = (TextView) findViewById(R.id.tv_hint);
         size = (TextView) findViewById(R.id.size);
         mHeaderImg = (ImageView) findViewById(R.id.iv_header);
+        mHeaderTv = (TextView) findViewById(R.id.tv_header);
     }
 
     private void setViews() {

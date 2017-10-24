@@ -5,25 +5,29 @@
     android:background="@color/color_f5f5f5"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="60dp"
-        android:layout_marginTop="85dp"
-        android:gravity="center"
-        android:src="@mipmap/ico_pro_hint"
-        android:textColor="@color/gray"
-         />
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="12dp"
+    android:layout_marginTop="85dp"
+    android:gravity="center"
+    android:text="请选择您所在的群体"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:textColor="@color/color_333333"
+    />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"
-        android:text="请选择您所在的群体"
-        android:textColor="@color/color_555555"
-        android:textSize="15sp" />
+        android:layout_marginBottom="90dp"
+        android:gravity="center"
+        android:text="我们为不同人群提供最合适的内容"
+        android:textSize="16sp"
+        android:textColor="@color/color_333333"
+        />
 
     <RadioGroup
         android:id="@+id/rg_property"

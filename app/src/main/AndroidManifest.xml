@@ -27,6 +27,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".SavorApplication"
@@ -54,8 +56,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-             />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.AllListActivity"
             android:configChanges="orientation|screenSize"
@@ -77,10 +78,14 @@
         <meta-data
             android:name="com.savor.zhixiang.utils.CustomCachingGlideModule"
             android:value="GlideModule" />
-        <activity android:name=".activity.CardDetailActivity"
+
+        <activity
+            android:name=".activity.CardDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CardDetailTheme"
-            />
+            android:theme="@style/CardDetailTheme" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"></activity>
     </application>
 
 </manifest>

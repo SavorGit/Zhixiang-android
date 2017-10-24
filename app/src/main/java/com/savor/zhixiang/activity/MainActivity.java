@@ -45,6 +45,7 @@ import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.bean.ConfigBean;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.NextPageBean;
 import com.savor.zhixiang.bean.PropertyBean;
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private DrawerLayout drawer;
     private long exitTime;
     private boolean ismuteUp = false;
+    private ConfigBean configBean;
 
     private Handler mHandler = new Handler(){
         @Override
@@ -260,6 +262,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             mNextPageBeanList.clear();
         }
         AppApi.getCardList(this,bespeak_time,this);
+        AppApi.getdailyconfig(this,this);
     }
 
 
@@ -623,6 +626,19 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                 }
                 break;
+            case POST_GET_DAILY_CONFIG_JSON:
+                if (obj instanceof ConfigBean) {
+                    configBean = (ConfigBean) obj;
+                    if (configBean != null) {
+                        String state = configBean.getState();
+                        if("1".equals(state)){
+                            rl_clear_cache.setVisibility(View.VISIBLE);
+                        }else {
+                            rl_clear_cache.setVisibility(View.GONE);
+                        }
+                    }
+                }
+                break;
         }
     }
 
@@ -759,6 +775,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                         }
                     }
                 }
+                break;
+            case POST_GET_DAILY_CONFIG_JSON:
+                rl_clear_cache.setVisibility(View.GONE);
                 break;
 
 

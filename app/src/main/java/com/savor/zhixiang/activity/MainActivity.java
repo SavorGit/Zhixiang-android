@@ -45,12 +45,14 @@ import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
+import com.savor.zhixiang.bean.ConfigBean;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.NextPageBean;
 import com.savor.zhixiang.bean.PropertyBean;
 import com.savor.zhixiang.bean.ShareUrlBean;
 import com.savor.zhixiang.bean.TransitionBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
+import com.savor.zhixiang.bean.UserBean;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.ResponseErrorMessage;
@@ -281,6 +283,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
         // 获取卡片列表
         AppApi.getCardList(this,bespeak_time,this);
+        AppApi.getdailyconfig(this,this);
 
     }
 
@@ -321,6 +324,16 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
+       // mSession.getUserBean().getUserNum();
+        UserBean user = mSession.getUserBean();
+        if (user != null) {
+            String tel = user.getUserNum();
+            if (!TextUtils.isEmpty(tel)) {
+                mHeaderTv.setText(tel);
+            }
+        }
+
+
     }
 
     private void setListeners() {
@@ -651,6 +664,20 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                 }
                 break;
+            case POST_GET_DAILY_CONFIG_JSON:
+                if (obj instanceof ConfigBean) {
+                    ConfigBean Info = (ConfigBean) obj;
+                    if (Info != null) {
+                        String state = Info.getState();
+                        if ("1".equals(state)) {
+                            rl_clear_cache.setVisibility(View.VISIBLE);
+                        }else {
+                            rl_clear_cache.setVisibility(View.GONE);
+                        }
+                    }
+                }
+                break;
+
         }
     }
 
@@ -787,6 +814,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                         }
                     }
                 }
+                break;
+            case POST_GET_DAILY_CONFIG_JSON:
+                rl_clear_cache.setVisibility(View.GONE);
                 break;
 
 

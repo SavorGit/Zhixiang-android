@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.bean.ListItem;
+import com.savor.zhixiang.bean.UserBean;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
 import com.savor.zhixiang.core.ResponseErrorMessage;
@@ -33,6 +34,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     private EditText ev_code;
     private TextView login_btn;
     private RelativeLayout back;
+    private String tel = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +90,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void login(){
-        String tel = ev_num.getText().toString();
+        tel = ev_num.getText().toString();
         String code = ev_code.getText().toString();
         String ptype = mSession.getProperty().getProperty()+"";
         if (!TextUtils.isEmpty(tel)&&!TextUtils.isEmpty(code) ) {
@@ -99,9 +101,11 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
             case POST_GET_TVERIFY_CODE_JSON:
-                String tel = ev_num.getText().toString();
+                //String tel = ev_num.getText().toString();
                 break;
             case POST_MOBILE_LOGIN_JSON:
+                UserBean userBean = new UserBean();
+                userBean.setUserNum(ev_num.getText().toString());
                 finish();
                 break;
         }

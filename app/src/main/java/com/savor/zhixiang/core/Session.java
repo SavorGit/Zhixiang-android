@@ -38,6 +38,7 @@ import com.common.api.utils.Pair;
 import com.common.api.utils.SaveFileData;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.PropertyBean;
+import com.savor.zhixiang.bean.UserBean;
 import com.savor.zhixiang.bean.UserInfo;
 import com.savor.zhixiang.utils.STIDUtil;
 
@@ -76,6 +77,8 @@ public class Session {
     private static final String P_APP_USER_PROPERTY = "p_app_user_property";
     /**用户信息*/
     private static final String P_APP_USER_INFO = "p_app_user_info";
+    /**用户信息*/
+    private static final String P_APP_USER_BEAN = "p_app_user_bean";
 
     private static final String P_APP_IS_SHOW_SCAN_GUIDE = "isScanGuide";
 
@@ -170,6 +173,7 @@ public class Session {
     private String boxMac;
     private KeywordsBean keywordsBean;
     private PropertyBean property;
+    private UserBean userBean;
     private UserInfo userInfo;
 
     private Session(Context context) {
@@ -531,7 +535,13 @@ public class Session {
         setObj(P_APP_USER_INFO,userInfo);
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
+        setObj(P_APP_USER_BEAN,userBean);
     }
 }

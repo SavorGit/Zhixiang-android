@@ -98,15 +98,15 @@ public class PropertySelectDialog extends Dialog implements View.OnClickListener
             case R.id.tv_enter:
                 int checkedRadioButtonId = mPropertyGroup.getCheckedRadioButtonId();
                 PropertyBean propertyBean = new PropertyBean();
-                int property = 0;
+                int property = 4;
                 if(checkedRadioButtonId == R.id.rb_ten) {
-                   property = 10;
+                   property = 1;
                 }else if(checkedRadioButtonId == R.id.rb_one) {
-                    property = 1;
+                    property = 2;
                 }else if(checkedRadioButtonId == R.id.rb_one_mill) {
-                    property = 1000;
+                    property = 3;
                 }else if(checkedRadioButtonId == R.id.rb_none) {
-                    property = 0;
+                    property = 4;
                 }
                 propertyBean.setProperty(property);
                 Session session = Session.get(mContext);

@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 
 public class PropertyBean implements Serializable {
-    /**资产数额，10（10亿以上），1（1亿以上），1000（一千万以上），0,（暂不透露）*/
+    /**资产数额，1（10亿以上），2（1亿以上），3（一千万以上），4,（暂不透露）*/
     private int property;
     /**是否 已将上报过资产，默认是false*/
     private boolean isUploadPro;

@@ -61,6 +61,8 @@ public class AppApi {
         POST_GET_DAILY_CONFIG_JSON,
         /**获取分享url*/
         POST_GET_SHARE_URL_JSON,
+        /**微信登录*/
+        POST_WX_LOGIN_JSON,
     }
 
     /**
@@ -84,6 +86,7 @@ public class AppApi {
             put(Action.POST_MOBILE_LOGIN_JSON, formatPhpUrl("Dailyknowledge/Login/mobileLogin"));
             put(Action.POST_GET_DAILY_CONFIG_JSON, formatPhpUrl("Dailyknowledge/Config/getdailyconfig"));
             put(Action.POST_GET_SHARE_URL_JSON, formatPhpUrl("Dailyknowledge/Config/getshareApp"));
+            put(Action.POST_WX_LOGIN_JSON, formatPhpUrl("Dailyknowledge/Login/weixinLogin"));
         }
     };
 
@@ -250,6 +253,19 @@ public class AppApi {
     public static void getShareUrl(Context context, ApiRequestListener handler) {
         final HashMap<String, Object> params = new HashMap<>();
         new AppServiceOk(context, Action.POST_GET_SHARE_URL_JSON, handler, params).post();
+    }
+
+    /**
+     * 上传微信登录
+     * @param context
+     * @param handler
+     */
+    public static void sendWxLoginInfo(Context context, String openid,String ptype,String tel,ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        params.put("openid",openid);
+        params.put("ptype",ptype);
+        params.put("tel",tel);
+        new AppServiceOk(context, Action.POST_WX_LOGIN_JSON, handler, params).post();
     }
 
     // 超时（网络）异常

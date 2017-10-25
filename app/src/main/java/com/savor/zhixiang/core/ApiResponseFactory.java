@@ -274,6 +274,9 @@ public class ApiResponseFactory {
                 result = gson.fromJson(info, new TypeToken<ShareUrlBean>() {
                 }.getType());
                 break;
+            case POST_WX_LOGIN_JSON:
+                result = info;
+                break;
             default:
                 break;
         }

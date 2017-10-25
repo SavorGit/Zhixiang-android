@@ -40,8 +40,6 @@ public class ConstantValues {
     public static final String HOST_URL = "http://www.littlehotspot.com/";
     public static final String H5_FILE_PRO_HELP = "http://h5.littlehotspot.com/Public/html/help3/wenjian_Android.html";
 
-    public static final String H5_SHARE_URL = AppApi.CLOUND_PLATFORM_PHP_URL+"admin/dailycontentshow/showday?id=187";
-
     public static String addH5Params(String url){
         if(url.contains("?")) {
             url+="&location=newRead&app=inner";

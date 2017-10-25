@@ -48,6 +48,7 @@ import com.savor.zhixiang.bean.CardDetail;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.NextPageBean;
 import com.savor.zhixiang.bean.PropertyBean;
+import com.savor.zhixiang.bean.ShareUrlBean;
 import com.savor.zhixiang.bean.TransitionBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
 import com.savor.zhixiang.core.ApiRequestListener;
@@ -268,13 +269,19 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     }
 
     private void getData(String bespeak_time) {
+        // 获取分享url
+        AppApi.getShareUrl(this,this);
+
         isRequesting = true;
         LogUtils.d("savor:main bespeak_time="+bespeak_time);
         if(TextUtils.isEmpty(bespeak_time)) {
             mNextPageFragments.clear();
             mNextPageBeanList.clear();
         }
+
+        // 获取卡片列表
         AppApi.getCardList(this,bespeak_time,this);
+
     }
 
 
@@ -576,6 +583,12 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {
+            case POST_GET_SHARE_URL_JSON:
+                if(obj instanceof ShareUrlBean) {
+                    ShareUrlBean shareUrlBean = (ShareUrlBean) obj;
+                    mSession.setShareUrl(shareUrlBean);
+                }
+                break;
             case POST_GET_CARDLIST_JSON:
                 if(obj instanceof CardBean) {
                     mLoadingLayout.setOnClickListener(null);

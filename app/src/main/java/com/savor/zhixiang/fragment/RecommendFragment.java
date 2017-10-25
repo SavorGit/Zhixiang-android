@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.common.api.utils.DensityUtil;
 import com.savor.zhixiang.R;
-import com.savor.zhixiang.utils.ConstantValues;
+import com.savor.zhixiang.bean.ShareUrlBean;
 import com.savor.zhixiang.utils.ShareManager;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
@@ -92,7 +92,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
                 SocializeUtils.safeShowDialog(dialog);
                 // 是否已授权
                 if(authorize) {
-                    share(SHARE_MEDIA.WEIXIN);
+                    getWeixinInfoAndShare();
                 }else {
                     UMShareAPI.get(getContext()).doOauthVerify(mActivity, SHARE_MEDIA.WEIXIN, new UMAuthListener() {
                         @Override
@@ -102,7 +102,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
                         @Override
                         public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                            share(SHARE_MEDIA.WEIXIN);
+                            getWeixinInfoAndShare();
                         }
 
                         @Override
@@ -120,9 +120,9 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
             case R.id.tv_circle:
                 SocializeUtils.safeShowDialog(dialog);
                 if(authorize) {
-                    share(SHARE_MEDIA.WEIXIN_CIRCLE);
+                    getWxCircleInfoAndShare();
                 }else {
-                    UMShareAPI.get(getContext()).doOauthVerify(mActivity, SHARE_MEDIA.WEIXIN, new UMAuthListener() {
+                    UMShareAPI.get(getContext()).doOauthVerify(mActivity, SHARE_MEDIA.WEIXIN_CIRCLE, new UMAuthListener() {
                         @Override
                         public void onStart(SHARE_MEDIA share_media) {
 
@@ -130,7 +130,7 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
 
                         @Override
                         public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                            share(SHARE_MEDIA.WEIXIN_CIRCLE);
+                            getWxCircleInfoAndShare();
                         }
 
                         @Override
@@ -148,8 +148,59 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         }
     }
 
-    private void share(SHARE_MEDIA platform){
-        UMWeb umWeb = new UMWeb(ConstantValues.H5_SHARE_URL);
+    private void getWxCircleInfoAndShare() {
+        UMShareAPI.get(getContext()).getPlatformInfo(getActivity(), SHARE_MEDIA.WEIXIN_CIRCLE, new UMAuthListener() {
+            @Override
+            public void onStart(SHARE_MEDIA share_media) {
+
+            }
+
+            @Override
+            public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+                String openid = map.get("openid");
+                share(openid,SHARE_MEDIA.WEIXIN_CIRCLE);;
+            }
+
+            @Override
+            public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA share_media, int i) {
+
+            }
+        });
+    }
+
+    private void getWeixinInfoAndShare() {
+        UMShareAPI.get(getContext()).getPlatformInfo(getActivity(), SHARE_MEDIA.WEIXIN, new UMAuthListener() {
+            @Override
+            public void onStart(SHARE_MEDIA share_media) {
+
+            }
+
+            @Override
+            public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+                String openid = map.get("openid");
+                share(openid,SHARE_MEDIA.WEIXIN);
+            }
+
+            @Override
+            public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA share_media, int i) {
+
+            }
+        });
+    }
+
+    private void share(String openid,SHARE_MEDIA platform){
+        ShareUrlBean shareUrl = mSession.getShareUrl();
+        UMWeb umWeb = new UMWeb(shareUrl.getUrl()+openid);
         umWeb.setThumb(new UMImage(getContext(),R.mipmap.ico_share_img));
         umWeb.setTitle("专为高端人士打造的内容App");
         umWeb.setDescription("每天十条内容，知世界生活");

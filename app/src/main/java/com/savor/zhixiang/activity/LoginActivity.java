@@ -7,7 +7,10 @@ import android.widget.TextView;
 
 import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
+import com.savor.zhixiang.bean.PropertyBean;
+import com.savor.zhixiang.bean.UserBean;
 import com.savor.zhixiang.core.ApiRequestListener;
+import com.savor.zhixiang.core.AppApi;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -63,6 +66,18 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
                     @Override
                     public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
                         ShowMessage.showToast(LoginActivity.this,"登录成功");
+                        UserBean userBean = mSession.getUserBean();
+                        String userNum = "";
+                        if(userBean!=null) {
+                            userNum = userBean.getUserNum();
+                        }
+                        String openid = map.get("openid");
+                        PropertyBean property = mSession.getProperty();
+                        int pty = 4;
+                        if(property!=null) {
+                            pty = property.getProperty();
+                        }
+                        AppApi.sendWxLoginInfo(LoginActivity.this,openid,String.valueOf(pty),userNum,LoginActivity.this);
                         finish();
                     }
 
@@ -90,5 +105,18 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
         }
     }
 
+    @Override
+    public void onSuccess(AppApi.Action method, Object obj) {
+        super.onSuccess(method, obj);
+        switch (method) {
+            case POST_WX_LOGIN_JSON:
+                PropertyBean property = mSession.getProperty();
+                if(property!=null) {
+                    property.setUploadPro(true);
+                    mSession.setProperty(property);
+                }
+                break;
+        }
+    }
 }
 

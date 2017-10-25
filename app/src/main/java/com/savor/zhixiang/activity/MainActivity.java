@@ -875,7 +875,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         switch (v.getId()){
             case R.id.iv_header:
                 // 1.判断是否是登录状态，微信授权或本地已存储手机号。
-                // 2.如果未登录
+                // 2.如果未登录,跳转到登录页面
                 boolean authorize = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
                 UserBean userBean = mSession.getUserBean();
                 if(authorize||userBean!=null) {

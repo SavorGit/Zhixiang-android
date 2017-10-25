@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.bean.ListItem;
+import com.savor.zhixiang.bean.PropertyBean;
 import com.savor.zhixiang.bean.UserBean;
 import com.savor.zhixiang.core.ApiRequestListener;
 import com.savor.zhixiang.core.AppApi;
@@ -186,6 +187,13 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
                 UserBean userBean = new UserBean();
                 userBean.setUserNum(ev_num.getText().toString());
                 mSession.setUserBean(userBean);
+
+                PropertyBean property = mSession.getProperty();
+                if(property!=null) {
+                    property.setUploadPro(true);
+                    mSession.setProperty(property);
+                }
+
                 finish();
                 break;
         }

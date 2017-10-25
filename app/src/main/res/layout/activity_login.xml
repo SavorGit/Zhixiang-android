@@ -1,10 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context="com.savor.zhixiang.activity.LoginActivity">
+    android:layout_height="match_parent">
 
     <!-- Login progress -->
     <ProgressBar
@@ -45,48 +42,54 @@
         android:layout_below="@id/topbar"
         android:id="@+id/ev_num"
         android:hint="请输入手机号"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="42dp"
+        android:textSize="15sp"
         android:drawableLeft="@mipmap/icon_phone"
+        android:background="@null"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginLeft="15dp"/>
     <EditText
         android:id="@+id/ev_code"
         android:layout_width="200dp"
         android:hint="请输入验证码"
+        android:textSize="15sp"
         android:drawableLeft="@mipmap/icon_lock"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_below="@id/ev_num"
+        android:background="@null"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"/>
     <TextView
         android:id="@+id/tv_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
+        android:textSize="13sp"
         android:text="获取验证码"
+        android:textColor="@color/color_b7b6b2"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="3dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/corner_remote_view_g"
         android:layout_below="@id/ev_num"
         android:layout_toRightOf="@id/ev_code"
-        android:layout_alignBaseline="@id/ev_code"/>
+        />
 
     <TextView
         android:id="@+id/login_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:textSize="18sp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="5dp"
         android:text="登录"
         android:layout_marginTop="55dp"
         android:layout_below="@id/ev_code"
-        android:background="@color/color_main"
-        android:textColor="@color/white"
+        android:background="@drawable/corner_remote_view_btn"
+        android:textColor="@color/color_fefefe"
         />
 
 </RelativeLayout>

@@ -53,8 +53,7 @@
             android:textColor="@color/color_main"
             android:visibility="visible"
             android:layout_width="121dp"
-            android:layout_height="40dp"
-            android:background="@drawable/left_bg_button"/>
+            android:layout_height="40dp"/>
 
         <TextView
             android:id="@+id/tv_confirm"
@@ -64,9 +63,9 @@
             android:text="确认"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
-            android:textColor="@color/color_text_list_item"
-            android:background="@drawable/right_bg_button"
+            android:textColor="@color/color_main"
             android:layout_width="121dp"
+            android:visibility="visible"
             android:layout_height="40dp" />
 
     </LinearLayout>

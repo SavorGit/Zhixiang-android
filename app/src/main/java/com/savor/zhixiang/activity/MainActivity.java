@@ -328,13 +328,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
        // mSession.getUserBean().getUserNum();
-        UserBean user = mSession.getUserBean();
-        if (user != null) {
-            String tel = user.getUserNum();
-            if (!TextUtils.isEmpty(tel)) {
-                mHeaderTv.setText(tel);
-            }
-        }
+//        UserBean user = mSession.getUserBean();
+//        if (user != null) {
+//            String tel = user.getUserNum();
+//            if (!TextUtils.isEmpty(tel)) {
+//                mHeaderTv.setText(tel);
+//            }
+//        }
 
 
     }
@@ -1099,7 +1099,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeMessages(KILL_APP);
         mHandler.removeCallbacksAndMessages(null);
         ismuteUp = false;
-
+        size.setText(ImageCacheUtils.getCacheSize());
         checkLoginStatus();
     }
 

@@ -477,27 +477,29 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             }
 
             CardFragment fragment = (CardFragment) fragmentList.get(index);
-            final CardDetail cardDetail = fragment.getCardDetail();
-            if(cardDetail!=null) {
-                 initDate(cardDetail,frag instanceof CardFragment,frag instanceof CardFragment||frag instanceof TransitionFrament||frag instanceof RecommendFragment);
-            }
-            // 更新底部页码
-            int result = 1;
-            if(position>11) {
-                result = ((position-12)%11)+1;
-            }else {
-                result = position%12+1;
-            }
-            mBottomPageNumTv.setText(String.valueOf(result)+" ");
-
-            // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
-            if(position==mAdapter.getCount()-4) {
-                String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
-                if(!isRequesting) {
-                    LogUtils.d("savor:main onPageSelected 非请求状态，发起请求。");
-                    getData(bespeak_time);
+            if(fragment!=null) {
+                final CardDetail cardDetail = fragment.getCardDetail();
+                if(cardDetail!=null) {
+                    initDate(cardDetail,frag instanceof CardFragment,frag instanceof CardFragment||frag instanceof TransitionFrament||frag instanceof RecommendFragment);
+                }
+                // 更新底部页码
+                int result = 1;
+                if(position>11) {
+                    result = ((position-12)%11)+1;
                 }else {
-                    LogUtils.d("savor:main onPageSelected 当前正在请求数据。");
+                    result = position%12+1;
+                }
+                mBottomPageNumTv.setText(String.valueOf(result)+" ");
+
+                // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
+                if(position==mAdapter.getCount()-4) {
+                    String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
+                    if(!isRequesting) {
+                        LogUtils.d("savor:main onPageSelected 非请求状态，发起请求。");
+                        getData(bespeak_time);
+                    }else {
+                        LogUtils.d("savor:main onPageSelected 当前正在请求数据。");
+                    }
                 }
             }
 

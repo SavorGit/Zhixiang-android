@@ -1,8 +1,10 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.common.api.utils.ShowMessage;
@@ -26,6 +28,7 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
 
     private TextView login_code;
     private TextView mLoginBtn;
+    private RelativeLayout back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +43,19 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
     public void getViews() {
         login_code = (TextView) findViewById(R.id.login_code);
         mLoginBtn = (TextView) findViewById(R.id.tv_wx_login);
+        back = (RelativeLayout) findViewById(R.id.back);
     }
 
     @Override
     public void setViews() {
-
+        login_code.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG );
     }
 
     @Override
     public void setListeners() {
         mLoginBtn.setOnClickListener(this);
         login_code.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
     @Override

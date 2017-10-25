@@ -12,6 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:text="登录"
             android:textColor="@color/white"
             android:textSize="16sp"/>
         <RelativeLayout
@@ -33,10 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:textColor="#333333"
         android:textSize="15sp"
         android:text="微信登录"
         android:drawableTop="@mipmap/weixindenglu"
-        android:drawablePadding="3dp"/>
+        android:drawablePadding="9dp"/>
 
     <RelativeLayout
        android:layout_centerHorizontal="true"
@@ -51,7 +53,7 @@
             android:gravity="center"
             android:padding="3dp"
             android:textSize="15sp"
-            android:textColor="#bbbbbb"
+            android:textColor="#808080"
             android:text="其他方式"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -61,7 +63,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="13dp"
             android:layout_toLeftOf="@id/lab"
-            android:src="#bbbbbb"
+            android:src="#cccbc8"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             />
@@ -71,7 +73,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="13dp"
             android:layout_toRightOf="@id/lab"
-            android:src="#bbbbbb"
+            android:src="#cccbc8"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             />
@@ -81,9 +83,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:textColor="#333333"
             android:textSize="15sp"
             android:text="手机登录"
-            android:drawablePadding="3dp"/>
+            android:drawableLeft="@mipmap/shoujidenglu"
+            android:drawablePadding="5dp"/>
     </RelativeLayout>
 
 

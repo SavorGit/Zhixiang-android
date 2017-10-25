@@ -173,7 +173,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
         code = ev_code.getText().toString();
         String ptype = mSession.getProperty().getProperty()+"";
         if (!TextUtils.isEmpty(tel)&&!TextUtils.isEmpty(code) ) {
-            AppApi.mobileLogin(this,"",tel,code,"1",this);
+            AppApi.mobileLogin(this,"",tel,code,ptype,this);
         }
     }
 

@@ -2,12 +2,15 @@ package com.savor.zhixiang.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.bean.ListItem;
@@ -18,6 +21,8 @@ import com.savor.zhixiang.core.ResponseErrorMessage;
 import com.savor.zhixiang.utils.RecordUtils;
 
 import java.util.List;
+
+import static com.savor.zhixiang.R.color.color_b7b6b2;
 
 
 /**
@@ -35,6 +40,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     private TextView login_btn;
     private RelativeLayout back;
     private String tel = "";
+    private String code = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +70,79 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
         tv_code.setOnClickListener(this);
         login_btn.setOnClickListener(this);
         back.setOnClickListener(this);
+        ev_num.addTextChangedListener(new TextWatcher(){
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+                //s:变化后的所有字符
+
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+                //s:变化前的所有字符； start:字符开始的位置； count:变化前的总字节数；after:变化后的字节数
+                //Toast.makeText(getApplicationContext(), "变化前:"+s+";"+start+";"+count+";"+after, Toast.LENGTH_SHORT).show();
+            }
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                // TODO Auto-generated method stub
+                //S：变化后的所有字符；start：字符起始的位置；before: 变化之前的总字节数；count:变化后的字节数
+                //Toast.makeText(getApplicationContext(), "变化后:"+s+";"+start+";"+before+";"+count, Toast.LENGTH_SHORT).show();
+                setCodeView();
+                setLoginView();
+            }
+
+        });
+
+        ev_code.addTextChangedListener(new TextWatcher(){
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+                //s:变化后的所有字符
+
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+                //s:变化前的所有字符； start:字符开始的位置； count:变化前的总字节数；after:变化后的字节数
+                //Toast.makeText(getApplicationContext(), "变化前:"+s+";"+start+";"+count+";"+after, Toast.LENGTH_SHORT).show();
+            }
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                // TODO Auto-generated method stub
+                //S：变化后的所有字符；start：字符起始的位置；before: 变化之前的总字节数；count:变化后的字节数
+                //Toast.makeText(getApplicationContext(), "变化后:"+s+";"+start+";"+before+";"+count, Toast.LENGTH_SHORT).show();
+                setCodeView();
+                setLoginView();
+            }
+
+        });
     }
 
+    private void setCodeView(){
+        tel = ev_num.getText().toString();
+        if (!TextUtils.isEmpty(tel)) {
+            tv_code.setClickable(true);
+            tv_code.setBackgroundResource(R.drawable.corner_remote_view_click);
+            tv_code.setTextColor(getColor(R.color.color_333333));
+        }else {
+            tv_code.setClickable(false);
+            tv_code.setBackgroundResource(R.drawable.corner_remote_view_g);
+            tv_code.setTextColor(getColor(R.color.color_b7b6b2));
+        }
+    }
+
+    private void setLoginView(){
+        tel = ev_num.getText().toString();
+        code = ev_code.getText().toString();
+        if (!TextUtils.isEmpty(tel)&&!TextUtils.isEmpty(code)) {
+            login_btn.setClickable(true);
+            login_btn.setBackgroundResource(R.drawable.corner_remote_view);
+            login_btn.setTextColor(getColor(R.color.color_fefefe));
+        }else {
+            login_btn.setClickable(false);
+            login_btn.setBackgroundResource(R.drawable.corner_remote_view_btn);
+            login_btn.setTextColor(getColor(R.color.color_fefefe));
+        }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -92,12 +169,13 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
 
     private void login(){
         tel = ev_num.getText().toString();
-        String code = ev_code.getText().toString();
+        code = ev_code.getText().toString();
         String ptype = mSession.getProperty().getProperty()+"";
         if (!TextUtils.isEmpty(tel)&&!TextUtils.isEmpty(code) ) {
             AppApi.mobileLogin(this,"",tel,code,"1",this);
         }
     }
+
     @Override
     public void onSuccess(AppApi.Action method, Object obj) {
         switch (method) {

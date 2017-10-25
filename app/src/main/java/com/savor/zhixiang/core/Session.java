@@ -38,7 +38,6 @@ import com.common.api.utils.Pair;
 import com.common.api.utils.SaveFileData;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.PropertyBean;
-import com.savor.zhixiang.bean.UserInfo;
 import com.savor.zhixiang.utils.STIDUtil;
 
 import java.io.ByteArrayInputStream;
@@ -170,7 +169,6 @@ public class Session {
     private String boxMac;
     private KeywordsBean keywordsBean;
     private PropertyBean property;
-    private UserInfo userInfo;
 
     private Session(Context context) {
 
@@ -224,7 +222,6 @@ public class Session {
 
 
     private void readSettings() {
-        userInfo = (UserInfo) getObj(P_APP_USER_INFO);
         property = (PropertyBean) getObj(P_APP_USER_PROPERTY);
         keywordsBean = (KeywordsBean) getObj(P_APP_LAST_KEYWORDS);
         deviceid = STIDUtil.getDeviceId(mContext);
@@ -526,12 +523,4 @@ public class Session {
         return property;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-        setObj(P_APP_USER_INFO,userInfo);
-    }
-
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
 }

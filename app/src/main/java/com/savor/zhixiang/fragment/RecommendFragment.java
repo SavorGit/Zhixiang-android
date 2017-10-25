@@ -2,20 +2,14 @@ package com.savor.zhixiang.fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.common.api.utils.DensityUtil;
-import com.common.api.utils.LogUtils;
 import com.savor.zhixiang.R;
-import com.savor.zhixiang.activity.MainActivity;
-import com.savor.zhixiang.bean.UserInfo;
 import com.savor.zhixiang.utils.ConstantValues;
 import com.savor.zhixiang.utils.ShareManager;
 import com.umeng.socialize.ShareAction;

@@ -828,7 +828,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_header:
-                // 1.判断是否是登录状态，微信授权或本地以存储手机号。
+                // 1.判断是否是登录状态，微信授权或本地已存储手机号。
                 // 2.如果未登录
 
                 break;

@@ -45,7 +45,6 @@ import com.savor.zhixiang.R;
 import com.savor.zhixiang.adapter.CardListAdapter;
 import com.savor.zhixiang.bean.CardBean;
 import com.savor.zhixiang.bean.CardDetail;
-import com.savor.zhixiang.bean.ConfigBean;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.NextPageBean;
 import com.savor.zhixiang.bean.PropertyBean;
@@ -61,6 +60,7 @@ import com.savor.zhixiang.fragment.RecommendFragment;
 import com.savor.zhixiang.fragment.TransitionFrament;
 import com.savor.zhixiang.receiver.HomeKeyReceiver;
 import com.savor.zhixiang.utils.ActivitiesManager;
+import com.savor.zhixiang.utils.GlideCircleTransform;
 import com.savor.zhixiang.utils.ImageCacheUtils;
 import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.utils.STIDUtil;
@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private DrawerLayout drawer;
     private long exitTime;
     private boolean ismuteUp = false;
-    private ConfigBean configBean;
 
     private Handler mHandler = new Handler(){
         @Override
@@ -177,10 +176,24 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         setViews();
         setListeners();
         checkPropertyStatus();
+        checkLoginStatus();
 //        checkKeywords();
         getData("");
         registeHomeKeyReceiver();
         upgrade();
+    }
+
+    /**
+     * 检查登录状态
+     */
+    private void checkLoginStatus() {
+        // 1.如果微信已授权，直接显示登录状态，微信头像和微信名称
+        // 2.如果微信未授权，判断是否手机号登录过，如果有显示手机号
+        // 3.如果1,2都不满足条件，显示未登录状态(默认就是未登录)
+        boolean authorize = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
+        if(authorize) {
+            UMShareAPI.get(this).getPlatformInfo(this,SHARE_MEDIA.WEIXIN,authListener);
+        }
     }
 
     /**
@@ -262,7 +275,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             mNextPageBeanList.clear();
         }
         AppApi.getCardList(this,bespeak_time,this);
-        AppApi.getdailyconfig(this,this);
     }
 
 
@@ -626,19 +638,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
                 }
                 break;
-            case POST_GET_DAILY_CONFIG_JSON:
-                if (obj instanceof ConfigBean) {
-                    configBean = (ConfigBean) obj;
-                    if (configBean != null) {
-                        String state = configBean.getState();
-                        if("1".equals(state)){
-                            rl_clear_cache.setVisibility(View.VISIBLE);
-                        }else {
-                            rl_clear_cache.setVisibility(View.GONE);
-                        }
-                    }
-                }
-                break;
         }
     }
 
@@ -776,9 +775,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     }
                 }
                 break;
-            case POST_GET_DAILY_CONFIG_JSON:
-                rl_clear_cache.setVisibility(View.GONE);
-                break;
 
 
         }
@@ -832,10 +828,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_header:
-                //getPlatformInfo();
-                Intent intenty = new Intent();
-                intenty.setClass(MainActivity.this,LoginActivity.class);
-                startActivity(intenty);
+                // 1.判断是否是登录状态，微信授权或本地以存储手机号。
+                // 2.如果未登录
+
                 break;
             case R.id.rl_loading_layout:
                 mLoadingView.show();
@@ -1065,7 +1060,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             LogUtils.d("savor:wx iconurl="+data.get("iconurl"));
             String iconurl = data.get("iconurl");
             if(!TextUtils.isEmpty(iconurl)) {
-                Glide.with(MainActivity.this).load(iconurl).centerCrop().into(mHeaderImg);
+                Glide.with(MainActivity.this).load(iconurl).centerCrop().transform(new GlideCircleTransform(MainActivity.this)).into(mHeaderImg);
             }
         }
 

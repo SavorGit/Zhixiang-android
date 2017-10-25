@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:background="@color/color_main"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/back"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="15sp"
+        android:text="微信登录"
+        android:drawableTop="@mipmap/weixindenglu"
+        android:drawablePadding="3dp"/>
+
+    <RelativeLayout
+       android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="250dp"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/lab"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textSize="15sp"
+            android:textColor="#bbbbbb"
+            android:text="其他方式"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:layout_toLeftOf="@id/lab"
+            android:src="#bbbbbb"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@id/lab"
+            android:src="#bbbbbb"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/login_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="15sp"
+            android:text="手机登录"
+            android:drawablePadding="3dp"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

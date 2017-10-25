@@ -106,6 +106,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
             case POST_MOBILE_LOGIN_JSON:
                 UserBean userBean = new UserBean();
                 userBean.setUserNum(ev_num.getText().toString());
+                mSession.setUserBean(userBean);
                 finish();
                 break;
         }

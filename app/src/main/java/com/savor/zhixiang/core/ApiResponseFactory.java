@@ -30,6 +30,7 @@ import com.savor.zhixiang.bean.CollectResponse;
 import com.savor.zhixiang.bean.ConfigBean;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.ListItem;
+import com.savor.zhixiang.bean.ShareUrlBean;
 import com.savor.zhixiang.bean.UpgradeInfo;
 
 import org.json.JSONArray;
@@ -268,6 +269,10 @@ public class ApiResponseFactory {
                 break;
             case POST_MOBILE_LOGIN_JSON:
                 result = "success";
+                break;
+            case POST_GET_SHARE_URL_JSON:
+                result = gson.fromJson(info, new TypeToken<ShareUrlBean>() {
+                }.getType());
                 break;
             default:
                 break;

@@ -38,8 +38,7 @@ import com.common.api.utils.Pair;
 import com.common.api.utils.SaveFileData;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.PropertyBean;
-import com.savor.zhixiang.bean.UserBean;
-import com.savor.zhixiang.bean.UserInfo;
+import com.savor.zhixiang.bean.ShareUrlBean;
 import com.savor.zhixiang.utils.STIDUtil;
 
 import java.io.ByteArrayInputStream;
@@ -75,10 +74,10 @@ public class Session {
     private static final String P_APP_LAST_KEYWORDS = "p_app_last_keywords";
     /**资产信息*/
     private static final String P_APP_USER_PROPERTY = "p_app_user_property";
+    /**分享url*/
+    private static final String P_APP_SHARE_URL = "p_app_share_url";
     /**用户信息*/
     private static final String P_APP_USER_INFO = "p_app_user_info";
-    /**用户信息*/
-    private static final String P_APP_USER_BEAN = "p_app_user_bean";
 
     private static final String P_APP_IS_SHOW_SCAN_GUIDE = "isScanGuide";
 
@@ -173,8 +172,7 @@ public class Session {
     private String boxMac;
     private KeywordsBean keywordsBean;
     private PropertyBean property;
-    private UserBean userBean;
-    private UserInfo userInfo;
+    private ShareUrlBean shareUrl;
 
     private Session(Context context) {
 
@@ -228,7 +226,7 @@ public class Session {
 
 
     private void readSettings() {
-        userInfo = (UserInfo) getObj(P_APP_USER_INFO);
+        shareUrl = (ShareUrlBean) getObj(P_APP_SHARE_URL);
         property = (PropertyBean) getObj(P_APP_USER_PROPERTY);
         keywordsBean = (KeywordsBean) getObj(P_APP_LAST_KEYWORDS);
         deviceid = STIDUtil.getDeviceId(mContext);
@@ -530,18 +528,12 @@ public class Session {
         return property;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-        setObj(P_APP_USER_INFO,userInfo);
+    public void setShareUrl(ShareUrlBean shareUrl) {
+        this.shareUrl = shareUrl;
+        setObj(P_APP_SHARE_URL,shareUrl);
     }
 
-
-    public UserBean getUserBean() {
-        return userBean;
-    }
-
-    public void setUserBean(UserBean userBean) {
-        this.userBean = userBean;
-        setObj(P_APP_USER_BEAN,userBean);
+    public ShareUrlBean getShareUrl() {
+        return shareUrl;
     }
 }

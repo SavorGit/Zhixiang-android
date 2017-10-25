@@ -59,7 +59,8 @@ public class AppApi {
         POST_MOBILE_LOGIN_JSON,
         /**缓存配置*/
         POST_GET_DAILY_CONFIG_JSON,
-
+        /**获取分享url*/
+        POST_GET_SHARE_URL_JSON,
     }
 
     /**
@@ -82,6 +83,7 @@ public class AppApi {
             put(Action.POST_GET_TVERIFY_CODE_JSON, formatPhpUrl("Dailyknowledge/Login/getverifyCode"));
             put(Action.POST_MOBILE_LOGIN_JSON, formatPhpUrl("Dailyknowledge/Login/mobileLogin"));
             put(Action.POST_GET_DAILY_CONFIG_JSON, formatPhpUrl("Dailyknowledge/Config/getdailyconfig"));
+            put(Action.POST_GET_SHARE_URL_JSON, formatPhpUrl("Dailyknowledge/Config/getshareApp"));
         }
     };
 
@@ -240,6 +242,15 @@ public class AppApi {
         new AppServiceOk(context, Action.POST_GET_DAILY_CONFIG_JSON, handler, params).post();
     }
 
+    /**
+     * 获取分享url
+     * @param context
+     * @param handler
+     */
+    public static void getShareUrl(Context context, ApiRequestListener handler) {
+        final HashMap<String, Object> params = new HashMap<>();
+        new AppServiceOk(context, Action.POST_GET_SHARE_URL_JSON, handler, params).post();
+    }
 
     // 超时（网络）异常
     public static final String ERROR_TIMEOUT = "3001";

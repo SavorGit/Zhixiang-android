@@ -883,8 +883,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                         @Override
                         public void onConfirm() {
                             mHeaderImg.setImageResource(R.mipmap.ico_head);
+                            mHeaderTv.setText("未登录");
                             mSession.setUserBean(null);
-                            UMShareAPI.get(MainActivity.this).deleteOauth(MainActivity.this,SHARE_MEDIA.WEIXIN,null);
+                            UMShareAPI.get(MainActivity.this).deleteOauth(MainActivity.this, SHARE_MEDIA.WEIXIN, null);
+                        }
+                    }, new LogoutDialog.OnCancelListener() {
+                        @Override
+                        public void onCancel() {
+
                         }
                     }).show();
                 }else {
@@ -932,10 +938,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void getPlatformInfo() {
-        UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.WEIXIN,authListener);
     }
 
     private void upgrade(){
@@ -1095,6 +1097,8 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeMessages(KILL_APP);
         mHandler.removeCallbacksAndMessages(null);
         ismuteUp = false;
+
+        checkLoginStatus();
     }
 
     UMAuthListener authListener = new UMAuthListener() {
@@ -1104,7 +1108,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
          */
         @Override
         public void onStart(SHARE_MEDIA platform) {
-            SocializeUtils.safeShowDialog(dialog);
+//            SocializeUtils.safeShowDialog(dialog);
         }
 
         /**
@@ -1115,12 +1119,16 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
          */
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-            SocializeUtils.safeCloseDialog(dialog);
+//            SocializeUtils.safeCloseDialog(dialog);
             LogUtils.d("savor:wx openid="+data.get("openid"));
             LogUtils.d("savor:wx iconurl="+data.get("iconurl"));
             String iconurl = data.get("iconurl");
+            String name = data.get("name");
             if(!TextUtils.isEmpty(iconurl)) {
                 Glide.with(MainActivity.this).load(iconurl).centerCrop().transform(new GlideCircleTransform(MainActivity.this)).into(mHeaderImg);
+            }
+            if(!TextUtils.isEmpty(name)) {
+                mHeaderTv.setText(name);
             }
         }
 
@@ -1132,7 +1140,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
          */
         @Override
         public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-            SocializeUtils.safeCloseDialog(dialog);
+//            SocializeUtils.safeCloseDialog(dialog);
 //            Toast.makeText(mContext, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
         }
 
@@ -1143,7 +1151,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
          */
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-            SocializeUtils.safeCloseDialog(dialog);
+//            SocializeUtils.safeCloseDialog(dialog);
 //            Toast.makeText(mContext, "取消了", Toast.LENGTH_LONG).show();
         }
     };

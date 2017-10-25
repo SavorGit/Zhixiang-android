@@ -39,6 +39,7 @@ import com.common.api.utils.SaveFileData;
 import com.savor.zhixiang.bean.KeywordsBean;
 import com.savor.zhixiang.bean.PropertyBean;
 import com.savor.zhixiang.bean.ShareUrlBean;
+import com.savor.zhixiang.bean.UserBean;
 import com.savor.zhixiang.utils.STIDUtil;
 
 import java.io.ByteArrayInputStream;
@@ -172,6 +173,7 @@ public class Session {
     private String boxMac;
     private KeywordsBean keywordsBean;
     private PropertyBean property;
+    private UserBean userBean;
     private ShareUrlBean shareUrl;
 
     private Session(Context context) {
@@ -228,6 +230,7 @@ public class Session {
     private void readSettings() {
         shareUrl = (ShareUrlBean) getObj(P_APP_SHARE_URL);
         property = (PropertyBean) getObj(P_APP_USER_PROPERTY);
+        userBean = (UserBean) getObj(P_APP_USER_INFO);
         keywordsBean = (KeywordsBean) getObj(P_APP_LAST_KEYWORDS);
         deviceid = STIDUtil.getDeviceId(mContext);
         netType = mPreference.loadStringKey(P_APP_NET_TYPE, "");
@@ -535,5 +538,14 @@ public class Session {
 
     public ShareUrlBean getShareUrl() {
         return shareUrl;
+    }
+
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
+        setObj(P_APP_USER_INFO,userBean);
     }
 }

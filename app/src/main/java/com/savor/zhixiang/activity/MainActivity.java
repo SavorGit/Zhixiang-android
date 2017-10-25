@@ -68,6 +68,7 @@ import com.savor.zhixiang.utils.ImageCacheUtils;
 import com.savor.zhixiang.utils.RecordUtils;
 import com.savor.zhixiang.utils.STIDUtil;
 import com.savor.zhixiang.widget.KeywordDialog;
+import com.savor.zhixiang.widget.LogoutDialog;
 import com.savor.zhixiang.widget.PagingScrollHelper;
 import com.savor.zhixiang.widget.PropertySelectDialog;
 import com.savor.zhixiang.widget.UpgradeDialog;
@@ -875,7 +876,21 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             case R.id.iv_header:
                 // 1.判断是否是登录状态，微信授权或本地已存储手机号。
                 // 2.如果未登录
-
+                boolean authorize = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
+                UserBean userBean = mSession.getUserBean();
+                if(authorize||userBean!=null) {
+                    new LogoutDialog(this, "退出登录？", new LogoutDialog.OnConfirmListener() {
+                        @Override
+                        public void onConfirm() {
+                            mHeaderImg.setImageResource(R.mipmap.ico_head);
+                            mSession.setUserBean(null);
+                            UMShareAPI.get(MainActivity.this).deleteOauth(MainActivity.this,SHARE_MEDIA.WEIXIN,null);
+                        }
+                    }).show();
+                }else {
+                    Intent intent = new Intent(this,LoginActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.rl_loading_layout:
                 mLoadingView.show();

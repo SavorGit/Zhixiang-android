@@ -63,6 +63,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     public void setListeners() {
         tv_code.setOnClickListener(this);
         login_btn.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
     @Override

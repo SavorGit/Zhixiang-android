@@ -348,7 +348,7 @@ public class Session {
                 ||P_APP_FIRST_PLAY.equals(key)
                 ||P_APP_IS_SHOW_SCAN_GUIDE.equals(key)
                 ||P_APP_FIRST_USE.equals(key)
-                || P_APP_USER_PROPERTY.equals(key)){
+                ){
             mPreference.saveBooleanKey(key,(boolean)updateItem.second);
         }else if(P_APP_HOTELID.equals(key)){
             mPreference.saveIntKey(key,(Integer) updateItem.second);

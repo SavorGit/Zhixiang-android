@@ -210,11 +210,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 mProSelectDialog = new PropertySelectDialog(this, new PropertySelectDialog.OnEnterBtnClickListener() {
                     @Override
                     public void onEnterBtnClick() {
-
+                        checkKeywords();
                     }
                 });
             }
             mProSelectDialog.show();
+        }else {
+            checkKeywords();
         }
     }
 

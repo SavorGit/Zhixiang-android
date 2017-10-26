@@ -70,6 +70,8 @@ public class Session {
     private static final String P_APP_LOGIN_RESPONSE = "pref.savor.login";
     /**是否显示引导图*/
     private static final String P_APP_IS_SHOW_GUIDE = "version_v1.0";
+    /**是否显示资产*/
+    private static final String P_APP_IS_SHOW_PROPERTY = "p_app_is_show_property.0";
     /***/
     private static final String P_APP_LAST_SHOW_KEYWORDS_TIME = "p_app_last_show_keywords_time";
     private static final String P_APP_LAST_KEYWORDS = "p_app_last_keywords";
@@ -175,6 +177,7 @@ public class Session {
     private PropertyBean property;
     private UserBean userBean;
     private ShareUrlBean shareUrl;
+    private boolean propertyIsShow;
 
     private Session(Context context) {
 
@@ -228,6 +231,7 @@ public class Session {
 
 
     private void readSettings() {
+        propertyIsShow = mPreference.loadBooleanKey(P_APP_IS_SHOW_PROPERTY,false);
         shareUrl = (ShareUrlBean) getObj(P_APP_SHARE_URL);
         property = (PropertyBean) getObj(P_APP_USER_PROPERTY);
         userBean = (UserBean) getObj(P_APP_USER_INFO);
@@ -348,6 +352,7 @@ public class Session {
                 ||P_APP_FIRST_PLAY.equals(key)
                 ||P_APP_IS_SHOW_SCAN_GUIDE.equals(key)
                 ||P_APP_FIRST_USE.equals(key)
+                ||P_APP_IS_SHOW_PROPERTY.equals(key)
                 ){
             mPreference.saveBooleanKey(key,(boolean)updateItem.second);
         }else if(P_APP_HOTELID.equals(key)){
@@ -555,5 +560,14 @@ public class Session {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName;
+    }
+
+    public void setPropertyIsShow(boolean propertyIsShow) {
+        this.propertyIsShow = propertyIsShow;
+        writePreference(new Pair<String, Object>(P_APP_IS_SHOW_PROPERTY, propertyIsShow));
+    }
+
+    public boolean isPropertyShow() {
+        return propertyIsShow;
     }
 }

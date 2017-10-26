@@ -548,4 +548,12 @@ public class Session {
         this.userBean = userBean;
         setObj(P_APP_USER_INFO,userBean);
     }
+
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
+    }
 }

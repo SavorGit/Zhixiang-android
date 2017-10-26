@@ -168,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private ProgressDialog dialog;
     private PropertySelectDialog mProSelectDialog;
     private TextView mHeaderTv;
+    private TextView code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -323,6 +324,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         size = (TextView) findViewById(R.id.size);
         mHeaderImg = (ImageView) findViewById(R.id.iv_header);
         mHeaderTv = (TextView) findViewById(R.id.tv_header);
+        code = (TextView) findViewById(R.id.code);
     }
 
     private void setViews() {
@@ -336,6 +338,15 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
+        code.setText("V"+mSession.getVersionName());
+       // mSession.getUserBean().getUserNum();
+//        UserBean user = mSession.getUserBean();
+//        if (user != null) {
+//            String tel = user.getUserNum();
+//            if (!TextUtils.isEmpty(tel)) {
+//                mHeaderTv.setText(tel);
+//            }
+//        }
 
 
 

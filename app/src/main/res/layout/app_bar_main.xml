@@ -29,7 +29,10 @@
 
         <LinearLayout
             android:layout_alignParentTop="true"
-            android:layout_margin="15dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
             android:id="@+id/ll_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,6 +41,7 @@
             android:visibility="invisible">
 
             <TextView
+                android:includeFontPadding="false"
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

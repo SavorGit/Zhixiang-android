@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
     private RelativeLayout rl_clear_cache;
+    private RelativeLayout rl_checkup;
     private FooterPagerFragment mFooterPagerFragment;
     private CardView mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
@@ -326,6 +327,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHeaderImg = (ImageView) findViewById(R.id.iv_header);
         mHeaderTv = (TextView) findViewById(R.id.tv_header);
         code = (TextView) findViewById(R.id.code);
+        rl_checkup = (RelativeLayout) findViewById(R.id.rl_checkup);
     }
 
     private void setViews() {
@@ -359,6 +361,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
         rl_clear_cache.setOnClickListener(this);
+        rl_checkup.setOnClickListener(this);
         drawer.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

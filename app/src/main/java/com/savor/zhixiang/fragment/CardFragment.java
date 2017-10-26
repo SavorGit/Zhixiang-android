@@ -109,7 +109,7 @@ public class CardFragment extends BaseFragment implements View.OnClickListener {
                 mSourcetv.setText("选自："+sourceName);
             }
             if(!TextUtils.isEmpty(artpro)) {
-                mLabelTv.setText("["+artpro+"]");
+                mLabelTv.setText("[ "+artpro+" ]");
             }
         }
 

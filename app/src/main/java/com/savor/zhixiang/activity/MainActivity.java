@@ -214,12 +214,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
      * 检查是否需要显示资产
      */
     private void checkPropertyStatus() {
-        PropertyBean property = mSession.getProperty();
-        if(property == null || !property.isUploadPro()) {
+        boolean isPropertyShow = mSession.isPropertyShow();
+        if(!isPropertyShow ) {
             if(mProSelectDialog == null) {
                 mProSelectDialog = new PropertySelectDialog(this, new PropertySelectDialog.OnEnterBtnClickListener() {
                     @Override
                     public void onEnterBtnClick() {
+                        mSession.setPropertyIsShow(true);
                         checkKeywords();
                     }
                 });

@@ -16,7 +16,7 @@
         android:id="@+id/fl_keyword"
         app:max_select="-1"
         app:gravity="center"
-        app:animMode="fadeUp"
+        android:visibility="invisible"
         android:layout_margin="18dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>

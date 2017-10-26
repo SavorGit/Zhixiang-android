@@ -214,50 +214,76 @@ public class FlowLayout extends ViewGroup {
 
 
     public void startAnimation(final int line, final OnAnimEndListener listener) {
-        if(line<mAllViews.size()) {
-            post(new Runnable() {
-                @Override
-                public void run() {
-                    List<View> views = mAllViews.get(line);
-                    if(views!=null&&views.size()>0) {
-                        for(int j =0;j<views.size();j++) {
-                            final View view = views.get(j);
-                            view.setVisibility(VISIBLE);
-                            PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0.5f,1f);
-                            PropertyValuesHolder rotate = PropertyValuesHolder.ofFloat("rotationX",-90f,0f);
-                            view.setPivotY(view.getHeight());
-                            ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(view, rotate, alphaHolder).
-                                    setDuration(500);
-                            objectAnimator.start();
+        setVisibility(VISIBLE);
+        PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0f,1f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(this, alphaHolder).
+                setDuration(2000);
+        objectAnimator.start();
+        objectAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
 
-                           postDelayed(new Runnable() {
-                               @Override
-                               public void run() {
-                                   PropertyValuesHolder traslate = PropertyValuesHolder.ofFloat("translationY",0f,-view.getHeight()/4,0f);
-                                   ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(view, traslate).
-                                           setDuration(600);
-                                   objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-                                   objectAnimator.start();
-                               }
-                           },400);
-                        }
+            }
 
-                        final int temp = line+1;
-                        if(temp<mAllViews.size()) {
-                            postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    startAnimation(temp,listener);
-                                }
-                            },1000);
-                        }else {
-                            listener.onAnimEnd();
-                        }
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                listener.onAnimEnd();
+            }
 
-                    }
-                }
-            });
-        }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+//        if(line<mAllViews.size()) {
+//            post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    List<View> views = mAllViews.get(line);
+//                    if(views!=null&&views.size()>0) {
+//                        for(int j =0;j<views.size();j++) {
+//                            final View view = views.get(j);
+//                            view.setVisibility(VISIBLE);
+//                            PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0.5f,1f);
+//                            PropertyValuesHolder rotate = PropertyValuesHolder.ofFloat("rotationX",-90f,0f);
+//                            view.setPivotY(view.getHeight());
+//                            ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(view, rotate, alphaHolder).
+//                                    setDuration(500);
+//                            objectAnimator.start();
+//
+//                           postDelayed(new Runnable() {
+//                               @Override
+//                               public void run() {
+//                                   PropertyValuesHolder traslate = PropertyValuesHolder.ofFloat("translationY",0f,-view.getHeight()/4,0f);
+//                                   ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(view, traslate).
+//                                           setDuration(600);
+//                                   objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+//                                   objectAnimator.start();
+//                               }
+//                           },400);
+//                        }
+//
+//                        final int temp = line+1;
+//                        if(temp<mAllViews.size()) {
+//                            postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    startAnimation(temp,listener);
+//                                }
+//                            },1000);
+//                        }else {
+//                            listener.onAnimEnd();
+//                        }
+//
+//                    }
+//                }
+//            });
+//        }
     }
 
     public interface OnAnimEndListener {

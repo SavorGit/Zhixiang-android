@@ -197,6 +197,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         boolean authorize = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
         if(authorize) {
             UMShareAPI.get(this).getPlatformInfo(this,SHARE_MEDIA.WEIXIN,authListener);
+        }else {
+            UserBean user = mSession.getUserBean();
+            if (user != null) {
+                String tel = user.getUserNum();
+                if (!TextUtils.isEmpty(tel)) {
+                 mHeaderTv.setText(tel);
+                }
+            }
         }
     }
 

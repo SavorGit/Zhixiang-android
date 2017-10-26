@@ -183,7 +183,7 @@
             android:id="@+id/line3"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="55dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="28dp"
             android:layout_marginRight="25dp"
             android:background="#303030"
             android:layout_width="match_parent"
@@ -192,12 +192,12 @@
         <TextView
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="28dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
             android:textColor="#808080"
-            android:text="每天十条内容  高效 • 价值 • 品味"/>
+            android:text="每天精选十条内容  高效 • 价值 • 品味"/>
 
     </RelativeLayout>
 

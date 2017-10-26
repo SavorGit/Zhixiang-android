@@ -38,29 +38,51 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <EditText
+    <RelativeLayout
+        android:id="@+id/num_la"
         android:layout_below="@id/topbar"
-        android:id="@+id/ev_num"
-        android:hint="请输入手机号"
-        android:layout_width="350dp"
-        android:layout_height="42dp"
-        android:textSize="15sp"
-        android:drawableLeft="@mipmap/icon_phone"
-        android:background="@null"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"/>
-    <EditText
-        android:id="@+id/ev_code"
-        android:layout_width="200dp"
-        android:hint="请输入验证码"
-        android:textSize="15sp"
-        android:drawableLeft="@mipmap/icon_lock"
-        android:layout_height="42dp"
-        android:layout_below="@id/ev_num"
-        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_edit_view_bg"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginRight="15dp"
+        android:padding="1dp">
+        <EditText
+            android:paddingLeft="5dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/ev_num"
+            android:hint="请输入手机号"
+            android:layout_width="350dp"
+            android:layout_height="42dp"
+            android:textSize="15sp"
+            android:drawableLeft="@mipmap/icon_phone"
+            android:background="@null"
+           />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/code_la"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/num_la"
+        android:background="@drawable/corner_edit_view_bg"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+        <EditText
+            android:paddingLeft="5dp"
+            android:id="@+id/ev_code"
+            android:layout_width="200dp"
+            android:hint="请输入验证码"
+            android:textSize="15sp"
+            android:drawableLeft="@mipmap/icon_lock"
+            android:layout_height="42dp"
+            android:background="@null"
+            />
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/tv_code"
         android:layout_width="115dp"
@@ -70,10 +92,10 @@
         android:textColor="@color/color_b7b6b2"
         android:gravity="center"
         android:padding="3dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="17dp"
+        android:layout_below="@id/num_la"
         android:background="@drawable/corner_remote_view_g"
-        android:layout_below="@id/ev_num"
-        android:layout_toRightOf="@id/ev_code"
+        android:layout_toRightOf="@id/code_la"
         />
 
     <TextView
@@ -87,7 +109,7 @@
         android:padding="5dp"
         android:text="登录"
         android:layout_marginTop="55dp"
-        android:layout_below="@id/ev_code"
+        android:layout_below="@id/code_la"
         android:background="@drawable/corner_remote_view_btn"
         android:textColor="@color/color_fefefe"
         />

@@ -278,5 +278,22 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
             }
         };
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 清除倒计时。
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
+        if (mTask != null) {
+            mTask.cancel();
+            mTask = null;
+        }
+
+    }
+
+
 }
 

@@ -104,6 +104,7 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this,LoginForCodeActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             default:
                 break;

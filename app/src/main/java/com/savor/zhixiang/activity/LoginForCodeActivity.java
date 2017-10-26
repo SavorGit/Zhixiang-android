@@ -1,6 +1,7 @@
 package com.savor.zhixiang.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -156,6 +157,9 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.back:
+                Intent intent = new Intent();
+                intent.setClass(LoginForCodeActivity.this,LoginActivity.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.tv_code:

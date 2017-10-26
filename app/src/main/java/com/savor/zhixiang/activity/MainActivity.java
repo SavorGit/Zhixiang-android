@@ -1117,6 +1117,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeCallbacksAndMessages(null);
         ismuteUp = false;
         size.setText(ImageCacheUtils.getCacheSize());
+        checkLoginStatus();
     }
 
     UMAuthListener authListener = new UMAuthListener() {

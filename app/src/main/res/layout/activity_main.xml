@@ -145,6 +145,7 @@
 
         <!--检查更新-->
         <RelativeLayout
+            android:visibility="gone"
             android:layout_below="@id/line4"
             android:id="@+id/rl_checkup"
             android:layout_width="match_parent"

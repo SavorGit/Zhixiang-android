@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private static final int DIALOG_DISMISS = 0x1;
     private static final int KILL_APP = 100;
     private static final long KILL_DELAYED_TIME = 1000 * 60 * 10;
+    private static final int REQUEST_CODE_LOGIN = 101;
     private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
@@ -335,14 +336,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
-       // mSession.getUserBean().getUserNum();
-//        UserBean user = mSession.getUserBean();
-//        if (user != null) {
-//            String tel = user.getUserNum();
-//            if (!TextUtils.isEmpty(tel)) {
-//                mHeaderTv.setText(tel);
-//            }
-//        }
+
 
 
     }
@@ -409,6 +403,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 right.scrollTo(left.getRight()*-1 ,0);
                 //控制是否隐藏两边相邻内容
                 mViewPager.setClipChildren(slideOffset>0.4);
+                checkLoginStatus();
             }
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -905,7 +900,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     }).show();
                 }else {
                     Intent intent = new Intent(this,LoginActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,REQUEST_CODE_LOGIN);
                 }
                 break;
             case R.id.rl_loading_layout:
@@ -948,6 +943,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+        if(resultCode == LoginActivity.RESULT_CODE_LOGIN) {
+            checkLoginStatus();
+        }
     }
 
     private void upgrade(){
@@ -1108,7 +1106,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeCallbacksAndMessages(null);
         ismuteUp = false;
         size.setText(ImageCacheUtils.getCacheSize());
-        checkLoginStatus();
     }
 
     UMAuthListener authListener = new UMAuthListener() {

@@ -26,6 +26,7 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity  implements View.OnClickListener,
         ApiRequestListener {
 
+    public static final int RESULT_CODE_LOGIN = 1000;
     private TextView login_code;
     private TextView mLoginBtn;
     private RelativeLayout back;
@@ -76,13 +77,16 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
                         if(userBean!=null) {
                             userNum = userBean.getUserNum();
                         }
-                        String openid = map.get("openid");
-                        PropertyBean property = mSession.getProperty();
-                        int pty = 4;
-                        if(property!=null) {
-                            pty = property.getProperty();
+                        if(map!=null) {
+                            String openid = map.get("openid");
+                            PropertyBean property = mSession.getProperty();
+                            int pty = 4;
+                            if(property!=null) {
+                                pty = property.getProperty();
+                            }
+                            AppApi.sendWxLoginInfo(LoginActivity.this,openid,String.valueOf(pty),userNum,LoginActivity.this);
                         }
-                        AppApi.sendWxLoginInfo(LoginActivity.this,openid,String.valueOf(pty),userNum,LoginActivity.this);
+                        setResult(RESULT_CODE_LOGIN);
                         finish();
                     }
 

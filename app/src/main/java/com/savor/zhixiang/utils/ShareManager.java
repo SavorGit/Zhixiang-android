@@ -220,7 +220,7 @@ public class ShareManager {
                         && platform != SHARE_MEDIA.YNOTE
                         && platform != SHARE_MEDIA.EVERNOTE) {
                    // Toast.makeText(mActivity.get(), "分享成功啦", Toast.LENGTH_SHORT).show();
-                    Toast toast = Toast.makeText(mActivity.get(), "分享成功啦", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(mActivity.get(), "分享成功", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }

@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
     private RelativeLayout rl_clear_cache;
+    private RelativeLayout rl_checkup;
     private FooterPagerFragment mFooterPagerFragment;
     private CardView mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private ProgressDialog dialog;
     private PropertySelectDialog mProSelectDialog;
     private TextView mHeaderTv;
+    private TextView code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -316,12 +318,14 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         rl_my_collection = (RelativeLayout) findViewById(R.id.rl_my_collection);
         rl_all_list = (RelativeLayout) findViewById(R.id.rl_all_list);
         rl_clear_cache = (RelativeLayout) findViewById(R.id.rl_clear_cache);
+        rl_checkup = (RelativeLayout) findViewById(R.id.rl_checkup);
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
         size = (TextView) findViewById(R.id.size);
         mHeaderImg = (ImageView) findViewById(R.id.iv_header);
         mHeaderTv = (TextView) findViewById(R.id.tv_header);
+        code = (TextView) findViewById(R.id.code);
     }
 
     private void setViews() {
@@ -335,6 +339,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
+        code.setText("V"+mSession.getVersionName());
        // mSession.getUserBean().getUserNum();
 //        UserBean user = mSession.getUserBean();
 //        if (user != null) {
@@ -353,6 +358,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
         rl_clear_cache.setOnClickListener(this);
+        rl_checkup.setOnClickListener(this);
         drawer.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -922,10 +928,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 startActivity(intent1);
 
                 break;
-//            case R.id.rl_checkup:
-//                ismuteUp = true;
-//                upgrade();
-//                break;
+            case R.id.rl_checkup:
+                ismuteUp = true;
+                upgrade();
+                break;
             case R.id.rl_all_list:
                 RecordUtils.onEvent(this,R.string.news_share_menu_all);
                 Intent intent = new Intent();

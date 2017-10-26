@@ -2,6 +2,8 @@ package com.savor.zhixiang.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -12,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.common.api.utils.ShowMessage;
 import com.savor.zhixiang.R;
 import com.savor.zhixiang.bean.ListItem;
 import com.savor.zhixiang.bean.PropertyBean;
@@ -22,6 +25,8 @@ import com.savor.zhixiang.core.ResponseErrorMessage;
 import com.savor.zhixiang.utils.RecordUtils;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.savor.zhixiang.R.color.color_b7b6b2;
 
@@ -42,6 +47,9 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
     private RelativeLayout back;
     private String tel = "";
     private String code = "";
+    private Timer mTimer;
+    private TimerTask mTask;
+    private long mSeconds = 60;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +159,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.tv_code:
+                tv_code.setClickable(false);
                 getverifyCode();
                 break;
             case R.id.login_btn:
@@ -182,6 +191,7 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
         switch (method) {
             case POST_GET_TVERIFY_CODE_JSON:
                 //String tel = ev_num.getText().toString();
+                countTime();
                 break;
             case POST_MOBILE_LOGIN_JSON:
                 UserBean userBean = new UserBean();
@@ -205,8 +215,68 @@ public class LoginForCodeActivity extends BaseActivity implements View.OnClickLi
         if(obj instanceof ResponseErrorMessage) {
             ResponseErrorMessage message = (ResponseErrorMessage) obj;
             int code = message.getCode();
+            ShowMessage.showToast(LoginForCodeActivity.this,message.getMessage());
+        }
+        switch (method) {
+            case POST_GET_TVERIFY_CODE_JSON:
+                setCodeView();
+                break;
+            case POST_MOBILE_LOGIN_JSON:
+
+                break;
+
+
 
         }
+
     }
+
+    /**
+     * 倒计时
+     */
+    private void countTime() {
+        mTimer = new Timer();
+        mTask = new TimerTask() {
+
+            @Override
+            public void run() {
+
+                mSeconds = mSeconds - 1;
+                Message msg = Message.obtain();
+                msg.what = 1;
+                msg.obj = mSeconds;
+                mTimeHandler.sendMessage(msg);
+            }
+        };
+        mTimer.schedule(mTask, 0, 1000);
+    }
+
+
+    private Handler mTimeHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+
+            switch (msg.what) {
+                case 1:
+                    long time = (Long) msg.obj;
+                    if (time >= 0 ) {
+                        tv_code.setText(time+"S");
+                        tv_code.setClickable(false);
+                    }else {
+                        if (mTimer != null) {
+                            mTimer.cancel();
+                            mTimer = null;
+                        }
+                        if (mTask != null) {
+                            mTask.cancel();
+                            mTask = null;
+                        }
+                        tv_code.setText("获取验证码");
+                        tv_code.setClickable(true);
+                    }
+
+                    break;
+            }
+        };
+    };
 }
 

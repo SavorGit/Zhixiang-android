@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private static final int DIALOG_DISMISS = 0x1;
     private static final int KILL_APP = 100;
     private static final long KILL_DELAYED_TIME = 1000 * 60 * 10;
+    private static final int REQUEST_CODE_LOGIN = 101;
     private RelativeLayout right;
     private RelativeLayout left;
     private boolean isDrawer;
@@ -120,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private RelativeLayout rl_all_list;
     private RelativeLayout mPageNumLayout;
     private RelativeLayout rl_clear_cache;
-    private RelativeLayout rl_checkup;
     private FooterPagerFragment mFooterPagerFragment;
     private CardView mLoadingLayout;
     private AVLoadingIndicatorView mLoadingView;
@@ -318,7 +318,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         rl_my_collection = (RelativeLayout) findViewById(R.id.rl_my_collection);
         rl_all_list = (RelativeLayout) findViewById(R.id.rl_all_list);
         rl_clear_cache = (RelativeLayout) findViewById(R.id.rl_clear_cache);
-        rl_checkup = (RelativeLayout) findViewById(R.id.rl_checkup);
         mLoadingLayout = (CardView) findViewById(R.id.rl_loading_layout);
         mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.av_loading_view);
         mHintTv = (TextView) findViewById(R.id.tv_hint);
@@ -350,6 +349,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 //        }
 
 
+
     }
 
     private void setListeners() {
@@ -358,7 +358,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         rl_my_collection.setOnClickListener(this);
         rl_all_list.setOnClickListener(this);
         rl_clear_cache.setOnClickListener(this);
-        rl_checkup.setOnClickListener(this);
         drawer.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -415,6 +414,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 right.scrollTo(left.getRight()*-1 ,0);
                 //控制是否隐藏两边相邻内容
                 mViewPager.setClipChildren(slideOffset>0.4);
+                checkLoginStatus();
             }
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -911,7 +911,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                     }).show();
                 }else {
                     Intent intent = new Intent(this,LoginActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,REQUEST_CODE_LOGIN);
                 }
                 break;
             case R.id.rl_loading_layout:
@@ -928,10 +928,10 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 startActivity(intent1);
 
                 break;
-            case R.id.rl_checkup:
-                ismuteUp = true;
-                upgrade();
-                break;
+//            case R.id.rl_checkup:
+//                ismuteUp = true;
+//                upgrade();
+//                break;
             case R.id.rl_all_list:
                 RecordUtils.onEvent(this,R.string.news_share_menu_all);
                 Intent intent = new Intent();
@@ -954,6 +954,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+        if(resultCode == LoginActivity.RESULT_CODE_LOGIN) {
+            checkLoginStatus();
+        }
     }
 
     private void upgrade(){
@@ -1114,7 +1117,6 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeCallbacksAndMessages(null);
         ismuteUp = false;
         size.setText(ImageCacheUtils.getCacheSize());
-        checkLoginStatus();
     }
 
     UMAuthListener authListener = new UMAuthListener() {

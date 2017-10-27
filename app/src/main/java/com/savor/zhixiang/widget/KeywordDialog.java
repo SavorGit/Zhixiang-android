@@ -128,7 +128,7 @@ public class KeywordDialog extends Dialog implements View.OnClickListener {
                                     }
                                 });
                             }
-                        },1000);
+                        },500);
 
                     }
                 });

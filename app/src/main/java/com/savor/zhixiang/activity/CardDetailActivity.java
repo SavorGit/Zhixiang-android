@@ -128,7 +128,8 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
 
         int statusBarHeight = getStatusBarHeight();
         if (statusBarHeight != -1) {
-            mTitleLayout.setPadding(0, statusBarHeight * 2, 0, 0);
+            int h = (int) (statusBarHeight*1.5f);
+            mTitleLayout.setPadding(0, h , 0, 0);
             mBackBtn.setPadding(DensityUtil.dip2px(this,15),0,DensityUtil.dip2px(this,15),DensityUtil.dip2px(this,15));
         }
 

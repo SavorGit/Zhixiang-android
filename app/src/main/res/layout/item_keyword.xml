@@ -6,7 +6,7 @@
     android:textSize="16sp"
     tools:text="iPhone X"
     android:textColor="#e7e3d1"
-    android:layout_margin="22dp"
+    android:layout_margin="20dp"
     >
 
 </TextView>

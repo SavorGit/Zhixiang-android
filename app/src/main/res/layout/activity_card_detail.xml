@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/ico_player_title"
-        android:gravity="center_vertical">
+        android:gravity="top">
 
         <LinearLayout
             android:id="@+id/ll_back"

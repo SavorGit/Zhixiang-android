@@ -49,7 +49,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <ImageView
             android:id="@+id/view_line"

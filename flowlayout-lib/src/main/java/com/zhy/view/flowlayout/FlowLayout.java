@@ -217,7 +217,7 @@ public class FlowLayout extends ViewGroup {
         setVisibility(VISIBLE);
         PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha",0f,1f);
         ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(this, alphaHolder).
-                setDuration(2000);
+                setDuration(500);
         objectAnimator.start();
         objectAnimator.addListener(new Animator.AnimatorListener() {
             @Override

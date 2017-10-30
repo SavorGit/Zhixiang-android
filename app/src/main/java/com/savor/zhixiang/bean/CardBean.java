@@ -15,6 +15,7 @@ public class CardBean implements Serializable {
     private String day;
     private String dailyauthor;
     private String dailyart;
+    private String is_same_day;
     private List<CardDetail> list;
 
     @Override
@@ -26,6 +27,7 @@ public class CardBean implements Serializable {
                 ", day='" + day + '\'' +
                 ", dailyauthor='" + dailyauthor + '\'' +
                 ", dailyart='" + dailyart + '\'' +
+                ", is_same_day='" + is_same_day + '\'' +
                 ", list=" + list +
                 '}';
     }
@@ -46,8 +48,9 @@ public class CardBean implements Serializable {
             return false;
         if (dailyart != null ? !dailyart.equals(cardBean.dailyart) : cardBean.dailyart != null)
             return false;
+        if (is_same_day != null ? !is_same_day.equals(cardBean.is_same_day) : cardBean.is_same_day != null)
+            return false;
         return list != null ? list.equals(cardBean.list) : cardBean.list == null;
-
     }
 
     @Override
@@ -58,6 +61,7 @@ public class CardBean implements Serializable {
         result = 31 * result + (day != null ? day.hashCode() : 0);
         result = 31 * result + (dailyauthor != null ? dailyauthor.hashCode() : 0);
         result = 31 * result + (dailyart != null ? dailyart.hashCode() : 0);
+        result = 31 * result + (is_same_day != null ? is_same_day.hashCode() : 0);
         result = 31 * result + (list != null ? list.hashCode() : 0);
         return result;
     }
@@ -108,6 +112,14 @@ public class CardBean implements Serializable {
 
     public void setDailyart(String dailyart) {
         this.dailyart = dailyart;
+    }
+
+    public String getIs_same_day() {
+        return is_same_day;
+    }
+
+    public void setIs_same_day(String is_same_day) {
+        this.is_same_day = is_same_day;
     }
 
     public List<CardDetail> getList() {

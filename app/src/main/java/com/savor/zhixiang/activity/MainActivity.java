@@ -736,7 +736,13 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             // 添加过渡页
             TransitionBean transitionBean = new TransitionBean();
             if(fragmentList.size() == 0) {
-                transitionBean.setType(TransitionFrament.TYPE_FINISH_TODAY);
+                String is_same_day = cardBean.getIs_same_day();
+                if("1".equals(is_same_day)) {
+                    transitionBean.setType(TransitionFrament.TYPE_FINISH_TODAY);
+                }else {
+                    transitionBean.setType(TransitionFrament.TYPE_FINISH_HISTORY);
+                }
+
                 fragments.add(RecommendFragment.newInstance());
             }else if(nextpage!=null) {
                 if(nextpage.getNext() == 1) {
@@ -864,7 +870,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             if(mAdapter.getCount()>13) {
                 fragment  = (CardFragment) fragmentList.get(fragmentList.size() - 3);
             }else {
-                fragment = (CardFragment) fragmentList.get(fragmentList.size()-2);
+                fragment = (CardFragment) fragmentList.get(fragmentList.size()-4);
             }
             CardDetail cardDetail = fragment.getCardDetail();
             if(cardDetail!=null) {

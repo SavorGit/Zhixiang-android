@@ -270,7 +270,7 @@ public class CardDetailActivity extends AppCompatActivity implements View.OnClic
             int width = screenWidth-DensityUtil.dip2px(this,28)*2;
             int height = (int) (width*overriedScale);
             // 解决首页卡片点击进入详情时显示默认图，因为如果图片尺寸不同会生成两份不同的缓存图片
-            Glide.with(getApplicationContext()).
+            Glide.with(this).
                     load(imgUrl).centerCrop().
                     placeholder(R.mipmap.ico_default).
                     override(width,height)

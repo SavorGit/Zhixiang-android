@@ -94,7 +94,7 @@ public class CardFragment extends BaseFragment implements View.OnClickListener {
             detail = (CardDetail) arguments.getSerializable("detail");
         }
         if(detail!=null) {
-            Glide.with(getActivity().getApplicationContext()).
+            Glide.with(getContext()).
                     load(detail.getImgUrl()).centerCrop().
                     placeholder(R.mipmap.ico_default).
                     into(mBannerIv);
@@ -148,11 +148,11 @@ public class CardFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.parent:
-                RecordUtils.onEvent(getActivity(),getString(R.string.news_share_home_card_click));
+                RecordUtils.onEvent(getContext(),getString(R.string.news_share_home_card_click));
                 Intent intent = new Intent(getContext(), CardDetailActivity.class);
                 intent.putExtra("detail",detail);
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(mParentView,mParentView.getWidth()/2,mParentView.getHeight()/2,0,0);
-                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                ActivityCompat.startActivity(getContext(), intent, options.toBundle());
                 break;
         }
     }

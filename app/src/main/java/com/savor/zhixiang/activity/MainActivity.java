@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
     private PropertySelectDialog mProSelectDialog;
     private TextView mHeaderTv;
     private TextView code;
+    private boolean isScrollDisable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -338,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
         mAdapter = new CardListAdapter(getSupportFragmentManager(),mList);
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(2);
+//        mViewPager.setOffscreenPageLimit(2);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
         code.setText("V"+mSession.getVersionName());
@@ -367,6 +368,16 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);
+                    return true;
+                }
+                return false;
+            }
+        });
+        mViewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int currentItem = mViewPager.getCurrentItem();
+                if((fragmentList!=null&&fragmentList.get(currentItem) instanceof FooterPagerFragment)||isScrollDisable) {
                     return true;
                 }
                 return false;
@@ -517,7 +528,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 mBottomPageNumTv.setText(String.valueOf(result)+" ");
 
                 // 如果当前滑动到还剩3页的时候，预加载请求下一页数据
-                if(position==mAdapter.getCount()-4) {
+                if(position==mAdapter.getCount()-6) {
                     String bespeak_time = cardDetail.getContentDetail().getBespeak_time();
                     if(!isRequesting) {
                         LogUtils.d("savor:main onPageSelected 非请求状态，发起请求。");
@@ -538,6 +549,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                                 mViewPager.post(new Runnable() {
                                     @Override
                                     public void run() {
+                                        isScrollDisable = true;
                                         fragmentList.remove(mFooterPagerFragment);
                                         fragmentList.addAll(mNextPageFragments);
                                         mAdapter.setData(fragmentList);
@@ -545,12 +557,20 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                                             fragmentList.add(mFooterPagerFragment);
                                             mAdapter.setData(fragmentList);
                                         }
+
+
                                         CardFragment cFrag = (CardFragment) mNextPageFragments.get(0);
                                         CardDetail detail = cFrag.getCardDetail();
 
 
                                         showDateLayoutAlphaAnim(detail);
 
+                                        mViewPager.postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                isScrollDisable = false;
+                                            }
+                                        },500);
                                         mNextPageBeanList.clear();
                                         mNextPageFragments.clear();
                                     }
@@ -620,7 +640,15 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
+        switch (state) {
+            case ViewPager.SCROLL_STATE_IDLE:
+                Glide.with(this).resumeRequests();
+                Glide.get(this).clearMemory();
+                break;
+                default:
+                    Glide.with(this).pauseRequests();
+                    break;
+        }
     }
 
     @Override

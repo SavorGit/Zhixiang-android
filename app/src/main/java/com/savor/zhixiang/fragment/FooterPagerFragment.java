@@ -44,6 +44,7 @@ public class FooterPagerFragment extends BaseFragment implements View.OnClickLis
         return footerPagerFragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,5 +122,12 @@ public class FooterPagerFragment extends BaseFragment implements View.OnClickLis
 
     public interface  OnclickReloadListener {
         void onClickReload();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mLoadingView.hide();
+        mLoadingView = null;
     }
 }

@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
         mAdapter = new CardListAdapter(getSupportFragmentManager(),mList);
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.setOffscreenPageLimit(2);
         mViewPager.setPageMargin(DensityUtil.dpToPx(this,16));
         size.setText(ImageCacheUtils.getCacheSize());
         code.setText("V"+mSession.getVersionName());
@@ -482,14 +482,17 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             // 获取当前页日期时间并更新右上角日期
             int index = position;
             if(frag instanceof FooterPagerFragment) {
+                LogUtils.d("zhixiang:page FooterPagerFragment");
                 index = position-3;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
                 mDateLayout.setVisibility(View.INVISIBLE);
             }else if(frag instanceof TransitionFrament){
+                LogUtils.d("zhixiang:page TransitionFrament");
                 index = position-2;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
                 mDateLayout.setVisibility(View.VISIBLE);
             }else if(frag instanceof RecommendFragment){
+                LogUtils.d("zhixiang:page RecommendFragment");
                 index = position-1;
                 mPageNumLayout.setVisibility(View.INVISIBLE);
                 mDateLayout.setVisibility(View.VISIBLE);
@@ -577,7 +580,9 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                initDate(detail,true,true);
+                int position = mViewPager.getCurrentItem();
+                Fragment frag = fragmentList.get(position);
+                initDate(detail,frag instanceof CardFragment,frag instanceof CardFragment||frag instanceof TransitionFrament||frag instanceof RecommendFragment);
             }
 
             @Override
@@ -596,6 +601,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         String day = cardDetail.getDay();
         String month = cardDetail.getMonth();
         String week = cardDetail.getWeek();
+        LogUtils.d("zhixiang:page isSow="+isShowNumLayout);
         if(isShowNumLayout) {
             mPageNumLayout.setVisibility(View.VISIBLE);
         }else {
@@ -723,7 +729,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
                 public void run() {
                     mLoadingLayout.setVisibility(View.GONE);
                     mDateLayout.setVisibility(View.VISIBLE);
-                    mPageNumLayout.setVisibility(View.VISIBLE);
+//                    mPageNumLayout.setVisibility(View.VISIBLE);
                 }
             },200);
             // 重新组织卡片数据，将日期时间添加进去，当切换到某个页面时，更新日期时间

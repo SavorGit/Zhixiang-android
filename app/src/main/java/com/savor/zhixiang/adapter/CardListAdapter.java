@@ -53,6 +53,7 @@ public class CardListAdapter extends FragmentStatePagerAdapter {
         if(i==-1)
             return PagerAdapter.POSITION_NONE;
         return i;
+//        return PagerAdapter.POSITION_NONE;
     }
 
     @Override

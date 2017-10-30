@@ -156,4 +156,14 @@ public class CardFragment extends BaseFragment implements View.OnClickListener {
                 break;
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(mParentView!=null) {
+            mParentView.removeAllViews();
+            mParentView = null;
+        }
+        LogUtils.d("zhixiang:page destroy cardfragment");
+    }
 }

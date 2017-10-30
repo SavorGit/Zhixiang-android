@@ -202,10 +202,10 @@ public class RecommendFragment extends BaseFragment implements View.OnClickListe
         ShareUrlBean shareUrl = mSession.getShareUrl();
         UMWeb umWeb = new UMWeb(shareUrl.getUrl()+openid);
         umWeb.setThumb(new UMImage(getContext(),R.mipmap.ico_share_img));
-        umWeb.setTitle("专为高端人士打造的内容App");
-        umWeb.setDescription("每天十条内容，知世界生活");
+        umWeb.setTitle("每日知享，高端人士的内容管家");
+        umWeb.setDescription("高效 价值 品味");
         new ShareAction(getActivity())
-                .withText("专为高端人士打造的内容App")
+                .withText("每日精选十条内容")
                 .withMedia(umWeb)
                 .setPlatform(platform)
                 .setCallback(mShareListener)

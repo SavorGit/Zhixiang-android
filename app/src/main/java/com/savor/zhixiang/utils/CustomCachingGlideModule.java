@@ -21,7 +21,7 @@ import java.io.InputStream;
  */
 
 public class CustomCachingGlideModule implements GlideModule {
-    private static final int DISK_CACHE_SIZE = 100 * 1024 * 1024;
+    private static final int DISK_CACHE_SIZE = 50 * 1024 * 1024;
 //    private static final int MEMORY_CACHE_SIZE = 30 * 1024 * 1024;
     @Override public void applyOptions(final Context context, GlideBuilder builder) {
         builder.setDiskCache(new DiskCache.Factory() {

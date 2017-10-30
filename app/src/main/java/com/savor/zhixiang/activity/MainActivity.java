@@ -423,6 +423,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
             @Override
             public void onDrawerOpened(View drawerView) {
                 RecordUtils.onEvent(MainActivity.this,R.string.news_share_menu);
+                checkLoginStatus();
             }
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -1127,7 +1128,7 @@ public class MainActivity extends AppCompatActivity implements PagingScrollHelpe
         mHandler.removeCallbacksAndMessages(null);
         ismuteUp = false;
         size.setText(ImageCacheUtils.getCacheSize());
-        checkLoginStatus();
+//        checkLoginStatus();
     }
 
     UMAuthListener authListener = new UMAuthListener() {

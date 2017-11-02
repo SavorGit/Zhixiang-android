@@ -79,7 +79,6 @@ public class SplashActivity extends BaseActivity {
             case POST_GET_KEYWORDS_JSON:
                 if(obj instanceof KeywordsBean) {
                     keywords = (KeywordsBean) obj;
-                    mSession.setKeywords(keywords);
                 }
                 break;
         }
